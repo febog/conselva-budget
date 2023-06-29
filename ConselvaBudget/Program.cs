@@ -2,6 +2,7 @@ using ConselvaBudget.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ConselvaBudget
 {
@@ -19,6 +20,8 @@ namespace ConselvaBudget
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddDbContext<ConselvaBudgetContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ConselvaBudgetContext") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetContext' not found.")));
             builder.Services.AddRazorPages();
 
             // Globally require authenticated users.
