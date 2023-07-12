@@ -2,17 +2,10 @@
 @model ConselvaBudget.Areas.Administration.Pages.Organizations.DetailsModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Details";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+<h1>Details</h1>
 
 <div>
     <h4>Organization</h4>
@@ -36,5 +29,3 @@
     <a asp-page="./Edit" asp-route-id="@Model.Organization?.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
-</body>
-</html>
