@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Organizations
+namespace ConselvaBudget.Areas.Administration.Pages.Programs
 {
     public class IndexModel : PageModel
     {
@@ -23,9 +23,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 
         public async Task OnGetAsync()
         {
-            if (_context.Organization != null)
+            if (_context.Organizations != null)
             {
-                Organization = await _context.Organization.ToListAsync();
+                Organization = await _context.Organizations.ToListAsync();
             }
         }
     }

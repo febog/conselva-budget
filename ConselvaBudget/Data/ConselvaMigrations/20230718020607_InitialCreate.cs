@@ -57,7 +57,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Suborganization",
+                name: "Subprogram",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -68,9 +68,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Suborganization", x => x.Id);
+                    table.PrimaryKey("PK_Subprogram", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Suborganization_Organization_OrganizationId",
+                        name: "FK_Subprogram_Organization_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organization",
                         principalColumn: "Id",
@@ -89,7 +89,8 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     Amount = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    SubprogramId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -107,9 +108,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Budget_Suborganization_SuborganizationId",
-                        column: x => x.SuborganizationId,
-                        principalTable: "Suborganization",
+                        name: "FK_Budget_Subprogram_SubprogramId",
+                        column: x => x.SubprogramId,
+                        principalTable: "Subprogram",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -127,7 +128,8 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    SubprogramId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,9 +147,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Expense_Suborganization_SuborganizationId",
-                        column: x => x.SuborganizationId,
-                        principalTable: "Suborganization",
+                        name: "FK_Expense_Subprogram_SubprogramId",
+                        column: x => x.SubprogramId,
+                        principalTable: "Subprogram",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -163,9 +165,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Budget_SuborganizationId",
+                name: "IX_Budget_SubprogramId",
                 table: "Budget",
-                column: "SuborganizationId");
+                column: "SubprogramId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Expense_AccountId",
@@ -178,13 +180,13 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Expense_SuborganizationId",
+                name: "IX_Expense_SubprogramId",
                 table: "Expense",
-                column: "SuborganizationId");
+                column: "SubprogramId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Suborganization_OrganizationId",
-                table: "Suborganization",
+                name: "IX_Subprogram_OrganizationId",
+                table: "Subprogram",
                 column: "OrganizationId");
         }
 
@@ -204,7 +206,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Project");
 
             migrationBuilder.DropTable(
-                name: "Suborganization");
+                name: "Subprogram");
 
             migrationBuilder.DropTable(
                 name: "Organization");

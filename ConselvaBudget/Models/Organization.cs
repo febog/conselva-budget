@@ -13,6 +13,6 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<Suborganization> Suborganizations { get; set; } = default!;
+        public ICollection<Subprogram> Subprograms { get; set; } = default!;
     }
 }

@@ -32,8 +32,8 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string? Comments { get; set; }
 
-        [Display(Name = "Suborganization")]
-        public Suborganization Suborganization { get; set; } = default!;
+        [Display(Name = "Subprogram")]
+        public Subprogram Subprogram { get; set; } = default!;
 
         [Display(Name = "Project")]
         public Project Project { get; set; } = default!;

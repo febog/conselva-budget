@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20230629015335_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230718020822_PluralizeOrganizationsSet")]
+    partial class PluralizeOrganizationsSet
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.8")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -80,13 +80,16 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Property<int>("SuborganizationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("SubprogramId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
 
                     b.HasIndex("ProjectId");
 
-                    b.HasIndex("SuborganizationId");
+                    b.HasIndex("SubprogramId");
 
                     b.ToTable("Budget");
                 });
@@ -124,13 +127,16 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Property<int>("SuborganizationId")
                         .HasColumnType("int");
 
+                    b.Property<int>("SubprogramId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
 
                     b.HasIndex("ProjectId");
 
-                    b.HasIndex("SuborganizationId");
+                    b.HasIndex("SubprogramId");
 
                     b.ToTable("Expense");
                 });
@@ -153,7 +159,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organization");
+                    b.ToTable("Organizations");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Project", b =>
@@ -186,7 +192,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.ToTable("Project");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.Suborganization", b =>
+            modelBuilder.Entity("ConselvaBudget.Models.Subprogram", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -209,7 +215,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Suborganization");
+                    b.ToTable("Subprogram");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Budget", b =>
@@ -226,9 +232,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ConselvaBudget.Models.Suborganization", "Suborganization")
+                    b.HasOne("ConselvaBudget.Models.Subprogram", "Subprogram")
                         .WithMany("Budgets")
-                        .HasForeignKey("SuborganizationId")
+                        .HasForeignKey("SubprogramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -236,7 +242,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.Navigation("Project");
 
-                    b.Navigation("Suborganization");
+                    b.Navigation("Subprogram");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Expense", b =>
@@ -253,9 +259,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ConselvaBudget.Models.Suborganization", "Suborganization")
+                    b.HasOne("ConselvaBudget.Models.Subprogram", "Subprogram")
                         .WithMany("Expenses")
-                        .HasForeignKey("SuborganizationId")
+                        .HasForeignKey("SubprogramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -263,18 +269,18 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.Navigation("Project");
 
-                    b.Navigation("Suborganization");
+                    b.Navigation("Subprogram");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.Suborganization", b =>
+            modelBuilder.Entity("ConselvaBudget.Models.Subprogram", b =>
                 {
-                    b.HasOne("ConselvaBudget.Models.Organization", "Organization")
-                        .WithMany("Suborganizations")
+                    b.HasOne("ConselvaBudget.Models.Organization", "Program")
+                        .WithMany("Subprograms")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Organization");
+                    b.Navigation("Program");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Account", b =>
@@ -286,7 +292,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
             modelBuilder.Entity("ConselvaBudget.Models.Organization", b =>
                 {
-                    b.Navigation("Suborganizations");
+                    b.Navigation("Subprograms");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Project", b =>
@@ -296,7 +302,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("Expenses");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.Suborganization", b =>
+            modelBuilder.Entity("ConselvaBudget.Models.Subprogram", b =>
                 {
                     b.Navigation("Budgets");
 

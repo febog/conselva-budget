@@ -13,7 +13,6 @@ namespace ConselvaBudget.Data
             : base(options)
         {
         }
-
-        public DbSet<ConselvaBudget.Models.Organization> Organization { get; set; } = default!;
+        public DbSet<ConselvaBudget.Models.Organization> Organizations { get; set; } = default!;
     }
 }

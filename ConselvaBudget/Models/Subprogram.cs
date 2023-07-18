@@ -2,7 +2,7 @@
 
 namespace ConselvaBudget.Models
 {
-    public class Suborganization
+    public class Subprogram
     {
         public int Id { get; set; }
 
@@ -16,7 +16,7 @@ namespace ConselvaBudget.Models
         public string Name { get; set; } = string.Empty;
 
         [Display(Name = "Organization")]
-        public Organization Organization { get; set; } = default!;
+        public Organization Program { get; set; } = default!;
 
         public virtual ICollection<Budget> Budgets { get; set; } = default!;
 

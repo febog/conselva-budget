@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Organizations
+namespace ConselvaBudget.Areas.Administration.Pages.Programs
 {
     public class CreateModel : PageModel
     {
@@ -31,12 +31,12 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Organization == null || Organization == null)
+          if (!ModelState.IsValid || _context.Organizations == null || Organization == null)
             {
                 return Page();
             }
 
-            _context.Organization.Add(Organization);
+            _context.Organizations.Add(Organization);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
