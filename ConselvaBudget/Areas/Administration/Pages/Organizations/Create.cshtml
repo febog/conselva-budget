@@ -2,38 +2,21 @@
 @model ConselvaBudget.Areas.Administration.Pages.Organizations.CreateModel
 
 @{
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Organization</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Organization.Code" class="control-label"></label>
-                <input asp-for="Organization.Code" class="form-control" />
-                <span asp-validation-for="Organization.Code" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Organization.Name" class="control-label"></label>
-                <input asp-for="Organization.Name" class="form-control" />
-                <span asp-validation-for="Organization.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="col-12">
+    <label asp-for="Organization.Code" class="form-label"></label>
+    <input asp-for="Organization.Code" class="form-control" />
+    <span asp-validation-for="Organization.Code" class="text-danger"></span>
 </div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
+<div class="col-12">
+    <label asp-for="Organization.Name" class="form-label"></label>
+    <input asp-for="Organization.Name" class="form-control" />
+    <span asp-validation-for="Organization.Name" class="text-danger"></span>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<div class="col-12">
+    <input class="btn btn-primary" type="submit" value="Create">
+    <a class="btn btn-secondary" asp-page="Index">Cancel</a>
+</div>
