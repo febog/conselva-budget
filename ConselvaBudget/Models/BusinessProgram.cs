@@ -14,6 +14,6 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<BusinessSubprogram> BusinessSubprograms { get; set; } = default!;
+        public virtual ICollection<BusinessSubprogram> BusinessSubprograms { get; set; } = default!;
     }
 }
