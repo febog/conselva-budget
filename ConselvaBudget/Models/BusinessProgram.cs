@@ -2,17 +2,18 @@
 
 namespace ConselvaBudget.Models
 {
-    public class Organization
+    public class BusinessProgram
     {
         public int Id { get; set; }
 
         [Display(Name = "Code")]
-        public int Code { get; set; }
+        [StringLength(10)]
+        public string Code { get; set; } = string.Empty;
 
         [Display(Name = "Name")]
         [StringLength(255)]
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<Subprogram> Subprograms { get; set; } = default!;
+        public ICollection<BusinessSubprogram> BusinessSubprograms { get; set; } = default!;
     }
 }

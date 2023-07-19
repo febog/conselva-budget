@@ -25,18 +25,18 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
         }
 
         [BindProperty]
-        public Organization Organization { get; set; } = default!;
+        public BusinessProgram BusinessProgram { get; set; } = default!;
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Organizations == null || Organization == null)
+          if (!ModelState.IsValid || _context.BusinessPrograms == null || BusinessProgram == null)
             {
                 return Page();
             }
 
-            _context.Organizations.Add(Organization);
+            _context.BusinessPrograms.Add(BusinessProgram);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

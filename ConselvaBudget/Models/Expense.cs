@@ -8,11 +8,11 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        public int SuborganizationId { get; set; }
+        public int ActivityBudgetId { get; set; }
 
-        public int ProjectId { get; set; }
-
-        public int AccountId { get; set; }
+        [Display(Name = "Vendor")]
+        [StringLength(255)]
+        public string Vendor { get; set; } = string.Empty;
 
         [Display(Name = "Amount")]
         [Column(TypeName = "decimal(19, 4)")]
@@ -32,13 +32,7 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string? Comments { get; set; }
 
-        [Display(Name = "Subprogram")]
-        public Subprogram Subprogram { get; set; } = default!;
-
-        [Display(Name = "Project")]
-        public Project Project { get; set; } = default!;
-
         [Display(Name = "Account")]
-        public Account Account { get; set; } = default!;
+        public ActivityBudget ActivityBudget { get; set; } = default!;
     }
 }

@@ -21,21 +21,21 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
         }
 
         [BindProperty]
-        public Organization Organization { get; set; } = default!;
+        public BusinessProgram BusinessProgram { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Organizations == null)
+            if (id == null || _context.BusinessPrograms == null)
             {
                 return NotFound();
             }
 
-            var organization =  await _context.Organizations.FirstOrDefaultAsync(m => m.Id == id);
-            if (organization == null)
+            var businessprogram =  await _context.BusinessPrograms.FirstOrDefaultAsync(m => m.Id == id);
+            if (businessprogram == null)
             {
                 return NotFound();
             }
-            Organization = organization;
+            BusinessProgram = businessprogram;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
                 return Page();
             }
 
-            _context.Attach(Organization).State = EntityState.Modified;
+            _context.Attach(BusinessProgram).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrganizationExists(Organization.Id))
+                if (!BusinessProgramExists(BusinessProgram.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
             return RedirectToPage("./Index");
         }
 
-        private bool OrganizationExists(int id)
+        private bool BusinessProgramExists(int id)
         {
-          return (_context.Organizations?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.BusinessPrograms?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

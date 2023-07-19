@@ -6,19 +6,14 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Name")]
-        [StringLength(255)]
-        public string Name { get; set; } = string.Empty;
+        public int BusinessSubprogramId { get; set; }
 
-        [Display(Name = "Code")]
-        public int Code { get; set; }
+        public int AccountCategoryId { get; set; }
 
-        [Display(Name = "Description")]
-        [StringLength(255)]
-        public string? Description { get; set; }
+        [Display(Name = "Subprogram")]
+        public BusinessSubprogram BusinessSubprogram { get; set; } = default!;
 
-        public virtual ICollection<Budget> Budgets { get; set; } = default!;
-
-        public virtual ICollection<Expense> Expenses { get; set; } = default!;
+        [Display(Name = "AccountCategory")]
+        public AccountCategory AccountCategory { get; set; } = default!;
     }
 }

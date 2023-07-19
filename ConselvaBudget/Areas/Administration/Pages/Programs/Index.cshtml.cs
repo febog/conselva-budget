@@ -19,13 +19,13 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
             _context = context;
         }
 
-        public IList<Organization> Organization { get;set; } = default!;
+        public IList<BusinessProgram> BusinessProgram { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Organizations != null)
+            if (_context.BusinessPrograms != null)
             {
-                Organization = await _context.Organizations.ToListAsync();
+                BusinessProgram = await _context.BusinessPrograms.ToListAsync();
             }
         }
     }

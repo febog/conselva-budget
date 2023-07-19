@@ -20,40 +20,40 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
         }
 
         [BindProperty]
-      public Organization Organization { get; set; } = default!;
+      public BusinessProgram BusinessProgram { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Organizations == null)
+            if (id == null || _context.BusinessPrograms == null)
             {
                 return NotFound();
             }
 
-            var organization = await _context.Organizations.FirstOrDefaultAsync(m => m.Id == id);
+            var businessprogram = await _context.BusinessPrograms.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (organization == null)
+            if (businessprogram == null)
             {
                 return NotFound();
             }
             else 
             {
-                Organization = organization;
+                BusinessProgram = businessprogram;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Organizations == null)
+            if (id == null || _context.BusinessPrograms == null)
             {
                 return NotFound();
             }
-            var organization = await _context.Organizations.FindAsync(id);
+            var businessprogram = await _context.BusinessPrograms.FindAsync(id);
 
-            if (organization != null)
+            if (businessprogram != null)
             {
-                Organization = organization;
-                _context.Organizations.Remove(Organization);
+                BusinessProgram = businessprogram;
+                _context.BusinessPrograms.Remove(BusinessProgram);
                 await _context.SaveChangesAsync();
             }
 

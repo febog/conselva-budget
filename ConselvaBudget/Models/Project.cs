@@ -21,8 +21,6 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string? Comments { get; set; }
 
-        public virtual ICollection<Budget> Budgets { get; set; } = default!;
-
-        public virtual ICollection<Expense> Expenses { get; set; } = default!;
+        public virtual ICollection<Result> Results { get; set; } = default!;
     }
 }

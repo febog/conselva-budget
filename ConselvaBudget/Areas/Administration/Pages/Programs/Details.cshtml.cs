@@ -19,23 +19,23 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
             _context = context;
         }
 
-      public Organization Organization { get; set; } = default!; 
+      public BusinessProgram BusinessProgram { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Organizations == null)
+            if (id == null || _context.BusinessPrograms == null)
             {
                 return NotFound();
             }
 
-            var organization = await _context.Organizations.FirstOrDefaultAsync(m => m.Id == id);
-            if (organization == null)
+            var businessprogram = await _context.BusinessPrograms.FirstOrDefaultAsync(m => m.Id == id);
+            if (businessprogram == null)
             {
                 return NotFound();
             }
             else 
             {
-                Organization = organization;
+                BusinessProgram = businessprogram;
             }
             return Page();
         }
