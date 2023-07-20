@@ -6,6 +6,8 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
+        public int DonorId { get; set; }
+
         [Display(Name = "Name")]
         [StringLength(255)]
         [Required]
@@ -22,6 +24,9 @@ namespace ConselvaBudget.Models
         [Display(Name = "Comments")]
         [StringLength(255)]
         public string Comments { get; set; }
+
+        [Display(Name = "Donor")]
+        public Donor Donor { get; set; }
 
         public virtual ICollection<Result> Results { get; set; }
     }
