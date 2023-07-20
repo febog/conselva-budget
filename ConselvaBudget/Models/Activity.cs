@@ -10,15 +10,16 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Name")]
         [StringLength(255)]
-        public string Name { get; set; } = string.Empty;
+        [Required]
+        public string Name { get; set; }
 
         [Display(Name = "DueDate")]
         [DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
 
         [Display(Name = "Result")]
-        public Result Result { get; set; } = default!;
+        public Result Result { get; set; }
 
-        public virtual ICollection<ActivityBudget> ActivityBudgets { get; set; } = default!;
+        public virtual ICollection<ActivityBudget> ActivityBudgets { get; set; }
     }
 }

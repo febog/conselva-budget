@@ -13,23 +13,23 @@ namespace ConselvaBudget.Data
             : base(options)
         {
         }
-        public DbSet<BusinessProgram> BusinessPrograms { get; set; } = default!;
+        public DbSet<BusinessProgram> BusinessPrograms { get; set; }
 
-        public DbSet<BusinessSubprogram> BusinessSubprograms { get; set; } = default!;
+        public DbSet<BusinessSubprogram> BusinessSubprograms { get; set; }
 
-        public DbSet<AccountCategory> AccountCategories { get; set; } = default!;
+        public DbSet<AccountCategory> AccountCategories { get; set; }
 
-        public DbSet<Account> Accounts { get; set; } = default!;
+        public DbSet<Account> Accounts { get; set; }
 
-        public DbSet<Project> Projects { get; set; } = default!;
+        public DbSet<Project> Projects { get; set; }
 
-        public DbSet<Result> Results { get; set; } = default!;
+        public DbSet<Result> Results { get; set; }
 
-        public DbSet<Activity> Activities { get; set; } = default!;
+        public DbSet<Activity> Activities { get; set; }
 
-        public DbSet<ActivityBudget> ActivityBudgets { get; set; } = default!;
+        public DbSet<ActivityBudget> ActivityBudgets { get; set; }
 
-        public DbSet<Expense> Expenses { get; set; } = default!;
+        public DbSet<Expense> Expenses { get; set; }
 
     }
 }

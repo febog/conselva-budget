@@ -10,9 +10,15 @@ namespace ConselvaBudget.Models
 
         public int ActivityBudgetId { get; set; }
 
+        [Display(Name = "Description")]
+        [StringLength(255)]
+        [Required]
+        public string Description { get; set; }
+
         [Display(Name = "Vendor")]
         [StringLength(255)]
-        public string Vendor { get; set; } = string.Empty;
+        [Required]
+        public string Vendor { get; set; }
 
         [Display(Name = "Amount")]
         [Column(TypeName = "decimal(19, 4)")]
@@ -30,9 +36,9 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Comments")]
         [StringLength(255)]
-        public string? Comments { get; set; }
+        public string Comments { get; set; }
 
         [Display(Name = "Account")]
-        public ActivityBudget ActivityBudget { get; set; } = default!;
+        public ActivityBudget ActivityBudget { get; set; }
     }
 }

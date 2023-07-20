@@ -200,6 +200,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<DateTime>("ExpenseDate")
                         .HasColumnType("datetime2");
 

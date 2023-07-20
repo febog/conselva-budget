@@ -10,11 +10,12 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Name")]
         [StringLength(255)]
-        public string Name { get; set; } = string.Empty;
+        [Required]
+        public string Name { get; set; }
 
         [Display(Name = "Project")]
-        public Project Project { get; set; } = default!;
+        public Project Project { get; set; }
 
-        public virtual ICollection<Activity> Activities { get; set; } = default!;
+        public virtual ICollection<Activity> Activities { get; set; }
     }
 }

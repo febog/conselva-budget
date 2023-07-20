@@ -8,16 +8,18 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Code")]
         [StringLength(10)]
-        public string Code { get; set; } = string.Empty;
+        [Required]
+        public string Code { get; set; }
 
         [Display(Name = "Name")]
         [StringLength(255)]
-        public string Name { get; set; } = string.Empty;
+        [Required]
+        public string Name { get; set; }
 
         [Display(Name = "Description")]
         [StringLength(255)]
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
-        public virtual ICollection<Account> Accounts { get; set; } = default!;
+        public virtual ICollection<Account> Accounts { get; set; }
     }
 }

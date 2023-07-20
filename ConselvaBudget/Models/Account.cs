@@ -11,9 +11,9 @@ namespace ConselvaBudget.Models
         public int AccountCategoryId { get; set; }
 
         [Display(Name = "Subprogram")]
-        public BusinessSubprogram BusinessSubprogram { get; set; } = default!;
+        public BusinessSubprogram BusinessSubprogram { get; set; }
 
         [Display(Name = "AccountCategory")]
-        public AccountCategory AccountCategory { get; set; } = default!;
+        public AccountCategory AccountCategory { get; set; }
     }
 }

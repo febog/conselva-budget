@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <!--<Nullable>enable</Nullable>-->
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-ConselvaBudget-18b78dec-e3b7-4870-a41a-0e57da5315c5</UserSecretsId>
   </PropertyGroup>

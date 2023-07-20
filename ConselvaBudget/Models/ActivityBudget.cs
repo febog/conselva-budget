@@ -18,11 +18,11 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Comments")]
         [StringLength(255)]
-        public string? Comments { get; set; }
+        public string Comments { get; set; }
 
         [Display(Name = "Activity")]
-        public Activity Activity { get; set; } = default!;
+        public Activity Activity { get; set; }
 
-        public Account Account { get; set; } = default!;
+        public Account Account { get; set; }
     }
 }

@@ -6,76 +6,39 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     /// <inheritdoc />
-    public partial class AddModel : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Account_AccountCategory_AccountCategoryId",
-                table: "Account");
+            migrationBuilder.CreateTable(
+                name: "AccountCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccountCategories", x => x.Id);
+                });
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Account_BusinessSubprogram_BusinessSubprogramId",
-                table: "Account");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_BusinessSubprogram_BusinessPrograms_BusinessProgramId",
-                table: "BusinessSubprogram");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_BusinessSubprogram",
-                table: "BusinessSubprogram");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_AccountCategory",
-                table: "AccountCategory");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Account",
-                table: "Account");
-
-            migrationBuilder.RenameTable(
-                name: "BusinessSubprogram",
-                newName: "BusinessSubprograms");
-
-            migrationBuilder.RenameTable(
-                name: "AccountCategory",
-                newName: "AccountCategories");
-
-            migrationBuilder.RenameTable(
-                name: "Account",
-                newName: "Accounts");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_BusinessSubprogram_BusinessProgramId",
-                table: "BusinessSubprograms",
-                newName: "IX_BusinessSubprograms_BusinessProgramId");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_Account_BusinessSubprogramId",
-                table: "Accounts",
-                newName: "IX_Accounts_BusinessSubprogramId");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_Account_AccountCategoryId",
-                table: "Accounts",
-                newName: "IX_Accounts_AccountCategoryId");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_BusinessSubprograms",
-                table: "BusinessSubprograms",
-                column: "Id");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_AccountCategories",
-                table: "AccountCategories",
-                column: "Id");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Accounts",
-                table: "Accounts",
-                column: "Id");
+            migrationBuilder.CreateTable(
+                name: "BusinessPrograms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BusinessPrograms", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Projects",
@@ -94,6 +57,27 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BusinessSubprograms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BusinessProgramId = table.Column<int>(type: "int", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BusinessSubprograms", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BusinessSubprograms_BusinessPrograms_BusinessProgramId",
+                        column: x => x.BusinessProgramId,
+                        principalTable: "BusinessPrograms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Results",
                 columns: table => new
                 {
@@ -109,6 +93,32 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         name: "FK_Results_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Accounts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BusinessSubprogramId = table.Column<int>(type: "int", nullable: false),
+                    AccountCategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Accounts_AccountCategories_AccountCategoryId",
+                        column: x => x.AccountCategoryId,
+                        principalTable: "AccountCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Accounts_BusinessSubprograms_BusinessSubprogramId",
+                        column: x => x.BusinessSubprogramId,
+                        principalTable: "BusinessSubprograms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -169,6 +179,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ActivityBudgetId = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Vendor = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
                     ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -188,6 +199,16 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Accounts_AccountCategoryId",
+                table: "Accounts",
+                column: "AccountCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Accounts_BusinessSubprogramId",
+                table: "Accounts",
+                column: "BusinessSubprogramId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Activities_ResultId",
                 table: "Activities",
                 column: "ResultId");
@@ -203,6 +224,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 column: "ActivityId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BusinessSubprograms_BusinessProgramId",
+                table: "BusinessSubprograms",
+                column: "BusinessProgramId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Expenses_ActivityBudgetId",
                 table: "Expenses",
                 column: "ActivityBudgetId");
@@ -211,47 +237,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "IX_Results_ProjectId",
                 table: "Results",
                 column: "ProjectId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Accounts_AccountCategories_AccountCategoryId",
-                table: "Accounts",
-                column: "AccountCategoryId",
-                principalTable: "AccountCategories",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Accounts_BusinessSubprograms_BusinessSubprogramId",
-                table: "Accounts",
-                column: "BusinessSubprogramId",
-                principalTable: "BusinessSubprograms",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BusinessSubprograms_BusinessPrograms_BusinessProgramId",
-                table: "BusinessSubprograms",
-                column: "BusinessProgramId",
-                principalTable: "BusinessPrograms",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Accounts_AccountCategories_AccountCategoryId",
-                table: "Accounts");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Accounts_BusinessSubprograms_BusinessSubprogramId",
-                table: "Accounts");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_BusinessSubprograms_BusinessPrograms_BusinessProgramId",
-                table: "BusinessSubprograms");
-
             migrationBuilder.DropTable(
                 name: "Expenses");
 
@@ -259,91 +249,25 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "ActivityBudgets");
 
             migrationBuilder.DropTable(
+                name: "Accounts");
+
+            migrationBuilder.DropTable(
                 name: "Activities");
+
+            migrationBuilder.DropTable(
+                name: "AccountCategories");
+
+            migrationBuilder.DropTable(
+                name: "BusinessSubprograms");
 
             migrationBuilder.DropTable(
                 name: "Results");
 
             migrationBuilder.DropTable(
+                name: "BusinessPrograms");
+
+            migrationBuilder.DropTable(
                 name: "Projects");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_BusinessSubprograms",
-                table: "BusinessSubprograms");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Accounts",
-                table: "Accounts");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_AccountCategories",
-                table: "AccountCategories");
-
-            migrationBuilder.RenameTable(
-                name: "BusinessSubprograms",
-                newName: "BusinessSubprogram");
-
-            migrationBuilder.RenameTable(
-                name: "Accounts",
-                newName: "Account");
-
-            migrationBuilder.RenameTable(
-                name: "AccountCategories",
-                newName: "AccountCategory");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_BusinessSubprograms_BusinessProgramId",
-                table: "BusinessSubprogram",
-                newName: "IX_BusinessSubprogram_BusinessProgramId");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_Accounts_BusinessSubprogramId",
-                table: "Account",
-                newName: "IX_Account_BusinessSubprogramId");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_Accounts_AccountCategoryId",
-                table: "Account",
-                newName: "IX_Account_AccountCategoryId");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_BusinessSubprogram",
-                table: "BusinessSubprogram",
-                column: "Id");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Account",
-                table: "Account",
-                column: "Id");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_AccountCategory",
-                table: "AccountCategory",
-                column: "Id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Account_AccountCategory_AccountCategoryId",
-                table: "Account",
-                column: "AccountCategoryId",
-                principalTable: "AccountCategory",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Account_BusinessSubprogram_BusinessSubprogramId",
-                table: "Account",
-                column: "BusinessSubprogramId",
-                principalTable: "BusinessSubprogram",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BusinessSubprogram_BusinessPrograms_BusinessProgramId",
-                table: "BusinessSubprogram",
-                column: "BusinessProgramId",
-                principalTable: "BusinessPrograms",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
     }
 }
