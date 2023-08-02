@@ -4,3 +4,146 @@
 }
 
 <h1>Index of Administration area</h1>
+
+<h2>Business Programs</h2>
+
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessPrograms[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessPrograms[0].Name)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BusinessPrograms)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<h2>Business Subrograms</h2>
+
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].BusinessProgram)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BusinessSubprograms)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessProgram.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Account Categories</h2>
+
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountCategories[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountCategories[0].Name)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AccountCategories)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Projects</h2>
+
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].Segment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].ShortName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].Comments)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Projects)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Segment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
