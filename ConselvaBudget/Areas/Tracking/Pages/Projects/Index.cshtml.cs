@@ -19,13 +19,13 @@ namespace ConselvaBudget.Areas.Tracking.Pages.Projects
             _context = context;
         }
 
-        public IList<Project> Project { get;set; } = default!;
+        public IList<Project> Projects { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
             if (_context.Projects != null)
             {
-                Project = await _context.Projects.ToListAsync();
+                Projects = await _context.Projects.ToListAsync();
             }
         }
     }
