@@ -16,6 +16,14 @@ namespace ConselvaBudget.Models
         [Required]
         public string ShortName { get; set; }
 
+        [Display(Name = "StartDate")]
+        [DataType(DataType.Date)]
+        public DateTime? StartDate { get; set; }
+
+        [Display(Name = "EndDate")]
+        [DataType(DataType.Date)]
+        public DateTime? EndDate { get; set; }
+
         [Display(Name = "Segment")]
         public int Segment { get; set; }
 
