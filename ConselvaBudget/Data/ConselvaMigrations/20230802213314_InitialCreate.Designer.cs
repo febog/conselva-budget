@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20230720035437_InitialCreate")]
+    [Migration("20230802213314_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
