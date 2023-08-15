@@ -1,0 +1,36 @@
+﻿@page
+@model ConselvaBudget.Areas.Administration.Pages.Programs.IndexModel
+
+@{
+    ViewData["Title"] = "Programs";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p><a class="btn btn-success" asp-area="Administration" asp-page="/Index">Go to Administration dashboard</a></p>
+
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessPrograms[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessPrograms[0].Name)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BusinessPrograms)
+        {
+            <tr>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
