@@ -1,13 +1,20 @@
 ﻿@page
 @model ConselvaBudget.Areas.Administration.Pages.IndexModel
 @{
+    ViewData["Title"] = "Administration dashboard";
 }
 
-<h1>Index of Administration area</h1>
+<h1 class="pb-2 border-bottom">Administration</h1>
 
-<h2>Business Programs</h2>
+<p>Manage the main catalogs used by the database. These serve as the base upon the rest of the data is created.</p>
 
-<table class="table table-sm table-bordered">
+<h2>Business program</h2>
+
+<p>First level in the program/subprogram hierarchy.</p>
+
+<p><a class="btn btn-primary" asp-page="Index">Create new</a></p>
+
+<table class="table table-sm table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -16,17 +23,25 @@
             <th>
                 @Html.DisplayNameFor(model => model.BusinessPrograms[0].Name)
             </th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.BusinessPrograms)
         {
             <tr>
-                <td>
+                <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Code)
                 </td>
-                <td>
+                <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-secondary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
@@ -34,34 +49,40 @@
 </table>
 
 
-<h2>Business Subrograms</h2>
+<h2>Business subprogram</h2>
 
-<table class="table table-sm table-bordered">
+<p>Second level in the program/subprogram hierarchy. Every <b>Subprogram</b> is under a <b>Program</b>.</p>
+
+<p><a class="btn btn-primary" asp-page="Index">Create new</a></p>
+
+<table class="table table-sm table-bordered table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Code)
+                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Program)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Name)
+                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Subprogram)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].BusinessProgram)
-            </th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.BusinessSubprograms)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Code)
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Program)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Subprogram)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BusinessProgram.Name)
+                <td class="align-middle text-center">
+                    <a class="btn btn-secondary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
