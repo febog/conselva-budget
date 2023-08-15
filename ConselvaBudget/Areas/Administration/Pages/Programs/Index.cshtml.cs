@@ -20,7 +20,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
         {
             if (_context.BusinessPrograms != null)
             {
-                BusinessPrograms = await _context.BusinessPrograms.ToListAsync();
+                BusinessPrograms = await _context.BusinessPrograms
+                    .OrderBy(p => p.Code)
+                    .ToListAsync();
             }
         }
     }
