@@ -49,11 +49,11 @@
 </table>
 
 
-<h2>Business subprogram</h2>
+<h2>Subprogram</h2>
 
 <p>Second level in the program/subprogram hierarchy. Every <b>Subprogram</b> is under a <b>Program</b>.</p>
 
-<p><a class="btn btn-primary" asp-page="Index">Create new</a></p>
+<p><a class="btn btn-primary" asp-page="Subprograms/Create">Create new</a></p>
 
 <table class="table table-sm table-bordered table-striped">
     <thead>
@@ -79,10 +79,10 @@
                     @Html.DisplayFor(modelItem => item.Subprogram)
                 </td>
                 <td class="align-middle text-center">
-                    <a class="btn btn-secondary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-secondary btn-sm" asp-page="Subprograms/Edit" asp-route-id="@item.Id">Edit</a>
                 </td>
                 <td class="align-middle text-center">
-                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-danger btn-sm" asp-page="Subprograms/Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

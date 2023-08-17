@@ -1,0 +1,32 @@
+﻿@page
+@model ConselvaBudget.Areas.Administration.Pages.Subprograms.DeleteModel
+
+@{
+    Layout = "/Pages/Shared/_DeleteLayout.cshtml";
+    ViewData["Title"] = "Delete Subprogram";
+}
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.BusinessSubprogram.Code)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.BusinessSubprogram.Code)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.BusinessSubprogram.Name)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.BusinessSubprogram.Name)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.BusinessSubprogram.BusinessProgram)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.BusinessSubprogram.BusinessProgram.Name)
+</dd>
+
+@section DeleteFormContents {
+    <input type="hidden" asp-for="BusinessSubprogram.Id" />
+    <input class="btn btn-danger" type="submit" value="Delete">
+    <a class="btn btn-secondary" asp-page="/Index">Cancel</a>
+}
