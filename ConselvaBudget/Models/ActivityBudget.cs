@@ -24,5 +24,7 @@ namespace ConselvaBudget.Models
         public Activity Activity { get; set; }
 
         public AccountAssignment AccountAssignment { get; set; }
+
+        public virtual ICollection<Expense> Expenses { get; set; }
     }
 }
