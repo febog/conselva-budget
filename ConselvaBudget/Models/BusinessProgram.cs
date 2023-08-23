@@ -16,6 +16,8 @@ namespace ConselvaBudget.Models
         [Required]
         public string Name { get; set; }
 
+        public string DisplayName => $"{Code} - {Name}";
+
         public virtual ICollection<BusinessSubprogram> BusinessSubprograms { get; set; }
     }
 }

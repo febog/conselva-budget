@@ -9,28 +9,22 @@
 
 <p><a class="btn btn-success" asp-area="Administration" asp-page="/Index">Go to Administration dashboard</a></p>
 
-<table class="table table-sm table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Program)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Subprogram)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.BusinessSubprograms)
-        {
-            <tr>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Program)
-                </td>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Subprogram)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@foreach (var program in Model.BusinessPrograms)
+{
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(modelItem => program.DisplayName)</h5>
+            <ul class="list-group">
+                @foreach (var subprogram in program.BusinessSubprograms.OrderBy(s => s.Code))
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <h6>@Html.DisplayFor(modelItem => subprogram.DisplayName)</h6>
+                            Content for list item
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

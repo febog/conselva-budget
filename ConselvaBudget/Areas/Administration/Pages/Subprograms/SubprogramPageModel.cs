@@ -13,12 +13,12 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             object selectedProgram = null)
         {
             var programsQuery = _context.BusinessPrograms
+                .OrderBy(p => p.Code)
                 .Select(p => new
                 {
                     Id = p.Id,
-                    Name = p.Code + " - " + p.Name
-                })
-                .OrderBy(p => p.Name);
+                    Name = p.DisplayName
+                });
 
             ProgramNameSL = new SelectList(programsQuery.AsNoTracking(),
                 "Id",

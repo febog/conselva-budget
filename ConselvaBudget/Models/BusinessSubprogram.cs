@@ -19,6 +19,8 @@ namespace ConselvaBudget.Models
         [Required]
         public string Name { get; set; }
 
+        public string DisplayName => $"{Code} - {Name}";
+
         [Display(Name = "Program")]
         public BusinessProgram BusinessProgram { get; set; }
 

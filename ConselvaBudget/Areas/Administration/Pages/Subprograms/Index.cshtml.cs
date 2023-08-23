@@ -14,32 +14,17 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             _context = context;
         }
 
-        public IList<BusinessSubprogramVM> BusinessSubprograms { get; set; } = default!;
+        public IList<BusinessProgram> BusinessPrograms { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
             if (_context.BusinessSubprograms != null)
             {
-                BusinessSubprograms = await _context.BusinessSubprograms
-                    .Include(c => c.BusinessProgram)
-                    .AsNoTracking()
-                    .Select(s => new BusinessSubprogramVM
-                    {
-                        Id = s.Id,
-                        Subprogram = s.Code + " - " + s.Name,
-                        Program = s.BusinessProgram.Code + " - " + s.BusinessProgram.Name
-                    })
-                    .OrderBy(s => s.Program)
-                    .ThenBy(s => s.Subprogram)
+                BusinessPrograms = await _context.BusinessPrograms
+                    .Include(p => p.BusinessSubprograms)
+                    .OrderBy(p => p.Code)
                     .ToListAsync();
             }
-        }
-
-        public class BusinessSubprogramVM
-        {
-            public int Id { get; set; }
-            public string Subprogram { get; set; }
-            public string Program { get; set; }
         }
     }
 }

@@ -99,41 +99,32 @@
 
 <p>Second level in the program/subprogram hierarchy. Every <b>Subprogram</b> is under a <b>Program</b>.</p>
 
-<p><a class="btn btn-primary" asp-page="Subprograms/Create">Create new</a></p>
-
-<table class="table table-sm table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Program)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Subprogram)
-            </th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.BusinessSubprograms)
-        {
-            <tr>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Program)
-                </td>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Subprogram)
-                </td>
-                <td class="align-middle text-center">
-                    <a class="btn btn-secondary btn-sm" asp-page="Subprograms/Edit" asp-route-id="@item.Id">Edit</a>
-                </td>
-                <td class="align-middle text-center">
-                    <a class="btn btn-danger btn-sm" asp-page="Subprograms/Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@foreach (var program in Model.BusinessPrograms)
+{
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(modelItem => program.DisplayName)</h5>
+            <p>
+                <a class="btn btn-primary btn-sm" asp-page="Subprograms/Create" asp-route-programId="@program.Id">Create subprogram</a>
+            </p>
+            <ul class="list-group">
+                @foreach (var subprogram in program.BusinessSubprograms.OrderBy(s => s.Code))
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <h6>@Html.DisplayFor(modelItem => subprogram.DisplayName)</h6>
+                            Content for list item
+                        </div>
+                        <div>
+                            <a class="btn btn-secondary btn-sm" asp-page="Subprograms/Edit" asp-route-id="@subprogram.Id">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-page="Subprograms/Delete" asp-route-id="@subprogram.Id">Delete</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
 
 <h2>Projects</h2>
 

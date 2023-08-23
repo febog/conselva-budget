@@ -13,9 +13,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int? programId)
         {
-            PopulateDepartmentsDropDownList(_context);
+            PopulateDepartmentsDropDownList(_context, programId);
             return Page();
         }
 
