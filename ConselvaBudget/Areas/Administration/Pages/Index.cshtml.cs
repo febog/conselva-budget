@@ -26,6 +26,8 @@ namespace ConselvaBudget.Areas.Administration.Pages
             {
                 BusinessPrograms = await _context.BusinessPrograms
                     .Include(p => p.BusinessSubprograms)
+                    .ThenInclude(s => s.AccountAssignments)
+                    .ThenInclude(a => a.Account)
                     .OrderBy(p => p.Code)
                     .ToListAsync();
                 Accounts = await _context.Accounts.ToListAsync();

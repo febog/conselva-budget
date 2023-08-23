@@ -20,6 +20,8 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Description { get; set; }
 
+        public string DisplayName => $"{Code} - {Name}";
+
         public virtual ICollection<AccountAssignment> AccountAssignments { get; set; }
     }
 }
