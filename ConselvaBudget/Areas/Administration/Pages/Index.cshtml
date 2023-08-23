@@ -119,7 +119,8 @@
                                     <ul class="list-group">
                                         @foreach (var assignment in subprogram.AccountAssignments.OrderBy(s => s.Account.Code))
                                         {
-                                            <li class="list-group-item">@Html.DisplayFor(modelItem => assignment.Account.DisplayName)</li>
+                                            var fullAccountName = $"{program.Code} - {subprogram.Code} - {assignment.Account.DisplayName}";
+                                            <li class="list-group-item">@fullAccountName</li>
                                         }
                                     </ul>
                                 }
