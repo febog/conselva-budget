@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20230802213314_InitialCreate")]
+    [Migration("20230823044627_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,35 +20,12 @@ namespace ConselvaBudget.Data.ConselvaMigrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.9")
+                .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ConselvaBudget.Models.Account", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AccountCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BusinessSubprogramId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountCategoryId");
-
-                    b.HasIndex("BusinessSubprogramId");
-
-                    b.ToTable("Accounts");
-                });
-
-            modelBuilder.Entity("ConselvaBudget.Models.AccountCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +49,30 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AccountCategories");
+                    b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("ConselvaBudget.Models.AccountAssignment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BusinessSubprogramId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("BusinessSubprogramId");
+
+                    b.ToTable("AccountAssignments");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Activity", b =>
@@ -109,6 +109,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("AccountAssignmentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
 
@@ -124,7 +127,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("AccountAssignmentId");
 
                     b.HasIndex("ActivityId");
 
@@ -238,6 +241,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -250,6 +256,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -279,21 +288,21 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.ToTable("Results");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.Account", b =>
+            modelBuilder.Entity("ConselvaBudget.Models.AccountAssignment", b =>
                 {
-                    b.HasOne("ConselvaBudget.Models.AccountCategory", "AccountCategory")
-                        .WithMany("Accounts")
-                        .HasForeignKey("AccountCategoryId")
+                    b.HasOne("ConselvaBudget.Models.Account", "Account")
+                        .WithMany("AccountAssignments")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ConselvaBudget.Models.BusinessSubprogram", "BusinessSubprogram")
-                        .WithMany("Accounts")
+                        .WithMany("AccountAssignments")
                         .HasForeignKey("BusinessSubprogramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AccountCategory");
+                    b.Navigation("Account");
 
                     b.Navigation("BusinessSubprogram");
                 });
@@ -311,11 +320,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
             modelBuilder.Entity("ConselvaBudget.Models.ActivityBudget", b =>
                 {
-                    b.HasOne("ConselvaBudget.Models.Account", "Account")
+                    b.HasOne("ConselvaBudget.Models.AccountAssignment", "AccountAssignment")
                         .WithMany()
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AccountAssignmentId");
 
                     b.HasOne("ConselvaBudget.Models.Activity", "Activity")
                         .WithMany("ActivityBudgets")
@@ -323,7 +330,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Account");
+                    b.Navigation("AccountAssignment");
 
                     b.Navigation("Activity");
                 });
@@ -361,9 +368,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.AccountCategory", b =>
+            modelBuilder.Entity("ConselvaBudget.Models.Account", b =>
                 {
-                    b.Navigation("Accounts");
+                    b.Navigation("AccountAssignments");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Activity", b =>
@@ -378,7 +385,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
             modelBuilder.Entity("ConselvaBudget.Models.BusinessSubprogram", b =>
                 {
-                    b.Navigation("Accounts");
+                    b.Navigation("AccountAssignments");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Project", b =>

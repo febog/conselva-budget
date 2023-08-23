@@ -23,6 +23,6 @@ namespace ConselvaBudget.Models
         [Display(Name = "Activity")]
         public Activity Activity { get; set; }
 
-        public Account Account { get; set; }
+        public AccountAssignment AccountAssignment { get; set; }
     }
 }

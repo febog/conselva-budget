@@ -17,9 +17,9 @@ namespace ConselvaBudget.Data
 
         public DbSet<BusinessSubprogram> BusinessSubprograms { get; set; }
 
-        public DbSet<AccountCategory> AccountCategories { get; set; }
-
         public DbSet<Account> Accounts { get; set; }
+
+        public DbSet<AccountAssignment> AccountAssignments { get; set; }
 
         public DbSet<Project> Projects { get; set; }
 

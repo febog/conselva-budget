@@ -17,14 +17,14 @@ namespace ConselvaBudget.Areas.Administration.Pages
 
         public IList<BusinessProgram> BusinessPrograms { get; set; } = default!;
         public IList<BusinessSubprogramVM> BusinessSubprograms { get; set; } = default!;
-        public IList<AccountCategory> AccountCategories { get; set; } = default!;
+        public IList<Account> Accounts { get; set; } = default!;
         public IList<Project> Projects { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
             if (_context.BusinessPrograms != null &&
                 _context.BusinessSubprograms != null &&
-                _context.AccountCategories != null &&
+                _context.Accounts != null &&
                 _context.Projects != null)
             {
                 BusinessPrograms = await _context.BusinessPrograms
@@ -42,7 +42,7 @@ namespace ConselvaBudget.Areas.Administration.Pages
                     .OrderBy(s => s.Program)
                     .ThenBy(s => s.Subprogram)
                     .ToListAsync();
-                AccountCategories = await _context.AccountCategories.ToListAsync();
+                Accounts = await _context.Accounts.ToListAsync();
                 Projects = await _context.Projects.ToListAsync();
             }
         }

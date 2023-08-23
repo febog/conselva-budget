@@ -22,6 +22,6 @@ namespace ConselvaBudget.Models
         [Display(Name = "Program")]
         public BusinessProgram BusinessProgram { get; set; }
 
-        public virtual ICollection<Account> Accounts { get; set; }
+        public virtual ICollection<AccountAssignment> AccountAssignments { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AccountCategories",
+                name: "Accounts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,7 +23,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccountCategories", x => x.Id);
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,6 +48,8 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     ShortName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Segment = table.Column<int>(type: "int", nullable: false),
                     Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
@@ -98,25 +100,25 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Accounts",
+                name: "AccountAssignments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BusinessSubprogramId = table.Column<int>(type: "int", nullable: false),
-                    AccountCategoryId = table.Column<int>(type: "int", nullable: false)
+                    AccountId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Accounts", x => x.Id);
+                    table.PrimaryKey("PK_AccountAssignments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Accounts_AccountCategories_AccountCategoryId",
-                        column: x => x.AccountCategoryId,
-                        principalTable: "AccountCategories",
+                        name: "FK_AccountAssignments_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Accounts_BusinessSubprograms_BusinessSubprogramId",
+                        name: "FK_AccountAssignments_BusinessSubprograms_BusinessSubprogramId",
                         column: x => x.BusinessSubprogramId,
                         principalTable: "BusinessSubprograms",
                         principalColumn: "Id",
@@ -153,17 +155,17 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     ActivityId = table.Column<int>(type: "int", nullable: false),
                     AccountId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    AccountAssignmentId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ActivityBudgets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ActivityBudgets_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_ActivityBudgets_AccountAssignments_AccountAssignmentId",
+                        column: x => x.AccountAssignmentId,
+                        principalTable: "AccountAssignments",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ActivityBudgets_Activities_ActivityId",
                         column: x => x.ActivityId,
@@ -199,13 +201,13 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accounts_AccountCategoryId",
-                table: "Accounts",
-                column: "AccountCategoryId");
+                name: "IX_AccountAssignments_AccountId",
+                table: "AccountAssignments",
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accounts_BusinessSubprogramId",
-                table: "Accounts",
+                name: "IX_AccountAssignments_BusinessSubprogramId",
+                table: "AccountAssignments",
                 column: "BusinessSubprogramId");
 
             migrationBuilder.CreateIndex(
@@ -214,9 +216,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 column: "ResultId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ActivityBudgets_AccountId",
+                name: "IX_ActivityBudgets_AccountAssignmentId",
                 table: "ActivityBudgets",
-                column: "AccountId");
+                column: "AccountAssignmentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ActivityBudgets_ActivityId",
@@ -249,13 +251,13 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "ActivityBudgets");
 
             migrationBuilder.DropTable(
-                name: "Accounts");
+                name: "AccountAssignments");
 
             migrationBuilder.DropTable(
                 name: "Activities");
 
             migrationBuilder.DropTable(
-                name: "AccountCategories");
+                name: "Accounts");
 
             migrationBuilder.DropTable(
                 name: "BusinessSubprograms");
