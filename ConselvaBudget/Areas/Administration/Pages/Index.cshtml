@@ -8,7 +8,53 @@
 
 <p>Manage the main catalogs used by the database. These serve as the base upon the rest of the data is created.</p>
 
-<h2>Program</h2>
+<h2>Accounts</h2>
+
+<p>Accounts catalog used by the database.</p>
+
+<p><a class="btn btn-primary" asp-page="Accounts/Create">Create new</a></p>
+
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Accounts[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accounts[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accounts[0].Description)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Accounts)
+        {
+            <tr>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-secondary btn-sm" asp-page="Accounts/Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-danger btn-sm" asp-page="Accounts/Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Programs</h2>
 
 <p>First level in the program/subprogram hierarchy.</p>
 
@@ -49,7 +95,7 @@
 </table>
 
 
-<h2>Subprogram</h2>
+<h2>Subprograms</h2>
 
 <p>Second level in the program/subprogram hierarchy. Every <b>Subprogram</b> is under a <b>Program</b>.</p>
 
@@ -83,34 +129,6 @@
                 </td>
                 <td class="align-middle text-center">
                     <a class="btn btn-danger btn-sm" asp-page="Subprograms/Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<h2>Account Categories</h2>
-
-<table class="table table-sm table-bordered">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Accounts[0].Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Accounts[0].Name)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Accounts)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Code)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
             </tr>
         }

@@ -1,0 +1,32 @@
+﻿@page
+@model ConselvaBudget.Areas.Administration.Pages.Accounts.DeleteModel
+
+@{
+    Layout = "/Pages/Shared/_DeleteLayout.cshtml";
+    ViewData["Title"] = "Delete Account";
+}
+
+<dt class="col-sm-2">
+@Html.DisplayNameFor(model => model.Account.Code)
+        </dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Account.Code)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Account.Name)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Account.Name)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Account.Description)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Account.Description)
+</dd>
+
+@section DeleteFormContents {
+    <input type="hidden" asp-for="Account.Id" />
+    <input class="btn btn-danger" type="submit" value="Delete">
+    <a class="btn btn-secondary" asp-page="/Index">Cancel</a>
+}
