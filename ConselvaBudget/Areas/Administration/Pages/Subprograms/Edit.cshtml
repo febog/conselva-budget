@@ -22,6 +22,23 @@
     <input asp-for="BusinessSubprogram.Name" class="form-control" />
     <span asp-validation-for="BusinessSubprogram.Name" class="text-danger"></span>
 </div>
+<div cite="col-12">
+    <label asp-for="BusinessSubprogram.AccountAssignments" class="form-label"></label>
+    <ul class="list-group">
+        @foreach (var account in Model.AccountAssignmentDataList)
+        {
+            <li class="list-group-item">
+                <input class="form-check-input me-1"
+                       type="checkbox"
+                       name="selectedAccounts"
+                       value="@account.AccountId"
+                       id="account_@account.AccountId"
+                @(Html.Raw(account.Assigned ? "checked=\"checked\"" : ""))>
+                <label class="form-check-label" for="account_@account.AccountId">@account.AccountName</label>
+            </li>
+        }
+    </ul>
+</div>
 <div class="col-12">
     <input class="btn btn-primary" type="submit" value="Save">
     <a class="btn btn-secondary" asp-page="/Index">Cancel</a>

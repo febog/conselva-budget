@@ -21,6 +21,12 @@
     <input asp-for="BusinessSubprogram.Name" class="form-control" />
     <span asp-validation-for="BusinessSubprogram.Name" class="text-danger"></span>
 </div>
+<div cite="col-12">
+    <label asp-for="BusinessSubprogram.AccountAssignments" class="form-label"></label>
+    <div class="alert alert-primary" role="alert">
+        After creating this <b>Subprogram</b> you may assign accounts to it by clicking <b>Edit</b>.
+    </div>
+</div>
 <div class="col-12">
     <input class="btn btn-primary" type="submit" value="Create">
     <a class="btn btn-secondary" asp-page="/Index">Cancel</a>

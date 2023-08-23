@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
@@ -26,19 +25,31 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             }
 
             BusinessSubprogram = await _context.BusinessSubprograms
-                .Include(c => c.BusinessProgram)
+                .Include(s => s.BusinessProgram)
+                .Include(s => s.AccountAssignments)
+                .ThenInclude(a => a.Account)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (BusinessSubprogram == null)
             {
                 return NotFound();
             }
             PopulateDepartmentsDropDownList(_context, BusinessSubprogram.BusinessProgramId);
+            PopulateAccountAssignmentData(_context, BusinessSubprogram);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int? id, string[] selectedAccounts)
         {
-            var businessSubprogramToUpdate = await _context.BusinessSubprograms.FindAsync(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var businessSubprogramToUpdate = await _context.BusinessSubprograms
+                .Include(s => s.BusinessProgram)
+                .Include(s => s.AccountAssignments)
+                .ThenInclude(a => a.Account)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (businessSubprogramToUpdate == null)
             {
@@ -52,12 +63,56 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 p => p.Code,
                 p => p.Name))
             {
+                UpdateSubprogramAccounts(selectedAccounts, businessSubprogramToUpdate);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Index");
             }
 
             PopulateDepartmentsDropDownList(_context, businessSubprogramToUpdate.BusinessProgramId);
+            UpdateSubprogramAccounts(selectedAccounts, businessSubprogramToUpdate);
+            PopulateAccountAssignmentData(_context, businessSubprogramToUpdate);
             return Page();
+        }
+
+        public void UpdateSubprogramAccounts(string[] selectedAccounts, BusinessSubprogram businessSubprogramToUpdate)
+        {
+            if (selectedAccounts == null)
+            {
+                var subprogramAssignments = _context.AccountAssignments
+                    .Where(a => a.BusinessSubprogramId == businessSubprogramToUpdate.Id);
+                foreach (var subprogramAssignment in subprogramAssignments)
+                {
+                    _context.AccountAssignments.Remove(subprogramAssignment);
+                }
+                return;
+            }
+
+            var selectedAccountsHS = new HashSet<string>(selectedAccounts);
+            var subprogramAccounts = new HashSet<int>(businessSubprogramToUpdate.AccountAssignments
+                .Select(a => a.AccountId));
+            foreach (var account in _context.Accounts)
+            {
+                if (selectedAccountsHS.Contains(account.Id.ToString()))
+                {
+                    if (!subprogramAccounts.Contains(account.Id))
+                    {
+                        var newAssignment = new AccountAssignment();
+                        newAssignment.AccountId = account.Id;
+                        newAssignment.BusinessSubprogramId = businessSubprogramToUpdate.Id;
+                        businessSubprogramToUpdate.AccountAssignments.Add(newAssignment);
+                    }
+                }
+                else
+                {
+                    if (subprogramAccounts.Contains(account.Id))
+                    {
+                        var accountToRemove = businessSubprogramToUpdate.AccountAssignments
+                            .Single(a => a.BusinessSubprogramId == businessSubprogramToUpdate.Id
+                            && a.AccountId == account.Id);
+                        businessSubprogramToUpdate.AccountAssignments.Remove(accountToRemove);
+                    }
+                }
+            }
         }
     }
 }
