@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20230823044627_InitialCreate")]
+    [Migration("20230823052942_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -109,10 +109,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AccountAssignmentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AccountId")
+                    b.Property<int>("AccountAssignmentId")
                         .HasColumnType("int");
 
                     b.Property<int>("ActivityId")
@@ -321,8 +318,10 @@ namespace ConselvaBudget.Data.ConselvaMigrations
             modelBuilder.Entity("ConselvaBudget.Models.ActivityBudget", b =>
                 {
                     b.HasOne("ConselvaBudget.Models.AccountAssignment", "AccountAssignment")
-                        .WithMany()
-                        .HasForeignKey("AccountAssignmentId");
+                        .WithMany("ActivityBudgets")
+                        .HasForeignKey("AccountAssignmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConselvaBudget.Models.Activity", "Activity")
                         .WithMany("ActivityBudgets")
@@ -371,6 +370,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
             modelBuilder.Entity("ConselvaBudget.Models.Account", b =>
                 {
                     b.Navigation("AccountAssignments");
+                });
+
+            modelBuilder.Entity("ConselvaBudget.Models.AccountAssignment", b =>
+                {
+                    b.Navigation("ActivityBudgets");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Activity", b =>

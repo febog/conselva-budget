@@ -153,10 +153,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ActivityId = table.Column<int>(type: "int", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: false),
+                    AccountAssignmentId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    AccountAssignmentId = table.Column<int>(type: "int", nullable: true)
+                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -165,7 +164,8 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         name: "FK_ActivityBudgets_AccountAssignments_AccountAssignmentId",
                         column: x => x.AccountAssignmentId,
                         principalTable: "AccountAssignments",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ActivityBudgets_Activities_ActivityId",
                         column: x => x.ActivityId,

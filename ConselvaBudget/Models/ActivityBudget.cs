@@ -10,7 +10,7 @@ namespace ConselvaBudget.Models
 
         public int ActivityId { get; set; }
 
-        public int AccountId { get; set; }
+        public int AccountAssignmentId { get; set; }
 
         [Display(Name = "Amount")]
         [Column(TypeName = "decimal(19, 4)")]

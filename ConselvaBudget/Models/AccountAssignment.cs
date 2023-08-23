@@ -15,5 +15,7 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "AccountCategory")]
         public Account Account { get; set; }
+
+        public virtual ICollection<ActivityBudget> ActivityBudgets { get; set; }
     }
 }
