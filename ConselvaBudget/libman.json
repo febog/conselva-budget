@@ -16,7 +16,8 @@
       "destination": "wwwroot/lib/jquery/dist/",
       "files": [
         "jquery.js",
-        "jquery.min.js"
+        "jquery.min.js",
+        "jquery.min.map"
       ]
     }
   ]
