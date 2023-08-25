@@ -29,9 +29,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             if (await TryUpdateModelAsync<BusinessSubprogram>(
                 emptyBusinessSubprogram,
                 "BusinessSubprogram",
-                p => p.BusinessProgramId,
-                p => p.Code,
-                p => p.Name))
+                s => s.BusinessProgramId,
+                s => s.Code,
+                s => s.Name))
             {
                 _context.BusinessSubprograms.Add(emptyBusinessSubprogram);
                 await _context.SaveChangesAsync();
