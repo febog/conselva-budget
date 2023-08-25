@@ -15,7 +15,8 @@
       "library": "jquery@3.7.0",
       "destination": "wwwroot/lib/jquery/dist/",
       "files": [
-        "jquery.js"
+        "jquery.js",
+        "jquery.min.js"
       ]
     }
   ]
