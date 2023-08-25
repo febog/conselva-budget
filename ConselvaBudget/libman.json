@@ -6,7 +6,7 @@
       "provider": "jsdelivr",
       "library": "bootstrap@5.3.0",
       "files": [
-        "dist/css/*.css",
+        "dist/css/*",
         "dist/js/*.js"
       ],
       "destination": "wwwroot/lib/bootstrap/"
