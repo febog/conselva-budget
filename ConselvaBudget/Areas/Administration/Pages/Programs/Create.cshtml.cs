@@ -22,7 +22,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
         [BindProperty]
         public BusinessProgram BusinessProgram { get; set; }
 
-
         public async Task<IActionResult> OnPostAsync()
         {
             var emptyBusinessProgram = new BusinessProgram();
