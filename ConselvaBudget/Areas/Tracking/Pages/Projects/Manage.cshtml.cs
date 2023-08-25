@@ -27,6 +27,9 @@ namespace ConselvaBudget.Areas.Tracking.Pages.Projects
             var project = await _context.Projects
                 .Include(p => p.Results)
                 .ThenInclude(r => r.Activities)
+                .ThenInclude(a => a.ActivityBudgets)
+                .ThenInclude(b => b.AccountAssignment)
+                .ThenInclude(a => a.Account)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (project == null)

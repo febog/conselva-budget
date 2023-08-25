@@ -9,15 +9,61 @@
 
 <p>@Html.DisplayFor(model => model.Project.Comments)</p>
 
-<div class="mb-2">
-    <a asp-page="./Index">Back to List</a>
-</div>
-
 <p>
     <a class="btn btn-primary" asp-page="/Results/Create" asp-page="Create">Add result</a>
 </p>
 
-<h2>Additional details</h2>
+@foreach (var result in Model.Project.Results)
+{
+    <div class="card mb-2">
+        <h2 class="h5 card-header">
+            @Html.DisplayFor(modelItem => result.Name)
+        </h2>
+        <div class="card-body">
+            <p>
+                <a class="btn btn-primary" asp-page="/Activities/Create" asp-page="Create">Add activity</a>
+            </p>
+            <ul class="list-group">
+                @foreach (var activity in result.Activities)
+                {
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h3 class="h5 mb-2">@Html.DisplayFor(model => activity.Name)</h3>
+                            <small class="text-body-secondary">
+                                @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
+                            </small>
+                        </div>
+                        <p>
+                            <a class="btn btn-secondary btn-sm" asp-page="Budgets/Create" asp-route-programId="@activity.Id">Create budget</a>
+                        </p>
+                        @if (activity.ActivityBudgets.Count > 0)
+                        {
+                            <ul class="list-group">
+                                @foreach (var budget in activity.ActivityBudgets)
+                                {
+                                    <li class="list-group-item">
+                                        <p>
+                                            @Html.DisplayFor(model => budget.Comments)
+                                        </p>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning mb-0" role="alert">
+                                <span>This activity has no budget.</span>
+                            </div>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+
+<h2>Additional project details</h2>
 
 <dl class="row">
     <dt class="col-sm-2">
