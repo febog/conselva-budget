@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ConselvaBudget.Areas.Tracking.Pages
+namespace ConselvaBudget.Areas.Budget.Pages
 {
     public class IndexModel : PageModel
     {
