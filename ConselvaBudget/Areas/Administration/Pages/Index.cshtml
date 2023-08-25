@@ -143,7 +143,11 @@
 
 <h2>Projects</h2>
 
-<table class="table table-sm table-bordered">
+<p>Main <b>Project</b> entity in the database. Parent element of the <b>Results</b> and <b>Activities</b> hierarchy.</p>
+
+<p><a class="btn btn-primary" asp-page="Projects/Create">Create new</a></p>
+
+<table class="table table-sm table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -164,29 +168,37 @@
             <th>
                 @Html.DisplayNameFor(model => model.Projects[0].Comments)
             </th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Projects)
         {
             <tr>
-                <td>
+                <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Segment)
                 </td>
-                <td>
+                <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
+                <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.ShortName)
                 </td>
-                <td>
+                <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.StartDate)
                 </td>
-                <td>
+                <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
-                <td>
+                <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-secondary btn-sm" asp-page="Projects/Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-danger btn-sm" asp-page="Projects/Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
