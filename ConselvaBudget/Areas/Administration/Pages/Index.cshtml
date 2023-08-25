@@ -114,23 +114,23 @@
 @foreach (var program in Model.BusinessPrograms)
 {
     <div class="card mb-2">
+        <h3 class="h5 card-header">
+            @Html.DisplayFor(modelItem => program.DisplayName)
+        </h3>
         <div class="card-body">
-            <h5 class="card-title">@Html.DisplayFor(modelItem => program.DisplayName)</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">@Html.DisplayNameFor(model => program.DisplayName)</h6>
-            <p>
-                <a class="btn btn-primary btn-sm" asp-page="Subprograms/Create" asp-route-programId="@program.Id">Create subprogram</a>
-            </p>
+            <p><a class="btn btn-primary btn-sm" asp-page="Subprograms/Create" asp-route-programId="@program.Id">Create subprogram</a></p>
             <ul class="list-group">
                 @foreach (var subprogram in program.BusinessSubprograms.OrderBy(s => s.Code))
                 {
                     <li class="list-group-item p-3">
                         <div class="d-flex mb-2">
-                            <h6 class="flex-grow-1">@Html.DisplayFor(modelItem => subprogram.DisplayName)</h6>
+                            <h4 class="h5 flex-grow-1">@Html.DisplayFor(modelItem => subprogram.DisplayName)</h4>
                             <div>
                                 <a class="btn btn-secondary btn-sm" asp-page="Subprograms/Edit" asp-route-id="@subprogram.Id">Edit</a>
                                 <a class="btn btn-danger btn-sm" asp-page="Subprograms/Delete" asp-route-id="@subprogram.Id">Delete</a>
                             </div>
                         </div>
+                        <h5 class="h6 text-body-secondary">Accounts</h5>
                         @if (subprogram.AccountAssignments.Count > 0)
                         {
                             <ul class="list-group">
