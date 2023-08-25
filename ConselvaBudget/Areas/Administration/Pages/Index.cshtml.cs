@@ -30,8 +30,12 @@ namespace ConselvaBudget.Areas.Administration.Pages
                     .ThenInclude(a => a.Account)
                     .OrderBy(p => p.Code)
                     .ToListAsync();
-                Accounts = await _context.Accounts.ToListAsync();
-                Projects = await _context.Projects.ToListAsync();
+                Accounts = await _context.Accounts
+                    .OrderBy(p => p.Code)
+                    .ToListAsync();
+                Projects = await _context.Projects
+                    .OrderBy(p => p.Segment)
+                    .ToListAsync();
             }
         }
     }
