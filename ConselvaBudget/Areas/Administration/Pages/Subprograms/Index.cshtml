@@ -1,27 +1,2 @@
 ﻿@page
-@model ConselvaBudget.Areas.Administration.Pages.Subprograms.IndexModel
-
-@{
-    ViewData["Title"] = "Subprograms";
-}
-
-<h1>@ViewData["Title"]</h1>
-
-<p><a class="btn btn-success" asp-area="Administration" asp-page="/Index" asp-fragment="subprograms">Go to Administration dashboard</a></p>
-
-@foreach (var program in Model.BusinessPrograms)
-{
-    <div class="card mb-2">
-        <div class="card-body">
-            <h5 class="card-title">@Html.DisplayFor(modelItem => program.DisplayName)</h5>
-            <ul class="list-group">
-                @foreach (var subprogram in program.BusinessSubprograms.OrderBy(s => s.Code))
-                {
-                    <li class="list-group-item">
-                        <span>@Html.DisplayFor(modelItem => subprogram.DisplayName)</span>
-                    </li>
-                }
-            </ul>
-        </div>
-    </div>
-}
+@model IndexModel
