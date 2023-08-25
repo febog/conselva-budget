@@ -54,7 +54,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 p => p.Comments))
             {
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Index", null, "projects");
             }
 
             return Page();

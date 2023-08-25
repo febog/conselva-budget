@@ -48,7 +48,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Index", null, "programs");
         }
     }
 }

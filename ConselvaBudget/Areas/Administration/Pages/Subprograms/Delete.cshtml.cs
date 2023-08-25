@@ -52,7 +52,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Index", null, "subprograms");
         }
     }
 }

@@ -49,7 +49,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Accounts
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Index", null, "accounts");
         }
     }
 }

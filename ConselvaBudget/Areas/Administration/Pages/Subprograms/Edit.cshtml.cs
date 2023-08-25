@@ -65,7 +65,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             {
                 UpdateSubprogramAccounts(selectedAccounts, businessSubprogramToUpdate);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Index", null, "subprograms");
             }
 
             PopulateDepartmentsDropDownList(_context, businessSubprogramToUpdate.BusinessProgramId);

@@ -35,7 +35,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Accounts
             {
                 _context.Accounts.Add(emptyAccount);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Index", null, "accounts");
             }
 
             return Page();

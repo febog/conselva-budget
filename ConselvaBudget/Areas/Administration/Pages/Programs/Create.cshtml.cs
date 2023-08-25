@@ -34,7 +34,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
             {
                 _context.BusinessPrograms.Add(emptyBusinessProgram);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Index", null, "programs");
             }
 
             return Page();

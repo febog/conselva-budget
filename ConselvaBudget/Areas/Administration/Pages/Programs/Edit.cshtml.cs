@@ -49,7 +49,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Programs
                 p => p.Name))
             {
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Index", null, "programs");
             }
 
             return Page();
