@@ -5,8 +5,9 @@ namespace ConselvaBudget.Areas.Tracking.Pages
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return RedirectToPage("./Projects/Index");
         }
     }
 }

@@ -1,0 +1,44 @@
+﻿@page
+@model ConselvaBudget.Areas.Tracking.Pages.Projects.IndexModel
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].Segment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projects[0].ShortName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Projects)
+        {
+            <tr>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Segment)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.ShortName)
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-primary btn-sm" asp-page="./Manage" asp-route-id="@item.Id">Manage</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
