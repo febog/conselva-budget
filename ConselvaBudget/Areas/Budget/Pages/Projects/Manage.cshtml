@@ -10,15 +10,19 @@
 <p>@Html.DisplayFor(model => model.Project.Comments)</p>
 
 <p>
-    <a class="btn btn-primary" asp-page="/Results/Create" asp-page="Create">Add result</a>
+    <a class="btn btn-primary" asp-page="/Results/Create" asp-route-projectId="@Model.Project.Id">Create Result</a>
 </p>
 
 @foreach (var result in Model.Project.Results)
 {
     <div class="card mb-2">
-        <h2 class="h5 card-header">
-            @Html.DisplayFor(modelItem => result.Name)
-        </h2>
+        <div class="card-header d-flex align-items-center">
+            <h2 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => result.Name)</h2>
+            <div>
+                <a class="btn btn-secondary btn-sm" asp-page="/Results/Edit" asp-route-id="@result.Id">Edit</a>
+                <a class="btn btn-danger btn-sm" asp-page="/Results/Delete" asp-route-id="@result.Id">Delete</a>
+            </div>
+        </div>
         <div class="card-body">
             <p>
                 <a class="btn btn-primary" asp-page="/Activities/Create" asp-page="Create">Add activity</a>

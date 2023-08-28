@@ -1,0 +1,31 @@
+﻿@page
+@model EditModel
+
+@{
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
+    ViewData["Title"] = "Edit Result";
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="Result.Id" />
+<div class="col-12">
+    <label asp-for="Result.ProjectId" class="form-label"></label>
+    <select asp-for="Result.ProjectId" class="form-select" asp-items="@Model.ProjectNameSL"></select>
+</div>
+<div class="col-12">
+    <label asp-for="Result.Name" class="form-label"></label>
+    <input asp-for="Result.Name" class="form-control" />
+    <span asp-validation-for="Result.Name" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <input class="btn btn-primary" type="submit" value="Save">
+    <a class="btn btn-secondary" asp-page="/Projects/Manage" asp-route-id="@Model.Result.ProjectId">Cancel</a>
+</div>
+
+@section FormInfoCardBody {
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+}
