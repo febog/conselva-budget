@@ -180,7 +180,6 @@
                 @Html.DisplayNameFor(model => model.Projects[0].Comments)
             </th>
             <th></th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -205,11 +204,11 @@
                 <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Comments)
                 </td>
-                <td class="align-middle text-center">
-                    <a class="btn btn-secondary btn-sm" asp-page="Projects/Edit" asp-route-id="@item.Id">Edit</a>
-                </td>
-                <td class="align-middle text-center">
-                    <a class="btn btn-danger btn-sm" asp-page="Projects/Delete" asp-route-id="@item.Id">Delete</a>
+                <td class="align-middle">
+                    <div class="d-flex gap-1 justify-content-center">
+                        <a class="btn btn-secondary btn-sm" asp-page="Projects/Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-page="Projects/Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
                 </td>
             </tr>
         }
