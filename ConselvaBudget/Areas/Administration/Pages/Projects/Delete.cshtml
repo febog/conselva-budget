@@ -46,5 +46,5 @@
 @section DeleteFormContents {
     <input type="hidden" asp-for="Project.Id" />
     <input class="btn btn-danger" type="submit" value="Delete">
-    <a class="btn btn-secondary" asp-page="/Index">Cancel</a>
+    <a class="btn btn-secondary" asp-page="/Index" asp-fragment="projects">Cancel</a>
 }
