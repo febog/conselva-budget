@@ -118,7 +118,7 @@
             @Html.DisplayFor(modelItem => program.DisplayName)
         </h3>
         <div class="card-body">
-            <p><a class="btn btn-primary btn" asp-page="Subprograms/Create" asp-route-programId="@program.Id">Create subprogram</a></p>
+            <p><a class="btn btn-primary" asp-page="Subprograms/Create" asp-route-programId="@program.Id">Create subprogram</a></p>
             <ul class="list-group">
                 @foreach (var subprogram in program.BusinessSubprograms.OrderBy(s => s.Code))
                 {
