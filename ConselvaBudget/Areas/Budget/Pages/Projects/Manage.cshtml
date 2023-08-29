@@ -15,7 +15,7 @@
 
 @foreach (var result in Model.Project.Results)
 {
-    <div class="card mb-2">
+    <div class="card mb-2" id="result_@result.Id">
         <div class="card-header d-flex align-items-center gap-2">
             <h2 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => result.Name)</h2>
             <div class="d-flex gap-1">
