@@ -25,15 +25,19 @@
         </div>
         <div class="card-body">
             <p>
-                <a class="btn btn-primary" asp-page="/Activities/Create" asp-page="Create">Add activity</a>
+                <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id">Create Activity</a>
             </p>
             <h3 class="h6 text-body-secondary">Activities</h3>
             <ul class="list-group">
                 @foreach (var activity in result.Activities)
                 {
-                    <li class="list-group-item">
+                    <li class="list-group-item" id="activity_@activity.Id">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="h5 mb-2">@Html.DisplayFor(model => activity.Name)</h4>
+                            <div class="d-flex gap-1">
+                                <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-id="@activity.Id">Edit</a>
+                                <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
+                            </div>
                             <small class="text-body-secondary">
                                 @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
                             </small>

@@ -1,0 +1,37 @@
+﻿@page
+@model DeleteModel
+
+@{
+    Layout = "/Pages/Shared/_DeleteLayout.cshtml";
+    ViewData["Title"] = "Delete Activity";
+}
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Activity.Name)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Activity.Name)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Activity.DueDate)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Activity.DueDate)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Activity.Result)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Activity.Result.Name)
+</dd>
+
+@section DeleteFormContents {
+    <input type="hidden" asp-for="Activity.Id" />
+    <input class="btn btn-danger" type="submit" value="Delete">
+    <a class="btn btn-secondary"
+       asp-page="/Projects/Manage"
+       asp-route-id="@Model.Activity.Result.ProjectId"
+       asp-fragment="activity_@Model.Activity.Id">
+        Cancel
+    </a>
+}
