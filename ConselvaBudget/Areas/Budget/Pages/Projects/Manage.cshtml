@@ -19,11 +19,14 @@
         <div class="card-header d-flex align-items-center gap-2">
             <h2 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => result.Name)</h2>
             <div class="d-flex gap-1">
+                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#result_body_@result.Id" aria-expanded="false" aria-controls="result_body_@result.Id">
+                    Collapse
+                </button>
                 <a class="btn btn-secondary btn-sm" asp-page="/Results/Edit" asp-route-id="@result.Id">Edit</a>
                 <a class="btn btn-danger btn-sm" asp-page="/Results/Delete" asp-route-id="@result.Id">Delete</a>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body collapse show" id="result_body_@result.Id">
             <p>
                 <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id" asp-route-resultId="@result.Id">Create Activity</a>
             </p>
