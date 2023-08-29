@@ -1,0 +1,43 @@
+﻿@page
+@model DeleteModel
+
+@{
+    Layout = "/Pages/Shared/_DeleteLayout.cshtml";
+    ViewData["Title"] = "Delete Budget";
+}
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.ActivityBudget.Amount)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.ActivityBudget.Amount)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.ActivityBudget.Comments)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.ActivityBudget.Comments)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.ActivityBudget.Activity)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.ActivityBudget.Activity.Name)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.ActivityBudget.AccountAssignment)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.ActivityBudget.AccountAssignment.Id)
+</dd>
+
+@section DeleteFormContents {
+    <input type="hidden" asp-for="ActivityBudget.Id" />
+    <input class="btn btn-danger" type="submit" value="Delete">
+    <a class="btn btn-secondary"
+       asp-page="/Projects/Manage"
+       asp-route-id="@Model.ActivityBudget.Activity.Result.ProjectId"
+       asp-fragment="activity_@Model.ActivityBudget.Activity.Id">
+        Cancel
+    </a>
+}
