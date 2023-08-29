@@ -25,7 +25,7 @@
         </div>
         <div class="card-body">
             <p>
-                <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id">Create Activity</a>
+                <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id" asp-route-resultId="@result.Id">Create Activity</a>
             </p>
             <h3 class="h6 text-body-secondary">Activities</h3>
             <ul class="list-group">
