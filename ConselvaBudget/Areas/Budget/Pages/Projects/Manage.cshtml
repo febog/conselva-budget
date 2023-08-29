@@ -38,35 +38,40 @@
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="h5 mb-2">@Html.DisplayFor(model => activity.Name)</h4>
                             <div class="d-flex gap-1">
+                                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity_body_@activity.Id" aria-expanded="false" aria-controls="activity_body_@activity.Id">
+                                    Collapse
+                                </button>
                                 <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-id="@activity.Id">Edit</a>
                                 <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
                             </div>
                         </div>
-                        <p>
-                            @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
-                        </p>
-                        <p>
-                            <a class="btn btn-secondary btn-sm" asp-page="Budgets/Create" asp-route-programId="@activity.Id">Create budget</a>
-                        </p>
-                        @if (activity.ActivityBudgets.Count > 0)
-                        {
-                            <ul class="list-group">
-                                @foreach (var budget in activity.ActivityBudgets)
-                                {
-                                    <li class="list-group-item">
-                                        <p>
-                                            @Html.DisplayFor(model => budget.Comments)
-                                        </p>
-                                    </li>
-                                }
-                            </ul>
-                        }
-                        else
-                        {
-                            <div class="alert alert-warning mb-0" role="alert">
-                                <span>This activity has no budget.</span>
-                            </div>
-                        }
+                        <div class="collapse show" id="activity_body_@activity.Id">
+                            <p>
+                                @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
+                            </p>
+                            <p>
+                                <a class="btn btn-secondary btn-sm" asp-page="Budgets/Create" asp-route-programId="@activity.Id">Create budget</a>
+                            </p>
+                            @if (activity.ActivityBudgets.Count > 0)
+                            {
+                                <ul class="list-group">
+                                    @foreach (var budget in activity.ActivityBudgets)
+                                    {
+                                        <li class="list-group-item">
+                                            <p>
+                                                @Html.DisplayFor(model => budget.Comments)
+                                            </p>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning mb-0" role="alert">
+                                    <span>This activity has no budget.</span>
+                                </div>
+                            }
+                        </div>
                     </li>
                 }
             </ul>
