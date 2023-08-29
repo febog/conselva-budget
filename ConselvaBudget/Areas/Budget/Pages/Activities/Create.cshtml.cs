@@ -46,7 +46,10 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
             {
                 _context.Activities.Add(emptyActivity);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Projects/Manage", new { id = projectId.Value });
+                return RedirectToPage("/Projects/Manage",
+                    null,
+                    new { id = projectId.Value },
+                    $"result_{emptyActivity.ResultId}");
             }
 
             PopulateResultDropDownList(_context, projectId.Value, emptyActivity.ResultId);
