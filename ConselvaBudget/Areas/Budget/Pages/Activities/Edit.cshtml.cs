@@ -40,7 +40,6 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
         {
             var activityToUpdate = await _context.Activities
                 .Include(a => a.Result)
-                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (activityToUpdate == null)
