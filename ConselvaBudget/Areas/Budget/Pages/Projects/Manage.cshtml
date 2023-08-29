@@ -45,7 +45,7 @@
                                 <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
                             </div>
                         </div>
-                        <div class="collapse show" id="activity_body_@activity.Id">
+                        <div class="collapse" id="activity_body_@activity.Id">
                             <p>
                                 @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
                             </p>
