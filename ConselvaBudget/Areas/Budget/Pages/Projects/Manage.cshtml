@@ -38,10 +38,10 @@
                                 <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-id="@activity.Id">Edit</a>
                                 <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
                             </div>
-                            <small class="text-body-secondary">
-                                @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
-                            </small>
                         </div>
+                        <p>
+                            @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
+                        </p>
                         <p>
                             <a class="btn btn-secondary btn-sm" asp-page="Budgets/Create" asp-route-programId="@activity.Id">Create budget</a>
                         </p>
