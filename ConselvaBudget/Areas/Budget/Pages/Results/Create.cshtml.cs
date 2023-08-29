@@ -34,7 +34,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
             {
                 _context.Results.Add(emptyResult);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Projects/Manage", new { Id = emptyResult.ProjectId });
+                return RedirectToPage("/Projects/Manage", new { id = emptyResult.ProjectId });
             }
 
             PopulateProjectDropDownList(_context, emptyResult.ProjectId);

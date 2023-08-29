@@ -52,7 +52,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Projects/Manage", new { Id = result.ProjectId });
+            return RedirectToPage("/Projects/Manage", new { id = result.ProjectId });
         }
     }
 }
