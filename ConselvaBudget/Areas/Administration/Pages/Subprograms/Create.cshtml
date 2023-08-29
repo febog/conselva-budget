@@ -10,6 +10,7 @@
 <div class="col-12">
     <label asp-for="BusinessSubprogram.BusinessProgramId" class="form-label"></label>
     <select asp-for="BusinessSubprogram.BusinessProgramId" class="form-select" asp-items="@Model.ProgramNameSL"></select>
+    <span asp-validation-for="BusinessSubprogram.BusinessProgramId" class="text-danger"></span>
 </div>
 <div class="col-12">
     <label asp-for="BusinessSubprogram.Code" class="form-label"></label>
