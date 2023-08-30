@@ -14,12 +14,12 @@
     <select asp-for="ActivityBudget.AccountAssignmentId" class="form-select" asp-items="@Model.AccountsSL"></select>
     <span asp-validation-for="ActivityBudget.AccountAssignmentId" class="text-danger"></span>
 </div>
-<div class="col-2">
+<div class="col-3">
     <label asp-for="ActivityBudget.Amount" class="form-label"></label>
     <input asp-for="ActivityBudget.Amount" class="form-control" />
     <span asp-validation-for="ActivityBudget.Amount" class="text-danger"></span>
 </div>
-<div class="col-10">
+<div class="col-9">
     <label asp-for="ActivityBudget.Comments" class="form-label"></label>
     <input asp-for="ActivityBudget.Comments" class="form-control" />
     <span asp-validation-for="ActivityBudget.Comments" class="text-danger"></span>
