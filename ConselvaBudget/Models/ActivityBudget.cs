@@ -14,6 +14,7 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Amount")]
         [Column(TypeName = "money")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Amount { get; set; }
 
         [Display(Name = "Comments")]
