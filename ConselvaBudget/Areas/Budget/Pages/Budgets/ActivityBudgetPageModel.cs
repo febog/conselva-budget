@@ -13,8 +13,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
             object selectedAccountAssignment = null)
         {
             var resultsQuery = context.AccountAssignments
-                .Include(a => a.BusinessSubprogram)
-                .ThenInclude(s => s.BusinessProgram)
+                .Include(a => a.BusinessSubprogram.BusinessProgram)
                 .Include(a => a.Account)
                 .OrderBy(a => a.BusinessSubprogram.BusinessProgram.Code)
                 .ThenBy(a => a.BusinessSubprogram.Code)

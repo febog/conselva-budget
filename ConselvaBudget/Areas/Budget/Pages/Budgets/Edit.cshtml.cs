@@ -43,10 +43,9 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
         public async Task<IActionResult> OnPostAsync(int id)
         {
             var activityBudgetToUpdate = await _context.ActivityBudgets
-                .Include(b => b.AccountAssignment)
-                .ThenInclude(a => a.Account)
-                .Include(b => b.Activity)
-                .ThenInclude(a => a.Result)
+                .Include(b => b.AccountAssignment.BusinessSubprogram.BusinessProgram)
+                .Include(a => a.AccountAssignment.Account)
+                .Include(b => b.Activity.Result)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (activityBudgetToUpdate == null)
