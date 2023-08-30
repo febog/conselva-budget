@@ -45,25 +45,53 @@
                                 <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
                             </div>
                         </div>
-                        <div class="collapse" id="activity_body_@activity.Id">
+                        <div class="collapse show" id="activity_body_@activity.Id">
                             <p>
                                 @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
                             </p>
                             <p>
-                                <a class="btn btn-secondary btn-sm" asp-page="Budgets/Create" asp-route-programId="@activity.Id">Create budget</a>
+                                <a class="btn btn-secondary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Add budget</a>
                             </p>
                             @if (activity.ActivityBudgets.Count > 0)
                             {
-                                <ul class="list-group">
-                                    @foreach (var budget in activity.ActivityBudgets)
-                                    {
-                                        <li class="list-group-item">
-                                            <p>
-                                                @Html.DisplayFor(model => budget.Comments)
-                                            </p>
-                                        </li>
-                                    }
-                                </ul>
+                                <table class="table table-sm table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].AccountAssignment.Account.Name)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Amount)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Comments)
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var budget in activity.ActivityBudgets)
+                                        {
+                                            <tr>
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => budget.AccountAssignment.Account.Name)
+                                                </td>
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => budget.Amount)
+                                                </td>
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => budget.Comments)
+                                                </td>
+                                                <td class="align-middle">
+                                                    <div class="d-flex gap-1 justify-content-center">
+                                                        <a class="btn btn-secondary btn-sm" asp-page="/Budgets/Edit" asp-route-id="@budget.Id">Edit</a>
+                                                        <a class="btn btn-danger btn-sm" asp-page="/Budgets/Delete" asp-route-id="@budget.Id">Delete</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
                             }
                             else
                             {
