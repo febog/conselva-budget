@@ -35,7 +35,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             {
                 _context.BusinessSubprograms.Add(emptyBusinessSubprogram);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index", null, "subprograms");
+                return RedirectToPage("/Index",
+                    null,
+                    $"program_{emptyBusinessSubprogram.BusinessProgramId}");
             }
 
             PopulateDepartmentsDropDownList(_context, emptyBusinessSubprogram.BusinessProgramId);

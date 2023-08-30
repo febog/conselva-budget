@@ -111,7 +111,7 @@
 
 @foreach (var program in Model.BusinessPrograms)
 {
-    <div class="card mb-2">
+    <div class="card mb-2" id="program_@program.Id">
         <h3 class="h5 card-header">
             @Html.DisplayFor(modelItem => program.DisplayName)
         </h3>
@@ -120,7 +120,7 @@
             <ul class="list-group">
                 @foreach (var subprogram in program.BusinessSubprograms.OrderBy(s => s.Code))
                 {
-                    <li class="list-group-item">
+                    <li class="list-group-item" id="subprogram_@subprogram.Id">
                         <div class="d-flex align-items-center gap-2 border-bottom pb-2 mb-2">
                             <h4 class="h5 flex-grow-1 mb-0">@Html.DisplayFor(modelItem => subprogram.DisplayName)</h4>
                             <div class="d-flex gap-1">

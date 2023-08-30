@@ -28,5 +28,7 @@
 @section DeleteFormContents {
     <input type="hidden" asp-for="BusinessSubprogram.Id" />
     <input class="btn btn-danger" type="submit" value="Delete">
-    <a class="btn btn-secondary" asp-page="/Index" asp-fragment="subprograms">Cancel</a>
+    <a class="btn btn-secondary"
+       asp-page="/Index"
+       asp-fragment="subprogram_@Model.BusinessSubprogram.Id">Cancel</a>
 }

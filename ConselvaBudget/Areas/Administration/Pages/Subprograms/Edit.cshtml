@@ -42,7 +42,9 @@
 </div>
 <div class="col-12">
     <input class="btn btn-primary" type="submit" value="Save">
-    <a class="btn btn-secondary" asp-page="/Index" asp-fragment="subprograms">Cancel</a>
+    <a class="btn btn-secondary"
+       asp-page="/Index"
+       asp-fragment="subprogram_@Model.BusinessSubprogram.Id">Cancel</a>
 </div>
 
 @section FormInfoCardBody {

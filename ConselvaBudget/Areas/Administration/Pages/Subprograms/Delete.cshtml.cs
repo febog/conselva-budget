@@ -43,7 +43,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             {
                 return NotFound();
             }
-            var businesssubprogram = await _context.BusinessSubprograms.FindAsync(id);
+            var businesssubprogram = await _context.BusinessSubprograms
+                .Include(s => s.BusinessProgram)
+                .FirstOrDefaultAsync(s => s.Id == id);
 
             if (businesssubprogram != null)
             {
@@ -52,7 +54,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Index", null, "subprograms");
+            return RedirectToPage("/Index",
+                    null,
+                    $"program_{businesssubprogram.BusinessProgram.Id}");
         }
     }
 }
