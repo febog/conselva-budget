@@ -71,7 +71,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var budget in activity.ActivityBudgets)
+                                        @foreach (var budget in activity.ActivityBudgets.OrderBy(b => b.AccountAssignment.DisplayName))
                                         {
                                             <tr>
                                                 <td class="align-middle">
