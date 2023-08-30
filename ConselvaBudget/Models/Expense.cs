@@ -21,7 +21,7 @@ namespace ConselvaBudget.Models
         public string Vendor { get; set; }
 
         [Display(Name = "Amount")]
-        [Column(TypeName = "decimal(19, 4)")]
+        [Column(TypeName = "money")]
         public decimal Amount { get; set; }
 
         [Display(Name = "ExpenseDate")]
