@@ -10,6 +10,7 @@ namespace ConselvaBudget.Models
 
         public int ActivityId { get; set; }
 
+        [Display(Name = "Account")]
         public int AccountAssignmentId { get; set; }
 
         [Display(Name = "Amount")]
