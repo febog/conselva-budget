@@ -28,6 +28,8 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
             ActivityBudget = await _context.ActivityBudgets
                 .Include(a => a.AccountAssignment)
                 .ThenInclude(a => a.Account)
+                .Include(b => b.Activity)
+                .ThenInclude(a => a.Result)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (ActivityBudget == null)
