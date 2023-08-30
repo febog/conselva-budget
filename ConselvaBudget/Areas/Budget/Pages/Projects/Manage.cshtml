@@ -59,7 +59,7 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].AccountAssignment.Account.Name)
+                                                @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].AccountAssignment.Account)
                                             </th>
                                             <th>
                                                 @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Amount)
@@ -75,7 +75,7 @@
                                         {
                                             <tr>
                                                 <td class="align-middle">
-                                                    @Html.DisplayFor(modelItem => budget.AccountAssignment.Account.Name)
+                                                    @Html.DisplayFor(modelItem => budget.AccountAssignment.DisplayName)
                                                 </td>
                                                 <td class="align-middle">
                                                     @Html.DisplayFor(modelItem => budget.Amount)

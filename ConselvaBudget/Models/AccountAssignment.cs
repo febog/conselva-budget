@@ -15,7 +15,7 @@ namespace ConselvaBudget.Models
         [Display(Name = "Subprogram")]
         public BusinessSubprogram BusinessSubprogram { get; set; }
 
-        [Display(Name = "AccountCategory")]
+        [Display(Name = "Account")]
         public Account Account { get; set; }
 
         public virtual ICollection<ActivityBudget> ActivityBudgets { get; set; }
