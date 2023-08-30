@@ -26,7 +26,8 @@
     <input class="btn btn-primary" type="submit" value="Save">
     <a class="btn btn-secondary"
        asp-page="/Projects/Manage"
-       asp-route-id="@Request.Query["projectId"]">
+       asp-route-id="@Request.Query["projectId"]"
+       asp-fragment="result_@Request.Query["resultId"]">
         Cancel
     </a>
 </div>
