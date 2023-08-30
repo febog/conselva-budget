@@ -154,7 +154,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ActivityId = table.Column<int>(type: "int", nullable: false),
                     AccountAssignmentId = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
+                    Amount = table.Column<decimal>(type: "money", nullable: false),
                     Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
@@ -183,7 +183,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     ActivityBudgetId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Vendor = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
+                    Amount = table.Column<decimal>(type: "money", nullable: false),
                     ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),

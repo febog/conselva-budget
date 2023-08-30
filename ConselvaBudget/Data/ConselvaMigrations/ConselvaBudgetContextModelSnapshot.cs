@@ -113,7 +113,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(19, 4)");
+                        .HasColumnType("money");
 
                     b.Property<string>("Comments")
                         .HasMaxLength(255)
@@ -191,7 +191,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(19, 4)");
+                        .HasColumnType("money");
 
                     b.Property<string>("Comments")
                         .HasMaxLength(255)
@@ -345,7 +345,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
             modelBuilder.Entity("ConselvaBudget.Models.Expense", b =>
                 {
                     b.HasOne("ConselvaBudget.Models.ActivityBudget", "ActivityBudget")
-                        .WithMany()
+                        .WithMany("Expenses")
                         .HasForeignKey("ActivityBudgetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -377,6 +377,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
             modelBuilder.Entity("ConselvaBudget.Models.Activity", b =>
                 {
                     b.Navigation("ActivityBudgets");
+                });
+
+            modelBuilder.Entity("ConselvaBudget.Models.ActivityBudget", b =>
+                {
+                    b.Navigation("Expenses");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.BusinessProgram", b =>
