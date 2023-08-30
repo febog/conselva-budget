@@ -54,8 +54,8 @@
                             </p>
                             @if (activity.ActivityBudgets.Count > 0)
                             {
-                                <table class="table table-sm table-bordered table-striped caption-top">
-                                    <caption>Budget</caption>
+                                <h4 class="h6 text-body-secondary">Budget</h4>
+                                <table class="table table-sm table-bordered">
                                     <thead>
                                         <tr>
                                             <th>
@@ -67,7 +67,7 @@
                                             <th>
                                                 @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Comments)
                                             </th>
-                                            <th></th>
+                                            <th style="width: 1px; white-space:nowrap;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,9 +85,24 @@
                                                 </td>
                                                 <td class="align-middle">
                                                     <div class="d-flex gap-1 justify-content-center">
+                                                        <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#budget_expenses_@budget.Id" aria-expanded="false" aria-controls="budget_expenses_@budget.Id">
+                                                            Expenses
+                                                        </button>
                                                         <a class="btn btn-secondary btn-sm" asp-page="/Budgets/Edit" asp-route-id="@budget.Id">Edit</a>
                                                         <a class="btn btn-danger btn-sm" asp-page="/Budgets/Delete" asp-route-id="@budget.Id">Delete</a>
                                                     </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="collapse" id="budget_expenses_@budget.Id">
+                                                <td colspan="4">
+                                                    Larry the Bird
+                                                    <ul>
+                                                        <li>An item</li>
+                                                        <li>A second item</li>
+                                                        <li>A third item</li>
+                                                        <li>A fourth item</li>
+                                                        <li>And a fifth one</li>
+                                                    </ul>
                                                 </td>
                                             </tr>
                                         }
