@@ -21,13 +21,15 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                 .Select(a => new
                 {
                     a.Id,
-                    Name = a.DisplayName
+                    Name = a.DisplayName,
+                    Group = a.BusinessSubprogram.Name
                 });
 
             AccountsSL = new SelectList(resultsQuery.AsNoTracking(),
                 "Id",
                 "Name",
-                selectedAccountAssignment);
+                selectedAccountAssignment,
+                "Group");
         }
     }
 }
