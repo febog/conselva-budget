@@ -35,8 +35,8 @@
                 @foreach (var activity in result.Activities)
                 {
                     <li class="list-group-item" id="activity_@activity.Id">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="h5 mb-2">@Html.DisplayFor(model => activity.Name)</h4>
+                        <div class="d-flex w-100 align-items-center gap-2">
+                            <h4 class="h5 mb-2 flex-grow-1">@Html.DisplayFor(model => activity.Name)</h4>
                             <div class="d-flex gap-1">
                                 <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity_body_@activity.Id" aria-expanded="false" aria-controls="activity_body_@activity.Id">
                                     Collapse
