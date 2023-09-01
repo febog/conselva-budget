@@ -22,6 +22,14 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Comments { get; set; }
 
+        [Display(Name = "Expenses")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal ExpensesSum => Expenses.Sum(e => e.Amount);
+
+        [Display(Name = "Remainder")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal Remainder => Amount - ExpensesSum;
+
         [Display(Name = "Activity")]
         public Activity Activity { get; set; }
 

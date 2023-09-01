@@ -65,6 +65,12 @@
                                                 @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Amount)
                                             </th>
                                             <th>
+                                                @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].ExpensesSum)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Remainder)
+                                            </th>
+                                            <th>
                                                 @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Comments)
                                             </th>
                                             <th style="width: 1px; white-space:nowrap;"></th>
@@ -79,6 +85,12 @@
                                                 </td>
                                                 <td class="align-middle">
                                                     @Html.DisplayFor(modelItem => budget.Amount)
+                                                </td>
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => budget.ExpensesSum)
+                                                </td>
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => budget.Remainder)
                                                 </td>
                                                 <td class="align-middle">
                                                     @Html.DisplayFor(modelItem => budget.Comments)
