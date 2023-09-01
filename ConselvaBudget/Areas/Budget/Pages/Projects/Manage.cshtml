@@ -15,18 +15,18 @@
 
 @foreach (var result in Model.Project.Results)
 {
-    <div class="card mb-2" id="result_@result.Id">
+    <div class="card mb-2" id="result-@result.Id">
         <div class="card-header d-flex align-items-center gap-2">
             <h2 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => result.Name)</h2>
             <div class="d-flex gap-1">
-                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#result_body_@result.Id" aria-expanded="false" aria-controls="result_body_@result.Id">
+                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#result-body-@result.Id" aria-expanded="false" aria-controls="result-body-@result.Id">
                     Collapse
                 </button>
                 <a class="btn btn-secondary btn-sm" asp-page="/Results/Edit" asp-route-id="@result.Id">Edit</a>
                 <a class="btn btn-danger btn-sm" asp-page="/Results/Delete" asp-route-id="@result.Id">Delete</a>
             </div>
         </div>
-        <div class="card-body collapse show" id="result_body_@result.Id">
+        <div class="card-body collapse show" id="result-body-@result.Id">
             <p>
                 <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id" asp-route-resultId="@result.Id">Create Activity</a>
             </p>
@@ -34,18 +34,18 @@
             <ul class="list-group">
                 @foreach (var activity in result.Activities)
                 {
-                    <li class="list-group-item" id="activity_@activity.Id">
+                    <li class="list-group-item" id="activity-@activity.Id">
                         <div class="d-flex w-100 align-items-center gap-2">
                             <h4 class="h5 mb-2 flex-grow-1">@Html.DisplayFor(model => activity.Name)</h4>
                             <div class="d-flex gap-1">
-                                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity_body_@activity.Id" aria-expanded="false" aria-controls="activity_body_@activity.Id">
+                                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity-body-@activity.Id" aria-expanded="false" aria-controls="activity-body-@activity.Id">
                                     Collapse
                                 </button>
                                 <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-id="@activity.Id">Edit</a>
                                 <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
                             </div>
                         </div>
-                        <div class="collapse show" id="activity_body_@activity.Id">
+                        <div class="collapse show" id="activity-body-@activity.Id">
                             <p>
                                 @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
                             </p>
@@ -85,7 +85,7 @@
                                                 </td>
                                                 <td class="align-middle">
                                                     <div class="d-flex gap-1 justify-content-center">
-                                                        <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#budget_expenses_@budget.Id" aria-expanded="false" aria-controls="budget_expenses_@budget.Id">
+                                                        <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#budget-expenses-@budget.Id" aria-expanded="false" aria-controls="budget-expenses-@budget.Id">
                                                             Expenses
                                                         </button>
                                                         <a class="btn btn-secondary btn-sm" asp-page="/Budgets/Edit" asp-route-id="@budget.Id">Edit</a>
@@ -93,7 +93,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr class="collapse" id="budget_expenses_@budget.Id">
+                                            <tr class="collapse" id="budget-expenses-@budget.Id">
                                                 <td colspan="4">
                                                     Larry the Bird
                                                     <ul>

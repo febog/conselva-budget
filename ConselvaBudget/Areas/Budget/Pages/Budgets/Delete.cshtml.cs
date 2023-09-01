@@ -61,7 +61,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
             return RedirectToPage("/Projects/Manage",
                     null,
                     new { id = activitybudget.Activity.Result.ProjectId },
-                    $"activity_{activitybudget.Activity.Id}");
+                    $"activity-{activitybudget.Activity.Id}");
         }
     }
 }

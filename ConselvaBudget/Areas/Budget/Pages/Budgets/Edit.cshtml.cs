@@ -64,7 +64,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                 return RedirectToPage("/Projects/Manage",
                     null,
                     new { id = activityBudgetToUpdate.Activity.Result.ProjectId },
-                    $"activity_{activityBudgetToUpdate.Activity.Id}");
+                    $"activity-{activityBudgetToUpdate.Activity.Id}");
             }
 
             PopulateAccountDropDownList(_context, activityBudgetToUpdate.AccountAssignmentId);
