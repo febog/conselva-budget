@@ -20,7 +20,12 @@
 </div>
 <div class="col-12">
     <input class="btn btn-primary" type="submit" value="Save">
-    <a class="btn btn-secondary" asp-page="/Projects/Manage" asp-route-id="@Model.Result.ProjectId">Cancel</a>
+    <a class="btn btn-secondary"
+       asp-page="/Projects/Manage"
+       asp-route-id="@Model.Result.ProjectId"
+       asp-fragment="result-@Model.Result.Id">
+        Cancel
+    </a>
 </div>
 
 @section FormInfoCardBody {

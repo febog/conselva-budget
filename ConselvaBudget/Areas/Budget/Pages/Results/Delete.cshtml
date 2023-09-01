@@ -22,5 +22,10 @@
 @section DeleteFormContents {
     <input type="hidden" asp-for="Result.Id" />
     <input class="btn btn-danger" type="submit" value="Delete">
-    <a class="btn btn-secondary" asp-page="/Projects/Manage" asp-route-id="@Model.Result.ProjectId">Cancel</a>
+    <a class="btn btn-secondary"
+       asp-page="/Projects/Manage"
+       asp-route-id="@Model.Result.ProjectId"
+       asp-fragment="result-@Model.Result.Id">
+        Cancel
+    </a>
 }
