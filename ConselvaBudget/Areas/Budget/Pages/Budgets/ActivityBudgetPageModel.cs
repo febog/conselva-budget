@@ -12,7 +12,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
         public void PopulateAccountDropDownList(ConselvaBudgetContext context,
             object selectedAccountAssignment = null)
         {
-            var resultsQuery = context.AccountAssignments
+            var accountsQuery = context.AccountAssignments
                 .Include(a => a.BusinessSubprogram.BusinessProgram)
                 .Include(a => a.Account)
                 .OrderBy(a => a.BusinessSubprogram.BusinessProgram.Code)
@@ -25,7 +25,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                     Group = a.BusinessSubprogram.Name
                 });
 
-            AccountsSL = new SelectList(resultsQuery.AsNoTracking(),
+            AccountsSL = new SelectList(accountsQuery.AsNoTracking(),
                 "Id",
                 "Name",
                 selectedAccountAssignment,
