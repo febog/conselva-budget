@@ -90,7 +90,7 @@
                                                     @Html.DisplayFor(modelItem => budget.ExpensesSum)
                                                 </td>
                                                 <td class="align-middle">
-                                                    @Html.DisplayFor(modelItem => budget.Remainder)
+                                                    <span class="@(budget.Remainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => budget.Remainder)</span>
                                                 </td>
                                                 <td class="align-middle">
                                                     @Html.DisplayFor(modelItem => budget.Comments)
