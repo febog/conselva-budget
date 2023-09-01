@@ -56,7 +56,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
 
             return RedirectToPage("/Index",
                     null,
-                    $"program_{businesssubprogram.BusinessProgram.Id}");
+                    $"program-{businesssubprogram.BusinessProgram.Id}");
         }
     }
 }

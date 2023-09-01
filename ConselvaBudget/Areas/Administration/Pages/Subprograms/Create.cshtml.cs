@@ -37,7 +37,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Index",
                     null,
-                    $"program_{emptyBusinessSubprogram.BusinessProgramId}");
+                    $"program-{emptyBusinessSubprogram.BusinessProgramId}");
             }
 
             PopulateDepartmentsDropDownList(_context, emptyBusinessSubprogram.BusinessProgramId);
