@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,10 +25,12 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Expenses")]
         [DisplayFormat(DataFormatString = "{0:C}")]
+        [ValidateNever]
         public decimal ExpensesSum => Expenses.Sum(e => e.Amount);
 
         [Display(Name = "Remainder")]
         [DisplayFormat(DataFormatString = "{0:C}")]
+        [ValidateNever]
         public decimal Remainder => Amount - ExpensesSum;
 
         [Display(Name = "Activity")]
