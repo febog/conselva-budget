@@ -1,0 +1,69 @@
+﻿@page
+@model ConselvaBudget.Areas.Expenses.Pages.Expenses.IndexModel
+
+@{
+    ViewData["Title"] = "Expenses";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p><a class="btn btn-primary" asp-page="Create">Add expense</a></p>
+
+<table class="table table-sm table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].Vendor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].ExpenseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].ActivityBudget)
+            </th>
+            <th style="width: 1px; white-space:nowrap;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Expenses)
+        {
+            <tr>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Vendor)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.ExpenseDate)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.ActivityBudget.Id)
+                </td>
+                <td class="align-middle">
+                    <div class="d-flex gap-1 justify-content-center">
+                        <a class="btn btn-success btn-sm" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-secondary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
