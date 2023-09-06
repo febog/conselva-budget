@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConselvaBudget.Models
 {
@@ -16,6 +17,11 @@ namespace ConselvaBudget.Models
         [Display(Name = "DueDate")]
         [DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
+
+        [Display(Name = "Budget")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [ValidateNever]
+        public decimal BudgetSum => ActivityBudgets.Sum(e => e.Amount);
 
         [Display(Name = "Result")]
         public Result Result { get; set; }
