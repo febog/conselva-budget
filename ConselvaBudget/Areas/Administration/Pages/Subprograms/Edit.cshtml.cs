@@ -25,7 +25,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             }
 
             BusinessSubprogram = await _context.BusinessSubprograms
-                .Include(s => s.BusinessProgram)
                 .Include(s => s.AccountAssignments)
                 .ThenInclude(a => a.Account)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -33,7 +32,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             {
                 return NotFound();
             }
-            PopulateDepartmentsDropDownList(_context, BusinessSubprogram.BusinessProgramId);
             PopulateAccountAssignmentData(_context, BusinessSubprogram);
             return Page();
         }
@@ -46,7 +44,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             }
 
             var businessSubprogramToUpdate = await _context.BusinessSubprograms
-                .Include(s => s.BusinessProgram)
                 .Include(s => s.AccountAssignments)
                 .ThenInclude(a => a.Account)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -59,7 +56,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             if (await TryUpdateModelAsync<BusinessSubprogram>(
                 businessSubprogramToUpdate,
                 "BusinessSubprogram",
-                s => s.BusinessProgramId,
                 s => s.Code,
                 s => s.Name))
             {
@@ -70,7 +66,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                     $"subprogram-{businessSubprogramToUpdate.Id}");
             }
 
-            PopulateDepartmentsDropDownList(_context, businessSubprogramToUpdate.BusinessProgramId);
             UpdateSubprogramAccounts(selectedAccounts, businessSubprogramToUpdate);
             PopulateAccountAssignmentData(_context, businessSubprogramToUpdate);
             return Page();

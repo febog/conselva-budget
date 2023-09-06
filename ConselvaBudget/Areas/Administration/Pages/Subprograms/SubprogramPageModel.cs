@@ -8,24 +8,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
 {
     public class SubprogramPageModel : PageModel
     {
-        public SelectList ProgramNameSL { get; set; }
         public List<AccountAssignmentData> AccountAssignmentDataList;
-
-        public void PopulateDepartmentsDropDownList(ConselvaBudgetContext context, object selectedProgram = null)
-        {
-            var programsQuery = context.BusinessPrograms
-                .OrderBy(p => p.Code)
-                .Select(p => new
-                {
-                    Id = p.Id,
-                    Name = p.DisplayName
-                });
-
-            ProgramNameSL = new SelectList(programsQuery.AsNoTracking(),
-                "Id",
-                "Name",
-                selectedProgram);
-        }
 
         public void PopulateAccountAssignmentData(ConselvaBudgetContext context, BusinessSubprogram subprogram)
         {

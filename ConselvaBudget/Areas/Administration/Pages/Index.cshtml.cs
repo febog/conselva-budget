@@ -14,19 +14,18 @@ namespace ConselvaBudget.Areas.Administration.Pages
             _context = context;
         }
 
-        public IList<BusinessProgram> BusinessPrograms { get; set; } = default!;
+        public IList<BusinessSubprogram> BusinessSubprograms { get; set; } = default!;
         public IList<Account> Accounts { get; set; } = default!;
         public IList<Project> Projects { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.BusinessPrograms != null &&
+            if (_context.BusinessSubprograms != null &&
                 _context.Accounts != null &&
                 _context.Projects != null)
             {
-                BusinessPrograms = await _context.BusinessPrograms
-                    .Include(p => p.BusinessSubprograms)
-                    .ThenInclude(s => s.AccountAssignments)
+                BusinessSubprograms = await _context.BusinessSubprograms
+                    .Include(s => s.AccountAssignments)
                     .ThenInclude(a => a.Account)
                     .OrderBy(p => p.Code)
                     .ToListAsync();

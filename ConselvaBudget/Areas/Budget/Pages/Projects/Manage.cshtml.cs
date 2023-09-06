@@ -28,7 +28,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Projects
                 .Include(p => p.Results)
                 .ThenInclude(r => r.Activities)
                 .ThenInclude(a => a.ActivityBudgets)
-                .ThenInclude(b => b.AccountAssignment.BusinessSubprogram.BusinessProgram)
+                .ThenInclude(b => b.AccountAssignment.BusinessSubprogram)
                 .Include(p => p.Results)
                 .ThenInclude(r => r.Activities)
                 .ThenInclude(a => a.ActivityBudgets)

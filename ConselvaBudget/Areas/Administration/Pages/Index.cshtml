@@ -69,22 +69,22 @@
 
 <p>First level in the program/subprogram hierarchy.</p>
 
-<p><a class="btn btn-primary" asp-page="Programs/Create">Create program</a></p>
+<p><a class="btn btn-primary" asp-page="Subprograms/Create">Create program</a></p>
 
 <table class="table table-sm table-bordered table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BusinessPrograms[0].Code)
+                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Code)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BusinessPrograms[0].Name)
+                @Html.DisplayNameFor(model => model.BusinessSubprograms[0].Name)
             </th>
             <th style="width: 1px; white-space:nowrap;"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.BusinessPrograms)
+        @foreach (var item in Model.BusinessSubprograms)
         {
             <tr>
                 <td class="align-middle">
@@ -95,8 +95,7 @@
                 </td>
                 <td class="align-middle">
                     <div class="d-flex gap-1 justify-content-center">
-                        <a class="btn btn-secondary btn-sm" asp-page="Programs/Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-danger btn-sm" asp-page="Programs/Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-danger btn-sm" asp-page="Subprograms/Delete" asp-route-id="@item.Id">Delete</a>
                     </div>
                 </td>
             </tr>
@@ -105,49 +104,37 @@
 </table>
 
 
-<h2 id="subprograms">Subprograms</h2>
+<h2 id="subprograms">Account assignment</h2>
 
 <p>Second level in the program/subprogram hierarchy. Every <b>Subprogram</b> is under a <b>Program</b>.</p>
 
-@foreach (var program in Model.BusinessPrograms)
+@foreach (var subprogram in Model.BusinessSubprograms.OrderBy(s => s.Code))
 {
-    <div class="card mb-2" id="program-@program.Id">
-        <h3 class="h5 card-header">
-            @Html.DisplayFor(modelItem => program.DisplayName)
-        </h3>
+    <div class="card mb-2" id="program-@subprogram.Id">
+        <div class="card-header d-flex align-items-center gap-2">
+            <h3 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => subprogram.DisplayName)</h3>
+            <div class="d-flex gap-1">
+                <a class="btn btn-secondary btn-sm" asp-page="Subprograms/Edit" asp-route-id="@subprogram.Id">Edit</a>
+            </div>
+        </div>
         <div class="card-body">
-            <p><a class="btn btn-primary" asp-page="Subprograms/Create" asp-route-programId="@program.Id">Create subprogram</a></p>
-            <ul class="list-group">
-                @foreach (var subprogram in program.BusinessSubprograms.OrderBy(s => s.Code))
-                {
-                    <li class="list-group-item" id="subprogram-@subprogram.Id">
-                        <div class="d-flex align-items-center gap-2 border-bottom pb-2 mb-2">
-                            <h4 class="h5 flex-grow-1 mb-0">@Html.DisplayFor(modelItem => subprogram.DisplayName)</h4>
-                            <div class="d-flex gap-1">
-                                <a class="btn btn-secondary btn-sm" asp-page="Subprograms/Edit" asp-route-id="@subprogram.Id">Edit</a>
-                                <a class="btn btn-danger btn-sm" asp-page="Subprograms/Delete" asp-route-id="@subprogram.Id">Delete</a>
-                            </div>
-                        </div>
-                        <h5 class="h6 text-body-secondary">Accounts</h5>
-                        @if (subprogram.AccountAssignments.Count > 0)
-                        {
-                            <ul class="list-group">
-                                @foreach (var assignment in subprogram.AccountAssignments.OrderBy(s => s.Account.Code))
-                                {
-                                    var fullAccountName = $"{program.Code} - {subprogram.Code} - {assignment.Account.DisplayName}";
-                                    <li class="list-group-item">@fullAccountName</li>
-                                }
-                            </ul>
-                        }
-                        else
-                        {
-                            <div class="alert alert-warning mb-0" role="alert">
-                                <span>This subprogram contains no assigned accounts.</span>
-                            </div>
-                        }
-                    </li>
-                }
-            </ul>
+            <h5 class="h6 text-body-secondary">Accounts</h5>
+            @if (subprogram.AccountAssignments.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var assignment in subprogram.AccountAssignments.OrderBy(s => s.Account.Code))
+                    {
+                        var fullAccountName = $"{subprogram.Code} - {assignment.Account.DisplayName}";
+                        <li class="list-group-item">@fullAccountName</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="alert alert-warning mb-0" role="alert">
+                    <span>This subprogram contains no assigned accounts.</span>
+                </div>
+            }
         </div>
     </div>
 }

@@ -8,11 +8,6 @@
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="col-12">
-    <label asp-for="BusinessSubprogram.BusinessProgramId" class="form-label"></label>
-    <select asp-for="BusinessSubprogram.BusinessProgramId" class="form-select" asp-items="@Model.ProgramNameSL"></select>
-    <span asp-validation-for="BusinessSubprogram.BusinessProgramId" class="text-danger"></span>
-</div>
-<div class="col-12">
     <label asp-for="BusinessSubprogram.Code" class="form-label"></label>
     <input asp-for="BusinessSubprogram.Code" class="form-control" />
     <span asp-validation-for="BusinessSubprogram.Code" class="text-danger"></span>
@@ -32,7 +27,7 @@
     <input class="btn btn-primary" type="submit" value="Create">
     <a class="btn btn-secondary"
        asp-page="/Index"
-       asp-fragment="program-@Request.Query["programId"]">Cancel</a>
+       asp-fragment="programs">Cancel</a>
 </div>
 
 @section FormInfoCardBody {

@@ -25,10 +25,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 return NotFound();
             }
 
-            BusinessSubprogram = await _context.BusinessSubprograms
-                .Include(c => c.BusinessProgram)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
+            BusinessSubprogram = await _context.BusinessSubprograms.FindAsync(id);
 
             if (BusinessSubprogram == null)
             {
@@ -43,9 +40,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             {
                 return NotFound();
             }
-            var businesssubprogram = await _context.BusinessSubprograms
-                .Include(s => s.BusinessProgram)
-                .FirstOrDefaultAsync(s => s.Id == id);
+            var businesssubprogram = await _context.BusinessSubprograms.FindAsync(id);
 
             if (businesssubprogram != null)
             {
@@ -56,7 +51,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
 
             return RedirectToPage("/Index",
                     null,
-                    $"program-{businesssubprogram.BusinessProgram.Id}");
+                    $"programs");
         }
     }
 }

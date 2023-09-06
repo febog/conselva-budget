@@ -6,9 +6,6 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Program")]
-        public int BusinessProgramId { get; set; }
-
         [Display(Name = "Code")]
         [StringLength(10)]
         [Required]
@@ -20,9 +17,6 @@ namespace ConselvaBudget.Models
         public string Name { get; set; }
 
         public string DisplayName => $"{Code} - {Name}";
-
-        [Display(Name = "Program")]
-        public BusinessProgram BusinessProgram { get; set; }
 
         [Display(Name = "Accounts")]
         public virtual ICollection<AccountAssignment> AccountAssignments { get; set; }

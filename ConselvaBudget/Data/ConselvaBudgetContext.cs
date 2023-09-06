@@ -13,8 +13,6 @@ namespace ConselvaBudget.Data
             : base(options)
         {
         }
-        public DbSet<BusinessProgram> BusinessPrograms { get; set; }
-
         public DbSet<BusinessSubprogram> BusinessSubprograms { get; set; }
 
         public DbSet<Account> Accounts { get; set; }

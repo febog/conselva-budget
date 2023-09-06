@@ -128,29 +128,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.ToTable("ActivityBudgets");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.BusinessProgram", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BusinessPrograms");
-                });
-
             modelBuilder.Entity("ConselvaBudget.Models.BusinessSubprogram", b =>
                 {
                     b.Property<int>("Id")
@@ -159,9 +136,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BusinessProgramId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -173,8 +147,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BusinessProgramId");
 
                     b.ToTable("BusinessSubprograms");
                 });
@@ -331,17 +303,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("Activity");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.BusinessSubprogram", b =>
-                {
-                    b.HasOne("ConselvaBudget.Models.BusinessProgram", "BusinessProgram")
-                        .WithMany("BusinessSubprograms")
-                        .HasForeignKey("BusinessProgramId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BusinessProgram");
-                });
-
             modelBuilder.Entity("ConselvaBudget.Models.Expense", b =>
                 {
                     b.HasOne("ConselvaBudget.Models.ActivityBudget", "ActivityBudget")
@@ -382,11 +343,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
             modelBuilder.Entity("ConselvaBudget.Models.ActivityBudget", b =>
                 {
                     b.Navigation("Expenses");
-                });
-
-            modelBuilder.Entity("ConselvaBudget.Models.BusinessProgram", b =>
-                {
-                    b.Navigation("BusinessSubprograms");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.BusinessSubprogram", b =>

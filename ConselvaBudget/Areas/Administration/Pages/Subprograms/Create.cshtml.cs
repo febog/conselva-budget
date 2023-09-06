@@ -13,9 +13,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             _context = context;
         }
 
-        public IActionResult OnGet(int? programId)
+        public IActionResult OnGet()
         {
-            PopulateDepartmentsDropDownList(_context, programId);
             return Page();
         }
 
@@ -29,7 +28,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             if (await TryUpdateModelAsync<BusinessSubprogram>(
                 emptyBusinessSubprogram,
                 "BusinessSubprogram",
-                s => s.BusinessProgramId,
                 s => s.Code,
                 s => s.Name))
             {
@@ -37,10 +35,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Index",
                     null,
-                    $"program-{emptyBusinessSubprogram.BusinessProgramId}");
+                    $"programs");
             }
 
-            PopulateDepartmentsDropDownList(_context, emptyBusinessSubprogram.BusinessProgramId);
             return Page();
         }
     }

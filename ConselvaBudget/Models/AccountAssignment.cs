@@ -10,7 +10,7 @@ namespace ConselvaBudget.Models
 
         public int AccountId { get; set; }
 
-        public string DisplayName => $"{BusinessSubprogram.BusinessProgram.Code} - {BusinessSubprogram.Code} - {Account.DisplayName}";
+        public string DisplayName => $"{BusinessSubprogram.Code} - {Account.DisplayName}";
 
         [Display(Name = "Subprogram")]
         public BusinessSubprogram BusinessSubprogram { get; set; }
