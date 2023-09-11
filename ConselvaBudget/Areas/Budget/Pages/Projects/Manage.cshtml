@@ -28,15 +28,19 @@
         </h2>
         <p class="@(Model.Project.ProjectRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(model => model.Project.ProjectRemainder)</p>
     </div>
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.StartDate)
+        </h2>
+        <p>@Html.DisplayFor(model => model.Project.StartDate)</p>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.EndDate)
+        </h2>
+        <p>@Html.DisplayFor(model => model.Project.EndDate)</p>
+    </div>
 </div>
-
-<p>
-    @Html.DisplayNameFor(model => model.Project.StartDate): @Html.DisplayFor(model => model.Project.StartDate)
-</p>
-
-<p>
-    @Html.DisplayNameFor(model => model.Project.EndDate): @Html.DisplayFor(model => model.Project.EndDate)
-</p>
 
 <p>
     <a class="btn btn-primary" asp-page="/Results/Create" asp-route-projectId="@Model.Project.Id">Create Result</a>
