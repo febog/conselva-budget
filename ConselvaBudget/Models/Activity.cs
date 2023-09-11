@@ -21,7 +21,7 @@ namespace ConselvaBudget.Models
         [Display(Name = "Budget")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal BudgetSum => ActivityBudgets.Sum(e => e.Amount);
+        public decimal ActivityBudget => ActivityBudgets.Sum(e => e.Amount);
 
         [Display(Name = "Result")]
         public Result Result { get; set; }
