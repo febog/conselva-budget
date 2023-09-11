@@ -31,6 +31,8 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Comments { get; set; }
 
+        public string DisplayName => $"{Segment} - {Name} ({ShortName})";
+
         public virtual ICollection<Result> Results { get; set; }
     }
 }
