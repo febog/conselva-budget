@@ -22,9 +22,6 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                 return NotFound();
             }
 
-            ActivityBudget = new ActivityBudget();
-            ActivityBudget.ActivityId = activityId.Value;
-
             PopulateAccountDropDownList(_context, null, activityId);
             return Page();
         }
@@ -32,19 +29,19 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
         [BindProperty]
         public ActivityBudget ActivityBudget { get; set; }
 
-        public async Task<IActionResult> OnPostAsync(int? projectId)
+        public async Task<IActionResult> OnPostAsync(int? projectId, int? activityId)
         {
-            if (projectId == null)
+            if (projectId == null || activityId == null)
             {
                 return NotFound();
             }
 
             var emptyActivityBudget = new ActivityBudget();
+            emptyActivityBudget.ActivityId = activityId.Value;
 
             if (await TryUpdateModelAsync<ActivityBudget>(
                 emptyActivityBudget,
                 "ActivityBudget",
-                b => b.ActivityId,
                 b => b.AccountAssignmentId,
                 b => b.Amount,
                 b => b.Comments))

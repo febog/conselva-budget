@@ -7,7 +7,6 @@
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<input type="hidden" asp-for="ActivityBudget.ActivityId" />
 <div class="col-12">
     <label asp-for="ActivityBudget.AccountAssignmentId" class="form-label"></label>
     <select asp-for="ActivityBudget.AccountAssignmentId" class="form-select" asp-items="@Model.AccountsSL" aria-describedby="accounts-select-help"></select>
@@ -34,7 +33,7 @@
     <a class="btn btn-secondary"
        asp-page="/Projects/Manage"
        asp-route-id="@Request.Query["projectId"]"
-       asp-fragment="activity-@Model.ActivityBudget.ActivityId">
+       asp-fragment="activity-@Request.Query["activityId"]">
         Cancel
     </a>
 </div>
