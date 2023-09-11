@@ -34,7 +34,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
             {
                 return NotFound();
             }
-            PopulateAccountDropDownList(_context, ActivityBudget.AccountAssignmentId);
+            PopulateAccountDropDownList(_context, ActivityBudget.AccountAssignmentId, ActivityBudget.ActivityId);
             return Page();
         }
 
@@ -64,7 +64,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                     $"activity-{activityBudgetToUpdate.Activity.Id}");
             }
 
-            PopulateAccountDropDownList(_context, activityBudgetToUpdate.AccountAssignmentId);
+            PopulateAccountDropDownList(_context, activityBudgetToUpdate.AccountAssignmentId, activityBudgetToUpdate.ActivityId);
             return Page();
         }
     }

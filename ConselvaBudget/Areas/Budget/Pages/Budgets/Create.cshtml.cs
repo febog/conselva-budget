@@ -25,7 +25,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
             ActivityBudget = new ActivityBudget();
             ActivityBudget.ActivityId = activityId.Value;
 
-            PopulateAccountDropDownList(_context);
+            PopulateAccountDropDownList(_context, null, activityId);
             return Page();
         }
 
@@ -57,7 +57,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                     $"activity-{emptyActivityBudget.ActivityId}");
             }
 
-            PopulateAccountDropDownList(_context, emptyActivityBudget.AccountAssignmentId);
+            PopulateAccountDropDownList(_context, emptyActivityBudget.AccountAssignmentId, emptyActivityBudget.ActivityId);
             return Page();
         }
     }
