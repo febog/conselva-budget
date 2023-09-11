@@ -62,9 +62,9 @@
                                 <p>
                                     <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Create budget</a>
                                 </p>
+                                <h4 class="h6 text-body-secondary">Budget</h4>
                                 @if (activity.ActivityBudgets.Count > 0)
                                 {
-                                    <h4 class="h6 text-body-secondary">Budget</h4>
                                     <div class="table-responsive-md">
                                         <table class="table table-sm table-bordered">
                                             <thead>
