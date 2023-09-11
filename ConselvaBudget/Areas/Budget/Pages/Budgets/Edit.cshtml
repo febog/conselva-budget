@@ -10,7 +10,10 @@
 <input type="hidden" asp-for="ActivityBudget.Id" />
 <div class="col-12">
     <label asp-for="ActivityBudget.AccountAssignmentId" class="form-label"></label>
-    <select asp-for="ActivityBudget.AccountAssignmentId" class="form-select" asp-items="@Model.AccountsSL"></select>
+    <select asp-for="ActivityBudget.AccountAssignmentId" class="form-select" asp-items="@Model.AccountsSL" aria-describedby="accounts-select-help"></select>
+    <div id="accounts-select-help" class="form-text">
+        Select the account you are creating a budget for. Only accounts that don't have a budget are shown. If the account you are looking for is not on the list edit the budget for the account instead.
+    </div>
     <span asp-validation-for="ActivityBudget.AccountAssignmentId" class="text-danger"></span>
 </div>
 <div class="col-12 col-sm-4">
