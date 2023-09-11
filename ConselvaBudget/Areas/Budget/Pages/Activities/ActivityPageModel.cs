@@ -14,18 +14,21 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
             object selectedResult = null)
         {
             var resultsQuery = context.Results
+                .Include(r => r.Project)
                 .Where(r => r.ProjectId == projectId)
-                .OrderBy(p => p.Name)
-                .Select(p => new
+                .OrderBy(r => r.Name)
+                .Select(r => new
                 {
-                    p.Id,
-                    p.Name
+                    r.Id,
+                    r.Name,
+                    Group = r.Project.Name
                 });
 
             ResultNameSL = new SelectList(resultsQuery.AsNoTracking(),
                 "Id",
                 "Name",
-                selectedResult);
+                selectedResult,
+                "Group");
         }
     }
 }
