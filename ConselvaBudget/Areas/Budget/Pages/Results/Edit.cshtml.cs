@@ -24,10 +24,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
                 return NotFound();
             }
 
-            Result = await _context.Results
-                .Include(r => r.Project)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(r => r.Id == id);
+            Result = await _context.Results.FindAsync(id);
 
             if (Result == null)
             {
