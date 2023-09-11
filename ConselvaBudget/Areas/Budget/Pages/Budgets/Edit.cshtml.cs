@@ -26,9 +26,9 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
             }
 
             ActivityBudget = await _context.ActivityBudgets
-                .Include(a => a.AccountAssignment.Account)
+                .Include(b => b.AccountAssignment.Account)
                 .Include(b => b.Activity.Result)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(b => b.Id == id);
 
             if (ActivityBudget == null)
             {

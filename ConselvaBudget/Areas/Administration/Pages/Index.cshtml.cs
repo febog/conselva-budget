@@ -25,12 +25,12 @@ namespace ConselvaBudget.Areas.Administration.Pages
                 _context.Projects != null)
             {
                 Organizations = await _context.Organizations
-                    .Include(s => s.AccountAssignments)
+                    .Include(o => o.AccountAssignments)
                     .ThenInclude(a => a.Account)
-                    .OrderBy(p => p.Code)
+                    .OrderBy(o => o.Code)
                     .ToListAsync();
                 Accounts = await _context.Accounts
-                    .OrderBy(p => p.Code)
+                    .OrderBy(a => a.Code)
                     .ToListAsync();
                 Projects = await _context.Projects
                     .OrderBy(p => p.Segment)

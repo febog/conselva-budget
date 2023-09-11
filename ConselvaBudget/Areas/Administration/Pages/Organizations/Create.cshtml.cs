@@ -28,8 +28,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
             if (await TryUpdateModelAsync(
                 emptyOrganization,
                 "Organization",
-                s => s.Code,
-                s => s.Name))
+                o => o.Code,
+                o => o.Name))
             {
                 _context.Organizations.Add(emptyOrganization);
                 await _context.SaveChangesAsync();

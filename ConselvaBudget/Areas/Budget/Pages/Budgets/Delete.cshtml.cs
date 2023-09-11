@@ -30,7 +30,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                 .Include(b => b.Activity)
                 .ThenInclude(a => a.Result)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(b => b.Id == id);
 
             if (ActivityBudget == null)
             {
@@ -49,7 +49,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                 .Include(b => b.Activity)
                 .ThenInclude(a => a.Result)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(b => b.Id == id);
 
             if (activitybudget != null)
             {

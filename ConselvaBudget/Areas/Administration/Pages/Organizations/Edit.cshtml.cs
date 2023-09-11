@@ -25,9 +25,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
             }
 
             Organization = await _context.Organizations
-                .Include(s => s.AccountAssignments)
+                .Include(o => o.AccountAssignments)
                 .ThenInclude(a => a.Account)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(o => o.Id == id);
             if (Organization == null)
             {
                 return NotFound();
@@ -56,8 +56,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
             if (await TryUpdateModelAsync(
                 organizationToUpdate,
                 "Organization",
-                s => s.Code,
-                s => s.Name))
+                o => o.Code,
+                o => o.Name))
             {
                 UpdateOrganizationAccounts(selectedAccounts, organizationToUpdate);
                 await _context.SaveChangesAsync();

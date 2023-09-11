@@ -27,7 +27,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
             Activity = await _context.Activities
                 .Include(a => a.Result)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(a => a.Id == id);
             if (Activity == null)
             {
                 return NotFound();

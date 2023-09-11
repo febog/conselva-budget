@@ -29,8 +29,8 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
             if (await TryUpdateModelAsync<Result>(
                 emptyResult,
                 "Result",
-                s => s.ProjectId,
-                s => s.Name))
+                r => r.ProjectId,
+                r => r.Name))
             {
                 _context.Results.Add(emptyResult);
                 await _context.SaveChangesAsync();
