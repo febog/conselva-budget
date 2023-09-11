@@ -27,7 +27,7 @@
         <div class="card-header d-flex align-items-center gap-2">
             <h2 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => result.Name)</h2>
             <div class="d-flex gap-1">
-                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#result-body-@result.Id" aria-expanded="false" aria-controls="result-body-@result.Id">
+                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#result-body-@result.Id" aria-expanded="true" aria-controls="result-body-@result.Id">
                     Collapse
                 </button>
                 <a class="btn btn-secondary btn-sm" asp-page="/Results/Edit" asp-route-id="@result.Id">Edit</a>
@@ -46,7 +46,7 @@
                         <div class="d-flex w-100 align-items-center gap-2">
                             <h4 class="h5 mb-2 flex-grow-1">@Html.DisplayFor(model => activity.Name)</h4>
                             <div class="d-flex gap-1">
-                                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity-body-@activity.Id" aria-expanded="false" aria-controls="activity-body-@activity.Id">
+                                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity-body-@activity.Id" aria-expanded="true" aria-controls="activity-body-@activity.Id">
                                     Collapse
                                 </button>
                                 <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-id="@activity.Id">Edit</a>
