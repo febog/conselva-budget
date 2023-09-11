@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConselvaBudget.Models
 {
@@ -10,6 +11,7 @@ namespace ConselvaBudget.Models
 
         public int AccountId { get; set; }
 
+        [ValidateNever]
         public string DisplayName => $"{Organization.Code} - {Account.DisplayName}";
 
         [Display(Name = "Subprogram")]
