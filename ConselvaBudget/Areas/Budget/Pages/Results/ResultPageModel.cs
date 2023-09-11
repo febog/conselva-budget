@@ -12,7 +12,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
         public void PopulateProjectDropDownList(ConselvaBudgetContext context, object selectedProject = null)
         {
             var projectsQuery = context.Projects
-                .OrderBy(p => p.Segment)
+                .OrderBy(p => p.Name)
                 .Select(p => new
                 {
                     p.Id,
