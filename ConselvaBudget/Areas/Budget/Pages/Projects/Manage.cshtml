@@ -58,7 +58,7 @@
                                 @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
                             </p>
                             <p>
-                                <a class="btn btn-secondary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Add budget</a>
+                                <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Create budget</a>
                             </p>
                             @if (activity.ActivityBudgets.Count > 0)
                             {
