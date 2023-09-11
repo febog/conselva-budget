@@ -16,18 +16,18 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
         }
 
         [BindProperty]
-        public Organization BusinessSubprogram { get; set; }
+        public Organization Organization { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.BusinessSubprograms == null)
+            if (id == null || _context.Organizations == null)
             {
                 return NotFound();
             }
 
-            BusinessSubprogram = await _context.BusinessSubprograms.FindAsync(id);
+            Organization = await _context.Organizations.FindAsync(id);
 
-            if (BusinessSubprogram == null)
+            if (Organization == null)
             {
                 return NotFound();
             }
@@ -36,16 +36,16 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.BusinessSubprograms == null)
+            if (id == null || _context.Organizations == null)
             {
                 return NotFound();
             }
-            var businesssubprogram = await _context.BusinessSubprograms.FindAsync(id);
+            var organization = await _context.Organizations.FindAsync(id);
 
-            if (businesssubprogram != null)
+            if (organization != null)
             {
-                BusinessSubprogram = businesssubprogram;
-                _context.BusinessSubprograms.Remove(BusinessSubprogram);
+                Organization = organization;
+                _context.Organizations.Remove(Organization);
                 await _context.SaveChangesAsync();
             }
 

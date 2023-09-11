@@ -20,11 +20,11 @@ namespace ConselvaBudget.Areas.Administration.Pages
 
         public async Task OnGetAsync()
         {
-            if (_context.BusinessSubprograms != null &&
+            if (_context.Organizations != null &&
                 _context.Accounts != null &&
                 _context.Projects != null)
             {
-                BusinessSubprograms = await _context.BusinessSubprograms
+                BusinessSubprograms = await _context.Organizations
                     .Include(s => s.AccountAssignments)
                     .ThenInclude(a => a.Account)
                     .OrderBy(p => p.Code)

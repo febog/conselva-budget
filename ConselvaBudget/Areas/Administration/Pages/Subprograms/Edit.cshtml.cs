@@ -15,24 +15,24 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
         }
 
         [BindProperty]
-        public Organization BusinessSubprogram { get; set; } = default!;
+        public Organization Organization { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.BusinessSubprograms == null)
+            if (id == null || _context.Organizations == null)
             {
                 return NotFound();
             }
 
-            BusinessSubprogram = await _context.BusinessSubprograms
+            Organization = await _context.Organizations
                 .Include(s => s.AccountAssignments)
                 .ThenInclude(a => a.Account)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (BusinessSubprogram == null)
+            if (Organization == null)
             {
                 return NotFound();
             }
-            PopulateAccountAssignmentData(_context, BusinessSubprogram);
+            PopulateAccountAssignmentData(_context, Organization);
             return Page();
         }
 
@@ -43,70 +43,70 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 return NotFound();
             }
 
-            var businessSubprogramToUpdate = await _context.BusinessSubprograms
+            var organizationToUpdate = await _context.Organizations
                 .Include(s => s.AccountAssignments)
                 .ThenInclude(a => a.Account)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (businessSubprogramToUpdate == null)
+            if (organizationToUpdate == null)
             {
                 return NotFound();
             }
 
             if (await TryUpdateModelAsync<Organization>(
-                businessSubprogramToUpdate,
+                organizationToUpdate,
                 "BusinessSubprogram",
                 s => s.Code,
                 s => s.Name))
             {
-                UpdateSubprogramAccounts(selectedAccounts, businessSubprogramToUpdate);
+                UpdateSubprogramAccounts(selectedAccounts, organizationToUpdate);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Index",
                     null,
-                    $"subprogram-{businessSubprogramToUpdate.Id}");
+                    $"subprogram-{organizationToUpdate.Id}");
             }
 
-            UpdateSubprogramAccounts(selectedAccounts, businessSubprogramToUpdate);
-            PopulateAccountAssignmentData(_context, businessSubprogramToUpdate);
+            UpdateSubprogramAccounts(selectedAccounts, organizationToUpdate);
+            PopulateAccountAssignmentData(_context, organizationToUpdate);
             return Page();
         }
 
-        public void UpdateSubprogramAccounts(string[] selectedAccounts, Organization businessSubprogramToUpdate)
+        public void UpdateSubprogramAccounts(string[] selectedAccounts, Organization organizationToUpdate)
         {
             if (selectedAccounts == null)
             {
-                var subprogramAssignments = _context.AccountAssignments
-                    .Where(a => a.BusinessSubprogramId == businessSubprogramToUpdate.Id);
-                foreach (var subprogramAssignment in subprogramAssignments)
+                var organizationAssignments = _context.AccountAssignments
+                    .Where(a => a.OrganizationId == organizationToUpdate.Id);
+                foreach (var organizationAssignment in organizationAssignments)
                 {
-                    _context.AccountAssignments.Remove(subprogramAssignment);
+                    _context.AccountAssignments.Remove(organizationAssignment);
                 }
                 return;
             }
 
             var selectedAccountsHS = new HashSet<string>(selectedAccounts);
-            var subprogramAccounts = new HashSet<int>(businessSubprogramToUpdate.AccountAssignments
+            var organizationAccounts = new HashSet<int>(organizationToUpdate.AccountAssignments
                 .Select(a => a.AccountId));
             foreach (var account in _context.Accounts)
             {
                 if (selectedAccountsHS.Contains(account.Id.ToString()))
                 {
-                    if (!subprogramAccounts.Contains(account.Id))
+                    if (!organizationAccounts.Contains(account.Id))
                     {
                         var newAssignment = new AccountAssignment();
                         newAssignment.AccountId = account.Id;
-                        newAssignment.BusinessSubprogramId = businessSubprogramToUpdate.Id;
-                        businessSubprogramToUpdate.AccountAssignments.Add(newAssignment);
+                        newAssignment.OrganizationId = organizationToUpdate.Id;
+                        organizationToUpdate.AccountAssignments.Add(newAssignment);
                     }
                 }
                 else
                 {
-                    if (subprogramAccounts.Contains(account.Id))
+                    if (organizationAccounts.Contains(account.Id))
                     {
-                        var accountToRemove = businessSubprogramToUpdate.AccountAssignments
-                            .Single(a => a.BusinessSubprogramId == businessSubprogramToUpdate.Id
+                        var accountToRemove = organizationToUpdate.AccountAssignments
+                            .Single(a => a.OrganizationId == organizationToUpdate.Id
                             && a.AccountId == account.Id);
-                        businessSubprogramToUpdate.AccountAssignments.Remove(accountToRemove);
+                        organizationToUpdate.AccountAssignments.Remove(accountToRemove);
                     }
                 }
             }

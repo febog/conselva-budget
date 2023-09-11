@@ -7,22 +7,22 @@
 }
 
 <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.BusinessSubprogram.Code)
+    @Html.DisplayNameFor(model => model.Organization.Code)
 </dt>
 <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.BusinessSubprogram.Code)
+    @Html.DisplayFor(model => model.Organization.Code)
 </dd>
 <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.BusinessSubprogram.Name)
+    @Html.DisplayNameFor(model => model.Organization.Name)
 </dt>
 <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.BusinessSubprogram.Name)
+    @Html.DisplayFor(model => model.Organization.Name)
 </dd>
 
 @section DeleteFormContents {
-    <input type="hidden" asp-for="BusinessSubprogram.Id" />
+    <input type="hidden" asp-for="Organization.Id" />
     <input class="btn btn-danger" type="submit" value="Delete">
     <a class="btn btn-secondary"
        asp-page="/Index"
-       asp-fragment="subprogram-@Model.BusinessSubprogram.Id">Cancel</a>
+       asp-fragment="subprogram-@Model.Organization.Id">Cancel</a>
 }

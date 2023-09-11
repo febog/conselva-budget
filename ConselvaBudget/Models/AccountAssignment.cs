@@ -6,14 +6,14 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        public int BusinessSubprogramId { get; set; }
+        public int OrganizationId { get; set; }
 
         public int AccountId { get; set; }
 
-        public string DisplayName => $"{BusinessSubprogram.Code} - {Account.DisplayName}";
+        public string DisplayName => $"{Organization.Code} - {Account.DisplayName}";
 
         [Display(Name = "Subprogram")]
-        public Organization BusinessSubprogram { get; set; }
+        public Organization Organization { get; set; }
 
         [Display(Name = "Account")]
         public Account Account { get; set; }

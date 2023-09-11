@@ -7,19 +7,19 @@
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<input type="hidden" asp-for="BusinessSubprogram.Id" />
+<input type="hidden" asp-for="Organization.Id" />
 <div class="col-12">
-    <label asp-for="BusinessSubprogram.Code" class="form-label"></label>
-    <input asp-for="BusinessSubprogram.Code" class="form-control" />
-    <span asp-validation-for="BusinessSubprogram.Code" class="text-danger"></span>
+    <label asp-for="Organization.Code" class="form-label"></label>
+    <input asp-for="Organization.Code" class="form-control" />
+    <span asp-validation-for="Organization.Code" class="text-danger"></span>
 </div>
 <div class="col-12">
-    <label asp-for="BusinessSubprogram.Name" class="form-label"></label>
-    <input asp-for="BusinessSubprogram.Name" class="form-control" />
-    <span asp-validation-for="BusinessSubprogram.Name" class="text-danger"></span>
+    <label asp-for="Organization.Name" class="form-label"></label>
+    <input asp-for="Organization.Name" class="form-control" />
+    <span asp-validation-for="Organization.Name" class="text-danger"></span>
 </div>
 <div cite="col-12">
-    <label asp-for="BusinessSubprogram.AccountAssignments" class="form-label"></label>
+    <label asp-for="Organization.AccountAssignments" class="form-label"></label>
     <ul class="list-group">
         @foreach (var account in Model.AccountAssignmentDataList)
         {
@@ -39,7 +39,7 @@
     <input class="btn btn-primary" type="submit" value="Save">
     <a class="btn btn-secondary"
        asp-page="/Index"
-       asp-fragment="subprogram-@Model.BusinessSubprogram.Id">Cancel</a>
+       asp-fragment="subprogram-@Model.Organization.Id">Cancel</a>
 </div>
 
 @section FormInfoCardBody {
