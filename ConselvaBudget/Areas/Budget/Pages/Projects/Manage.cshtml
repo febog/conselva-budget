@@ -174,9 +174,23 @@
                                     </table>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-4">
-                                        <h4 class="h6 text-body-secondary">Total budget for activity</h4>
-                                        @Html.DisplayFor(modelItem => activity.ActivityBudget)
+                                    <div class="col-md-6 col-lg-4">
+                                        <h4 class="h6 text-body-secondary">
+                                            @Html.DisplayNameFor(model => activity.ActivityBudget)
+                                        </h4>
+                                        <p>@Html.DisplayFor(modelItem => activity.ActivityBudget)</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <h4 class="h6 text-body-secondary">
+                                            @Html.DisplayNameFor(model => activity.ActivityExpenses)
+                                        </h4>
+                                        <p>@Html.DisplayFor(modelItem => activity.ActivityExpenses)</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <h4 class="h6 text-body-secondary">
+                                            @Html.DisplayNameFor(model => activity.ActivityRemainder)
+                                        </h4>
+                                        <p>@Html.DisplayFor(modelItem => activity.ActivityRemainder)</p>
                                     </div>
                                 </div>
                             }
