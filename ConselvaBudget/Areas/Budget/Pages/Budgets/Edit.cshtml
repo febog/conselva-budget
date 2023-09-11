@@ -13,7 +13,7 @@
     <select asp-for="ActivityBudget.AccountAssignmentId" class="form-select" asp-items="@Model.AccountsSL"></select>
     <span asp-validation-for="ActivityBudget.AccountAssignmentId" class="text-danger"></span>
 </div>
-<div class="col-3">
+<div class="col-12 col-sm-4">
     <label asp-for="ActivityBudget.Amount" class="form-label"></label>
     <div class="input-group">
         <span class="input-group-text">$</span>
@@ -21,7 +21,7 @@
     </div>
     <span asp-validation-for="ActivityBudget.Amount" class="text-danger"></span>
 </div>
-<div class="col-9">
+<div class="col-12 col-sm-8">
     <label asp-for="ActivityBudget.Comments" class="form-label"></label>
     <input asp-for="ActivityBudget.Comments" class="form-control" />
     <span asp-validation-for="ActivityBudget.Comments" class="text-danger"></span>
