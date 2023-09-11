@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20230911005557_InitialCreate")]
+    [Migration("20230911212955_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -209,6 +209,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Property<string>("Comments")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<decimal>("Deposits")
+                        .HasColumnType("money");
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");

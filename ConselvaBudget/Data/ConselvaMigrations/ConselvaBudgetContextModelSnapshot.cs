@@ -207,6 +207,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<decimal>("Deposits")
+                        .HasColumnType("money");
+
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 

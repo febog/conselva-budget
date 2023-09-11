@@ -33,6 +33,17 @@
     <span asp-validation-for="Project.EndDate" class="text-danger"></span>
 </div>
 <div class="col-12">
+    <label asp-for="Project.Deposits" class="form-label"></label>
+    <div class="input-group">
+        <span class="input-group-text">$</span>
+        <input asp-for="Project.Deposits" class="form-control" aria-describedby="deposits-input-help" />
+    </div>
+    <div id="deposits-input-help" class="form-text">
+        Total amount already deposited for this project.
+    </div>
+    <span asp-validation-for="Project.Deposits" class="text-danger"></span>
+</div>
+<div class="col-12">
     <label asp-for="Project.Comments" class="form-label"></label>
     <input asp-for="Project.Comments" class="form-control" />
     <span asp-validation-for="Project.Comments" class="text-danger"></span>

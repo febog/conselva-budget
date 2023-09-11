@@ -48,9 +48,10 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 "Project",
                 p => p.Name,
                 p => p.ShortName,
+                p => p.Segment,
+                p => p.Deposits,
                 p => p.StartDate,
                 p => p.EndDate,
-                p => p.Segment,
                 p => p.Comments))
             {
                 await _context.SaveChangesAsync();

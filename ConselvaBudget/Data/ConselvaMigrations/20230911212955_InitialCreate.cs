@@ -48,9 +48,10 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     ShortName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Segment = table.Column<int>(type: "int", nullable: false),
+                    Deposits = table.Column<decimal>(type: "money", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Segment = table.Column<int>(type: "int", nullable: false),
                     Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConselvaBudget.Models
 {
@@ -17,6 +18,14 @@ namespace ConselvaBudget.Models
         [Required]
         public string ShortName { get; set; }
 
+        [Display(Name = "Segment")]
+        public int Segment { get; set; }
+
+        [Display(Name = "Total deposited")]
+        [Column(TypeName = "money")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal Deposits { get; set; }
+
         [Display(Name = "Start date")]
         [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
@@ -24,9 +33,6 @@ namespace ConselvaBudget.Models
         [Display(Name = "End date")]
         [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
-
-        [Display(Name = "Segment")]
-        public int Segment { get; set; }
 
         [Display(Name = "Comments")]
         [StringLength(255)]
@@ -48,6 +54,11 @@ namespace ConselvaBudget.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
         public decimal ProjectRemainder => Results.Sum(e => e.ResultRemainder);
+
+        [Display(Name = "Remaining in bank")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [ValidateNever]
+        public decimal RemainingInBank => Deposits - ProjectExpenses;
 
         public virtual ICollection<Result> Results { get; set; }
     }

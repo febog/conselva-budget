@@ -22,9 +22,21 @@
     </div>
     <div class="col-md-6 col-lg-4">
         <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.Deposits)
+        </h2>
+        <p>@Html.DisplayFor(model => model.Project.Deposits)</p>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
             @Html.DisplayNameFor(model => model.Project.ProjectExpenses)
         </h2>
         <p>@Html.DisplayFor(model => model.Project.ProjectExpenses)</p>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.RemainingInBank)
+        </h2>
+        <p>@Html.DisplayFor(model => model.Project.RemainingInBank)</p>
     </div>
     <div class="col-md-6 col-lg-4">
         <h2 class="h6 text-body-secondary">
