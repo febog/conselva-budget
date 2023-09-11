@@ -197,7 +197,7 @@
                                         <h4 class="h6 text-body-secondary">
                                             @Html.DisplayNameFor(model => activity.ActivityRemainder)
                                         </h4>
-                                        <p>@Html.DisplayFor(modelItem => activity.ActivityRemainder)</p>
+                                        <p class="@(activity.ActivityRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => activity.ActivityRemainder)</p>
                                     </div>
                                 </div>
                             }
