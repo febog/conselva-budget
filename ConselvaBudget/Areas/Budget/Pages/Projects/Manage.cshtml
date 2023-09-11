@@ -39,178 +39,187 @@
                 <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id" asp-route-resultId="@result.Id">Create Activity</a>
             </p>
             <h3 class="h6 text-body-secondary">Activities</h3>
-            <ul class="list-group">
-                @foreach (var activity in result.Activities)
-                {
-                    <li class="list-group-item" id="activity-@activity.Id">
-                        <div class="d-flex w-100 align-items-center gap-2">
-                            <h4 class="h5 mb-2 flex-grow-1">@Html.DisplayFor(model => activity.Name)</h4>
-                            <div class="d-flex gap-1">
-                                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity-body-@activity.Id" aria-expanded="true" aria-controls="activity-body-@activity.Id">
-                                    Collapse
-                                </button>
-                                <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-id="@activity.Id">Edit</a>
-                                <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
+            @if (result.Activities.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var activity in result.Activities)
+                    {
+                        <li class="list-group-item" id="activity-@activity.Id">
+                            <div class="d-flex w-100 align-items-center gap-2">
+                                <h4 class="h5 mb-2 flex-grow-1">@Html.DisplayFor(model => activity.Name)</h4>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity-body-@activity.Id" aria-expanded="true" aria-controls="activity-body-@activity.Id">
+                                        Collapse
+                                    </button>
+                                    <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-id="@activity.Id">Edit</a>
+                                    <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="collapse show" id="activity-body-@activity.Id">
-                            <p>
-                                @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
-                            </p>
-                            <p>
-                                <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Create budget</a>
-                            </p>
-                            @if (activity.ActivityBudgets.Count > 0)
-                            {
-                                <h4 class="h6 text-body-secondary">Budget</h4>
-                                <div class="table-responsive-md">
-                                    <table class="table table-sm table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].AccountAssignment.Account)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Amount)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].ActivityBudgetExpenses)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].ActivityBudgetRemainder)
-                                                </th>
-                                                <th style="width: 1px; white-space:nowrap;"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var budget in activity.ActivityBudgets.OrderBy(b => b.AccountAssignment.DisplayName))
-                                            {
+                            <div class="collapse show" id="activity-body-@activity.Id">
+                                <p>
+                                    @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Create budget</a>
+                                </p>
+                                @if (activity.ActivityBudgets.Count > 0)
+                                {
+                                    <h4 class="h6 text-body-secondary">Budget</h4>
+                                    <div class="table-responsive-md">
+                                        <table class="table table-sm table-bordered">
+                                            <thead>
                                                 <tr>
-                                                    <td class="align-middle">
-                                                        @Html.DisplayFor(modelItem => budget.AccountAssignment.DisplayName)
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        @Html.DisplayFor(modelItem => budget.Amount)
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        @Html.DisplayFor(modelItem => budget.ActivityBudgetExpenses)
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        <span class="@(budget.ActivityBudgetRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => budget.ActivityBudgetRemainder)</span>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        <div class="d-flex gap-1 justify-content-center">
-                                                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse"
-                                                                    data-bs-target="#budget-expenses-@budget.Id" aria-expanded="false"
-                                                                    aria-controls="budget-expenses-@budget.Id"
-                                                                    title="Expand details such as comments and Expenses made to this budget.">
-                                                                <i class="bi bi-chevron-expand"></i>
-                                                            </button>
-                                                            <a class="btn btn-secondary btn-sm" asp-page="/Budgets/Edit" asp-route-id="@budget.Id" title="Edit" aria-label="Edit">
-                                                                <i class="bi bi-pencil-square"></i>
-                                                            </a>
-                                                            <a class="btn btn-danger btn-sm" asp-page="/Budgets/Delete" asp-route-id="@budget.Id" title="Delete" aria-label="Delete">
-                                                                <i class="bi bi-trash3"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].AccountAssignment.Account)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Amount)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].ActivityBudgetExpenses)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].ActivityBudgetRemainder)
+                                                    </th>
+                                                    <th style="width: 1px; white-space:nowrap;"></th>
                                                 </tr>
-                                                <tr class="collapse" id="budget-expenses-@budget.Id">
-                                                    <td colspan="6" class="p-3">
-                                                        <h5 class="h6 text-body-secondary">@Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Comments)</h5>
-                                                        <p>
-                                                            @Html.DisplayFor(modelItem => budget.Comments)
-                                                        </p>
-                                                        @if (budget.Expenses.Count > 0)
-                                                        {
-                                                            <h5 class="h6 text-body-secondary">Expenses</h5>
-                                                            <table class="table table-sm table-bordered table-striped">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Description)
-                                                                        </th>
-                                                                        <th>
-                                                                            @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Vendor)
-                                                                        </th>
-                                                                        <th>
-                                                                            @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Amount)
-                                                                        </th>
-                                                                        <th>
-                                                                            @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].ExpenseDate)
-                                                                        </th>
-                                                                        <th style="width: 1px; white-space:nowrap;"></th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @foreach (var expense in budget.Expenses)
-                                                                    {
-                                                                        <tr>
-                                                                            <td class="align-middle">
-                                                                                @Html.DisplayFor(modelItem => expense.Description)
-                                                                            </td>
-                                                                            <td class="align-middle">
-                                                                                @Html.DisplayFor(modelItem => expense.Vendor)
-                                                                            </td>
-                                                                            <td class="align-middle">
-                                                                                @Html.DisplayFor(modelItem => expense.Amount)
-                                                                            </td>
-                                                                            <td class="align-middle">
-                                                                                @Html.DisplayFor(modelItem => expense.ExpenseDate)
-                                                                            </td>
-                                                                            <td class="align-middle">
-                                                                                <div class="d-flex gap-1 justify-content-center">
-                                                                                    <a class="btn btn-success btn-sm" asp-area="Expenses" asp-page="/Expenses/Details" asp-route-id="@expense.Id">Details</a>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                    }
-                                                                </tbody>
-                                                            </table>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="alert alert-info mb-0" role="alert">
-                                                                <span>No expenses have been made to this budget.</span>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var budget in activity.ActivityBudgets.OrderBy(b => b.AccountAssignment.DisplayName))
+                                                {
+                                                    <tr>
+                                                        <td class="align-middle">
+                                                            @Html.DisplayFor(modelItem => budget.AccountAssignment.DisplayName)
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            @Html.DisplayFor(modelItem => budget.Amount)
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            @Html.DisplayFor(modelItem => budget.ActivityBudgetExpenses)
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="@(budget.ActivityBudgetRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => budget.ActivityBudgetRemainder)</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <div class="d-flex gap-1 justify-content-center">
+                                                                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse"
+                                                                        data-bs-target="#budget-expenses-@budget.Id" aria-expanded="false"
+                                                                        aria-controls="budget-expenses-@budget.Id"
+                                                                        title="Expand details such as comments and Expenses made to this budget.">
+                                                                    <i class="bi bi-chevron-expand"></i>
+                                                                </button>
+                                                                <a class="btn btn-secondary btn-sm" asp-page="/Budgets/Edit" asp-route-id="@budget.Id" title="Edit" aria-label="Edit">
+                                                                    <i class="bi bi-pencil-square"></i>
+                                                                </a>
+                                                                <a class="btn btn-danger btn-sm" asp-page="/Budgets/Delete" asp-route-id="@budget.Id" title="Delete" aria-label="Delete">
+                                                                    <i class="bi bi-trash3"></i>
+                                                                </a>
                                                             </div>
-                                                        }
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-4">
-                                        <h4 class="h6 text-body-secondary">
-                                            @Html.DisplayNameFor(model => activity.ActivityBudget)
-                                        </h4>
-                                        <p>@Html.DisplayFor(modelItem => activity.ActivityBudget)</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="collapse" id="budget-expenses-@budget.Id">
+                                                        <td colspan="6" class="p-3">
+                                                            <h5 class="h6 text-body-secondary">@Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Comments)</h5>
+                                                            <p>
+                                                                @Html.DisplayFor(modelItem => budget.Comments)
+                                                            </p>
+                                                            @if (budget.Expenses.Count > 0)
+                                                            {
+                                                                <h5 class="h6 text-body-secondary">Expenses</h5>
+                                                                <table class="table table-sm table-bordered table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>
+                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Description)
+                                                                            </th>
+                                                                            <th>
+                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Vendor)
+                                                                            </th>
+                                                                            <th>
+                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Amount)
+                                                                            </th>
+                                                                            <th>
+                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].ExpenseDate)
+                                                                            </th>
+                                                                            <th style="width: 1px; white-space:nowrap;"></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @foreach (var expense in budget.Expenses)
+                                                                        {
+                                                                            <tr>
+                                                                                <td class="align-middle">
+                                                                                    @Html.DisplayFor(modelItem => expense.Description)
+                                                                                </td>
+                                                                                <td class="align-middle">
+                                                                                    @Html.DisplayFor(modelItem => expense.Vendor)
+                                                                                </td>
+                                                                                <td class="align-middle">
+                                                                                    @Html.DisplayFor(modelItem => expense.Amount)
+                                                                                </td>
+                                                                                <td class="align-middle">
+                                                                                    @Html.DisplayFor(modelItem => expense.ExpenseDate)
+                                                                                </td>
+                                                                                <td class="align-middle">
+                                                                                    <div class="d-flex gap-1 justify-content-center">
+                                                                                        <a class="btn btn-success btn-sm" asp-area="Expenses" asp-page="/Expenses/Details" asp-route-id="@expense.Id">Details</a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        }
+                                                                    </tbody>
+                                                                </table>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="alert alert-info mb-0" role="alert">
+                                                                    <span>No expenses have been made to this budget.</span>
+                                                                </div>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="col-md-6 col-lg-4">
-                                        <h4 class="h6 text-body-secondary">
-                                            @Html.DisplayNameFor(model => activity.ActivityExpenses)
-                                        </h4>
-                                        <p>@Html.DisplayFor(modelItem => activity.ActivityExpenses)</p>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-4">
+                                            <h4 class="h6 text-body-secondary">
+                                                @Html.DisplayNameFor(model => activity.ActivityBudget)
+                                            </h4>
+                                            <p>@Html.DisplayFor(modelItem => activity.ActivityBudget)</p>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <h4 class="h6 text-body-secondary">
+                                                @Html.DisplayNameFor(model => activity.ActivityExpenses)
+                                            </h4>
+                                            <p>@Html.DisplayFor(modelItem => activity.ActivityExpenses)</p>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <h4 class="h6 text-body-secondary">
+                                                @Html.DisplayNameFor(model => activity.ActivityRemainder)
+                                            </h4>
+                                            <p class="@(activity.ActivityRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => activity.ActivityRemainder)</p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 col-lg-4">
-                                        <h4 class="h6 text-body-secondary">
-                                            @Html.DisplayNameFor(model => activity.ActivityRemainder)
-                                        </h4>
-                                        <p class="@(activity.ActivityRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => activity.ActivityRemainder)</p>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-warning mb-0" role="alert">
+                                        <span>This activity has no budget.</span>
                                     </div>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="alert alert-warning mb-0" role="alert">
-                                    <span>This activity has no budget.</span>
-                                </div>
-                            }
-                        </div>
-                    </li>
-                }
-            </ul>
+                                }
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="alert alert-warning mb-0" role="alert">
+                    <span>No activities have been created for this result.</span>
+                </div>
+            }
         </div>
         <div class="card-footer">
             <div class="row">
