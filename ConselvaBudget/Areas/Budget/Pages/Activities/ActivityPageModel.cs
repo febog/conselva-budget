@@ -16,7 +16,8 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
             var resultsQuery = context.Results
                 .Include(r => r.Project)
                 .Where(r => r.ProjectId == projectId)
-                .OrderBy(r => r.Name)
+                .OrderBy(r => r.Project.Name)
+                .ThenBy(r => r.Name)
                 .Select(r => new
                 {
                     r.Id,
