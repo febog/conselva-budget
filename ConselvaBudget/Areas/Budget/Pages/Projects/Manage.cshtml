@@ -9,6 +9,27 @@
 
 <p>@Html.DisplayFor(model => model.Project.Comments)</p>
 
+<div class="row">
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.ProjectBudget)
+        </h2>
+        <p>@Html.DisplayFor(model => model.Project.ProjectBudget)</p>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.ProjectExpenses)
+        </h2>
+        <p>@Html.DisplayFor(model => model.Project.ProjectExpenses)</p>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.ProjectRemainder)
+        </h2>
+        <p class="@(Model.Project.ProjectRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(model => model.Project.ProjectRemainder)</p>
+    </div>
+</div>
+
 <p>
     @Html.DisplayNameFor(model => model.Project.StartDate): @Html.DisplayFor(model => model.Project.StartDate)
 </p>
