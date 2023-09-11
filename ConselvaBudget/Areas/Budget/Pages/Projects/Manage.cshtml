@@ -5,7 +5,11 @@
     ViewData["Title"] = "Manage Project";
 }
 
-<h1 class="border-bottom pb-2">@Html.DisplayFor(model => model.Project.DisplayName)</h1>
+<h1 class="border-bottom pb-2">@Html.DisplayFor(model => model.Project.Name)</h1>
+
+<p class="lead">
+    @Html.DisplayFor(model => model.Project.ShortName)
+</p>
 
 <p>@Html.DisplayFor(model => model.Project.Comments)</p>
 
