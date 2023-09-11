@@ -7,6 +7,7 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Result")]
         public int ResultId { get; set; }
 
         [Display(Name = "Name")]
