@@ -10,6 +10,14 @@
 <p>@Html.DisplayFor(model => model.Project.Comments)</p>
 
 <p>
+    @Html.DisplayNameFor(model => model.Project.StartDate): @Html.DisplayFor(model => model.Project.StartDate)
+</p>
+
+<p>
+    @Html.DisplayNameFor(model => model.Project.EndDate): @Html.DisplayFor(model => model.Project.EndDate)
+</p>
+
+<p>
     <a class="btn btn-primary" asp-page="/Results/Create" asp-route-projectId="@Model.Project.Id">Create Result</a>
 </p>
 
