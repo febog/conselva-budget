@@ -17,32 +17,27 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
         [BindProperty]
         public Activity Activity { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, int? projectId)
         {
-            if (id == null || _context.Activities == null)
+            if (id == null || _context.Activities == null || projectId == null)
             {
                 return NotFound();
             }
 
-            Activity = await _context.Activities
-                .Include(a => a.Result)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(a => a.Id == id);
+            Activity = await _context.Activities.FindAsync(id);
             if (Activity == null)
             {
                 return NotFound();
             }
-            PopulateResultDropDownList(_context, Activity.Result.ProjectId, Activity.ResultId);
+            PopulateResultDropDownList(_context, projectId.Value, Activity.ResultId);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int id, int? projectId)
         {
-            var activityToUpdate = await _context.Activities
-                .Include(a => a.Result)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var activityToUpdate = await _context.Activities.FindAsync(id);
 
-            if (activityToUpdate == null)
+            if (activityToUpdate == null || projectId == null)
             {
                 return NotFound();
             }
@@ -57,11 +52,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Projects/Manage",
                     null,
-                    new { id = activityToUpdate.Result.ProjectId },
+                    new { id = projectId.Value },
                     $"activity-{activityToUpdate.Id}");
             }
 
-            PopulateResultDropDownList(_context, activityToUpdate.Result.ProjectId, activityToUpdate.ResultId);
+            PopulateResultDropDownList(_context, projectId.Value, activityToUpdate.ResultId);
             return Page();
         }
     }

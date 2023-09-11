@@ -51,7 +51,7 @@
                                     <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity-body-@activity.Id" aria-expanded="true" aria-controls="activity-body-@activity.Id">
                                         Collapse
                                     </button>
-                                    <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-id="@activity.Id">Edit</a>
+                                    <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-projectId="@Model.Project.Id" asp-route-id="@activity.Id">Edit</a>
                                     <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
                                 </div>
                             </div>
