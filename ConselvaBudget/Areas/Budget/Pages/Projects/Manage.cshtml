@@ -46,7 +46,7 @@
 {
     <div class="card mb-2" id="result-@result.Id">
         <div class="card-header d-flex align-items-center gap-2">
-            <h2 class="h4 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => result.Name)</h2>
+            <h2 class="h4 mb-0 flex-grow-1">@Html.DisplayFor(model => result.Name)</h2>
             <div class="d-flex gap-1">
                 <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#result-body-@result.Id" aria-expanded="true" aria-controls="result-body-@result.Id">
                     Collapse
@@ -142,7 +142,7 @@
                                                         <td colspan="6" class="p-3">
                                                             <h5 class="h6 text-body-secondary">@Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Comments)</h5>
                                                             <p>
-                                                                @Html.DisplayFor(modelItem => budget.Comments)
+                                                                @Html.DisplayFor(model => budget.Comments)
                                                             </p>
                                                             @if (budget.Expenses.Count > 0)
                                                             {
@@ -208,19 +208,19 @@
                                             <h4 class="h6 text-body-secondary">
                                                 @Html.DisplayNameFor(model => activity.ActivityBudget)
                                             </h4>
-                                            <p>@Html.DisplayFor(modelItem => activity.ActivityBudget)</p>
+                                            <p>@Html.DisplayFor(model => activity.ActivityBudget)</p>
                                         </div>
                                         <div class="col-md-6 col-lg-4">
                                             <h4 class="h6 text-body-secondary">
                                                 @Html.DisplayNameFor(model => activity.ActivityExpenses)
                                             </h4>
-                                            <p>@Html.DisplayFor(modelItem => activity.ActivityExpenses)</p>
+                                            <p>@Html.DisplayFor(model => activity.ActivityExpenses)</p>
                                         </div>
                                         <div class="col-md-6 col-lg-4">
                                             <h4 class="h6 text-body-secondary">
                                                 @Html.DisplayNameFor(model => activity.ActivityRemainder)
                                             </h4>
-                                            <p class="@(activity.ActivityRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => activity.ActivityRemainder)</p>
+                                            <p class="@(activity.ActivityRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(model => activity.ActivityRemainder)</p>
                                         </div>
                                     </div>
                                 }
@@ -248,19 +248,19 @@
                     <h3 class="h6 text-body-secondary">
                         @Html.DisplayNameFor(model => result.ResultBudget)
                     </h3>
-                    <p class="mb-0">@Html.DisplayFor(modelItem => result.ResultBudget)</p>
+                    <p class="mb-0">@Html.DisplayFor(model => result.ResultBudget)</p>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <h3 class="h6 text-body-secondary">
                         @Html.DisplayNameFor(model => result.ResultExpenses)
                     </h3>
-                    <p class="mb-0">@Html.DisplayFor(modelItem => result.ResultExpenses)</p>
+                    <p class="mb-0">@Html.DisplayFor(mdoel => result.ResultExpenses)</p>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <h3 class="h6 text-body-secondary">
                         @Html.DisplayNameFor(model => result.ResultRemainder)
                     </h3>
-                    <p class="mb-0 @(result.ResultRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => result.ResultRemainder)</p>
+                    <p class="mb-0 @(result.ResultRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(model => result.ResultRemainder)</p>
                 </div>
             </div>
         </div>
