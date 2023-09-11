@@ -14,7 +14,7 @@ namespace ConselvaBudget.Areas.Administration.Pages
             _context = context;
         }
 
-        public IList<Organization> BusinessSubprograms { get; set; } = default!;
+        public IList<Organization> Organizations { get; set; } = default!;
         public IList<Account> Accounts { get; set; } = default!;
         public IList<Project> Projects { get; set; } = default!;
 
@@ -24,7 +24,7 @@ namespace ConselvaBudget.Areas.Administration.Pages
                 _context.Accounts != null &&
                 _context.Projects != null)
             {
-                BusinessSubprograms = await _context.Organizations
+                Organizations = await _context.Organizations
                     .Include(s => s.AccountAssignments)
                     .ThenInclude(a => a.Account)
                     .OrderBy(p => p.Code)

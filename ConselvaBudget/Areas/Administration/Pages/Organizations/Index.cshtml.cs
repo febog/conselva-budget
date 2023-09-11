@@ -7,7 +7,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
     {
         public IActionResult OnGet()
         {
-            return RedirectToPage("/Index", null, "subprograms");
+            return RedirectToPage("/Index", null, "programs");
         }
     }
 }

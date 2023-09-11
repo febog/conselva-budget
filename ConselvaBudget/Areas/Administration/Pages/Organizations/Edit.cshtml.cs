@@ -55,23 +55,23 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 
             if (await TryUpdateModelAsync(
                 organizationToUpdate,
-                "BusinessSubprogram",
+                "Organization",
                 s => s.Code,
                 s => s.Name))
             {
-                UpdateSubprogramAccounts(selectedAccounts, organizationToUpdate);
+                UpdateOrganizationAccounts(selectedAccounts, organizationToUpdate);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Index",
                     null,
-                    $"subprogram-{organizationToUpdate.Id}");
+                    $"program-{organizationToUpdate.Id}");
             }
 
-            UpdateSubprogramAccounts(selectedAccounts, organizationToUpdate);
+            UpdateOrganizationAccounts(selectedAccounts, organizationToUpdate);
             PopulateAccountAssignmentData(_context, organizationToUpdate);
             return Page();
         }
 
-        public void UpdateSubprogramAccounts(string[] selectedAccounts, Organization organizationToUpdate)
+        public void UpdateOrganizationAccounts(string[] selectedAccounts, Organization organizationToUpdate)
         {
             if (selectedAccounts == null)
             {
