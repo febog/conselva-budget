@@ -4,15 +4,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
+namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 {
-    public class SubprogramPageModel : PageModel
+    public class OrganizationsPageModel : PageModel
     {
         public List<AccountAssignmentData> AccountAssignmentDataList;
 
-        public void PopulateAccountAssignmentData(ConselvaBudgetContext context, Organization subprogram)
+        public void PopulateAccountAssignmentData(ConselvaBudgetContext context, Organization organization)
         {
-            var subprogramAccounts = new HashSet<int>(subprogram.AccountAssignments.Select(a => a.AccountId));
+            var organizationAccounts = new HashSet<int>(organization.AccountAssignments.Select(a => a.AccountId));
             AccountAssignmentDataList = new List<AccountAssignmentData>();
             foreach (var account in context.Accounts.OrderBy(a => a.Code))
             {
@@ -20,7 +20,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 {
                     AccountId = account.Id,
                     AccountName = account.DisplayName,
-                    Assigned = subprogramAccounts.Contains(account.Id)
+                    Assigned = organizationAccounts.Contains(account.Id)
                 });
             }
         }

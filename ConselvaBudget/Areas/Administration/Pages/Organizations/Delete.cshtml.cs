@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
+namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 {
     public class DeleteModel : PageModel
     {

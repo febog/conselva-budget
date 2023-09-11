@@ -2,9 +2,9 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
+namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 {
-    public class CreateModel : SubprogramPageModel
+    public class CreateModel : OrganizationsPageModel
     {
         private readonly ConselvaBudgetContext _context;
 
@@ -25,7 +25,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
         {
             var emptyOrganization = new Organization();
 
-            if (await TryUpdateModelAsync<Organization>(
+            if (await TryUpdateModelAsync(
                 emptyOrganization,
                 "Organization",
                 s => s.Code,

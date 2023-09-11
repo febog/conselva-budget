@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
+namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 {
-    public class EditModel : SubprogramPageModel
+    public class EditModel : OrganizationsPageModel
     {
         private readonly ConselvaBudgetContext _context;
 
@@ -53,7 +53,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<Organization>(
+            if (await TryUpdateModelAsync(
                 organizationToUpdate,
                 "BusinessSubprogram",
                 s => s.Code,
