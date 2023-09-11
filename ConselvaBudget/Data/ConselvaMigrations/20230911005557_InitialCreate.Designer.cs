@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20230906230705_InitialCreate")]
+    [Migration("20230911005557_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -63,14 +63,14 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BusinessSubprogramId")
+                    b.Property<int>("OrganizationId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
 
-                    b.HasIndex("BusinessSubprogramId");
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("AccountAssignments");
                 });
@@ -131,29 +131,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.ToTable("ActivityBudgets");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.BusinessSubprogram", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BusinessSubprograms");
-                });
-
             modelBuilder.Entity("ConselvaBudget.Models.Expense", b =>
                 {
                     b.Property<int>("Id")
@@ -196,6 +173,29 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.HasIndex("ActivityBudgetId");
 
                     b.ToTable("Expenses");
+                });
+
+            modelBuilder.Entity("ConselvaBudget.Models.Organization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Organizations");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Project", b =>
@@ -265,15 +265,15 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ConselvaBudget.Models.BusinessSubprogram", "BusinessSubprogram")
+                    b.HasOne("ConselvaBudget.Models.Organization", "Organization")
                         .WithMany("AccountAssignments")
-                        .HasForeignKey("BusinessSubprogramId")
+                        .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Account");
 
-                    b.Navigation("BusinessSubprogram");
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Activity", b =>
@@ -348,7 +348,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("Expenses");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.BusinessSubprogram", b =>
+            modelBuilder.Entity("ConselvaBudget.Models.Organization", b =>
                 {
                     b.Navigation("AccountAssignments");
                 });

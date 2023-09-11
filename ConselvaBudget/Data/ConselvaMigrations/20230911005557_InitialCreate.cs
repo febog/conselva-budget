@@ -27,7 +27,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BusinessSubprograms",
+                name: "Organizations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -37,7 +37,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BusinessSubprograms", x => x.Id);
+                    table.PrimaryKey("PK_Organizations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,7 +64,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BusinessSubprogramId = table.Column<int>(type: "int", nullable: false),
+                    OrganizationId = table.Column<int>(type: "int", nullable: false),
                     AccountId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -77,9 +77,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AccountAssignments_BusinessSubprograms_BusinessSubprogramId",
-                        column: x => x.BusinessSubprogramId,
-                        principalTable: "BusinessSubprograms",
+                        name: "FK_AccountAssignments_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -185,9 +185,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AccountAssignments_BusinessSubprogramId",
+                name: "IX_AccountAssignments_OrganizationId",
                 table: "AccountAssignments",
-                column: "BusinessSubprogramId");
+                column: "OrganizationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Activities_ResultId",
@@ -234,7 +234,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "BusinessSubprograms");
+                name: "Organizations");
 
             migrationBuilder.DropTable(
                 name: "Results");
