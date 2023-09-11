@@ -39,7 +39,7 @@
                 <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id" asp-route-resultId="@result.Id">Create Activity</a>
             </p>
             <h3 class="h6 text-body-secondary">Activities</h3>
-            <ul class="list-group">
+            <ul class="list-group mb-3">
                 @foreach (var activity in result.Activities)
                 {
                     <li class="list-group-item" id="activity-@activity.Id">
@@ -211,6 +211,26 @@
                     </li>
                 }
             </ul>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <h3 class="h6 text-body-secondary">
+                        @Html.DisplayNameFor(model => result.ResultBudget)
+                    </h3>
+                    <p>@Html.DisplayFor(modelItem => result.ResultBudget)</p>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h3 class="h6 text-body-secondary">
+                        @Html.DisplayNameFor(model => result.ResultExpenses)
+                    </h3>
+                    <p>@Html.DisplayFor(modelItem => result.ResultExpenses)</p>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h3 class="h6 text-body-secondary">
+                        @Html.DisplayNameFor(model => result.ResultRemainder)
+                    </h3>
+                    <p class="@(result.ResultRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => result.ResultRemainder)</p>
+                </div>
+            </div>
         </div>
     </div>
 }
