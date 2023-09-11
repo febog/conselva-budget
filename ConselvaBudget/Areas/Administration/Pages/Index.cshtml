@@ -67,7 +67,7 @@
 
 <h2 id="programs">Programs</h2>
 
-<p>First level in the program/subprogram hierarchy.</p>
+<p>Add or remove business <b>Programs</b>. Once created, <b>Accounts</b> can be assigned in the section below.</p>
 
 <p><a class="btn btn-primary" asp-page="Subprograms/Create">Create program</a></p>
 
@@ -106,7 +106,7 @@
 
 <h2 id="subprograms">Account assignment</h2>
 
-<p>Second level in the program/subprogram hierarchy. Every <b>Subprogram</b> is under a <b>Program</b>.</p>
+<p>Assign the <b>Accounts</b> that will be available for each business <b>Program</b>.</p>
 
 @foreach (var subprogram in Model.BusinessSubprograms.OrderBy(s => s.Code))
 {

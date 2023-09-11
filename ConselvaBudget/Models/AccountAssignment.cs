@@ -13,7 +13,7 @@ namespace ConselvaBudget.Models
         public string DisplayName => $"{BusinessSubprogram.Code} - {Account.DisplayName}";
 
         [Display(Name = "Subprogram")]
-        public BusinessSubprogram BusinessSubprogram { get; set; }
+        public Organization BusinessSubprogram { get; set; }
 
         [Display(Name = "Account")]
         public Account Account { get; set; }

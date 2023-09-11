@@ -10,7 +10,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
     {
         public List<AccountAssignmentData> AccountAssignmentDataList;
 
-        public void PopulateAccountAssignmentData(ConselvaBudgetContext context, BusinessSubprogram subprogram)
+        public void PopulateAccountAssignmentData(ConselvaBudgetContext context, Organization subprogram)
         {
             var subprogramAccounts = new HashSet<int>(subprogram.AccountAssignments.Select(a => a.AccountId));
             AccountAssignmentDataList = new List<AccountAssignmentData>();

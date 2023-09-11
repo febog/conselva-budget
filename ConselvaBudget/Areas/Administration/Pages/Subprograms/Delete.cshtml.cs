@@ -16,7 +16,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
         }
 
         [BindProperty]
-        public BusinessSubprogram BusinessSubprogram { get; set; }
+        public Organization BusinessSubprogram { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

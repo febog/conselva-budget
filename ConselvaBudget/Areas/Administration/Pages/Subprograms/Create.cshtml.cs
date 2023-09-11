@@ -19,13 +19,13 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
         }
 
         [BindProperty]
-        public BusinessSubprogram BusinessSubprogram { get; set; }
+        public Organization BusinessSubprogram { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var emptyBusinessSubprogram = new BusinessSubprogram();
+            var emptyBusinessSubprogram = new Organization();
 
-            if (await TryUpdateModelAsync<BusinessSubprogram>(
+            if (await TryUpdateModelAsync<Organization>(
                 emptyBusinessSubprogram,
                 "BusinessSubprogram",
                 s => s.Code,

@@ -15,7 +15,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
         }
 
         [BindProperty]
-        public BusinessSubprogram BusinessSubprogram { get; set; } = default!;
+        public Organization BusinessSubprogram { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -53,7 +53,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<BusinessSubprogram>(
+            if (await TryUpdateModelAsync<Organization>(
                 businessSubprogramToUpdate,
                 "BusinessSubprogram",
                 s => s.Code,
@@ -71,7 +71,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Subprograms
             return Page();
         }
 
-        public void UpdateSubprogramAccounts(string[] selectedAccounts, BusinessSubprogram businessSubprogramToUpdate)
+        public void UpdateSubprogramAccounts(string[] selectedAccounts, Organization businessSubprogramToUpdate)
         {
             if (selectedAccounts == null)
             {

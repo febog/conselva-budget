@@ -14,7 +14,7 @@ namespace ConselvaBudget.Areas.Administration.Pages
             _context = context;
         }
 
-        public IList<BusinessSubprogram> BusinessSubprograms { get; set; } = default!;
+        public IList<Organization> BusinessSubprograms { get; set; } = default!;
         public IList<Account> Accounts { get; set; } = default!;
         public IList<Project> Projects { get; set; } = default!;
 

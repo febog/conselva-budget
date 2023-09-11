@@ -2,7 +2,7 @@
 
 namespace ConselvaBudget.Models
 {
-    public class BusinessSubprogram
+    public class Organization
     {
         public int Id { get; set; }
 
