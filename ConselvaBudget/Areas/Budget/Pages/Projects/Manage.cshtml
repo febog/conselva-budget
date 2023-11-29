@@ -149,12 +149,8 @@
                                                                         title="Expand details such as comments and Expenses made to this budget.">
                                                                     <i class="bi bi-chevron-expand"></i>
                                                                 </button>
-                                                                <a class="btn btn-secondary btn-sm" asp-page="/Budgets/Edit" asp-route-id="@budget.Id" title="Edit" aria-label="Edit">
-                                                                    <i class="bi bi-pencil-square"></i>
-                                                                </a>
-                                                                <a class="btn btn-danger btn-sm" asp-page="/Budgets/Delete" asp-route-id="@budget.Id" title="Delete" aria-label="Delete">
-                                                                    <i class="bi bi-trash3"></i>
-                                                                </a>
+                                                                <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "/Budgets/Edit", RouteId = budget.Id }' />
+                                                                <partial name="_ButtonDeletePartial" model='new ButtonViewModel { AspPage = "/Budgets/Delete", RouteId = budget.Id }' />
                                                             </div>
                                                         </td>
                                                     </tr>
