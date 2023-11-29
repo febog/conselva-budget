@@ -1,0 +1,34 @@
+﻿using ConselvaBudget.Data;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+
+namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
+{
+    public class ExpensePageModel : PageModel
+    {
+        public SelectList ActivityBudgetsSL { get; set; }
+
+        public void PopulateDepartmentsDropDownList(ConselvaBudgetContext context,
+            object selectedActivityBudget = null)
+        {
+            var activitybudgetsQuery = context.ActivityBudgets
+                .Include(b => b.Activity.Result.Project)
+                .Include(b => b.AccountAssignment.Account)
+                .Include(b => b.AccountAssignment.Organization)
+                .OrderBy(b => b.Activity.Result.Project.Name)
+                .Select(b => new
+                {
+                    b.Id,
+                    Name = $"{b.Activity.Name} - {b.AccountAssignment.DisplayName}",
+                    Group = b.Activity.Result.Project.Name
+                });
+
+            ActivityBudgetsSL = new SelectList(activitybudgetsQuery.AsNoTracking(),
+                "Id",
+                "Name",
+                selectedActivityBudget,
+                "Group");
+        }
+    }
+}
