@@ -25,7 +25,10 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 return NotFound();
             }
 
-            Project = await _context.Projects.FindAsync(id);
+            Project = await _context.Projects
+                .Include(p => p.Donor)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(a => a.Id == id);
 
             if (Project == null)
             {

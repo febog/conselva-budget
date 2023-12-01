@@ -19,6 +19,8 @@ namespace ConselvaBudget.Data
 
         public DbSet<AccountAssignment> AccountAssignments { get; set; }
 
+        public DbSet<Donor> Donors { get; set; }
+
         public DbSet<Project> Projects { get; set; }
 
         public DbSet<Result> Results { get; set; }

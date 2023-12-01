@@ -152,6 +152,9 @@
                 @Html.DisplayNameFor(model => model.Projects[0].Segment)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Projects[0].Donor)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Projects[0].Name)
             </th>
             <th>
@@ -178,6 +181,9 @@
             <tr>
                 <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Segment)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Donor.Name)
                 </td>
                 <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Name)

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20230911212955_InitialCreate")]
+    [Migration("20231201044328_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -131,6 +131,28 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.ToTable("ActivityBudgets");
                 });
 
+            modelBuilder.Entity("ConselvaBudget.Models.Donor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Donors");
+                });
+
             modelBuilder.Entity("ConselvaBudget.Models.Expense", b =>
                 {
                     b.Property<int>("Id")
@@ -213,6 +235,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Property<decimal>("Deposits")
                         .HasColumnType("money");
 
+                    b.Property<int>("DonorId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -233,6 +258,8 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DonorId");
 
                     b.ToTable("Projects");
                 });
@@ -320,6 +347,17 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("ActivityBudget");
                 });
 
+            modelBuilder.Entity("ConselvaBudget.Models.Project", b =>
+                {
+                    b.HasOne("ConselvaBudget.Models.Donor", "Donor")
+                        .WithMany("Projects")
+                        .HasForeignKey("DonorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Donor");
+                });
+
             modelBuilder.Entity("ConselvaBudget.Models.Result", b =>
                 {
                     b.HasOne("ConselvaBudget.Models.Project", "Project")
@@ -349,6 +387,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
             modelBuilder.Entity("ConselvaBudget.Models.ActivityBudget", b =>
                 {
                     b.Navigation("Expenses");
+                });
+
+            modelBuilder.Entity("ConselvaBudget.Models.Donor", b =>
+                {
+                    b.Navigation("Projects");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Organization", b =>

@@ -8,6 +8,9 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Donor")]
+        public int DonorId { get; set; }
+
         [Display(Name = "Name")]
         [StringLength(255)]
         [Required]
@@ -59,6 +62,9 @@ namespace ConselvaBudget.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
         public decimal RemainingInBank => Deposits - ProjectExpenses;
+
+        [Display(Name = "Donor")]
+        public Donor Donor { get; set; }
 
         public virtual ICollection<Result> Results { get; set; }
     }

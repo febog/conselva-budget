@@ -9,6 +9,13 @@
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <input type="hidden" asp-for="Project.Id" />
 <div class="col-12">
+    <label asp-for="Project.DonorId" class="form-label"></label>
+    <select asp-for="Project.DonorId" class="form-select" asp-items="@Model.DonorSL">
+        <option value="">-- Select Donor --</option>
+    </select>
+    <span asp-validation-for="Project.DonorId" class="text-danger"></span>
+</div>
+<div class="col-12">
     <label asp-for="Project.Name" class="form-label"></label>
     <input asp-for="Project.Name" class="form-control" />
     <span asp-validation-for="Project.Name" class="text-danger"></span>

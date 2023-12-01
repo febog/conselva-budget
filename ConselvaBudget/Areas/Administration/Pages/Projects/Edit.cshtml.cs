@@ -6,7 +6,7 @@ using ConselvaBudget.Models;
 
 namespace ConselvaBudget.Areas.Administration.Pages.Projects
 {
-    public class EditModel : PageModel
+    public class EditModel : ProjectPageModel
     {
         private readonly ConselvaBudgetContext _context;
 
@@ -31,6 +31,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
             {
                 return NotFound();
             }
+
+            PopulateDonorsDropDownList(_context, Project.DonorId);
             return Page();
         }
 
@@ -58,6 +60,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 return RedirectToPage("/Index", null, "projects");
             }
 
+            PopulateDonorsDropDownList(_context, projectToUpdate.DonorId);
             return Page();
         }
     }

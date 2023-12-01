@@ -33,6 +33,7 @@ namespace ConselvaBudget.Areas.Administration.Pages
                     .OrderBy(a => a.Code)
                     .ToListAsync();
                 Projects = await _context.Projects
+                    .Include(p => p.Donor)
                     .OrderBy(p => p.Segment)
                     .ToListAsync();
             }

@@ -5,7 +5,7 @@ using ConselvaBudget.Models;
 
 namespace ConselvaBudget.Areas.Administration.Pages.Projects
 {
-    public class CreateModel : PageModel
+    public class CreateModel : ProjectPageModel
     {
         private readonly ConselvaBudgetContext _context;
 
@@ -16,6 +16,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
 
         public IActionResult OnGet()
         {
+            PopulateDonorsDropDownList(_context);
             return Page();
         }
 
@@ -42,6 +43,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 return RedirectToPage("/Index", null, "projects");
             }
 
+            PopulateDonorsDropDownList(_context, emptyProject.DonorId);
             return Page();
         }
     }
