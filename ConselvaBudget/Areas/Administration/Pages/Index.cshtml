@@ -56,8 +56,8 @@
                 </td>
                 <td class="align-middle">
                     <div class="d-flex gap-1 justify-content-center">
-                        <a class="btn btn-secondary btn-sm" asp-page="Accounts/Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-danger btn-sm" asp-page="Accounts/Delete" asp-route-id="@item.Id">Delete</a>
+                        <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "Accounts/Edit", RouteId = item.Id }' />
+                        <partial name="_ButtonDeletePartial" model='new ButtonViewModel { AspPage = "Accounts/Delete", RouteId = item.Id }' />
                     </div>
                 </td>
             </tr>
@@ -95,7 +95,8 @@
                 </td>
                 <td class="align-middle">
                     <div class="d-flex gap-1 justify-content-center">
-                        <a class="btn btn-danger btn-sm" asp-page="Organizations/Delete" asp-route-id="@item.Id">Delete</a>
+                        <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "Organizations/Edit", RouteId = item.Id }' />
+                        <partial name="_ButtonDeletePartial" model='new ButtonViewModel { AspPage = "Organizations/Delete", RouteId = item.Id }' />
                     </div>
                 </td>
             </tr>
@@ -114,7 +115,7 @@
         <div class="card-header d-flex align-items-center gap-2">
             <h3 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => organization.DisplayName)</h3>
             <div class="d-flex gap-1">
-                <a class="btn btn-secondary btn-sm" asp-page="Organizations/Edit" asp-route-id="@organization.Id">Edit</a>
+                <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "Organizations/Edit", RouteId = organization.Id }' />
             </div>
         </div>
         <div class="card-body">
@@ -198,8 +199,8 @@
                 </td>
                 <td class="align-middle">
                     <div class="d-flex gap-1 justify-content-center">
-                        <a class="btn btn-secondary btn-sm" asp-page="Projects/Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-danger btn-sm" asp-page="Projects/Delete" asp-route-id="@item.Id">Delete</a>
+                        <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "Projects/Edit", RouteId = item.Id }' />
+                        <partial name="_ButtonDeletePartial" model='new ButtonViewModel { AspPage = "Projects/Delete", RouteId = item.Id }' />
                     </div>
                 </td>
             </tr>
