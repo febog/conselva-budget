@@ -25,6 +25,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Projects
             }
 
             var project = await _context.Projects
+                .Include(p => p.Donor)
                 .Include(p => p.Results)
                 .ThenInclude(r => r.Activities)
                 .ThenInclude(a => a.ActivityBudgets)
