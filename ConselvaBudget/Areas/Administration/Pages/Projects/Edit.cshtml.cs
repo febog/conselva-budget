@@ -51,7 +51,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 p => p.Name,
                 p => p.ShortName,
                 p => p.Segment,
-                p => p.Deposits,
                 p => p.StartDate,
                 p => p.EndDate,
                 p => p.Comments))

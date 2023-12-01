@@ -24,11 +24,6 @@ namespace ConselvaBudget.Models
         [Display(Name = "Segment")]
         public int Segment { get; set; }
 
-        [Display(Name = "Total deposited")]
-        [Column(TypeName = "money")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
-        public decimal Deposits { get; set; }
-
         [Display(Name = "Start date")]
         [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
@@ -58,14 +53,21 @@ namespace ConselvaBudget.Models
         [ValidateNever]
         public decimal ProjectRemainder => Results.Sum(e => e.ResultRemainder);
 
+        [Display(Name = "Total deposits")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [ValidateNever]
+        public decimal TotalDeposits => Deposits.Sum(d => d.Amount);
+
         [Display(Name = "Remaining in bank")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal RemainingInBank => Deposits - ProjectExpenses;
+        public decimal RemainingInBank => TotalDeposits - ProjectExpenses;
 
         [Display(Name = "Donor")]
         public Donor Donor { get; set; }
 
         public virtual ICollection<Result> Results { get; set; }
+
+        public virtual ICollection<Deposit> Deposits { get; set; }
     }
 }
