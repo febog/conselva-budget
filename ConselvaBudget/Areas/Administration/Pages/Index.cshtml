@@ -24,48 +24,13 @@
 
 <h2 id="accounts">Accounts</h2>
 
-<p>Accounts catalog used by the database.</p>
-
-<p><a class="btn btn-primary" asp-page="Accounts/Create">Create account</a></p>
-
-<table class="table table-sm table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Accounts[0].Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Accounts[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Accounts[0].Description)
-            </th>
-            <th style="width: 1px; white-space:nowrap;"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Accounts)
-        {
-            <tr>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Code)
-                </td>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td class="align-middle">
-                    <div class="d-flex gap-1 justify-content-center">
-                        <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "Accounts/Edit", RouteId = item.Id }' />
-                        <partial name="_ButtonDeletePartial" model='new ButtonViewModel { AspPage = "Accounts/Delete", RouteId = item.Id }' />
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Accounts</h5>
+        <p class="card-text">Accounts catalog used by the database.</p>
+        <a class="btn btn-primary" asp-page="Accounts/Index">Accounts</a>
+    </div>
+</div>
 
 <h2 id="programs">Programs</h2>
 
