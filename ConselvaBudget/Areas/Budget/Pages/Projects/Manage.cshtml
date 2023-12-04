@@ -71,8 +71,8 @@
                 <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#result-body-@result.Id" aria-expanded="true" aria-controls="result-body-@result.Id">
                     Collapse
                 </button>
-                <a class="btn btn-secondary btn-sm" asp-page="/Results/Edit" asp-route-id="@result.Id">Edit</a>
-                <a class="btn btn-danger btn-sm" asp-page="/Results/Delete" asp-route-id="@result.Id">Delete</a>
+                <edit-button asp-page="/Results/Edit" asp-route-id="@result.Id"></edit-button>
+                <delete-button asp-page="/Results/Delete" asp-route-id="@result.Id"></delete-button>
             </div>
         </div>
         <div class="card-body collapse show" id="result-body-@result.Id">
@@ -92,8 +92,8 @@
                                     <button class="btn btn-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#activity-body-@activity.Id" aria-expanded="true" aria-controls="activity-body-@activity.Id">
                                         Collapse
                                     </button>
-                                    <a class="btn btn-secondary btn-sm" asp-page="/Activities/Edit" asp-route-projectId="@Model.Project.Id" asp-route-id="@activity.Id">Edit</a>
-                                    <a class="btn btn-danger btn-sm" asp-page="/Activities/Delete" asp-route-id="@activity.Id">Delete</a>
+                                    <edit-button asp-page="/Activities/Edit" asp-route-projectId="@Model.Project.Id" asp-route-id="@activity.Id"></edit-button>
+                                    <delete-button asp-page="/Activities/Delete" asp-route-id="@activity.Id"></delete-button>
                                 </div>
                             </div>
                             <div class="collapse show" id="activity-body-@activity.Id">
