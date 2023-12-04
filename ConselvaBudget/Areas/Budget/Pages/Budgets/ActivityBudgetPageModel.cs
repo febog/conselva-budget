@@ -7,7 +7,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
 {
     public class ActivityBudgetPageModel : PageModel
     {
-        public SelectList AccountsSL { get; set; }
+        public SelectList AccountSL { get; set; }
 
         public void PopulateAccountDropDownList(ConselvaBudgetContext context,
             object selectedAccountAssignment = null,
@@ -44,7 +44,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                 }
             }
 
-            AccountsSL = new SelectList(accountsQuery.AsNoTracking(),
+            AccountSL = new SelectList(accountsQuery.AsNoTracking(),
                 "Id",
                 "Name",
                 selectedAccountAssignment,
