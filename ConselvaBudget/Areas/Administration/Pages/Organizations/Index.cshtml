@@ -32,8 +32,8 @@
         </td>
         <td class="align-middle">
             <table-buttons>
-                <edit-button asp-page="Edit" asp-route-id="@item.Id">lol</edit-button>
-                <delete-button asp-page="Delete" asp-route-id="@item.Id">lol</delete-button>
+                <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+                <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
             </table-buttons>
         </td>
     </tr>
@@ -50,7 +50,7 @@
             <div class="card-header d-flex align-items-center gap-2">
                 <h3 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => organization.DisplayName)</h3>
                 <div class="d-flex gap-1">
-                    <edit-button asp-page="Edit" asp-route-id="@organization.Id">lol</edit-button>
+                    <edit-button asp-page="Edit" asp-route-id="@organization.Id"></edit-button>
                 </div>
             </div>
             <div class="card-body">
