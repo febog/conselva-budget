@@ -10,7 +10,7 @@
 <input type="hidden" asp-for="Activity.Id" />
 <div class="col-12">
     <label asp-for="Activity.ResultId" class="form-label"></label>
-    <select asp-for="Activity.ResultId" class="form-select" asp-items="@Model.ResultNameSL"></select>
+    <select asp-for="Activity.ResultId" class="form-select" asp-items="@Model.ResultSL"></select>
     <span asp-validation-for="Activity.ResultId" class="text-danger"></span>
 </div>
 <div class="col-12">

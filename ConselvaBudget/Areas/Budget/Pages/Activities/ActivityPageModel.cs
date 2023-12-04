@@ -7,7 +7,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
 {
     public class ActivityPageModel : PageModel
     {
-        public SelectList ResultNameSL { get; set; }
+        public SelectList ResultSL { get; set; }
 
         public void PopulateResultDropDownList(ConselvaBudgetContext context,
             int projectId,
@@ -25,7 +25,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
                     Group = r.Project.Name
                 });
 
-            ResultNameSL = new SelectList(resultsQuery.AsNoTracking(),
+            ResultSL = new SelectList(resultsQuery.AsNoTracking(),
                 "Id",
                 "Name",
                 selectedResult,
