@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
+
+@await RenderSectionAsync("Introduction", required: false)
+
+<table class="table table-sm table-bordered table-striped caption-top">
+    <caption>List of @ViewData["Title"]</caption>
+    <thead>
+        <tr>
+            @await RenderSectionAsync("Headers", required: true)
+            <th style="width: 1px; white-space:nowrap;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @RenderBody()
+    </tbody>
+</table>
