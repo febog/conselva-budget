@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
@@ -20,7 +19,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Donors == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -50,7 +49,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
                 d => d.Description))
             {
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index", null, "donors");
+                return RedirectToPage("./Index");
             }
 
             return Page();

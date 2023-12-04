@@ -34,7 +34,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
             {
                 _context.Donors.Add(emptyDonor);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index", null, "donors");
+                return RedirectToPage("./Index");
             }
 
             return Page();

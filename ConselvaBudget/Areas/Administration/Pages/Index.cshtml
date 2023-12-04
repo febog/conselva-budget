@@ -108,42 +108,13 @@
 
 <h2 id="donors">Donors</h2>
 
-<p>Donors catalog.</p>
-
-<p><a class="btn btn-primary" asp-page="Donors/Create">Create donor</a></p>
-
-<table class="table table-sm table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Donors[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Donors[0].Description)
-            </th>
-            <th style="width: 1px; white-space:nowrap;"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Donors)
-        {
-            <tr>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td class="align-middle">
-                    <div class="d-flex gap-1 justify-content-center">
-                        <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "Donors/Edit", RouteId = item.Id }' />
-                        <partial name="_ButtonDeletePartial" model='new ButtonViewModel { AspPage = "Donors/Delete", RouteId = item.Id }' />
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Donors</h5>
+        <p class="card-text">Donors catalog used by the database.</p>
+        <a class="btn btn-primary" asp-page="Donors/Index">Donors</a>
+    </div>
+</div>
 
 <h2 id="projects">Projects</h2>
 

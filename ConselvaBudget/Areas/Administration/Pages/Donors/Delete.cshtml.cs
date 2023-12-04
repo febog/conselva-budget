@@ -20,7 +20,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Donors == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -36,7 +36,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Donors == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -49,7 +49,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Index", null, "donors");
+            return RedirectToPage("./Index");
         }
     }
 }

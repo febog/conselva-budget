@@ -1,13 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ConselvaBudget.Data;
+using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConselvaBudget.Areas.Administration.Pages.Donors
 {
     public class IndexModel : PageModel
     {
-        public IActionResult OnGet()
+        private readonly ConselvaBudgetContext _context;
+
+        public IndexModel(ConselvaBudgetContext context)
         {
-            return RedirectToPage("/Index", null, "donors");
+            _context = context;
+        }
+
+        public IList<Donor> Donors { get; set; } = default!;
+
+        public async Task OnGetAsync()
+        {
+            Donors = await _context.Donors
+                .OrderBy(d => d.Name)
+                .ToListAsync();
         }
     }
 }

@@ -1,2 +1,40 @@
 ﻿@page
 @model IndexModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Donors";
+}
+
+@section Introduction {
+    <p>Accounts catalog used by the database.</p>
+
+    <p><a class="btn btn-primary" asp-page="Create">Create account</a></p>
+}
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.Donors[0].Name)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Donors[0].Description)
+    </th>
+}
+
+@foreach (var item in Model.Donors)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <edit-button asp-page="Edit" asp-route-id="@item.Id">lol</edit-button>
+                <delete-button asp-page="Delete" asp-route-id="@item.Id">lol</delete-button>
+            </table-buttons>
+        </td>
+    </tr>
+}
