@@ -7,7 +7,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
 {
     public class ExpensePageModel : PageModel
     {
-        public SelectList ActivityBudgetsSL { get; set; }
+        public SelectList ActivityBudgetSL { get; set; }
 
         public void PopulateDepartmentsDropDownList(ConselvaBudgetContext context,
             object selectedActivityBudget = null)
@@ -24,7 +24,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
                     Group = b.Activity.Result.Project.Name
                 });
 
-            ActivityBudgetsSL = new SelectList(activitybudgetsQuery.AsNoTracking(),
+            ActivityBudgetSL = new SelectList(activitybudgetsQuery.AsNoTracking(),
                 "Id",
                 "Name",
                 selectedActivityBudget,
