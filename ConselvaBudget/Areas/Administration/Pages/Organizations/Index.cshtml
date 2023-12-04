@@ -50,7 +50,7 @@
             <div class="card-header d-flex align-items-center gap-2">
                 <h3 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => organization.DisplayName)</h3>
                 <div class="d-flex gap-1">
-                    <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "Edit", RouteId = organization.Id }' />
+                    <edit-button asp-page="Edit" asp-route-id="@organization.Id">lol</edit-button>
                 </div>
             </div>
             <div class="card-body">
