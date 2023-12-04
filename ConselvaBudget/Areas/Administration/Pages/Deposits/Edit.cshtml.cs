@@ -30,7 +30,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Deposits
                 return NotFound();
             }
 
-            PopulateProjectDropDownList(_context);
+            PopulateProjectDropDownList(_context, Deposit.ProjectId);
             return Page();
         }
 
