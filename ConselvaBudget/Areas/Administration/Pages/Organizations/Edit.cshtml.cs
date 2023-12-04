@@ -19,7 +19,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Organizations == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -61,7 +61,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
             {
                 UpdateOrganizationAccounts(selectedAccounts, organizationToUpdate);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index",
+                return RedirectToPage("./Index",
                     null,
                     $"program-{organizationToUpdate.Id}");
             }

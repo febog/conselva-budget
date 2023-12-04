@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
@@ -49,7 +48,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Index",
+            return RedirectToPage("./Index",
                     null,
                     $"programs");
         }

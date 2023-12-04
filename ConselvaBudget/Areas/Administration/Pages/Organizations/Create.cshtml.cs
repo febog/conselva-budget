@@ -33,9 +33,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
             {
                 _context.Organizations.Add(emptyOrganization);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index",
-                    null,
-                    $"programs");
+                return RedirectToPage("./Index");
             }
 
             return Page();

@@ -1,2 +1,76 @@
 ﻿@page
 @model IndexModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Programs";
+}
+
+@section Introduction {
+    <p>Add or remove business <b>Programs</b>. Once created, <b>Accounts</b> can be assigned in the section below.</p>
+
+    <p><a class="btn btn-primary" asp-page="Create">Create program</a></p>
+}
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.Organizations[0].Code)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Organizations[0].Name)
+    </th>
+}
+
+@foreach (var item in Model.Organizations)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <edit-button asp-page="Edit" asp-route-id="@item.Id">lol</edit-button>
+                <delete-button asp-page="Delete" asp-route-id="@item.Id">lol</delete-button>
+            </table-buttons>
+        </td>
+    </tr>
+}
+
+@section PostTable {
+    <h2 id="account-assignment">Account assignment</h2>
+
+    <p>Assign the <b>Accounts</b> that will be available for each business <b>Program</b>.</p>
+
+    @foreach (var organization in Model.Organizations.OrderBy(s => s.Code))
+    {
+        <div class="card mb-2" id="program-@organization.Id">
+            <div class="card-header d-flex align-items-center gap-2">
+                <h3 class="h5 mb-0 flex-grow-1">@Html.DisplayFor(modelItem => organization.DisplayName)</h3>
+                <div class="d-flex gap-1">
+                    <partial name="_ButtonEditPartial" model='new ButtonViewModel { AspPage = "Edit", RouteId = organization.Id }' />
+                </div>
+            </div>
+            <div class="card-body">
+                <h4 class="h6 text-body-secondary">Accounts</h4>
+                @if (organization.AccountAssignments.Count > 0)
+                {
+                    <ul class="list-group">
+                        @foreach (var assignment in organization.AccountAssignments.OrderBy(s => s.Account.Code))
+                        {
+                            <li class="list-group-item">@Html.DisplayFor(modelItem => assignment.DisplayName)</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <div class="alert alert-warning mb-0" role="alert">
+                        <span>This program contains no assigned accounts.</span>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}
