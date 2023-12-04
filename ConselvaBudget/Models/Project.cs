@@ -63,6 +63,13 @@ namespace ConselvaBudget.Models
         [ValidateNever]
         public decimal RemainingInBank => TotalDeposits - ProjectExpenses;
 
+        /// <summary>
+        /// A Project is considered active if it has a Start and End date and we are in between those dates.
+        /// </summary>
+        [Display(Name = "Active")]
+        [ValidateNever]
+        public bool IsActive => StartDate != null && EndDate != null && DateTime.Now > StartDate && DateTime.Now < EndDate;
+
         [Display(Name = "Donor")]
         public Donor Donor { get; set; }
 

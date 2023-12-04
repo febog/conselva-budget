@@ -32,6 +32,9 @@
         @Html.DisplayNameFor(model => model.Projects[0].EndDate)
     </th>
     <th>
+        @Html.DisplayNameFor(model => model.Projects[0].IsActive)
+    </th>
+    <th>
         @Html.DisplayNameFor(model => model.Projects[0].Comments)
     </th>
 }
@@ -56,6 +59,16 @@
         </td>
         <td class="align-middle">
             @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td class="align-middle">
+            @if (item.IsActive)
+            {
+                <span class="badge text-bg-success" title="A project is considered active if we are between it's start and end dates.">Active</span>
+            }
+            else
+            {
+                <span class="badge text-bg-light" title="A project is considered active if we are between it's start and end dates.">Archived</span>
+            }
         </td>
         <td class="align-middle">
             @Html.DisplayFor(modelItem => item.Comments)
