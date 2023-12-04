@@ -1,48 +1,42 @@
 ﻿@page
-@model ConselvaBudget.Areas.Administration.Pages.Deposits.CreateModel
+@model CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
+    ViewData["Title"] = "Create Deposit";
 }
 
-<h1>Create</h1>
-
-<h4>Deposit</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Deposit.ProjectId" class="control-label"></label>
-                <select asp-for="Deposit.ProjectId" class ="form-control" asp-items="ViewBag.ProjectId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Deposit.Amount" class="control-label"></label>
-                <input asp-for="Deposit.Amount" class="form-control" />
-                <span asp-validation-for="Deposit.Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Deposit.Date" class="control-label"></label>
-                <input asp-for="Deposit.Date" class="form-control" />
-                <span asp-validation-for="Deposit.Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Deposit.Comments" class="control-label"></label>
-                <input asp-for="Deposit.Comments" class="form-control" />
-                <span asp-validation-for="Deposit.Comments" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="col-12">
+    <label asp-for="Deposit.ProjectId" class="form-label"></label>
+    <select asp-for="Deposit.ProjectId" class="form-control" asp-items="@Model.ProjectSL"></select>
+    <span asp-validation-for="Deposit.ProjectId" class="text-danger"></span>
+</div>
+<div class="col-12 col-sm-6">
+    <label asp-for="Deposit.Amount" class="form-label"></label>
+    <div class="input-group">
+        <span class="input-group-text">$</span>
+        <input asp-for="Deposit.Amount" class="form-control" />
     </div>
+    <span asp-validation-for="Deposit.Amount" class="text-danger"></span>
+</div>
+<div class="col-12 col-sm-6">
+    <label asp-for="Deposit.Date" class="form-label"></label>
+    <input asp-for="Deposit.Date" class="form-control" />
+    <span asp-validation-for="Deposit.Date" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="Deposit.Comments" class="form-label"></label>
+    <input asp-for="Deposit.Comments" class="form-control" />
+    <span asp-validation-for="Deposit.Comments" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <input class="btn btn-primary" type="submit" value="Create">
+    <a class="btn btn-secondary" asp-page="./Index">Cancel</a>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section FormInfoCardBody {
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 }

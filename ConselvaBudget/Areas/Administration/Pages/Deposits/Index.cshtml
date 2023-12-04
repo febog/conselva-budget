@@ -1,54 +1,52 @@
 ﻿@page
-@model ConselvaBudget.Areas.Administration.Pages.Deposits.IndexModel
+@model IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Deposits";
 }
 
-<h1>Index</h1>
+@section Introduction {
+    <p>Deposit management.</p>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Deposit[0].Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Deposit[0].Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Deposit[0].Comments)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Deposit[0].Project)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Deposit) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Project.Name)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+    <p><a class="btn btn-primary" asp-page="Create">Add deposit</a></p>
 }
-    </tbody>
-</table>
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.Deposit[0].Amount)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Deposit[0].Date)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Deposit[0].Comments)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Deposit[0].Project)
+    </th>
+}
+
+@foreach (var item in Model.Deposit)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Project.Name)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <edit-button asp-page="Edit" asp-route-id="@item.Id">lol</edit-button>
+                <delete-button asp-page="Delete" asp-route-id="@item.Id">lol</delete-button>
+            </table-buttons>
+        </td>
+    </tr>
+}
