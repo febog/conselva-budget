@@ -23,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Projects)
+        @foreach (var item in Model.Projects.Where(p => p.IsActive))
         {
             <tr>
                 <td class="align-middle">
