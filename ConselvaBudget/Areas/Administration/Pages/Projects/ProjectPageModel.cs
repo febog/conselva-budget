@@ -9,7 +9,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
     {
         public SelectList DonorSL {  get; set; }
 
-        public void PopulateDonorsDropDownList(ConselvaBudgetContext context,
+        public void PopulateDonorDropDownList(ConselvaBudgetContext context,
             object selectedDonor = null)
         {
             var donorsQuery = context.Donors.OrderBy(d => d.Name);

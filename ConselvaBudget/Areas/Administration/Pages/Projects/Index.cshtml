@@ -1,2 +1,70 @@
 ﻿@page
 @model IndexModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Projects";
+}
+
+@section Introduction {
+    <p>Main <b>Project</b> entity in the database. Parent element of the <b>Results</b> and <b>Activities</b> hierarchy.</p>
+
+    <p><a class="btn btn-primary" asp-page="Create">Create project</a></p>
+}
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].Segment)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].Donor)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].Name)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].ShortName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].StartDate)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].EndDate)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].Comments)
+    </th>
+}
+
+@foreach (var item in Model.Projects)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Segment)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Donor.Name)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.ShortName)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <edit-button asp-page="Edit" asp-route-id="@item.Id">lol</edit-button>
+                <delete-button asp-page="Delete" asp-route-id="@item.Id">lol</delete-button>
+            </table-buttons>
+        </td>
+    </tr>
+}

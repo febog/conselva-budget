@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
@@ -16,7 +15,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
 
         public IActionResult OnGet()
         {
-            PopulateDonorsDropDownList(_context);
+            PopulateDonorDropDownList(_context);
             return Page();
         }
 
@@ -39,10 +38,10 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
             {
                 _context.Projects.Add(emptyProject);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index", null, "projects");
+                return RedirectToPage("./Index");
             }
 
-            PopulateDonorsDropDownList(_context, emptyProject.DonorId);
+            PopulateDonorDropDownList(_context, emptyProject.DonorId);
             return Page();
         }
     }

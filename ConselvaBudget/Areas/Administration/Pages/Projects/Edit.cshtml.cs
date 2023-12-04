@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
@@ -20,7 +18,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Projects == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -32,7 +30,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 return NotFound();
             }
 
-            PopulateDonorsDropDownList(_context, Project.DonorId);
+            PopulateDonorDropDownList(_context, Project.DonorId);
             return Page();
         }
 
@@ -56,10 +54,10 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 p => p.Comments))
             {
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Index", null, "projects");
+                return RedirectToPage("./Index");
             }
 
-            PopulateDonorsDropDownList(_context, projectToUpdate.DonorId);
+            PopulateDonorDropDownList(_context, projectToUpdate.DonorId);
             return Page();
         }
     }
