@@ -13,7 +13,7 @@
     },
     {
       "provider": "jsdelivr",
-      "library": "bootstrap-icons@1.10.5",
+      "library": "bootstrap-icons@1.11.2",
       "files": [
         "font/*",
         "font/fonts/*"
