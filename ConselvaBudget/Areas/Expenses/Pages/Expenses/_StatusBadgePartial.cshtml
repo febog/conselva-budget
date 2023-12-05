@@ -1,0 +1,23 @@
+﻿@model ConselvaBudget.Models.ExpenseStatus
+
+@switch(Model)
+{
+    case Models.ExpenseStatus.Submitted:
+        <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i> Submitted</span>
+        break;
+
+    case Models.ExpenseStatus.Approved:
+        <span class="badge text-bg-success"><i class="bi bi-file-earmark-check"></i> Approved</span>
+        break;
+
+    case Models.ExpenseStatus.Rejected:
+        <span class="badge text-bg-danger"><i class="bi bi-file-earmark-x"></i> Rejected</span>
+        break;
+
+    case Models.ExpenseStatus.Completed:
+        <span class="badge text-bg-primary"><i class="bi bi-check2-circle"></i> Completed</span>
+        break;
+
+    default:
+        break;
+}

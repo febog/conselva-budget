@@ -64,7 +64,7 @@
             @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
         </td>
         <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Status)
+            <partial name="_StatusBadgePartial" model="item.Status" />
         </td>
         <td class="align-middle">
             <table-buttons>
