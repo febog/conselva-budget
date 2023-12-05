@@ -9,7 +9,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
     {
         public SelectList ActivityBudgetSL { get; set; }
 
-        public void PopulateDepartmentsDropDownList(ConselvaBudgetContext context,
+        public void PopulateActivityBudgetDropDownList(ConselvaBudgetContext context,
             object selectedActivityBudget = null)
         {
             var activitybudgetsQuery = context.ActivityBudgets

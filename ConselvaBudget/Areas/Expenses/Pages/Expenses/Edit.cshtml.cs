@@ -7,7 +7,7 @@ using ConselvaBudget.Models;
 
 namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
 {
-    public class EditModel : PageModel
+    public class EditModel : ExpensePageModel
     {
         private readonly ConselvaBudgetContext _context;
 
@@ -21,7 +21,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Expenses == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -31,7 +31,8 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
             {
                 return NotFound();
             }
-            ViewData["ActivityBudgetId"] = new SelectList(_context.ActivityBudgets, "Id", "Id");
+
+            PopulateActivityBudgetDropDownList(_context, Expense.ActivityBudgetId);
             return Page();
         }
 
@@ -59,6 +60,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
                 return RedirectToPage("./Index");
             }
 
+            PopulateActivityBudgetDropDownList(_context, expenseToUpdate.ActivityBudgetId);
             return Page();
         }
     }

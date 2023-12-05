@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
@@ -20,12 +19,12 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Expenses == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            Expense = await _context.Expenses.FirstOrDefaultAsync(m => m.Id == id);
+            Expense = await _context.Expenses.FindAsync(id);
 
             if (Expense == null)
             {
@@ -36,10 +35,11 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Expenses == null)
+            if (id == null)
             {
                 return NotFound();
             }
+
             var expense = await _context.Expenses.FindAsync(id);
 
             if (expense != null)

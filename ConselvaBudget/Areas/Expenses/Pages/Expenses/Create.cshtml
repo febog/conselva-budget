@@ -3,13 +3,13 @@
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Add Expense";
+    ViewData["Title"] = "Create Expense";
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="col-12">
     <label asp-for="Expense.ActivityBudgetId" class="form-label"></label>
-    <select asp-for="Expense.ActivityBudgetId" class="form-select" asp-items="ViewBag.ActivityBudgetId"></select>
+    <select asp-for="Expense.ActivityBudgetId" class="form-select" asp-items="@Model.ActivityBudgetSL"></select>
     <span asp-validation-for="Expense.ActivityBudgetId" class="text-danger"></span>
 </div>
 <div class="col-12">
@@ -22,12 +22,15 @@
     <input asp-for="Expense.Vendor" class="form-control" />
     <span asp-validation-for="Expense.Vendor" class="text-danger"></span>
 </div>
-<div class="col-6">
+<div class="col-12 col-sm-6">
     <label asp-for="Expense.Amount" class="form-label"></label>
-    <input asp-for="Expense.Amount" class="form-control" />
+    <div class="input-group">
+        <span class="input-group-text">$</span>
+        <input asp-for="Expense.Amount" class="form-control" />
+    </div>
     <span asp-validation-for="Expense.Amount" class="text-danger"></span>
 </div>
-<div class="col-6">
+<div class="col-12 col-sm-6">
     <label asp-for="Expense.ExpenseDate" class="form-label"></label>
     <input asp-for="Expense.ExpenseDate" class="form-control" />
     <span asp-validation-for="Expense.ExpenseDate" class="text-danger"></span>

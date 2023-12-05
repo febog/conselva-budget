@@ -18,11 +18,11 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
 
         public async Task OnGetAsync()
         {
-            if (_context.Expenses != null)
-            {
-                Expenses = await _context.Expenses
-                    .Include(e => e.ActivityBudget).ToListAsync();
-            }
+            Expenses = await _context.Expenses
+                .Include(e => e.ActivityBudget.Activity.Result.Project)
+                .Include(e => e.ActivityBudget.AccountAssignment.Account)
+                .Include(e => e.ActivityBudget.AccountAssignment.Organization)
+                .ToListAsync();
         }
     }
 }
