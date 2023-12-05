@@ -30,6 +30,8 @@ namespace ConselvaBudget.Models
         [DataType(DataType.Date)]
         public DateTime ExpenseDate { get; set; }
 
+        public ExpenseStatus Status { get; set; }
+
         [Display(Name = "ModifiedDate")]
         public DateTime ModifiedDate { get; set; }
 
@@ -42,5 +44,13 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Account")]
         public ActivityBudget ActivityBudget { get; set; }
+    }
+
+    public enum ExpenseStatus
+    {
+        Submitted,
+        Approved,
+        Rejected,
+        Completed
     }
 }

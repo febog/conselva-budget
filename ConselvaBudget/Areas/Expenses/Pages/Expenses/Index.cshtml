@@ -34,6 +34,9 @@
     <th>
         @Html.DisplayNameFor(model => model.Expenses[0].ActivityBudget.AccountAssignment)
     </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Expenses[0].Status)
+    </th>
 }
 
 @foreach (var item in Model.Expenses)
@@ -59,6 +62,9 @@
         </td>
         <td class="align-middle">
             @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td class="align-middle">
             <table-buttons>
