@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Equivalent accounts";
+}
+
+@section Introduction {
+    <p>Account name mapping. Click <b>Edit</b> to assign the equivalent account names.</p>
+}
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.Donors[0].Name)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Donors[0].EquivalentAccounts)
+    </th>
+}
+
+@foreach (var item in Model.Donors)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="align-middle">
+            @if (item.EquivalentAccounts.Count > 0)
+            {
+                <span class="badge text-bg-success"><i class="bi bi-check2-square"></i> Equivalents set</span>
+            }
+            else
+            {
+                <span class="badge text-bg-secondary"><i class="bi bi-info-circle"></i> Equivalents not set</span>
+            }
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+            </table-buttons>
+        </td>
+    </tr>
+}
