@@ -47,7 +47,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
                 "Activity",
                 a => a.ResultId,
                 a => a.Name,
-                a => a.DueDate))
+                a => a.Comments))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Projects/Manage",

@@ -15,9 +15,9 @@ namespace ConselvaBudget.Models
         [Required]
         public string Name { get; set; }
 
-        [Display(Name = "DueDate")]
-        [DataType(DataType.Date)]
-        public DateTime DueDate { get; set; }
+        [Display(Name = "Comments")]
+        [StringLength(255)]
+        public string Comments { get; set; }
 
         [Display(Name = "Total budget for activity")]
         [DisplayFormat(DataFormatString = "{0:C}")]

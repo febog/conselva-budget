@@ -104,7 +104,7 @@
                             </div>
                             <div class="collapse show" id="activity-body-@activity.Id">
                                 <p>
-                                    @Html.DisplayNameFor(model => activity.DueDate): @Html.DisplayFor(model => activity.DueDate)
+                                    @Html.DisplayFor(model => activity.Comments)
                                 </p>
                                 <p>
                                     <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Create budget</a>
