@@ -23,5 +23,7 @@ namespace ConselvaBudget.Models
         public string DisplayName => $"{Code} - {Name}";
 
         public virtual ICollection<AccountAssignment> AccountAssignments { get; set; }
+
+        public virtual ICollection<EquivalentAccount> EquivalentAccounts { get; set; }
     }
 }

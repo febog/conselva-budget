@@ -16,5 +16,8 @@ namespace ConselvaBudget.Models
         public string Description { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; }
+
+        [Display(Name = "Equivalent accounts")]
+        public virtual ICollection<EquivalentAccount> EquivalentAccounts { get; set; }
     }
 }
