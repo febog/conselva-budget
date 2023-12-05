@@ -38,6 +38,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
                 e => e.ExpenseDate,
                 e => e.Comments))
             {
+                emptyExpense.Status = ExpenseStatus.Submitted;
                 emptyExpense.CreatedDate = DateTime.Now;
                 emptyExpense.ModifiedDate = DateTime.Now;
                 _context.Expenses.Add(emptyExpense);
