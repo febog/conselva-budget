@@ -34,13 +34,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Deposits
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var depositToUpdate = await _context.Deposits.FindAsync(id);
 
             if (depositToUpdate == null)
