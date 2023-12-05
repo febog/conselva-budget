@@ -21,7 +21,7 @@
       "destination": "wwwroot/lib/bootstrap-icons/"
     },
     {
-      "library": "jquery@3.7.0",
+      "library": "jquery@3.7.1",
       "destination": "wwwroot/lib/jquery/dist/",
       "files": [
         "jquery.js",
