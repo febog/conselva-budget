@@ -22,7 +22,10 @@ namespace ConselvaBudget
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddDbContext<ConselvaBudgetContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ConselvaBudgetContext") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetContext' not found.")));
-            builder.Services.AddRazorPages();
+            builder.Services.AddRazorPages(options =>
+            {
+                options.Conventions.AuthorizeAreaFolder("Administration", "/", "RequireAdministratorRole");
+            });
 
             builder.Services.AddAuthorization(options =>
             {
@@ -30,6 +33,8 @@ namespace ConselvaBudget
                 options.FallbackPolicy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
+
+                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
             });
 
             var app = builder.Build();
