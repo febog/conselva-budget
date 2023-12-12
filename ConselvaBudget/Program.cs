@@ -1,4 +1,5 @@
 using ConselvaBudget.Data;
+using ConselvaBudget.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -34,7 +35,7 @@ namespace ConselvaBudget
                     .RequireAuthenticatedUser()
                     .Build();
 
-                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole(Roles.Administrator));
             });
 
             var app = builder.Build();
