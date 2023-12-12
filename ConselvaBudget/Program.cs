@@ -24,9 +24,9 @@ namespace ConselvaBudget
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ConselvaBudgetContext") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetContext' not found.")));
             builder.Services.AddRazorPages();
 
-            // Globally require authenticated users.
             builder.Services.AddAuthorization(options =>
             {
+                // Set the fallback authorization policy to globally require users to be authenticated
                 options.FallbackPolicy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
