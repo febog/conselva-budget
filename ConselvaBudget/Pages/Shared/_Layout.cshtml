@@ -45,6 +45,12 @@
                                 <a class="nav-link text-body" asp-area="Reporting" asp-page="/Index">Reporting</a>
                             </li>
                         }
+                        @if (User.IsInRole(Roles.Administrator))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-body" asp-area="Access" asp-page="/Index">Access</a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                     <partial name="_ThemeSelectorPartial" />
