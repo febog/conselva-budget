@@ -45,7 +45,7 @@ namespace ConselvaBudget
                 options.AddPolicy("RequireEmployeeRole", policy => policy.RequireRole(Roles.Employee));
             });
 
-            builder.Services.AddTransient<IReportService, ExcelReportService>();
+            builder.Services.RegisterConselvaBudgetServices();
 
             var app = builder.Build();
 
