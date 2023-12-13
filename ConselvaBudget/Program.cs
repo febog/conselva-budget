@@ -1,4 +1,5 @@
 using ConselvaBudget.Data;
+using ConselvaBudget.Services;
 using ConselvaBudget.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -43,6 +44,8 @@ namespace ConselvaBudget
                 options.AddPolicy("RequireStaffRole", policy => policy.RequireRole(Roles.Staff));
                 options.AddPolicy("RequireEmployeeRole", policy => policy.RequireRole(Roles.Employee));
             });
+
+            builder.Services.AddTransient<IReportService, ExcelReportService>();
 
             var app = builder.Build();
 
