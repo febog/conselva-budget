@@ -29,6 +29,7 @@ namespace ConselvaBudget
                 options.Conventions.AuthorizeAreaFolder("Administration", "/", "RequireAdministratorRole");
                 options.Conventions.AuthorizeAreaFolder("Budget", "/", "RequireStaffRole");
                 options.Conventions.AuthorizeAreaFolder("Expenses", "/", "RequireEmployeeRole");
+                options.Conventions.AuthorizeAreaFolder("Reporting", "/", "RequireStaffRole");
             });
 
             builder.Services.AddAuthorization(options =>
