@@ -5,7 +5,7 @@ using ConselvaBudget.Models;
 
 namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 {
-    public class EditModel : OrganizationsPageModel
+    public class EditModel : OrganizationPageModel
     {
         private readonly ConselvaBudgetContext _context;
 

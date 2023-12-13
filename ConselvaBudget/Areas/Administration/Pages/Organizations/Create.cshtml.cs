@@ -4,7 +4,7 @@ using ConselvaBudget.Models;
 
 namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 {
-    public class CreateModel : OrganizationsPageModel
+    public class CreateModel : OrganizationPageModel
     {
         private readonly ConselvaBudgetContext _context;
 

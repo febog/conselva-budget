@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 {
-    public class OrganizationsPageModel : PageModel
+    public class OrganizationPageModel : PageModel
     {
         public List<AccountAssignmentData> AccountAssignmentDataList;
 
