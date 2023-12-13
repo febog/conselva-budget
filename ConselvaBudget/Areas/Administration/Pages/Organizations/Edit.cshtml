@@ -28,9 +28,9 @@
                        type="checkbox"
                        name="selectedAccounts"
                        value="@account.AccountId"
-                       id="account_@account.AccountId"
+                       id="account-@account.AccountId"
                 @(Html.Raw(account.Assigned ? "checked=\"checked\"" : ""))>
-                <label class="form-check-label" for="account_@account.AccountId">@account.AccountName</label>
+                <label class="form-check-label" for="account-@account.AccountId">@account.AccountName</label>
             </li>
         }
     </ul>
