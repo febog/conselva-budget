@@ -20,6 +20,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Deposits
         {
             Deposit = await _context.Deposits
                 .Include(d => d.Project)
+                .OrderByDescending(d => d.Date)
                 .ToListAsync();
         }
     }
