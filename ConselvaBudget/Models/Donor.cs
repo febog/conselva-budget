@@ -11,10 +11,6 @@ namespace ConselvaBudget.Models
         [Required]
         public string Name { get; set; }
 
-        [Display(Name = "Description")]
-        [StringLength(255)]
-        public string Description { get; set; }
-
         public virtual ICollection<Project> Projects { get; set; }
 
         [Display(Name = "Equivalent accounts")]
