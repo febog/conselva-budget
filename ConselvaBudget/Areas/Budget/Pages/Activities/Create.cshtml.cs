@@ -41,7 +41,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
                 "Activity",
                 a => a.ResultId,
                 a => a.Name,
-                a => a.Comments))
+                a => a.Description))
             {
                 _context.Activities.Add(emptyActivity);
                 await _context.SaveChangesAsync();

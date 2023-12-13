@@ -15,9 +15,9 @@ namespace ConselvaBudget.Models
         [Required]
         public string Name { get; set; }
 
-        [Display(Name = "Comments")]
+        [Display(Name = "Description")]
         [StringLength(255)]
-        public string Comments { get; set; }
+        public string Description { get; set; }
 
         [Display(Name = "Total budget for activity")]
         [DisplayFormat(DataFormatString = "{0:C}")]
