@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "User roles";
+}
+
+@section Introduction {
+    <p>Select a <b>User</b> to assign <b>Roles</b> to give them access to different areas of the website.</p>
+}
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.UserAssignments[0].UserName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.UserAssignments[0].Roles)
+    </th>
+}
+
+@foreach (var item in Model.UserAssignments)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Roles)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+            </table-buttons>
+        </td>
+    </tr>
+}

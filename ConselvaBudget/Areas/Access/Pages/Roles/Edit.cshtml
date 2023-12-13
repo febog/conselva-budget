@@ -1,0 +1,38 @@
+﻿@page
+@model EditModel
+
+@{
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
+    ViewData["Title"] = "Edit user roles";
+}
+
+<div class="col-12">
+    <label asp-for="UserViewModel.UserName" class="form-label"></label>
+    <input asp-for="UserViewModel.UserName" class="form-control" disabled />
+</div>
+<div class="col-12">
+    @foreach (var role in Model.AssignedRoleDataList)
+    {
+        <div class="form-check">
+            <input class="form-check-input"
+                   type="checkbox"
+                   name="selectedRoles"
+                   value="@role.RoleName"
+                   id="role-@role.RoleName"
+            @(Html.Raw(role.Assigned ? "checked=\"checked\"" : ""))>
+            <label class="form-check-label" for="role-@role.RoleName">
+                @role.RoleName
+            </label>
+        </div>
+    }
+</div>
+<div class="col-12">
+    <input class="btn btn-primary" type="submit" value="Save">
+    <a class="btn btn-secondary" asp-page="./Index">Cancel</a>
+</div>
+
+@section FormInfoCardBody {
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+}
