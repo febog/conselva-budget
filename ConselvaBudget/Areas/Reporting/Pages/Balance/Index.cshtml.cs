@@ -47,8 +47,8 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
                     Activity = activityBudget.Activity.Name,
                     Program = activityBudget.AccountAssignment.Organization.Name,
                     Account = activityBudget.AccountAssignment.DisplayName,
-                    Amount = activityBudget.Amount,
                     Comments = activityBudget.Comments,
+                    Amount = activityBudget.Amount,
                     Expenses = activityBudget.ActivityBudgetExpenses,
                     Remainder = activityBudget.ActivityBudgetRemainder,
                 });

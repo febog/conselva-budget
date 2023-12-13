@@ -14,9 +14,9 @@
 
         public string Account { get; set; }
 
-        public decimal Amount { get; set; }
-
         public string Comments { get; set; }
+
+        public decimal Amount { get; set; }
 
         public decimal Expenses { get; set; }
 
