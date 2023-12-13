@@ -27,9 +27,12 @@
                                 <a class="nav-link text-body" asp-area="Administration" asp-page="/Index">Administration</a>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-body" asp-area="Budget" asp-page="/Projects/Index">Budget</a>
-                        </li>
+                        @if (User.IsInRole(Roles.Staff))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-body" asp-area="Budget" asp-page="/Projects/Index">Budget</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-body" asp-area="Expenses" asp-page="/Expenses/Index">Expense</a>
                         </li>

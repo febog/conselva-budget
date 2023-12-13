@@ -27,6 +27,7 @@ namespace ConselvaBudget
             builder.Services.AddRazorPages(options =>
             {
                 options.Conventions.AuthorizeAreaFolder("Administration", "/", "RequireAdministratorRole");
+                options.Conventions.AuthorizeAreaFolder("Budget", "/", "RequireStaffRole");
             });
 
             builder.Services.AddAuthorization(options =>
@@ -37,6 +38,7 @@ namespace ConselvaBudget
                     .Build();
 
                 options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole(Roles.Administrator));
+                options.AddPolicy("RequireStaffRole", policy => policy.RequireRole(Roles.Staff));
             });
 
             var app = builder.Build();
