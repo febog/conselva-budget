@@ -28,6 +28,7 @@ namespace ConselvaBudget
             {
                 options.Conventions.AuthorizeAreaFolder("Administration", "/", "RequireAdministratorRole");
                 options.Conventions.AuthorizeAreaFolder("Budget", "/", "RequireStaffRole");
+                options.Conventions.AuthorizeAreaFolder("Expenses", "/", "RequireEmployeeRole");
             });
 
             builder.Services.AddAuthorization(options =>
@@ -39,6 +40,7 @@ namespace ConselvaBudget
 
                 options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole(Roles.Administrator));
                 options.AddPolicy("RequireStaffRole", policy => policy.RequireRole(Roles.Staff));
+                options.AddPolicy("RequireEmployeeRole", policy => policy.RequireRole(Roles.Employee));
             });
 
             var app = builder.Build();
