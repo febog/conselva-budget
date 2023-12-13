@@ -28,21 +28,27 @@
     </div>
     <div class="col-md-6 col-lg-4">
         <h2 class="h6 text-body-secondary">
-            @Html.DisplayNameFor(model => model.Project.ProjectExpenses)
+            @Html.DisplayNameFor(model => model.Project.PendingToDeposit)
         </h2>
-        <p>@Html.DisplayFor(model => model.Project.ProjectExpenses)</p>
+        <p>@Html.DisplayFor(model => model.Project.PendingToDeposit)</p>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.TotalExpenses)
+        </h2>
+        <p>@Html.DisplayFor(model => model.Project.TotalExpenses)</p>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h2 class="h6 text-body-secondary">
+            @Html.DisplayNameFor(model => model.Project.RemainingBudget)
+        </h2>
+        <p class="@(Model.Project.RemainingBudget < 0 ? "text-danger" : "")">@Html.DisplayFor(model => model.Project.RemainingBudget)</p>
     </div>
     <div class="col-md-6 col-lg-4">
         <h2 class="h6 text-body-secondary">
             @Html.DisplayNameFor(model => model.Project.RemainingInBank)
         </h2>
-        <p>@Html.DisplayFor(model => model.Project.RemainingInBank)</p>
-    </div>
-    <div class="col-md-6 col-lg-4">
-        <h2 class="h6 text-body-secondary">
-            @Html.DisplayNameFor(model => model.Project.ProjectRemainder)
-        </h2>
-        <p class="@(Model.Project.ProjectRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(model => model.Project.ProjectRemainder)</p>
+        <p class="@(Model.Project.RemainingInBank < 0 ? "text-danger" : "")">@Html.DisplayFor(model => model.Project.RemainingInBank)</p>
     </div>
     <div class="col-md-6 col-lg-4">
         <h2 class="h6 text-body-secondary">

@@ -46,22 +46,27 @@ namespace ConselvaBudget.Models
         [Display(Name = "Total expenses for project")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ProjectExpenses => Results.Sum(e => e.ResultExpenses);
+        public decimal TotalExpenses => Results.Sum(e => e.ResultExpenses);
 
         [Display(Name = "Remaining budget for project")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ProjectRemainder => Results.Sum(e => e.ResultRemainder);
+        public decimal RemainingBudget => ProjectBudget - TotalExpenses;
 
         [Display(Name = "Total deposits")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
         public decimal TotalDeposits => Deposits.Sum(d => d.Amount);
 
+        [Display(Name = "Pending to deposit")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [ValidateNever]
+        public decimal PendingToDeposit => ProjectBudget - TotalDeposits;
+
         [Display(Name = "Remaining in bank")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal RemainingInBank => TotalDeposits - ProjectExpenses;
+        public decimal RemainingInBank => TotalDeposits - TotalExpenses;
 
         /// <summary>
         /// A Project is considered active if it has a Start and End date and we are in between those dates.
