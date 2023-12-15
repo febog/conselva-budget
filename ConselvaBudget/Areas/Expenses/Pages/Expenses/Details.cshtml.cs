@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using ConselvaBudget.Authorization;
 
 namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
 {
@@ -19,7 +20,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
             _context = context;
         }
 
-      public Expense Expense { get; set; }
+        public Expense Expense { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,11 +34,28 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Expense = expense;
             }
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(int? id, ExpenseStatus status)
+        {
+            var expense = await _context.Expenses.FindAsync(id);
+            if (expense == null)
+            {
+                return NotFound();
+            }
+
+            if (User.IsInRole(Roles.Staff))
+            {
+                expense.Status = status;
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }
