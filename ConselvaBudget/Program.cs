@@ -42,7 +42,7 @@ namespace ConselvaBudget
                     .Build();
 
                 options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole(Roles.Administrator));
-                options.AddPolicy("RequireStaffRole", policy => policy.RequireRole(Roles.Staff));
+                options.AddPolicy("RequireManagementRole", policy => policy.RequireRole(Roles.Management));
                 options.AddPolicy("RequireEmployeeRole", policy => policy.RequireRole(Roles.Employee));
             });
 

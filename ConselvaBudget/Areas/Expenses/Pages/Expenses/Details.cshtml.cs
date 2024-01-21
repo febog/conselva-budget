@@ -49,7 +49,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
                 return NotFound();
             }
 
-            if (User.IsInRole(Roles.Staff))
+            if (User.IsInRole(Roles.Management))
             {
                 expense.Status = status;
                 await _context.SaveChangesAsync();

@@ -70,7 +70,7 @@
     </dl>
 </div>
 
-@if(User.IsInRole(Roles.Staff) && Model.Expense.Status != ExpenseStatus.Completed)
+@if(User.IsInRole(Roles.Management) && Model.Expense.Status != ExpenseStatus.Completed)
 {
     <form style="display:inline;" method="post">
         <input type="hidden" name="id" value="@Model.Expense.Id" />
