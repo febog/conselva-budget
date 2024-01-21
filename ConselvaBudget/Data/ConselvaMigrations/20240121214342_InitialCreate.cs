@@ -32,8 +32,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,6 +54,33 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EquivalentAccounts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
+                    DonorId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EquivalentAccounts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EquivalentAccounts_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EquivalentAccounts_Donors_DonorId",
+                        column: x => x.DonorId,
+                        principalTable: "Donors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
@@ -64,7 +90,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     ShortName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Segment = table.Column<int>(type: "int", nullable: false),
-                    Deposits = table.Column<decimal>(type: "money", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
@@ -107,6 +132,28 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Deposits",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<decimal>(type: "money", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Deposits", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Deposits_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Results",
                 columns: table => new
                 {
@@ -134,7 +181,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ResultId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -186,6 +233,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     Vendor = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
                     ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
@@ -227,6 +275,21 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 column: "ActivityId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Deposits_ProjectId",
+                table: "Deposits",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EquivalentAccounts_AccountId",
+                table: "EquivalentAccounts",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EquivalentAccounts_DonorId",
+                table: "EquivalentAccounts",
+                column: "DonorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Expenses_ActivityBudgetId",
                 table: "Expenses",
                 column: "ActivityBudgetId");
@@ -245,6 +308,12 @@ namespace ConselvaBudget.Data.ConselvaMigrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Deposits");
+
+            migrationBuilder.DropTable(
+                name: "EquivalentAccounts");
+
             migrationBuilder.DropTable(
                 name: "Expenses");
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20231213093959_RenameActivityComments")]
-    partial class RenameActivityComments
+    [Migration("20240121214342_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
