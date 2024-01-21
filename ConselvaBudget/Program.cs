@@ -27,11 +27,11 @@ namespace ConselvaBudget
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ConselvaBudgetContext") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetContext' not found.")));
             builder.Services.AddRazorPages(options =>
             {
-                options.Conventions.AuthorizeAreaFolder("Administration", "/", "RequireAdministratorRole");
-                options.Conventions.AuthorizeAreaFolder("Budget", "/", "RequireStaffRole");
-                options.Conventions.AuthorizeAreaFolder("Expenses", "/", "RequireEmployeeRole");
-                options.Conventions.AuthorizeAreaFolder("Reporting", "/", "RequireStaffRole");
-                options.Conventions.AuthorizeAreaFolder("Access", "/", "RequireAdministratorRole");
+                options.Conventions.AuthorizeAreaFolder("Administration", "/", Policies.RequireAdministratorRole);
+                options.Conventions.AuthorizeAreaFolder("Budget", "/", Policies.RequireManagementRole);
+                options.Conventions.AuthorizeAreaFolder("Expenses", "/", Policies.RequireEmployeeRole);
+                options.Conventions.AuthorizeAreaFolder("Reporting", "/", Policies.RequireManagementRole);
+                options.Conventions.AuthorizeAreaFolder("Access", "/", Policies.RequireAdministratorRole);
             });
 
             builder.Services.AddAuthorization(options =>
@@ -41,9 +41,9 @@ namespace ConselvaBudget
                     .RequireAuthenticatedUser()
                     .Build();
 
-                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole(Roles.Administrator));
-                options.AddPolicy("RequireManagementRole", policy => policy.RequireRole(Roles.Management));
-                options.AddPolicy("RequireEmployeeRole", policy => policy.RequireRole(Roles.Employee));
+                options.AddPolicy(Policies.RequireAdministratorRole, policy => policy.RequireRole(Roles.Administrator));
+                options.AddPolicy(Policies.RequireManagementRole, policy => policy.RequireRole(Roles.Management));
+                options.AddPolicy(Policies.RequireEmployeeRole, policy => policy.RequireRole(Roles.Employee));
             });
 
             builder.Services.RegisterConselvaBudgetServices();
