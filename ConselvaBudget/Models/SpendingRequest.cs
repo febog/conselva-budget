@@ -25,6 +25,7 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Description")]
         [StringLength(255)]
+        [Required]
         public string Description { get; set; }
 
         [Display(Name = "Activity")]
