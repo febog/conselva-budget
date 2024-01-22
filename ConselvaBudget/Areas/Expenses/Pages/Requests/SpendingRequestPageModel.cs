@@ -40,5 +40,24 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 r.Trip = null;
             }
         }
+
+        /// <summary>
+        /// Parse multidates given by the UI. Sent as a comma-separted string.
+        /// </summary>
+        /// <param name="r">Request to set the dates to.</param>
+        private protected void ParseSelectedDates(SpendingRequest r)
+        {
+            // By default, bootstrap-datepicker sends multidate as a comma-separted string
+            // Transforms from "yyyy-mm-dd,yyyy-mm-dd" to ["yyyy-mm-dd","yyyy-mm-dd"]
+            var dateString = Request.Form["SpendingRequest.Trip.SelectedDates"][0];
+            if (!string.IsNullOrEmpty(dateString))
+            {
+                var selectedDates = dateString
+                    .Split(',')
+                    .Select(dateStr => DateTime.Parse(dateStr.Trim()))
+                    .ToList();
+                r.Trip.SelectedDates = selectedDates;
+            }
+        }
     }
 }
