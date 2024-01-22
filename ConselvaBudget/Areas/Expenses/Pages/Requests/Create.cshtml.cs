@@ -28,12 +28,16 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 return NotFound();
             }
 
+            Activity = foundActivity;
+
             PopulateVehicleDropDownList(_context);
             return Page();
         }
 
         [BindProperty]
         public SpendingRequest SpendingRequest { get; set; }
+
+        public Activity Activity { get; set; }
 
         public async Task<IActionResult> OnPostAsync(int? activity)
         {
@@ -73,6 +77,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
             }
 
             PopulateVehicleDropDownList(_context, emptyRequest.Trip?.VehicleId);
+            Activity = foundActivity;
             return Page();
         }
     }

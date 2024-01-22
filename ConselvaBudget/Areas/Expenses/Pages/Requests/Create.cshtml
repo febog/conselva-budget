@@ -6,6 +6,11 @@
     ViewData["Title"] = "Create Spending Request";
 }
 
+<div><b>Activity</b></div>
+<div>
+    <b>@Model.Activity.Name</b> @Model.Activity.Description
+</div>
+
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="col-12">
     <label asp-for="SpendingRequest.Description" class="form-label"></label>
