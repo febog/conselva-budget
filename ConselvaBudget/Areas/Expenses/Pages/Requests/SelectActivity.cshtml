@@ -1,0 +1,31 @@
+﻿@page
+@model SelectActivityModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Activities";
+}
+
+@section Introduction {
+    <p>Select the activity for this request.</p>
+}
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.Activities[0].Name)
+    </th>
+}
+
+@foreach (var item in Model.Activities)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <a class="btn btn-primary btn-sm" asp-page="./Create" asp-route-activity="@item.Id">Select</a>
+            </table-buttons>
+        </td>
+    </tr>
+}

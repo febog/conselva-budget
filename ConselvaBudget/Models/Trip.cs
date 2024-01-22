@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConselvaBudget.Models
 {
@@ -21,6 +22,7 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Participants { get; set; }
 
+        [BindNever]
         public List<DateTime> SelectedDates { get; set; }
 
         [Display(Name = "Spending Request")]

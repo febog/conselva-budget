@@ -1,0 +1,58 @@
+﻿@page
+@model CreateModel
+
+@{
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
+    ViewData["Title"] = "Create Spending Request";
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Description" class="form-label"></label>
+    <input asp-for="SpendingRequest.Description" class="form-control" />
+    <span asp-validation-for="SpendingRequest.Description" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.Driver" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.Driver" class="form-control" />
+    <span asp-validation-for="SpendingRequest.Trip.Driver" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.SelectedDates" class="form-label"></label>
+    <input type="text" class="form-control"
+           id="SpendingRequest_Trip_SelectedDates"
+           name="SpendingRequest.Trip.SelectedDates" />
+    <span asp-validation-for="SpendingRequest.Trip.SelectedDates" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <input class="btn btn-primary" type="submit" value="Create">
+    <a class="btn btn-secondary" asp-page="./Index">Cancel</a>
+</div>
+
+@section FormInfoCardBody {
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+}
+
+@section FormCSS {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+
+@section FormScripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"
+            integrity="sha512-LsnSViqQyaXpD4mBBdRYeP6sRwJiJveh2ZIbW41EBrNmKxgr/LFZIiWT6yr+nycvhvauz8c2nYMhrP80YhG7Cw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // Initialize the datepicker
+        $(document).ready(function () {
+            $('#SpendingRequest_Trip_SelectedDates').datepicker({
+                // format: 'yyyy-mm-dd',
+                multidate: true
+            });
+        });
+    </script>
+}

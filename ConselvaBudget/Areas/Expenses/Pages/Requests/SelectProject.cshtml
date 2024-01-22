@@ -1,0 +1,43 @@
+﻿@page
+@model SelectProjectModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Projects";
+}
+
+@section Introduction {
+    <p>Select the working project.</p>
+}
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].Segment)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].Name)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Projects[0].ShortName)
+    </th>
+}
+
+@foreach (var item in Model.Projects.Where(p => p.IsActive))
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Segment)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.ShortName)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <a class="btn btn-primary btn-sm" asp-page="./SelectActivity" asp-route-project="@item.Id">Select</a>
+            </table-buttons>
+        </td>
+    </tr>
+}
