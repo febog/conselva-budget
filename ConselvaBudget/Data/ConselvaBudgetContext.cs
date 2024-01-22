@@ -29,6 +29,8 @@ namespace ConselvaBudget.Data
 
         public DbSet<ActivityBudget> ActivityBudgets { get; set; }
 
+        public DbSet<SpendingRequest> SpendingRequests { get; set; }
+
         public DbSet<Expense> Expenses { get; set; }
 
         public DbSet<Deposit> Deposits { get; set; }
