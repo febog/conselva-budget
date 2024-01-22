@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using System.Diagnostics;
+using Microsoft.CodeAnalysis;
 
 namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
 {
@@ -15,8 +17,20 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync(int? request)
         {
+            if (request == null)
+            {
+                return NotFound();
+            }
+
+            var foundRequest = await _context.SpendingRequests.FindAsync(request);
+
+            if (foundRequest == null)
+            {
+                return NotFound();
+            }
+
             PopulateActivityBudgetDropDownList(_context);
             return Page();
         }
@@ -24,8 +38,20 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
         [BindProperty]
         public Expense Expense { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? request)
         {
+            if (request == null)
+            {
+                return NotFound();
+            }
+
+            var foundRequest = await _context.SpendingRequests.FindAsync(request);
+
+            if (foundRequest == null)
+            {
+                return NotFound();
+            }
+
             var emptyExpense = new Expense();
 
             if (await TryUpdateModelAsync<Expense>(
@@ -38,12 +64,13 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
                 e => e.ExpenseDate,
                 e => e.Comments))
             {
+                emptyExpense.SpendingRequestId = foundRequest.Id;
                 emptyExpense.Status = ExpenseStatus.Submitted;
                 emptyExpense.CreatedDate = DateTime.Now;
                 emptyExpense.ModifiedDate = DateTime.Now;
                 _context.Expenses.Add(emptyExpense);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return RedirectToPage("/Requests/Edit", new { id = foundRequest.Id });
             }
 
             PopulateActivityBudgetDropDownList(_context, emptyExpense.ActivityBudgetId);
