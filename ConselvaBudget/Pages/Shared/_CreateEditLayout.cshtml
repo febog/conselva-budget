@@ -18,9 +18,13 @@
     </div>
 </div>
 
+@section CSS {
+    @await RenderSectionAsync("FormCSS", required: false)
+}
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await RenderSectionAsync("FormScripts", required: false);
     }
 }
