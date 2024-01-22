@@ -2,6 +2,7 @@ using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ConselvaBudget.Areas.Expenses.Pages.Requests
 {
@@ -75,6 +76,8 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 r => r.Description,
                 r => r.Trip))
             {
+                RemoveTripIfEmpty(emptyRequest);
+
                 _context.SpendingRequests.Add(emptyRequest);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
@@ -83,6 +86,24 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
             PopulateVehicleDropDownList(_context, emptyRequest.Trip?.VehicleId);
             Activity = foundActivity;
             return Page();
+        }
+
+        /// <summary>
+        /// Removes the Trip navigation property if all fields empty.
+        /// This removes the related row in the table if the user clears
+        /// the Trip.
+        /// </summary>
+        /// <param name="r">SpendingRequest to clean</param>
+        private void RemoveTripIfEmpty(SpendingRequest r)
+        {
+            if (r.Trip?.VehicleId == null &&
+                string.IsNullOrWhiteSpace(r.Trip?.Driver) &&
+                string.IsNullOrWhiteSpace(r.Trip?.Destination) &&
+                string.IsNullOrWhiteSpace(r.Trip?.Participants) &&
+                r.Trip.SelectedDates.IsNullOrEmpty())
+            {
+                r.Trip = null;
+            }
         }
     }
 }

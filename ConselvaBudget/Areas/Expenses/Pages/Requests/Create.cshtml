@@ -31,7 +31,9 @@
 </div>
 <div class="col-12">
     <label asp-for="SpendingRequest.Trip.VehicleId" class="form-label"></label>
-    <select asp-for="SpendingRequest.Trip.VehicleId" class="form-select" asp-items="@Model.VehicleSL"></select>
+    <select asp-for="SpendingRequest.Trip.VehicleId" class="form-select" asp-items="@Model.VehicleSL">
+        <option value="">-- Vehicle --</option>
+    </select>
     <span asp-validation-for="SpendingRequest.Trip.VehicleId" class="text-danger"></span>
 </div>
 <div class="col-12">
