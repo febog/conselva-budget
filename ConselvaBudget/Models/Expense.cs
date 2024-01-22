@@ -11,6 +11,9 @@ namespace ConselvaBudget.Models
         [Display(Name = "Budget")]
         public int ActivityBudgetId { get; set; }
 
+        [Display(Name = "Spending Request")]
+        public int SpendingRequestId { get; set; }
+
         [Display(Name = "Description")]
         [StringLength(255)]
         [Required]
@@ -44,6 +47,9 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Account")]
         public ActivityBudget ActivityBudget { get; set; }
+
+        [Display(Name = "Spending Request")]
+        public SpendingRequest SpendingRequest { get; set; }
     }
 
     public enum ExpenseStatus
