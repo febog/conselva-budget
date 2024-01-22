@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConselvaBudget.Models
 {
@@ -28,6 +30,16 @@ namespace ConselvaBudget.Models
         /// </summary>
         [BindNever]
         public List<DateTime> SelectedDates { get; set; }
+
+        [ValidateNever]
+        public string SelectedDatesString => string.Join(',', SelectedDates.Select(d => d.ToString("yyyy-MM-dd")));
+
+        /// <summary>
+        /// As provided by the datepicker UI
+        /// </summary>
+        [NotMapped]
+        [Display(Name = "Dates for the trip")]
+        public string SelectedDatesInput { get; set; }
 
         [Display(Name = "Spending Request")]
         public SpendingRequest SpendingRequest { get; set; }

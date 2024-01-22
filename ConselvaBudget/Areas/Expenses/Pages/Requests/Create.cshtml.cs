@@ -53,7 +53,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 return NotFound();
             }
 
-            var emptyRequest = new SpendingRequest();            
+            var emptyRequest = new SpendingRequest();
 
             if (await TryUpdateModelAsync<SpendingRequest>(
                 emptyRequest,
@@ -77,8 +77,9 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 return RedirectToPage("./Index");
             }
 
-            PopulateVehicleDropDownList(_context, emptyRequest.Trip?.VehicleId);
             Activity = foundActivity;
+            PopulateVehicleDropDownList(_context, emptyRequest.Trip?.VehicleId);
+            PopulateDatesInput(emptyRequest);
             return Page();
         }
     }

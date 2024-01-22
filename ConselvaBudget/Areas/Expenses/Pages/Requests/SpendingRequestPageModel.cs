@@ -49,7 +49,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
         {
             // By default, bootstrap-datepicker sends multidate as a comma-separted string
             // Transforms from "yyyy-mm-dd,yyyy-mm-dd" to ["yyyy-mm-dd","yyyy-mm-dd"]
-            var dateString = Request.Form["SpendingRequest.Trip.SelectedDates"][0];
+            var dateString = Request.Form["SpendingRequest.Trip.SelectedDatesInput"][0];
             if (!string.IsNullOrEmpty(dateString))
             {
                 var selectedDates = dateString
@@ -58,6 +58,15 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                     .ToList();
                 r.Trip.SelectedDates = selectedDates;
             }
+        }
+
+        /// <summary>
+        /// Populates the attribute that is mapped to the field in the UI.
+        /// </summary>
+        /// <param name="r">Request to populate.</param>
+        private protected void PopulateDatesInput(SpendingRequest r)
+        {
+            r.Trip.SelectedDatesInput = r.Trip.SelectedDatesString;
         }
     }
 }

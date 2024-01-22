@@ -1,9 +1,9 @@
 ﻿@page
-@model CreateModel
+@model EditModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Create Spending Request";
+    ViewData["Title"] = "Edit Spending Request";
 }
 
 <div><b>Activity</b></div>
@@ -12,6 +12,7 @@
 </div>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="SpendingRequest.Id" />
 <div class="col-12">
     <label asp-for="SpendingRequest.Description" class="form-label"></label>
     <input asp-for="SpendingRequest.Description" class="form-control" />
