@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ConselvaBudget\ConselvaBudget.csproj" />
+  </ItemGroup>
+
 </Project>
