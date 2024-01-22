@@ -10,9 +10,20 @@
     <p>To use the budget, start by creating a Spending Request.</p>
 
     <p><a class="btn btn-primary" asp-page="SelectProject">Create request</a></p>
+
+    <h2>Active requests</h2>
 }
 
 @section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequests[0].Id)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequests[0].Activity)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
+    </th>
     <th>
         @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
     </th>
@@ -21,6 +32,15 @@
 @foreach (var item in Model.SpendingRequests)
 {
     <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Activity.Name)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
         <td class="align-middle">
             @Html.DisplayFor(modelItem => item.Description)
         </td>

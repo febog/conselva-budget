@@ -19,6 +19,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
         public async Task OnGetAsync()
         {
             SpendingRequests = await _context.SpendingRequests
+                .Include(r => r.Activity)
                 .ToListAsync();
         }
     }

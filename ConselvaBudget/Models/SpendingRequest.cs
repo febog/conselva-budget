@@ -4,6 +4,7 @@ namespace ConselvaBudget.Models
 {
     public class SpendingRequest
     {
+        [Display(Name = "Request number")]
         public int Id { get; set; }
 
         public int ActivityId { get; set; }
