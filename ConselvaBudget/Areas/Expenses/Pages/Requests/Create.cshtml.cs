@@ -53,8 +53,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 return NotFound();
             }
 
-            var emptyRequest = new SpendingRequest();
-            emptyRequest.ActivityId = foundActivity.Id;
+            var emptyRequest = new SpendingRequest();            
 
             // Parse multidates.
             // By default, bootstrap-datepicker sends multidate as a comma-separted string
@@ -77,6 +76,8 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
             {
                 RemoveTripIfEmpty(emptyRequest);
 
+                // Set calculated fields
+                emptyRequest.ActivityId = foundActivity.Id;
                 emptyRequest.RequestorUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 emptyRequest.RequestorUserName = User.Identity.Name;
                 emptyRequest.Status = RequestStatus.Submitted;
