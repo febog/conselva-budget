@@ -1,0 +1,34 @@
+﻿@page
+@model IndexModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Vehicles";
+}
+
+@section Introduction {
+    <p>Vehicles catalog used by the database.</p>
+
+    <p><a class="btn btn-primary" asp-page="Create">Create vehicle</a></p>
+}
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.Vehicles[0].Name)
+    </th>
+}
+
+@foreach (var item in Model.Vehicles)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+                <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
+            </table-buttons>
+        </td>
+    </tr>
+}
