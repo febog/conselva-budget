@@ -22,6 +22,10 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Participants { get; set; }
 
+        /// <summary>
+        /// I bind this manually since the datepicker I am using in the UI
+        /// sends the dates as a comma-separated string.
+        /// </summary>
         [BindNever]
         public List<DateTime> SelectedDates { get; set; }
 
