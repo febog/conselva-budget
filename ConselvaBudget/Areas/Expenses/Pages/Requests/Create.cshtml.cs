@@ -59,11 +59,15 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
             // Parse multidates.
             // By default, bootstrap-datepicker sends multidate as a comma-separted string
             // Transforms from "yyyy-mm-dd,yyyy-mm-dd" to ["yyyy-mm-dd","yyyy-mm-dd"]
-            var selectedDates = Request.Form["SpendingRequest.Trip.SelectedDates"][0]
-                .Split(',')
-                .Select(dateStr => DateTime.Parse(dateStr.Trim()))
-                .ToList();
-            emptyRequest.Trip.SelectedDates = selectedDates;
+            var dateString = Request.Form["SpendingRequest.Trip.SelectedDates"][0];
+            if (!string.IsNullOrEmpty(dateString))
+            {
+                var selectedDates = dateString
+                    .Split(',')
+                    .Select(dateStr => DateTime.Parse(dateStr.Trim()))
+                    .ToList();
+                emptyRequest.Trip.SelectedDates = selectedDates;
+            }
 
             if (await TryUpdateModelAsync<SpendingRequest>(
                 emptyRequest,
