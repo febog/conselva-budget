@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ConselvaBudget.Areas.Expenses.Pages.Requests
 {
-    public class CreateModel : PageModel
+    public class CreateModel : SpendingRequestPageModel
     {
         private readonly ConselvaBudgetContext _context;
 
@@ -28,6 +28,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 return NotFound();
             }
 
+            PopulateVehicleDropDownList(_context);
             return Page();
         }
 
@@ -71,6 +72,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 return RedirectToPage("./Index");
             }
 
+            PopulateVehicleDropDownList(_context, emptyRequest.Trip?.VehicleId);
             return Page();
         }
     }

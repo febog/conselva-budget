@@ -12,10 +12,27 @@
     <input asp-for="SpendingRequest.Description" class="form-control" />
     <span asp-validation-for="SpendingRequest.Description" class="text-danger"></span>
 </div>
-<div class="col-12">
+<h2>Trip information</h2>
+<div class="form-text">Optional. Only fill the following fields if trip.</div>
+<div class="col-sm-6">
     <label asp-for="SpendingRequest.Trip.Driver" class="form-label"></label>
     <input asp-for="SpendingRequest.Trip.Driver" class="form-control" />
     <span asp-validation-for="SpendingRequest.Trip.Driver" class="text-danger"></span>
+</div>
+<div class="col-sm-6">
+    <label asp-for="SpendingRequest.Trip.Destination" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.Destination" class="form-control" />
+    <span asp-validation-for="SpendingRequest.Trip.Destination" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.VehicleId" class="form-label"></label>
+    <select asp-for="SpendingRequest.Trip.VehicleId" class="form-select" asp-items="@Model.VehicleSL"></select>
+    <span asp-validation-for="SpendingRequest.Trip.VehicleId" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.Participants" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.Participants" class="form-control" />
+    <span asp-validation-for="SpendingRequest.Trip.Participants" class="text-danger"></span>
 </div>
 <div class="col-12">
     <label asp-for="SpendingRequest.Trip.SelectedDates" class="form-label"></label>

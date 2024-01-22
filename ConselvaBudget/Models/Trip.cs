@@ -10,7 +10,7 @@ namespace ConselvaBudget.Models
 
         public int? VehicleId { get; set; }
 
-        [Display(Name = "Participants")]
+        [Display(Name = "Driver")]
         [StringLength(255)]
         public string Driver { get; set; }
 
