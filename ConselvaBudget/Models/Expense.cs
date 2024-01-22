@@ -10,7 +10,8 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Budget")]
         public int ActivityBudgetId { get; set; }
-
+        
+        // Don't forget to set this FK to NoAction to prevent circular references
         [Display(Name = "Spending Request")]
         public int SpendingRequestId { get; set; }
 
