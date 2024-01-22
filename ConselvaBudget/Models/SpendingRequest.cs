@@ -31,6 +31,9 @@ namespace ConselvaBudget.Models
         [Display(Name = "Activity")]
         public Activity Activity { get; set; }
 
+        [Display(Name = "Trip")]
+        public Trip Trip { get; set; }
+
         public virtual ICollection<Expense> Expenses { get; set; }
     }
 
