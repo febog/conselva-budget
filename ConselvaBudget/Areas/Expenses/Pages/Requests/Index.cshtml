@@ -47,6 +47,7 @@
         </td>
         <td class="align-middle">
             <table-buttons>
+                <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
                 <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
                 <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
             </table-buttons>

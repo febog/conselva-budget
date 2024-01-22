@@ -1,0 +1,135 @@
+﻿@page
+@model DetailsModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Spending Request Details";
+}
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.SpendingRequest.Activity.Name)
+        @Html.DisplayFor(model => model.SpendingRequest.Activity.Description)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.Description)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.SpendingRequest.Description)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.RequestorUserName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.SpendingRequest.RequestorUserName)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.CreatedDate)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.SpendingRequest.CreatedDate)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.ModifiedDate)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.SpendingRequest.ModifiedDate)
+    </dd>
+</dl>
+
+@if (Model.SpendingRequest.Trip != null)
+{
+    <h2>Trip information</h2>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.VehicleId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.VehicleId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Driver)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.Driver)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Destination)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.Destination)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Participants)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.Participants)
+        </dd>
+    </dl>
+}
+
+<p>
+    <a class="btn btn-primary" asp-page="/Expenses/Create" asp-route-request="@Model.SpendingRequest.Id">Create expense</a>
+    <a class="btn btn-secondary" asp-page="./Edit" asp-route-request="@Model.SpendingRequest.Id">Edit request</a>
+</p>
+
+@section Headers {
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].Description)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].Vendor)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].Amount)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].ExpenseDate)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].ActivityBudget.Activity.Result.Project)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].ActivityBudget.Activity)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].ActivityBudget.AccountAssignment)
+    </th>
+}
+
+@foreach (var item in Model.SpendingRequest.Expenses)
+{
+    <tr>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Vendor)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.ExpenseDate)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.ActivityBudget.Activity.Result.Project.Name)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.ActivityBudget.Activity.Name)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <details-button asp-page="/Expenses/Details" asp-route-id="@item.Id"></details-button>
+                <edit-button asp-page="/Expenses/Edit" asp-route-id="@item.Id"></edit-button>
+                <delete-button asp-page="/Expenses/Delete" asp-route-id="@item.Id"></delete-button>
+            </table-buttons>
+        </td>
+    </tr>
+}

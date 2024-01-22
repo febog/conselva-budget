@@ -70,7 +70,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
                 emptyExpense.ModifiedDate = DateTime.Now;
                 _context.Expenses.Add(emptyExpense);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Requests/Edit", new { id = foundRequest.Id });
+                return RedirectToPage("/Requests/Details", new { id = foundRequest.Id });
             }
 
             PopulateActivityBudgetDropDownList(_context, emptyExpense.ActivityBudgetId);
