@@ -32,7 +32,7 @@ namespace ConselvaBudget.Models
         public List<DateTime> SelectedDates { get; set; }
 
         [ValidateNever]
-        public string SelectedDatesString => string.Join(',', SelectedDates.Select(d => d.ToString("yyyy-MM-dd")));
+        public string SelectedDatesString => SelectedDates == null ? "" : string.Join(',', SelectedDates.Select(d => d.ToString("yyyy-MM-dd")));
 
         /// <summary>
         /// As provided by the datepicker UI

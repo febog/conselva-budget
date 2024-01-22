@@ -66,7 +66,10 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
         /// <param name="r">Request to populate.</param>
         private protected void PopulateDatesInput(SpendingRequest r)
         {
-            r.Trip.SelectedDatesInput = r.Trip.SelectedDatesString;
+            if (r.Trip != null)
+            {
+                r.Trip.SelectedDatesInput = r.Trip.SelectedDatesString;
+            }
         }
     }
 }
