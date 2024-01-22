@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConselvaBudget.Models
 {
@@ -12,10 +13,14 @@ namespace ConselvaBudget.Models
         public RequestStatus Status { get; set; }
 
         [StringLength(450)]
+        [Required]
+        [ValidateNever]
         public string RequestorUserId { get; set; }
 
         [Display(Name = "Requestor")]
         [StringLength(256)]
+        [Required]
+        [ValidateNever]
         public string RequestorUserName { get; set; }
 
         [Display(Name = "CreatedDate")]
