@@ -1,6 +1,7 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Expenses.Pages.Requests
 {
@@ -75,6 +76,12 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 r => r.Trip))
             {
                 RemoveTripIfEmpty(emptyRequest);
+
+                emptyRequest.RequestorUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                emptyRequest.RequestorUserName = User.Identity.Name;
+                emptyRequest.Status = RequestStatus.Submitted;
+                emptyRequest.CreatedDate = DateTime.Now;
+                emptyRequest.ModifiedDate = DateTime.Now;
 
                 _context.SpendingRequests.Add(emptyRequest);
                 await _context.SaveChangesAsync();
