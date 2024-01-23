@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConselvaBudget", "ConselvaBudget\ConselvaBudget.csproj", "{2F2746A8-DADD-43AE-B56B-D381E6EB3E45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConselvaBudget.Tests", "ConselvaBudget.Tests\ConselvaBudget.Tests.csproj", "{B2850619-20B4-4B4C-8F77-F27DE0570E19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConselvaBudget.Tests", "ConselvaBudget.Tests\ConselvaBudget.Tests.csproj", "{B2850619-20B4-4B4C-8F77-F27DE0570E19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
