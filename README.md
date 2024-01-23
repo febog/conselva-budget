@@ -2,7 +2,7 @@
 
 ## Contents
 
-This repository contains Visual Studio Solution with 2 projects:
+This repository contains a Visual Studio Solution with 2 projects:
 
 1. **ConselvaBudget** [ASP.NET Core Razor Pages](https://learn.microsoft.com/en-us/aspnet/core/razor-pages/) web app. This is the main application and provides a website for managing the budget for Conselva. It uses [Entity Framework Core](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro) and a SQL database for storing the business data.
 2. **ConselvaBudget.Tests** Tests project for the main web application.
