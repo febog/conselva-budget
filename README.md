@@ -1,19 +1,28 @@
 # ConselvaBudget
 
+## Contents
+
+This repository contains Visual Studio Solution with 2 projects:
+
+1. **ConselvaBudget** ASP.NET Razor Pages web app. This is the main application and provides a website for managing the budget for Conselva. It uses EFCore and a SQL database for storing the business data.
+2. **ConselvaBudget.Tests** Tests project for the main web application.
+
 ## Database migrations
 
-For reference, these are the steps that I use to reset and add database migrations during development. I specify the `-Context` since this solution has more than one `DBContext`.
+I commonly reset and add migrations as I develop the data model. For reference, here are the steps that I follow to reset the migrations and start from a fresh database.
+
+Note that I specify the `-Context` since this solution has more than one `DBContext`.
 
 ### To reset database migrations
 
 This drops the database and starts fresh.
 
-- Drop-Database -Context ConselvaBudgetContext
-- Delete Migrations folder
-- Add-Migration InitialCreate -Context ConselvaBudgetContext -OutputDir Data/ConselvaMigrations
-- Update-Database -Context ConselvaBudgetContext
+- `Drop-Database -Context ConselvaBudgetContext`
+- Delete Migrations folder.
+- `Add-Migration InitialCreate -Context ConselvaBudgetContext -OutputDir Data/ConselvaMigrations`
+- `Update-Database -Context ConselvaBudgetContext`
 
 ### Add Migration
 
-- Add-Migration AddDatesToProjects -Context ConselvaBudgetContext
-- Update-Database -Context ConselvaBudgetContext
+- `Add-Migration AddDatesToProjects -Context ConselvaBudgetContext`
+- `Update-Database -Context ConselvaBudgetContext`
