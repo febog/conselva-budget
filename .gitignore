@@ -1,6 +1,5 @@
 ## Ignore database seed file to avoid uploading business 
 ## information to the repo.
-ConselvaBudget/Data/SeedData.cs
 ConselvaBudget.Seed/Data.cs
 
 ## Ignore Visual Studio temporary files, build results, and
