@@ -20,24 +20,34 @@ Deletes all migrations and creates a new migration with all the model informatio
 
 1. Delete the database.
 
-```Drop-Database -Context ConselvaBudgetContext```
+```
+Drop-Database -Context ConselvaBudgetContext
+```
 
 2. Delete the Migrations folder, `Data/ConselvaMigrations`.
 
 3. Create a fresh migration with all the model data.
 
-```Add-Migration InitialCreate -Context ConselvaBudgetContext -OutputDir Data/ConselvaMigrations```
+```
+Add-Migration InitialCreate -Context ConselvaBudgetContext -OutputDir Data/ConselvaMigrations
+```
 
 4. Create the database and apply the migration.
 
-```Update-Database -Context ConselvaBudgetContext```
+```
+Update-Database -Context ConselvaBudgetContext
+```
 
 ### Add a migration
 
 1. Crate a new migration with the model changes.
 
-```Add-Migration ChangeDescription -Context ConselvaBudgetContext```
+```
+Add-Migration ChangeDescription -Context ConselvaBudgetContext
+```
 
 2. Push the changes to the database.
 
-```Update-Database -Context ConselvaBudgetContext```
+```
+Update-Database -Context ConselvaBudgetContext
+```
