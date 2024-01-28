@@ -10,20 +10,34 @@ This repository contains a Visual Studio Solution with 3 projects:
 
 ## Database migrations
 
-I commonly reset and add migrations as I develop the data model. For reference, here are the steps that I follow to reset the migrations and start from a fresh database.
+I commonly reset and add EF Core [database migrations](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=vs) as I develop the data model. For reference, here are the steps that I follow.
 
-Note that I specify the `-Context` since this solution has more than one `DBContext`.
+These commands are to be executed in Visual Studio's *Package Manger Console* with the main web application project selected. Note that I specify the `-Context` since this project has more than one `DBContext`.
 
-### To reset database migrations
+### Drop the database and reset migrations
 
-This drops the database and starts fresh.
+Deletes all migrations and creates a new migration with all the model information. This is especially useful early in development when the model can change drastically.
 
-- `Drop-Database -Context ConselvaBudgetContext`
-- Delete Migrations folder.
-- `Add-Migration InitialCreate -Context ConselvaBudgetContext -OutputDir Data/ConselvaMigrations`
-- `Update-Database -Context ConselvaBudgetContext`
+1. Delete the database.
 
-### Add Migration
+```Drop-Database -Context ConselvaBudgetContext```
 
-- `Add-Migration AddDatesToProjects -Context ConselvaBudgetContext`
-- `Update-Database -Context ConselvaBudgetContext`
+2. Delete the Migrations folder, `Data/ConselvaMigrations`.
+
+3. Create a fresh migration with all the model data.
+
+```Add-Migration InitialCreate -Context ConselvaBudgetContext -OutputDir Data/ConselvaMigrations```
+
+4. Create the database and apply the migration.
+
+```Update-Database -Context ConselvaBudgetContext```
+
+### Add a migration
+
+1. Crate a new migration with the model changes.
+
+```Add-Migration ChangeDescription -Context ConselvaBudgetContext```
+
+2. Push the changes to the database.
+
+```Update-Database -Context ConselvaBudgetContext```
