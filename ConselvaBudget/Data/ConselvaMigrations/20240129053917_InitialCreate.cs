@@ -54,6 +54,19 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Vehicles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vehicles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EquivalentAccounts",
                 columns: table => new
                 {
@@ -223,12 +236,38 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SpendingRequests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ActivityId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    RequestorUserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    RequestorUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SpendingRequests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SpendingRequests_Activities_ActivityId",
+                        column: x => x.ActivityId,
+                        principalTable: "Activities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Expenses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ActivityBudgetId = table.Column<int>(type: "int", nullable: false),
+                    SpendingRequestId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Vendor = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
@@ -247,6 +286,39 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         principalTable: "ActivityBudgets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Expenses_SpendingRequests_SpendingRequestId",
+                        column: x => x.SpendingRequestId,
+                        principalTable: "SpendingRequests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Trips",
+                columns: table => new
+                {
+                    SpendingRequestId = table.Column<int>(type: "int", nullable: false),
+                    VehicleId = table.Column<int>(type: "int", nullable: true),
+                    Driver = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Destination = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Participants = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    SelectedDates = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trips", x => x.SpendingRequestId);
+                    table.ForeignKey(
+                        name: "FK_Trips_SpendingRequests_SpendingRequestId",
+                        column: x => x.SpendingRequestId,
+                        principalTable: "SpendingRequests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Trips_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -295,6 +367,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 column: "ActivityBudgetId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Expenses_SpendingRequestId",
+                table: "Expenses",
+                column: "SpendingRequestId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Projects_DonorId",
                 table: "Projects",
                 column: "DonorId");
@@ -303,6 +380,16 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "IX_Results_ProjectId",
                 table: "Results",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SpendingRequests_ActivityId",
+                table: "SpendingRequests",
+                column: "ActivityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trips_VehicleId",
+                table: "Trips",
+                column: "VehicleId");
         }
 
         /// <inheritdoc />
@@ -318,7 +405,16 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Expenses");
 
             migrationBuilder.DropTable(
+                name: "Trips");
+
+            migrationBuilder.DropTable(
                 name: "ActivityBudgets");
+
+            migrationBuilder.DropTable(
+                name: "SpendingRequests");
+
+            migrationBuilder.DropTable(
+                name: "Vehicles");
 
             migrationBuilder.DropTable(
                 name: "AccountAssignments");
