@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConselvaBudget.Models
 {
@@ -11,7 +12,6 @@ namespace ConselvaBudget.Models
         [Display(Name = "Budget")]
         public int ActivityBudgetId { get; set; }
         
-        // Don't forget to set this FK to NoAction to prevent circular references
         [Display(Name = "Spending Request")]
         public int SpendingRequestId { get; set; }
 
@@ -47,9 +47,11 @@ namespace ConselvaBudget.Models
         public string Comments { get; set; }
 
         [Display(Name = "Account")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public ActivityBudget ActivityBudget { get; set; }
 
         [Display(Name = "Spending Request")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public SpendingRequest SpendingRequest { get; set; }
     }
 
