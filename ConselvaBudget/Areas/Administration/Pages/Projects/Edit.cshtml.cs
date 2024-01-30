@@ -46,6 +46,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
             if (await TryUpdateModelAsync<Project>(
                 projectToUpdate,
                 "Project",
+                p => p.DonorId,
                 p => p.Name,
                 p => p.ShortName,
                 p => p.Segment,
