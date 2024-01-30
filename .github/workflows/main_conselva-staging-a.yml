@@ -21,10 +21,10 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      - name: Build with dotnet
+      - name: Builds all the solution projects and all of its dependencies
         run: dotnet build --configuration Release
 
-      - name: dotnet publish
+      - name: Publish app and its dependencies to a folder for deployment
         run: dotnet publish ConselvaBudget/ConselvaBudget.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Install Entity Framework Core tool
