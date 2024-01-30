@@ -21,6 +21,8 @@ namespace ConselvaBudget.Data
 
         public DbSet<Donor> Donors { get; set; }
 
+        public DbSet<EquivalentAccount> EquivalentAccounts { get; set; }
+
         public DbSet<Project> Projects { get; set; }
 
         public DbSet<Result> Results { get; set; }
@@ -36,8 +38,6 @@ namespace ConselvaBudget.Data
         public DbSet<Expense> Expenses { get; set; }
 
         public DbSet<Deposit> Deposits { get; set; }
-
-        public DbSet<EquivalentAccount> EquivalentAccounts { get; set; }
 
         public DbSet<Vehicle> Vehicles { get; set; }
     }
