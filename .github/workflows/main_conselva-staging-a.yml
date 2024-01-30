@@ -24,6 +24,9 @@ jobs:
       - name: Builds all the solution projects and all of its dependencies
         run: dotnet build --configuration Release
 
+      - name: Run tests
+        run: dotnet test
+
       - name: Publish app and its dependencies to a folder for deployment
         run: dotnet publish ConselvaBudget/ConselvaBudget.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
