@@ -1,5 +1,7 @@
 # ConselvaBudget
 
+[![Staging workflow](https://github.com/febog/conselva-budget/actions/workflows/main_conselva-staging-a.yml/badge.svg)](https://github.com/febog/conselva-budget/actions/workflows/main_conselva-staging-a.yml)
+
 ## Contents
 
 This repository contains a Visual Studio Solution with 3 projects:
