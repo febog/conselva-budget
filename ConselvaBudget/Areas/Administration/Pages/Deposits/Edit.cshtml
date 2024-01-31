@@ -10,7 +10,7 @@
 <input type="hidden" asp-for="Deposit.Id" />
 <div class="col-12">
     <label asp-for="Deposit.ProjectId" class="form-label"></label>
-    <select asp-for="Deposit.ProjectId" class="form-control" asp-items="@Model.ProjectSL"></select>
+    <select asp-for="Deposit.ProjectId" class="form-select" asp-items="@Model.ProjectSL"></select>
     <span asp-validation-for="Deposit.ProjectId" class="text-danger"></span>
 </div>
 <div class="col-12 col-sm-6">
