@@ -285,13 +285,35 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         column: x => x.ActivityBudgetId,
                         principalTable: "ActivityBudgets",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Expenses_SpendingRequests_SpendingRequestId",
                         column: x => x.SpendingRequestId,
                         principalTable: "SpendingRequests",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RequestLogEntries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ExpenseRequestId = table.Column<int>(type: "int", nullable: false),
+                    EventAuthor = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    EventTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Operation = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RequestLogEntries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RequestLogEntries_SpendingRequests_ExpenseRequestId",
+                        column: x => x.ExpenseRequestId,
+                        principalTable: "SpendingRequests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -377,6 +399,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 column: "DonorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RequestLogEntries_ExpenseRequestId",
+                table: "RequestLogEntries",
+                column: "ExpenseRequestId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Results_ProjectId",
                 table: "Results",
                 column: "ProjectId");
@@ -403,6 +430,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
             migrationBuilder.DropTable(
                 name: "Expenses");
+
+            migrationBuilder.DropTable(
+                name: "RequestLogEntries");
 
             migrationBuilder.DropTable(
                 name: "Trips");

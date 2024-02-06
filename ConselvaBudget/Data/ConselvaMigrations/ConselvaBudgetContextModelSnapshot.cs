@@ -255,6 +255,48 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.ToTable("Expenses");
                 });
 
+            modelBuilder.Entity("ConselvaBudget.Models.ExpensesRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ActivityId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RequestorUserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RequestorUserName")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActivityId");
+
+                    b.ToTable("SpendingRequests");
+                });
+
             modelBuilder.Entity("ConselvaBudget.Models.Organization", b =>
                 {
                     b.Property<int>("Id")
@@ -319,6 +361,35 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("ConselvaBudget.Models.RequestLogEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("EventAuthor")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("EventTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ExpenseRequestId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Operation")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExpenseRequestId");
+
+                    b.ToTable("RequestLogEntries");
+                });
+
             modelBuilder.Entity("ConselvaBudget.Models.Result", b =>
                 {
                     b.Property<int>("Id")
@@ -340,48 +411,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("Results");
-                });
-
-            modelBuilder.Entity("ConselvaBudget.Models.SpendingRequest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ActivityId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("RequestorUserId")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RequestorUserName")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActivityId");
-
-                    b.ToTable("SpendingRequests");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Trip", b =>
@@ -519,7 +548,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ConselvaBudget.Models.SpendingRequest", "SpendingRequest")
+                    b.HasOne("ConselvaBudget.Models.ExpensesRequest", "SpendingRequest")
                         .WithMany("Expenses")
                         .HasForeignKey("SpendingRequestId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -528,6 +557,17 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("ActivityBudget");
 
                     b.Navigation("SpendingRequest");
+                });
+
+            modelBuilder.Entity("ConselvaBudget.Models.ExpensesRequest", b =>
+                {
+                    b.HasOne("ConselvaBudget.Models.Activity", "Activity")
+                        .WithMany("SpendingRequests")
+                        .HasForeignKey("ActivityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Activity");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Project", b =>
@@ -541,6 +581,17 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("Donor");
                 });
 
+            modelBuilder.Entity("ConselvaBudget.Models.RequestLogEntry", b =>
+                {
+                    b.HasOne("ConselvaBudget.Models.ExpensesRequest", "ExpenseRequest")
+                        .WithMany("RequestLogEntries")
+                        .HasForeignKey("ExpenseRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ExpenseRequest");
+                });
+
             modelBuilder.Entity("ConselvaBudget.Models.Result", b =>
                 {
                     b.HasOne("ConselvaBudget.Models.Project", "Project")
@@ -552,20 +603,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.SpendingRequest", b =>
-                {
-                    b.HasOne("ConselvaBudget.Models.Activity", "Activity")
-                        .WithMany("SpendingRequests")
-                        .HasForeignKey("ActivityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Activity");
-                });
-
             modelBuilder.Entity("ConselvaBudget.Models.Trip", b =>
                 {
-                    b.HasOne("ConselvaBudget.Models.SpendingRequest", "SpendingRequest")
+                    b.HasOne("ConselvaBudget.Models.ExpensesRequest", "SpendingRequest")
                         .WithOne("Trip")
                         .HasForeignKey("ConselvaBudget.Models.Trip", "SpendingRequestId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -611,6 +651,15 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("Projects");
                 });
 
+            modelBuilder.Entity("ConselvaBudget.Models.ExpensesRequest", b =>
+                {
+                    b.Navigation("Expenses");
+
+                    b.Navigation("RequestLogEntries");
+
+                    b.Navigation("Trip");
+                });
+
             modelBuilder.Entity("ConselvaBudget.Models.Organization", b =>
                 {
                     b.Navigation("AccountAssignments");
@@ -626,13 +675,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
             modelBuilder.Entity("ConselvaBudget.Models.Result", b =>
                 {
                     b.Navigation("Activities");
-                });
-
-            modelBuilder.Entity("ConselvaBudget.Models.SpendingRequest", b =>
-                {
-                    b.Navigation("Expenses");
-
-                    b.Navigation("Trip");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Vehicle", b =>
