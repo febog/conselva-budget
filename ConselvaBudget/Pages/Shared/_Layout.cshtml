@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject IViewLocalizer Localizer
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,31 +25,31 @@
                         @if (User.IsInRole(Roles.Administrator))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Administration" asp-page="/Index">Administration</a>
+                                <a class="nav-link text-body" asp-area="Administration" asp-page="/Index">@Localizer["NAV_ADMINISTRATION"]</a>
                             </li>
                         }
                         @if (User.IsInRole(Roles.Management))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Budget" asp-page="/Projects/Index">Budget</a>
+                                <a class="nav-link text-body" asp-area="Budget" asp-page="/Projects/Index">@Localizer["NAV_BUDGET"]</a>
                             </li>
                         }
                         @if (User.IsInRole(Roles.Employee))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Expenses" asp-page="/Requests/Index">Expense</a>
+                                <a class="nav-link text-body" asp-area="Expenses" asp-page="/Requests/Index">@Localizer["NAV_EXPENSES"]</a>
                             </li>
                         }
                         @if (User.IsInRole(Roles.Management))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Reporting" asp-page="/Index">Reporting</a>
+                                <a class="nav-link text-body" asp-area="Reporting" asp-page="/Index">@Localizer["NAV_REPORTING"]</a>
                             </li>
                         }
                         @if (User.IsInRole(Roles.Administrator))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Access" asp-page="/Index">Access</a>
+                                <a class="nav-link text-body" asp-area="Access" asp-page="/Index">@Localizer["NAV_ACCESS"]</a>
                             </li>
                         }
                     </ul>
