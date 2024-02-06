@@ -64,8 +64,20 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
             public string ConfirmPassword { get; set; }
         }
 
+        /// <summary>
+        /// Restrict users from setting passwords. Only use the external auth provider for login.
+        /// </summary>
+        public bool PreventUsersFromSettingPassword { get; set; }
+
         public async Task<IActionResult> OnGetAsync()
         {
+            PreventUsersFromSettingPassword = true;
+
+            if (PreventUsersFromSettingPassword)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -84,6 +96,13 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            PreventUsersFromSettingPassword = true;
+
+            if (PreventUsersFromSettingPassword)
+            {
+                return RedirectToPage("/Index");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
