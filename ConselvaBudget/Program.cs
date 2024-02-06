@@ -25,6 +25,9 @@ namespace ConselvaBudget
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddDbContext<ConselvaBudgetContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ConselvaBudgetContext") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetContext' not found.")));
+
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             builder.Services.AddRazorPages(options =>
             {
                 options.Conventions.AuthorizeAreaFolder("Administration", "/", Policies.RequireAdministratorRole);
