@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ConselvaBudget.Areas.Identity.Pages.Account
 {
+    [AllowAnonymous]
     public class LogoutModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
