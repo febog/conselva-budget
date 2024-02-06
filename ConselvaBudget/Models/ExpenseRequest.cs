@@ -45,9 +45,12 @@ namespace ConselvaBudget.Models
 
     public enum RequestStatus
     {
-        Submitted,
-        Approved,
-        Rejected,
-        Completed
+        // Do not reorder
+        Created = 0,
+        Submitted = 1,
+        Approved = 2,
+        Rejected = 3,
+        Verification = 4,
+        Completed = 5
     }
 }
