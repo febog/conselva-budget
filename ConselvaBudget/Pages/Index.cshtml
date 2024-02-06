@@ -1,4 +1,5 @@
 ﻿@page
+@inject IViewLocalizer Localizer
 @model IndexModel
 @{
     ViewData["Title"] = "Home";
@@ -6,5 +7,5 @@
 
 <div class="text-center">
     <h1 class="display-4">Conselva.net</h1>
-    <p class="lead">Management web application.</p>
+    <p class="lead">@Localizer["HOMEPAGE_LEAD"]</p>
 </div>
