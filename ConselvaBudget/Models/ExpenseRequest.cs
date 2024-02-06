@@ -41,6 +41,8 @@ namespace ConselvaBudget.Models
         public Trip Trip { get; set; }
 
         public virtual ICollection<Expense> Expenses { get; set; }
+
+        public virtual ICollection<RequestLogEntry> RequestLogEntries { get; set; }
     }
 
     public enum RequestStatus
