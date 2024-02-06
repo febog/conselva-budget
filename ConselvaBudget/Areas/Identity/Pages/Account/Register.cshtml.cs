@@ -100,6 +100,10 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
+        /// <summary>
+        /// If true, app will only allow external login providers.
+        /// </summary>
+        public bool DisableLocalAccountRegistration { get; set; }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
@@ -109,6 +113,13 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            DisableLocalAccountRegistration = true;
+
+            if (DisableLocalAccountRegistration)
+            {
+                return RedirectToPage("./Login");
+            }
+
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
