@@ -14,7 +14,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
             _context = context;
         }
 
-        public IList<ExpenseRequest> SpendingRequests { get; set; } = default!;
+        public IList<ExpensesRequest> SpendingRequests { get; set; } = default!;
 
         public async Task OnGetAsync()
         {

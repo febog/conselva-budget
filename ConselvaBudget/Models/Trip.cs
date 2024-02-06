@@ -42,7 +42,7 @@ namespace ConselvaBudget.Models
         public string SelectedDatesInput { get; set; }
 
         [Display(Name = "Spending Request")]
-        public ExpenseRequest SpendingRequest { get; set; }
+        public ExpensesRequest SpendingRequest { get; set; }
 
         [Display(Name = "Vehicle")]
         public Vehicle Vehicle { get; set; }

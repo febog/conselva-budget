@@ -17,7 +17,7 @@ namespace ConselvaBudget.Models
 
         public ExpensesRequestOperation Operation { get; set; }
 
-        public ExpenseRequest ExpenseRequest { get; set; }
+        public ExpensesRequest ExpenseRequest { get; set; }
     }
 
     public enum ExpensesRequestOperation

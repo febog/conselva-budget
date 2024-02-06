@@ -15,7 +15,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
         }
 
         [BindProperty]
-        public ExpenseRequest SpendingRequest { get; set; }
+        public ExpensesRequest SpendingRequest { get; set; }
 
         public Activity Activity { get; set; }
 
@@ -54,7 +54,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<ExpenseRequest>(
+            if (await TryUpdateModelAsync<ExpensesRequest>(
                 requestToUpdate,
                 "SpendingRequest",
                 a => a.Description,

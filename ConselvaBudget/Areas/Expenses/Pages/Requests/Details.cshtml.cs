@@ -16,7 +16,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
         }
 
         [BindProperty]
-        public ExpenseRequest SpendingRequest { get; set; }
+        public ExpensesRequest SpendingRequest { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

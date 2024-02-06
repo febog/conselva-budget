@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ConselvaBudget.Models
 {
-    public class ExpenseRequest
+    public class ExpensesRequest
     {
         [Display(Name = "Request number")]
         public int Id { get; set; }
