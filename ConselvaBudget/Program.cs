@@ -46,6 +46,14 @@ namespace ConselvaBudget
                 options.AddPolicy(Policies.RequireEmployeeRole, policy => policy.RequireRole(Roles.Employee));
             });
 
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[] { "en-US", "es-MX" };
+                options.SetDefaultCulture(supportedCultures[0]);
+                options.AddSupportedCultures(supportedCultures);
+                options.AddSupportedUICultures(supportedCultures);
+            });
+
             builder.Services.RegisterConselvaBudgetServices();
 
             var app = builder.Build();
@@ -73,6 +81,8 @@ namespace ConselvaBudget
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseRequestLocalization();
 
             app.UseAuthorization();
 
