@@ -1,10 +1,7 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Services;
-using ConselvaBudget.Authorization;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace ConselvaBudget
 {
@@ -14,40 +11,26 @@ namespace ConselvaBudget
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.ConfigureConselvaBudgetServices();
+
             // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+            var appIdentityConn = builder.Configuration.GetConnectionString("AppIdentityConnection") ?? throw new InvalidOperationException("Connection string 'AppIdentityConnection' not found.");
+            builder.Services.AddDbContext<AppIdentityContext>(options => options.UseSqlServer(appIdentityConn));
+
+            var conselvaBudgetConn = builder.Configuration.GetConnectionString("ConselvaBudgetConnection") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetConnection' not found.");
+            builder.Services.AddDbContext<ConselvaBudgetContext>(options => options.UseSqlServer(conselvaBudgetConn));
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddDbContext<ConselvaBudgetContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("ConselvaBudgetContext") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetContext' not found.")));
+                .AddEntityFrameworkStores<AppIdentityContext>();
 
             builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            builder.Services.AddRazorPages(options =>
-            {
-                options.Conventions.AuthorizeAreaFolder("Administration", "/", Policies.RequireAdministratorRole);
-                options.Conventions.AuthorizeAreaFolder("Budget", "/", Policies.RequireManagementRole);
-                options.Conventions.AuthorizeAreaFolder("Expenses", "/", Policies.RequireEmployeeRole);
-                options.Conventions.AuthorizeAreaFolder("Reporting", "/", Policies.RequireManagementRole);
-                options.Conventions.AuthorizeAreaFolder("Access", "/", Policies.RequireAdministratorRole);
-            }).AddViewLocalization();
+            builder.Services.AddRazorPages().AddViewLocalization();
 
-            builder.Services.AddAuthorization(options =>
-            {
-                // Set the fallback authorization policy to globally require users to be authenticated
-                options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-
-                options.AddPolicy(Policies.RequireAdministratorRole, policy => policy.RequireRole(Roles.Administrator));
-                options.AddPolicy(Policies.RequireManagementRole, policy => policy.RequireRole(Roles.Management));
-                options.AddPolicy(Policies.RequireEmployeeRole, policy => policy.RequireRole(Roles.Employee));
-            });
+            builder.Services.AddAuthorization();
 
             builder.Services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
             {
@@ -55,14 +38,6 @@ namespace ConselvaBudget
                 microsoftOptions.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
                 microsoftOptions.AuthorizationEndpoint = builder.Configuration["Authentication:Microsoft:AuthorizationEndpoint"];
                 microsoftOptions.TokenEndpoint = builder.Configuration["Authentication:Microsoft:TokenEndpoint"];
-            });
-
-            builder.Services.Configure<RequestLocalizationOptions>(options =>
-            {
-                var supportedCultures = new[] { "en-US", "es-MX" };
-                options.SetDefaultCulture(supportedCultures[0]);
-                options.AddSupportedCultures(supportedCultures);
-                options.AddSupportedUICultures(supportedCultures);
             });
 
             builder.Services.RegisterConselvaBudgetServices();

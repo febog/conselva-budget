@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConselvaBudget.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class AppIdentityContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public AppIdentityContext(DbContextOptions<AppIdentityContext> options)
             : base(options)
         {
         }
