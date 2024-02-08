@@ -29,7 +29,7 @@ namespace ConselvaBudget.Areas.Access.Pages.Roles
                 {
                     Id = user.Id,
                     UserName = user.UserName,
-                    Roles = string.Join(", ", await _userManager.GetRolesAsync(user)),
+                    Roles = string.Join(", ", (await _userManager.GetRolesAsync(user)).Order()),
                 });
             }
         }

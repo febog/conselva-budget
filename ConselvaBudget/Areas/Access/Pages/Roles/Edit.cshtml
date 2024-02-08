@@ -11,7 +11,7 @@
     <input asp-for="UserViewModel.UserName" class="form-control" disabled />
 </div>
 <div class="col-12">
-    @foreach (var role in Model.AssignedRoleDataList)
+    @foreach (var role in Model.AssignedRoleDataList.OrderBy(r => r.RoleName))
     {
         <div class="form-check">
             <input class="form-check-input"
