@@ -2,6 +2,8 @@
 
 [![Staging workflow](https://github.com/febog/conselva-budget/actions/workflows/staging_conselvanet(staging).yml/badge.svg)](https://github.com/febog/conselva-budget/actions/workflows/staging_conselvanet(staging).yml)
 
+Business ASP.Net Core app hosted in Azure App service.
+
 ## Contents
 
 This repository contains a Visual Studio Solution with 3 projects:
