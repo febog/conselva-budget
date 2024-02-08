@@ -1,5 +1,4 @@
 ﻿using ConselvaBudget.Authorization;
-using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
