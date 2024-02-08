@@ -1,23 +1,21 @@
 ﻿@page
+@inject IViewLocalizer Localizer
 @model LoginModel
 
 @{
+    Layout = "/Pages/Shared/_LoginLayout.cshtml";
     ViewData["Title"] = "Login";
 }
 
 <h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
-<p>Use your work account to login to the application.</p>
+<p>@Localizer["LOGIN_PROMPT"]</p>
 
-<form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-    <div>
-        <p>
-            @foreach (var provider in Model.ExternalLogins!)
-            {
-                <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-            }
-        </p>
-    </div>
+<form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+    @foreach (var provider in Model.ExternalLogins!)
+    {
+        <button type="submit" class="btn btn-primary w-100" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+    }
 </form>
 
 @* <div class="row">
@@ -92,8 +90,9 @@
             }
         </section>
     </div>
-</div> *@
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+ *@
