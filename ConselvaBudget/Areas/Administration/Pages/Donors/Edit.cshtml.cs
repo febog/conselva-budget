@@ -45,7 +45,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
             if (await TryUpdateModelAsync<Donor>(
                 donorToUpdate,
                 "Donor",
-                d => d.ShortName))
+                d => d.ShortName,
+                d => d.FullName))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

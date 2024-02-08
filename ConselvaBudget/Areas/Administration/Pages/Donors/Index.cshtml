@@ -16,6 +16,9 @@
     <th>
         @Html.DisplayNameFor(model => model.Donors[0].ShortName)
     </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Donors[0].FullName)
+    </th>
 }
 
 @foreach (var item in Model.Donors)
@@ -23,6 +26,9 @@
     <tr>
         <td class="align-middle">
             @Html.DisplayFor(modelItem => item.ShortName)
+        </td>
+        <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.FullName)
         </td>
         <td class="align-middle">
             <table-buttons>

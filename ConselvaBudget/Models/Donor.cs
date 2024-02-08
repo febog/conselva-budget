@@ -11,6 +11,11 @@ namespace ConselvaBudget.Models
         [Required]
         public string ShortName { get; set; }
 
+        [Display(Name = "FullName")]
+        [StringLength(255)]
+        [Required]
+        public string FullName { get; set; }
+
         public virtual ICollection<Project> Projects { get; set; }
 
         [Display(Name = "Equivalent accounts")]

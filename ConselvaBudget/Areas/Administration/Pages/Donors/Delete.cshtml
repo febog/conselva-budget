@@ -12,6 +12,12 @@
 <dd class="col-sm-10">
     @Html.DisplayFor(model => model.Donor.ShortName)
 </dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Donor.FullName)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Donor.FullName)
+</dd>
 
 @section DeleteFormContents {
     <input type="hidden" asp-for="Donor.Id" />

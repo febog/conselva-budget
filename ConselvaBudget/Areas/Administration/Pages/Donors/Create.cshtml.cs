@@ -29,7 +29,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
             if (await TryUpdateModelAsync<Donor>(
                 emptyDonor,
                 "Donor",
-                d => d.ShortName))
+                d => d.ShortName,
+                d => d.FullName))
             {
                 _context.Donors.Add(emptyDonor);
                 await _context.SaveChangesAsync();
