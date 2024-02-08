@@ -12,7 +12,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
         public void PopulateDonorDropDownList(ConselvaBudgetContext context,
             object selectedDonor = null)
         {
-            var donorsQuery = context.Donors.OrderBy(d => d.Name);
+            var donorsQuery = context.Donors.OrderBy(d => d.ShortName);
 
             DonorSL = new SelectList(donorsQuery.AsNoTracking(),
                 "Id",

@@ -19,7 +19,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
         public async Task OnGetAsync()
         {
             Donors = await _context.Donors
-                .OrderBy(d => d.Name)
+                .OrderBy(d => d.ShortName)
                 .ToListAsync();
         }
     }

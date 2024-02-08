@@ -20,7 +20,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Equivalents
         {
             Donors = await _context.Donors
                 .Include(d => d.EquivalentAccounts)
-                .OrderBy(d => d.Name)
+                .OrderBy(d => d.ShortName)
                 .ToListAsync();
         }
     }

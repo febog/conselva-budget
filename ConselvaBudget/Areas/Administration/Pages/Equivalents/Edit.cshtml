@@ -6,7 +6,7 @@
     ViewData["Title"] = "Edit account mappings";
 }
 
-<h2>@Model.Donor.Name</h2>
+<h2>@Model.Donor.ShortName</h2>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <input type="hidden" asp-for="Donor.Id" />

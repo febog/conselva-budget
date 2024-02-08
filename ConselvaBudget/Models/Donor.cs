@@ -6,10 +6,10 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "ShortName")]
         [StringLength(255)]
         [Required]
-        public string Name { get; set; }
+        public string ShortName { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; }
 

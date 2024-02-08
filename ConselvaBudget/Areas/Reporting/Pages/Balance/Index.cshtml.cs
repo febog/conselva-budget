@@ -41,7 +41,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
             {
                 data.Add(new BalanceReportViewModel
                 {
-                    Donor = activityBudget.Activity.Result.Project.Donor.Name,
+                    Donor = activityBudget.Activity.Result.Project.Donor.ShortName,
                     Project = activityBudget.Activity.Result.Project.Name,
                     Result = activityBudget.Activity.Result.Name,
                     Activity = activityBudget.Activity.Name,
