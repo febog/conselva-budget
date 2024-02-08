@@ -10,46 +10,57 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up .NET Core
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
-          include-prerelease: true
 
-      - name: Build with dotnet
+      - name: Build all the solution projects
         run: dotnet build --configuration Release
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: Run tests
+        run: dotnet test --no-restore
+
+      - name: Publish app and its dependencies to a folder for deployment
+        run: dotnet publish ConselvaBudget/ConselvaBudget.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp --no-restore
+
+      - name: Install Entity Framework Core tool
+        run: dotnet tool install -g dotnet-ef
+
+      - name: Create migration bundle for ConselvaBudgetContext
+        run: dotnet ef migrations bundle --runtime linux-x64 -p ConselvaBudget/ConselvaBudget.csproj -c ConselvaBudgetContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-conselvabudget
+
+      - name: Create migration bundle for AppIdentityContext
+        run: dotnet ef migrations bundle --runtime linux-x64 -p ConselvaBudget/ConselvaBudget.csproj -c AppIdentityContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-appidentity
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-and-test
     environment:
       name: 'staging'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: .net-app
       
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'conselvanet'
           slot-name: 'staging'
