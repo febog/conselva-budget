@@ -1,5 +1,6 @@
 ﻿using ConselvaBudget.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ConselvaBudget.Services
@@ -45,7 +46,11 @@ namespace ConselvaBudget.Services
 
         public static IServiceCollection RegisterConselvaBudgetServices(this IServiceCollection services)
         {
-            return services.AddTransient<IReportService, ExcelReportService>();
+            services.AddTransient<IEmailSender, EmailSenderService>();
+
+            services.AddTransient<IReportService, ExcelReportService>();
+
+            return services;
         }
     }
 }
