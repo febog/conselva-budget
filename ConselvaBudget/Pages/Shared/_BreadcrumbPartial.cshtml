@@ -36,13 +36,13 @@
         @if (!string.IsNullOrEmpty(areaName))
         {
             <li class="breadcrumb-item">
-                <a asp-area="@areaName" asp-page="/Index">@areaName</a>
+                @areaName
             </li>
         }
         @if (!string.IsNullOrEmpty(folder))
         {
             <li class="breadcrumb-item">
-                <a asp-area="@areaName" asp-page="/@folder/Index">@folder</a>
+                @folder
             </li>
         }
         @if (!string.IsNullOrEmpty(view))
