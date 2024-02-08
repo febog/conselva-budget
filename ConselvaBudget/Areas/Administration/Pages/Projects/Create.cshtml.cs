@@ -35,7 +35,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 p => p.Segment,
                 p => p.StartDate,
                 p => p.EndDate,
-                p => p.Comments))
+                p => p.Description))
             {
                 _context.Projects.Add(emptyProject);
                 await _context.SaveChangesAsync();

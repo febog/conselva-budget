@@ -35,7 +35,7 @@
         @Html.DisplayNameFor(model => model.Projects[0].IsActive)
     </th>
     <th>
-        @Html.DisplayNameFor(model => model.Projects[0].Comments)
+        @Html.DisplayNameFor(model => model.Projects[0].Description)
     </th>
 }
 
@@ -71,7 +71,7 @@
             }
         </td>
         <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Comments)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td class="align-middle">
             <table-buttons>

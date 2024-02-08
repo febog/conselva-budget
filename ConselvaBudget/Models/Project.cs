@@ -32,9 +32,9 @@ namespace ConselvaBudget.Models
         [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 
-        [Display(Name = "Comments")]
+        [Display(Name = "Description")]
         [StringLength(255)]
-        public string Comments { get; set; }
+        public string Description { get; set; }
 
         public string DisplayName => $"{Segment} - {Name} ({ShortName})";
 
