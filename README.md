@@ -4,7 +4,14 @@
 
 Business ASP.Net Core app hosted in Azure App service.
 
-## Contents
+## Table of contents
+
+  - [Solution contents](#solution-contents)
+  - [Database migrations](#database-migrations)
+    - [Drop database and reset migrations](#drop-database-and-reset-migrations)
+    - [Add a migration](#add-a-migration)
+
+## Solution contents
 
 This repository contains a Visual Studio Solution with 3 projects:
 
@@ -18,7 +25,7 @@ I commonly reset and add EF Core [database migrations](https://learn.microsoft.c
 
 These commands are to be executed in Visual Studio's *Package Manger Console* with the main web application project selected. Note that I specify the `-Context` since this project has more than one `DBContext`.
 
-### Drop the database and reset migrations
+### Drop database and reset migrations
 
 Deletes all migrations and creates a new migration with all the model information. This is especially useful early in development when the model can change drastically.
 
