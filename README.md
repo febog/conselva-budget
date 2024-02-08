@@ -1,6 +1,6 @@
 # ConselvaBudget
 
-[![Staging workflow](https://github.com/febog/conselva-budget/actions/workflows/main_conselva-staging-a.yml/badge.svg)](https://github.com/febog/conselva-budget/actions/workflows/main_conselva-staging-a.yml)
+[![Staging workflow](https://github.com/febog/conselva-budget/actions/workflows/staging_conselvanet(staging).yml/badge.svg)](https://github.com/febog/conselva-budget/actions/workflows/staging_conselvanet(staging).yml)
 
 ## Contents
 
