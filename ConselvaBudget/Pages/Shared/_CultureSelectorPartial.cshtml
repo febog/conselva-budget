@@ -7,7 +7,7 @@
     var cultureItems = LocOptions.Value.SupportedUICultures
         .Select(c => new { c.Name, c.DisplayName })
         .ToList();
-    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString.Value}";
 }
 
 <ul class="navbar-nav">
