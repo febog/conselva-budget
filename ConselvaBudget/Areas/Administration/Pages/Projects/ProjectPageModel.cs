@@ -16,7 +16,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
 
             DonorSL = new SelectList(donorsQuery.AsNoTracking(),
                 "Id",
-                "Name",
+                "ShortName",
                 selectedDonor);
         }
     }
