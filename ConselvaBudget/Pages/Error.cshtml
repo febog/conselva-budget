@@ -1,15 +1,18 @@
 ﻿@page
+@inject IViewLocalizer Localizer
 @model ErrorModel
 @{
-    ViewData["Title"] = "Error";
+    ViewData["Title"] = @Localizer["ERRORPAGE_TITLE"];
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
-@if (Model.ShowRequestId)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
+<div class="alert alert-danger mb-0" role="alert">
+    <h1 class="alert-heading">@Localizer["ERRORPAGE_TITLE"]</h1>
+    <h2>@Localizer["ERRORPAGE_DESCRIPTION"]</h2>
+    <hr>
+    @if (Model.ShowRequestId)
+    {
+        <p class="mb-0">
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+</div>
