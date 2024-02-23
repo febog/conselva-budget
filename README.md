@@ -6,10 +6,15 @@ Business ASP.NET Core app hosted in Azure App service.
 
 ## Table of contents
 
+  - [Background](#background)
   - [Solution contents](#solution-contents)
   - [Database migrations](#database-migrations)
     - [Drop database and reset migrations](#drop-database-and-reset-migrations)
     - [Add a migration](#add-a-migration)
+
+## Background
+
+Conselva is a non-profit organization that works in the field of water conservation. As such, they have unique requirements for the management of their organization budget and day-to-day activities. This project addresses their need for a tool that allows them to control and report on their budget spending.
 
 ## Solution contents
 
