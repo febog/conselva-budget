@@ -135,6 +135,18 @@
   <data name="ACCOUNT_ENTITY_NAME" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="AREA_ADMINISTRATION" xml:space="preserve">
+    <value>Administration</value>
+    <comment>Area name</comment>
+  </data>
+  <data name="AREA_BUDGET" xml:space="preserve">
+    <value>Budget</value>
+    <comment>Area name</comment>
+  </data>
+  <data name="AREA_EXPENSES" xml:space="preserve">
+    <value>Expenses</value>
+    <comment>Area name</comment>
+  </data>
   <data name="BUTTON_CANCEL" xml:space="preserve">
     <value>Cancel</value>
     <comment>Generic button</comment>
