@@ -1,9 +1,10 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
 @model EditModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Edit Account";
+    ViewData["Title"] = @Localizer["ACCOUNT_ENTITY_EDIT"];
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -26,6 +27,8 @@
 <div class="col-12">
     <input class="btn btn-primary" type="submit" value="Save">
     <a class="btn btn-secondary" asp-page="./Index">Cancel</a>
+    <save-button></save-button>
+    <cancel-button asp-page="./Index"></cancel-button>
 </div>
 
 @section FormInfoCardBody {

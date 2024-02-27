@@ -1,15 +1,16 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
 @model IndexModel
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = "Accounts";
+    ViewData["Title"] = @Localizer["ACCOUNT_CATALOG_NAME"];
 }
 
 @section Introduction {
-    <p>Accounts catalog used by the database.</p>
+    <p>@Localizer["ACCOUNT_CATALOG_DESCRIPTION"]</p>
 
-    <p><a class="btn btn-primary" asp-page="Create">Create account</a></p>
+    <p><a class="btn btn-primary" asp-page="Create">@Localizer["ACCOUNT_ENTITY_CREATE"]</a></p>
 }
 
 @section Headers {
