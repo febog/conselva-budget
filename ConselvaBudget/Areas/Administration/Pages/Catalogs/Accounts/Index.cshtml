@@ -4,13 +4,13 @@
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = @Localizer["ACCOUNT_CATALOG_NAME"];
+    ViewData["Title"] = @Localizer["ENTITY_ACCOUNT_CATALOG_NAME"];
 }
 
 @section Introduction {
-    <p>@Localizer["ACCOUNT_CATALOG_DESCRIPTION"]</p>
+    <p>@Localizer["ENTITY_ACCOUNT_CATALOG_DESCRIPTION"]</p>
 
-    <p><a class="btn btn-primary" asp-page="Create">@Localizer["ACCOUNT_ENTITY_CREATE"]</a></p>
+    <p><a class="btn btn-primary" asp-page="Create">@Localizer["ENTITY_ACCOUNT_CREATE"]</a></p>
 }
 
 @section Headers {

@@ -117,24 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ACCOUNT_CATALOG_DESCRIPTION" xml:space="preserve">
-    <value>List of accounts used by the database.</value>
-  </data>
-  <data name="ACCOUNT_CATALOG_NAME" xml:space="preserve">
-    <value>Accounts</value>
-  </data>
-  <data name="ACCOUNT_ENTITY_CREATE" xml:space="preserve">
-    <value>Create account</value>
-  </data>
-  <data name="ACCOUNT_ENTITY_DELETE" xml:space="preserve">
-    <value>Delete account</value>
-  </data>
-  <data name="ACCOUNT_ENTITY_EDIT" xml:space="preserve">
-    <value>Edit account</value>
-  </data>
-  <data name="ACCOUNT_ENTITY_NAME" xml:space="preserve">
-    <value>Account</value>
-  </data>
   <data name="AREA_ADMINISTRATION" xml:space="preserve">
     <value>Administration</value>
     <comment>Area name</comment>
@@ -170,5 +152,23 @@
   <data name="BUTTON_SAVE" xml:space="preserve">
     <value>Save</value>
     <comment>Generic button</comment>
+  </data>
+  <data name="ENTITY_ACCOUNT_CATALOG_DESCRIPTION" xml:space="preserve">
+    <value>List of accounts used by the database.</value>
+  </data>
+  <data name="ENTITY_ACCOUNT_CATALOG_NAME" xml:space="preserve">
+    <value>Accounts</value>
+  </data>
+  <data name="ENTITY_ACCOUNT_CREATE" xml:space="preserve">
+    <value>Create account</value>
+  </data>
+  <data name="ENTITY_ACCOUNT_DELETE" xml:space="preserve">
+    <value>Delete account</value>
+  </data>
+  <data name="ENTITY_ACCOUNT_EDIT" xml:space="preserve">
+    <value>Edit account</value>
+  </data>
+  <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
+    <value>Account</value>
   </data>
 </root>
