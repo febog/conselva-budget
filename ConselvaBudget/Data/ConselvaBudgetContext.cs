@@ -9,9 +9,9 @@ namespace ConselvaBudget.Data
             : base(options)
         {
         }
-        public DbSet<Organization> Organizations { get; set; }
-
         public DbSet<Account> Accounts { get; set; }
+
+        public DbSet<Organization> Organizations { get; set; }
 
         public DbSet<AccountAssignment> AccountAssignments { get; set; }
 

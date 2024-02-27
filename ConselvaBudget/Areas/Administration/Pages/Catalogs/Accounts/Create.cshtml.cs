@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Accounts
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Accounts
 {
     public class CreateModel : PageModel
     {
@@ -26,7 +26,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Accounts
         {
             var emptyAccount = new Account();
 
-            if (await TryUpdateModelAsync<Account>(
+            if (await TryUpdateModelAsync(
                 emptyAccount,
                 "Account",
                 a => a.Code,

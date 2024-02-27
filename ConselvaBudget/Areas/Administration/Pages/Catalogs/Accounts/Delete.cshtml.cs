@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Accounts
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Accounts
 {
     public class DeleteModel : PageModel
     {
