@@ -168,7 +168,13 @@
   <data name="ENTITY_ACCOUNT_EDIT" xml:space="preserve">
     <value>Edit account</value>
   </data>
+  <data name="ENTITY_ACCOUNT_HELP" xml:space="preserve">
+    <value>These are the base accounting categories used throughout the application. They serve as the foundation upon the rest of the data is built, so it’s important to keep this information accurate and up to date. As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.</value>
+  </data>
   <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
     <value>Account</value>
+  </data>
+  <data name="USER_HELP" xml:space="preserve">
+    <value>User help</value>
   </data>
 </root>
