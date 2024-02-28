@@ -28,7 +28,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Accounts
 
             if (await TryUpdateModelAsync(
                 emptyAccount,
-                "Account",
+                emptyAccount.GetType().Name,
                 a => a.Code,
                 a => a.Name,
                 a => a.Description))

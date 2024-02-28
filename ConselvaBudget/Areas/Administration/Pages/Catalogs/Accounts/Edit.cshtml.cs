@@ -17,13 +17,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Accounts
         [BindProperty]
         public Account Account { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Account = await _context.Accounts.FindAsync(id);
 
             if (Account == null)
@@ -44,7 +39,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Accounts
 
             if (await TryUpdateModelAsync(
                 accountToUpdate,
-                "Account",
+                accountToUpdate.GetType().Name,
                 a => a.Code,
                 a => a.Name,
                 a => a.Description))
