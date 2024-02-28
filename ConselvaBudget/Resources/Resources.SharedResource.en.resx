@@ -174,7 +174,12 @@
   <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="LIST_OF" xml:space="preserve">
+    <value>List of</value>
+    <comment>Used in Index layout</comment>
+  </data>
   <data name="USER_HELP" xml:space="preserve">
     <value>User help</value>
+    <comment>Subtitle for the user help card in forms</comment>
   </data>
 </root>
