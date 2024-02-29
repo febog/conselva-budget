@@ -1,5 +1,6 @@
 ﻿@page
 @inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
 @model CreateModel
 
 @{
@@ -30,6 +31,5 @@
 
 @section FormInfoCardBody {
     <h5 class="card-title">@Localizer["ENTITY_ACCOUNT_CATALOG_NAME"]</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">@Localizer["USER_HELP"]</h6>
-    <p class="card-text">@Localizer["ENTITY_ACCOUNT_HELP"]</p>
+    <p class="card-text">@HtmlLocalizer["ENTITY_ACCOUNT_HELP"]</p>
 }

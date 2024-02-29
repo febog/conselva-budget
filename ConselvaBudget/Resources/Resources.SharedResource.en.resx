@@ -173,7 +173,7 @@
     <value>Edit account</value>
   </data>
   <data name="ENTITY_ACCOUNT_HELP" xml:space="preserve">
-    <value>These are the base accounting categories used throughout the application. They serve as the foundation upon the rest of the data is built, so it’s important to keep this information accurate and up to date. As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.</value>
+    <value>&lt;p&gt;These are the base accounting categories used throughout the application. They serve as the foundation upon the rest of the data is built, so it’s important to keep this information accurate and up to date.&lt;/p&gt; &lt;p&gt;As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.&lt;/p&gt;</value>
   </data>
   <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
     <value>Account</value>
@@ -181,9 +181,5 @@
   <data name="LIST_OF" xml:space="preserve">
     <value>List of</value>
     <comment>Used in Index layout</comment>
-  </data>
-  <data name="USER_HELP" xml:space="preserve">
-    <value>User help</value>
-    <comment>Subtitle for the user help card in forms</comment>
   </data>
 </root>
