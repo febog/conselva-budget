@@ -1,6 +1,9 @@
 ﻿@{
     Layout = "/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = $"{ViewData["Action"]} {ViewData["Entity"]}";
 }
+
+<h1 class="mb-3 pb-2 border-bottom">@ViewData["Action"]</h1>
 
 <div class="row g-4">
     <div class="col-lg-5 order-lg-last">
@@ -15,7 +18,7 @@
         </div>
     </div>
     <div class="col-lg-7">
-        <h1>@ViewData["Title"]</h1>
+        <h2 class="h4">@ViewData["Entity"]</h2>
         <form method="post" class="row g-3">
             @RenderBody()
         </form>

@@ -157,17 +157,19 @@
     <value>Save</value>
     <comment>Generic button</comment>
   </data>
+  <data name="CREATE" xml:space="preserve">
+    <value>Create</value>
+    <comment>Generic action</comment>
+  </data>
+  <data name="EDIT" xml:space="preserve">
+    <value>Edit</value>
+    <comment>Generic action</comment>
+  </data>
   <data name="ENTITY_ACCOUNT_CATALOG_NAME" xml:space="preserve">
     <value>Accounts</value>
   </data>
-  <data name="ENTITY_ACCOUNT_CREATE" xml:space="preserve">
-    <value>Create account</value>
-  </data>
   <data name="ENTITY_ACCOUNT_DELETE" xml:space="preserve">
     <value>Delete account</value>
-  </data>
-  <data name="ENTITY_ACCOUNT_EDIT" xml:space="preserve">
-    <value>Edit account</value>
   </data>
   <data name="ENTITY_ACCOUNT_HELP" xml:space="preserve">
     <value>&lt;p&gt;These are the base accounting categories used throughout the application. They serve as the foundation upon the rest of the data is built, so it’s important to keep this information accurate and up to date.&lt;/p&gt; &lt;p&gt;As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.&lt;/p&gt;</value>
