@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Access.Pages.Roles
+namespace ConselvaBudget.Areas.Administration.Pages.Access.Roles
 {
     public class IndexModel : PageModel
     {

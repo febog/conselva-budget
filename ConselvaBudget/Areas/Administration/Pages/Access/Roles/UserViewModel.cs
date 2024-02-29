@@ -1,4 +1,4 @@
-﻿namespace ConselvaBudget.Areas.Access.Pages.Roles
+﻿namespace ConselvaBudget.Areas.Administration.Pages.Access.Roles
 {
     public class UserViewModel
     {

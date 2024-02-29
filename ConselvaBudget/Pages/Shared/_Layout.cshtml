@@ -46,12 +46,6 @@
                                 <a class="nav-link text-body" asp-area="Reporting" asp-page="/Index">@Localizer["NAV_REPORTING"]</a>
                             </li>
                         }
-                        @if (User.IsInRole(Roles.Administrator))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Access" asp-page="/Index">@Localizer["NAV_ACCESS"]</a>
-                            </li>
-                        }
                     </ul>
                     <partial name="_LoginPartial" />
                     <partial name="_CultureSelectorPartial" />
