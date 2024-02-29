@@ -5,7 +5,8 @@
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = @Localizer["ENTITY_ACCOUNT_CREATE"];
+    ViewData["Action"] = @Localizer["CREATE"];
+    ViewData["Entity"] = @Localizer["ENTITY_ACCOUNT_NAME"];
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
