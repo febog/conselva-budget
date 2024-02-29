@@ -17,13 +17,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Accounts
         [BindProperty]
         public Account Account { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Account = await _context.Accounts.FindAsync(id);
 
             if (Account == null)
