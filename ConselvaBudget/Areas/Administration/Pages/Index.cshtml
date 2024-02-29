@@ -1,5 +1,6 @@
 ﻿@page
 @inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlSharedLocalizer
 @inject IViewLocalizer Localizer
 @model IndexModel
 @{
@@ -45,7 +46,7 @@
 <p>@Localizer["CATALOGS_DESCRIPTION"]</p>
 
 <h3 id="accounts">@SharedLocalizer["ENTITY_ACCOUNT_CATALOG_NAME"]</h3>
-<p>@SharedLocalizer["ENTITY_ACCOUNT_CATALOG_DESCRIPTION"]</p>
+@HtmlSharedLocalizer["ENTITY_ACCOUNT_HELP"]
 <p>
     <a class="btn btn-primary" asp-page="Catalogs/Accounts/Index">@SharedLocalizer["ENTITY_ACCOUNT_CATALOG_NAME"]</a>
 </p>

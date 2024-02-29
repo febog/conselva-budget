@@ -1,5 +1,6 @@
 ﻿@page
 @inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
 @model IndexModel
 
 @{
@@ -8,7 +9,7 @@
 }
 
 @section Introduction {
-    <p>@Localizer["ENTITY_ACCOUNT_CATALOG_DESCRIPTION"]</p>
+    @HtmlLocalizer["ENTITY_ACCOUNT_HELP"]
 
     <p><a class="btn btn-primary" asp-page="Create">@Localizer["ENTITY_ACCOUNT_CREATE"]</a></p>
 }
