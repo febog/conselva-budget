@@ -1,4 +1,4 @@
-﻿@inject IViewLocalizer Localizer
+﻿@inject IStringLocalizer<Resources.SharedResource> Localizer
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,25 +25,25 @@
                         @if (User.IsInRole(Roles.Administrator))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Administration" asp-page="/Index">@Localizer["NAV_ADMINISTRATION"]</a>
+                                <a class="nav-link text-body" asp-area="Administration" asp-page="/Index">@Localizer["AREA_ADMINISTRATION"]</a>
                             </li>
                         }
                         @if (User.IsInRole(Roles.Management))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Budget" asp-page="/Projects/Index">@Localizer["NAV_BUDGET"]</a>
+                                <a class="nav-link text-body" asp-area="Budget" asp-page="/Projects/Index">@Localizer["AREA_BUDGET"]</a>
                             </li>
                         }
                         @if (User.IsInRole(Roles.Employee))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Expenses" asp-page="/Requests/Index">@Localizer["NAV_EXPENSES"]</a>
+                                <a class="nav-link text-body" asp-area="Expenses" asp-page="/Requests/Index">@Localizer["AREA_EXPENSES"]</a>
                             </li>
                         }
                         @if (User.IsInRole(Roles.Management))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Reporting" asp-page="/Index">@Localizer["NAV_REPORTING"]</a>
+                                <a class="nav-link text-body" asp-area="Reporting" asp-page="/Index">@Localizer["AREA_REPORTING"]</a>
                             </li>
                         }
                     </ul>

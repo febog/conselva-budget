@@ -129,6 +129,10 @@
     <value>Expenses</value>
     <comment>Area name</comment>
   </data>
+  <data name="AREA_REPORTING" xml:space="preserve">
+    <value>Reporting</value>
+    <comment>Area name</comment>
+  </data>
   <data name="BUTTON_CANCEL" xml:space="preserve">
     <value>Cancel</value>
     <comment>Generic button</comment>
