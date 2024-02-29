@@ -3,14 +3,14 @@
 }
 
 <div class="row g-4">
-    <div class="col-lg-4 order-lg-last">
+    <div class="col-lg-5 order-lg-last">
         <div class="card">
             <div class="card-body">
                 @RenderSection("FormInfoCardBody", required: true)
             </div>
         </div>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-7">
         <h1 class="mb-3">@ViewData["Title"]</h1>
         <form method="post" class="row g-3">
             @RenderBody()
