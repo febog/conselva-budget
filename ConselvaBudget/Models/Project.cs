@@ -40,12 +40,12 @@ namespace ConselvaBudget.Models
         [Display(Name = "PROJECT_TOTAL_BUDGET")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal TotalBudget => Results.Sum(e => e.ResultBudget);
+        public decimal TotalBudget => Results.Sum(e => e.TotalBudget);
 
         [Display(Name = "PROJECT_TOTAL_EXPENSES")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal TotalExpenses => Results.Sum(e => e.ResultExpenses);
+        public decimal TotalExpenses => Results.Sum(e => e.TotalExpenses);
 
         [Display(Name = "PROJECT_REMAINING_BUDGET")]
         [DisplayFormat(DataFormatString = "{0:C}")]

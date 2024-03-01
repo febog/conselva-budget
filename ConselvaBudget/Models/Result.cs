@@ -7,30 +7,29 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Project")]
         public int ProjectId { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "RESULT_NAME")]
         [StringLength(255)]
         [Required]
         public string Name { get; set; }
 
-        [Display(Name = "Total budget for result")]
+        [Display(Name = "RESULT_TOTAL_BUDGET")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ResultBudget => Activities.Sum(e => e.ActivityBudget);
+        public decimal TotalBudget => Activities.Sum(e => e.ActivityBudget);
 
-        [Display(Name = "Total expenses for result")]
+        [Display(Name = "RESULT_TOTAL_EXPENSES")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ResultExpenses => Activities.Sum(e => e.ActivityExpenses);
+        public decimal TotalExpenses => Activities.Sum(e => e.ActivityExpenses);
 
-        [Display(Name = "Remaining budget for result")]
+        [Display(Name = "RESULT_REMAINING_BUDGET")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ResultRemainder => Activities.Sum(e => e.ActivityRemainder);
+        public decimal RemainingBudget => Activities.Sum(e => e.ActivityRemainder);
 
-        [Display(Name = "Project")]
+        [Display(Name = "RESULT_PROJECT")]
         public Project Project { get; set; }
 
         public virtual ICollection<Activity> Activities { get; set; }

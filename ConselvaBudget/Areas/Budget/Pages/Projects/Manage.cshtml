@@ -274,21 +274,21 @@
             <div class="row">
                 <div class="col-md-6 col-lg-4">
                     <h3 class="h6 text-body-secondary">
-                        @Html.DisplayNameFor(model => result.ResultBudget)
+                        @Html.DisplayNameFor(model => result.TotalBudget)
                     </h3>
-                    <p class="mb-0">@Html.DisplayFor(model => result.ResultBudget)</p>
+                    <p class="mb-0">@Html.DisplayFor(model => result.TotalBudget)</p>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <h3 class="h6 text-body-secondary">
-                        @Html.DisplayNameFor(model => result.ResultExpenses)
+                        @Html.DisplayNameFor(model => result.TotalExpenses)
                     </h3>
-                    <p class="mb-0">@Html.DisplayFor(model => result.ResultExpenses)</p>
+                    <p class="mb-0">@Html.DisplayFor(model => result.TotalExpenses)</p>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <h3 class="h6 text-body-secondary">
-                        @Html.DisplayNameFor(model => result.ResultRemainder)
+                        @Html.DisplayNameFor(model => result.RemainingBudget)
                     </h3>
-                    <p class="mb-0 @(result.ResultRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(model => result.ResultRemainder)</p>
+                    <p class="mb-0 @(result.RemainingBudget < 0 ? "text-danger" : "")">@Html.DisplayFor(model => result.RemainingBudget)</p>
                 </div>
             </div>
         </div>
