@@ -2,7 +2,7 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Projects
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Projects
 {
     public class EditModel : ProjectPageModel
     {
@@ -16,13 +16,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
         [BindProperty]
         public Project Project { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Project = await _context.Projects.FindAsync(id);
 
             if (Project == null)
@@ -43,9 +38,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<Project>(
+            if (await TryUpdateModelAsync(
                 projectToUpdate,
-                "Project",
+                projectToUpdate.GetType().Name,
                 p => p.DonorId,
                 p => p.Name,
                 p => p.ShortName,

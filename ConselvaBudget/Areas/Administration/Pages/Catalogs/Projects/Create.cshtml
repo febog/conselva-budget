@@ -1,16 +1,20 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
+@inject IStringLocalizer<Models.Project> ProjectLocalizer
 @model CreateModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Create Project";
+    ViewData["Action"] = @Localizer["CREATE"];
+    ViewData["Entity"] = @Localizer["ENTITY_PROJECT_NAME"];
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="col-12">
     <label asp-for="Project.DonorId" class="form-label"></label>
     <select asp-for="Project.DonorId" class="form-select" asp-items="@Model.DonorSL">
-        <option value="">-- Select Donor --</option>
+        <option value="">@ProjectLocalizer["SELECT_DONOR"]</option>
     </select>
     <span asp-validation-for="Project.DonorId" class="text-danger"></span>
 </div>
@@ -45,12 +49,11 @@
     <span asp-validation-for="Project.Description" class="text-danger"></span>
 </div>
 <div class="col-12">
-    <input class="btn btn-primary" type="submit" value="Create">
-    <a class="btn btn-secondary" asp-page="./Index">Cancel</a>
+    <create-button></create-button>
+    <cancel-button asp-page="./Index"></cancel-button>
 </div>
 
-@section FormInfoCardBody {
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+@section FormInfo {
+    <h1 class="h4">@Localizer["ENTITY_PROJECT_CATALOG_NAME"]</h1>
+    @HtmlLocalizer["ENTITY_PROJECT_HELP"]
 }

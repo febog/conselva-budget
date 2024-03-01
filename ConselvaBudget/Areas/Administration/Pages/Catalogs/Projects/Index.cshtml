@@ -1,18 +1,21 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
+@inject IStringLocalizer<Models.Project> ProjectLocalizer
 @model IndexModel
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = "Projects";
+    ViewData["Title"] = @Localizer["ENTITY_PROJECT_CATALOG_NAME"];
 }
 
 @section Introduction {
-    <p>Main <b>Project</b> entity in the database. Parent element of the <b>Results</b> and <b>Activities</b> hierarchy.</p>
+    @HtmlLocalizer["ENTITY_PROJECT_HELP"]
 
-    <p><a class="btn btn-primary" asp-page="Create">Create project</a></p>
+    <p><a class="btn btn-primary" asp-page="Create">@Localizer["CREATE"]</a></p>
 }
 
-@section Headers {
+@section TableHeaders {
     <th>
         @Html.DisplayNameFor(model => model.Projects[0].Segment)
     </th>
@@ -63,11 +66,17 @@
         <td class="align-middle">
             @if (item.IsActive)
             {
-                <span class="badge text-bg-success" title="A project is considered active if we are between it's start and end dates.">Active</span>
+                <span class="badge text-bg-success"
+                      title="@ProjectLocalizer["PROJECT_ACTIVE_DESCRIPTION"]">
+                    @ProjectLocalizer["PROJECT_ACTIVE"]
+                </span>
             }
             else
             {
-                <span class="badge text-bg-light" title="A project is considered active if we are between it's start and end dates.">Archived</span>
+                <span class="badge text-bg-light"
+                      title="@ProjectLocalizer["PROJECT_ACTIVE_DESCRIPTION"]">
+                    @ProjectLocalizer["PROJECT_ARCHIVED"]
+                </span>
             }
         </td>
         <td class="align-middle">

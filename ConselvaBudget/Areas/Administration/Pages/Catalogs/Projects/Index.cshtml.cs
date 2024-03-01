@@ -3,7 +3,7 @@ using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Projects
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Projects
 {
     public class IndexModel : PageModel
     {
@@ -15,7 +15,6 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
         }
 
         public IList<Project> Projects { get; set; } = default!;
-
 
         public async Task OnGetAsync()
         {

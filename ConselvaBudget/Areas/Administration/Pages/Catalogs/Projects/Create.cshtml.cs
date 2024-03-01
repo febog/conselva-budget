@@ -2,7 +2,7 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Projects
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Projects
 {
     public class CreateModel : ProjectPageModel
     {
@@ -26,9 +26,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Projects
         {
             var emptyProject = new Project();
 
-            if (await TryUpdateModelAsync<Project>(
+            if (await TryUpdateModelAsync(
                 emptyProject,
-                "Project",
+                emptyProject.GetType().Name,
                 p => p.DonorId,
                 p => p.Name,
                 p => p.ShortName,

@@ -217,6 +217,18 @@
     <value>Organization</value>
     <comment>Organization catalog</comment>
   </data>
+  <data name="ENTITY_PROJECT_CATALOG_NAME" xml:space="preserve">
+    <value>Projects</value>
+    <comment>Project catalog</comment>
+  </data>
+  <data name="ENTITY_PROJECT_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Main grouping of work for the database. Budgets and expenses are created at the Project level. Projects may contain start and end dates, cash flow management, among other features. Top level of the Project, Result, Activity hierarchy.&lt;/p&gt;</value>
+    <comment>Project catalog</comment>
+  </data>
+  <data name="ENTITY_PROJECT_NAME" xml:space="preserve">
+    <value>Project</value>
+    <comment>Project catalog</comment>
+  </data>
   <data name="LIST_OF" xml:space="preserve">
     <value>List of</value>
     <comment>Used in Index layout</comment>
