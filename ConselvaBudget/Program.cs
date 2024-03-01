@@ -28,7 +28,9 @@ namespace ConselvaBudget
 
             builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            builder.Services.AddRazorPages().AddViewLocalization();
+            builder.Services.AddRazorPages()
+                .AddViewLocalization()
+                .AddDataAnnotationsLocalization();
 
             builder.Services.AddAuthorization();
 
