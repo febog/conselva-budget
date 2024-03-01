@@ -7,7 +7,6 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Result")]
         public int ResultId { get; set; }
 
         [Display(Name = "Name")]
@@ -15,26 +14,26 @@ namespace ConselvaBudget.Models
         [Required]
         public string Name { get; set; }
 
-        [Display(Name = "Description")]
+        [Display(Name = "ACTIVITY_DESCRIPTION")]
         [StringLength(255)]
         public string Description { get; set; }
 
-        [Display(Name = "Total budget for activity")]
+        [Display(Name = "ACTIVITY_TOTAL_BUDGET")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ActivityBudget => ActivityBudgets.Sum(e => e.Amount);
+        public decimal TotalBudget => ActivityBudgets.Sum(e => e.Amount);
 
-        [Display(Name = "Total expenses for activity")]
+        [Display(Name = "ACTIVITY_TOTAL_EXPENSES")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ActivityExpenses => ActivityBudgets.Sum(e => e.ActivityBudgetExpenses);
+        public decimal TotalExpenses => ActivityBudgets.Sum(e => e.ActivityBudgetExpenses);
 
-        [Display(Name = "Remaining budget for activity")]
+        [Display(Name = "ACTIVITY_REMAINING_BUDGET")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ActivityRemainder => ActivityBudgets.Sum(e => e.ActivityBudgetRemainder);
+        public decimal RemainingBudget => ActivityBudgets.Sum(e => e.ActivityBudgetRemainder);
 
-        [Display(Name = "Result")]
+        [Display(Name = "ACTIVITY_RESULT")]
         public Result Result { get; set; }
 
         public virtual ICollection<ActivityBudget> ActivityBudgets { get; set; }

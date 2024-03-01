@@ -234,21 +234,21 @@
                                     <div class="row">
                                         <div class="col-md-6 col-lg-4">
                                             <h4 class="h6 text-body-secondary">
-                                                @Html.DisplayNameFor(model => activity.ActivityBudget)
+                                                @Html.DisplayNameFor(model => activity.TotalBudget)
                                             </h4>
-                                            <p>@Html.DisplayFor(model => activity.ActivityBudget)</p>
+                                            <p>@Html.DisplayFor(model => activity.TotalBudget)</p>
                                         </div>
                                         <div class="col-md-6 col-lg-4">
                                             <h4 class="h6 text-body-secondary">
-                                                @Html.DisplayNameFor(model => activity.ActivityExpenses)
+                                                @Html.DisplayNameFor(model => activity.TotalExpenses)
                                             </h4>
-                                            <p>@Html.DisplayFor(model => activity.ActivityExpenses)</p>
+                                            <p>@Html.DisplayFor(model => activity.TotalExpenses)</p>
                                         </div>
                                         <div class="col-md-6 col-lg-4">
                                             <h4 class="h6 text-body-secondary">
-                                                @Html.DisplayNameFor(model => activity.ActivityRemainder)
+                                                @Html.DisplayNameFor(model => activity.RemainingBudget)
                                             </h4>
-                                            <p class="@(activity.ActivityRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(model => activity.ActivityRemainder)</p>
+                                            <p class="@(activity.RemainingBudget < 0 ? "text-danger" : "")">@Html.DisplayFor(model => activity.RemainingBudget)</p>
                                         </div>
                                     </div>
                                 }
