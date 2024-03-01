@@ -1,18 +1,18 @@
 ﻿@page
-@inject IStringLocalizer<Resources.SharedResource> Localizer
-@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
-@inject IViewLocalizer ViewLocalizer
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlSharedLocalizer
+@inject IViewLocalizer Localizer
 @model IndexModel
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = @Localizer["ENTITY_ORGANIZATION_CATALOG_NAME"];
+    ViewData["Title"] = @SharedLocalizer["ENTITY_ORGANIZATION_CATALOG_NAME"];
 }
 
 @section Introduction {
-    @HtmlLocalizer["ENTITY_ACCOUNT_HELP"]
+    @HtmlSharedLocalizer["ENTITY_ACCOUNT_HELP"]
 
-    <p><a class="btn btn-primary" asp-page="Create">@Localizer["CREATE"]</a></p>
+    <p><a class="btn btn-primary" asp-page="Create">@SharedLocalizer["CREATE"]</a></p>
 }
 
 @section TableHeaders {
@@ -43,9 +43,9 @@
 }
 
 @section PostTable {
-    <h2 id="account-assignment">@ViewLocalizer["ACCOUNT_ASSIGNMENT"]</h2>
+    <h2 id="account-assignment">@Localizer["ACCOUNT_ASSIGNMENT"]</h2>
 
-    @ViewLocalizer["ACCOUNT_ASSIGNMENT_DESCRIPTION"]
+    @Localizer["ACCOUNT_ASSIGNMENT_DESCRIPTION"]
 
     @foreach (var organization in Model.Organizations.OrderBy(s => s.Code))
     {
@@ -70,7 +70,7 @@
                 else
                 {
                     <div class="alert alert-warning mb-0" role="alert">
-                        <span>@ViewLocalizer["ORGANIZATION_NO_ACCOUNTS"]</span>
+                        <span>@Localizer["ORGANIZATION_NO_ACCOUNTS"]</span>
                     </div>
                 }
             </div>
