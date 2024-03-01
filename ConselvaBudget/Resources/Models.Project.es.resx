@@ -136,7 +136,7 @@
     <value>Pendiente de depositar</value>
   </data>
   <data name="PROJECT_REMAINING_BUDGET" xml:space="preserve">
-    <value>Restante en presupuesto</value>
+    <value>Presupuesto restante</value>
   </data>
   <data name="PROJECT_REMAINING_IN_BANK" xml:space="preserve">
     <value>Restante en bancos</value>
@@ -151,7 +151,7 @@
     <value>Fecha de inicio</value>
   </data>
   <data name="PROJECT_TOTAL_BUDGET" xml:space="preserve">
-    <value>Total de presupuesto</value>
+    <value>Presupuesto total</value>
   </data>
   <data name="PROJECT_TOTAL_DEPOSITS" xml:space="preserve">
     <value>Total de depósitos</value>
