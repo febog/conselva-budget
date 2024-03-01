@@ -6,17 +6,17 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Code")]
+        [Display(Name = "ACCOUNT_CODE")]
         [StringLength(10)]
         [Required]
         public string Code { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "ACCOUNT_NAME")]
         [StringLength(255)]
         [Required]
         public string Name { get; set; }
 
-        [Display(Name = "Description")]
+        [Display(Name = "ACCOUNT_DESCRIPTION")]
         [StringLength(255)]
         public string Description { get; set; }
 
