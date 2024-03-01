@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Donors
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Donors
 {
     public class DeleteModel : PageModel
     {
@@ -18,13 +17,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
         [BindProperty]
         public Donor Donor { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Donor = await _context.Donors.FindAsync(id);
 
             if (Donor == null)

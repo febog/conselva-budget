@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Donors
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Donors
 {
     public class CreateModel : PageModel
     {
@@ -21,14 +21,14 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
 
         [BindProperty]
         public Donor Donor { get; set; }
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
             var emptyDonor = new Donor();
 
-            if (await TryUpdateModelAsync<Donor>(
+            if (await TryUpdateModelAsync(
                 emptyDonor,
-                "Donor",
+                emptyDonor.GetType().Name,
                 d => d.ShortName,
                 d => d.FullName))
             {

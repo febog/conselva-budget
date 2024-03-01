@@ -171,21 +171,39 @@
   </data>
   <data name="ENTITY_ACCOUNT_CATALOG_NAME" xml:space="preserve">
     <value>Accounts</value>
+    <comment>Account catalog</comment>
   </data>
   <data name="ENTITY_ACCOUNT_HELP" xml:space="preserve">
     <value>&lt;p&gt;These are the base accounting categories used throughout the application. They serve as the foundation upon the rest of the data is built, so it’s important to keep this information accurate and up to date.&lt;/p&gt; &lt;p&gt;As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.&lt;/p&gt;</value>
+    <comment>Account catalog</comment>
   </data>
   <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
     <value>Account</value>
+    <comment>Account catalog</comment>
+  </data>
+  <data name="ENTITY_DONOR_CATALOG_NAME" xml:space="preserve">
+    <value>Donors</value>
+    <comment>Donor catalog</comment>
+  </data>
+  <data name="ENTITY_DONOR_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Entity or organization that provide the main funding for a &lt;b&gt;Project&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.&lt;/p&gt;</value>
+    <comment>Donor catalog</comment>
+  </data>
+  <data name="ENTITY_DONOR_NAME" xml:space="preserve">
+    <value>Donor</value>
+    <comment>Donor catalog</comment>
   </data>
   <data name="ENTITY_ORGANIZATION_CATALOG_NAME" xml:space="preserve">
     <value>Organizations</value>
+    <comment>Organization catalog</comment>
   </data>
   <data name="ENTITY_ORGANIZATION_HELP" xml:space="preserve">
     <value>&lt;p&gt;Organization business units. These are used in conjunction with the &lt;b&gt;Accounts&lt;/b&gt; catalog to create the specific accounts that can be used to track the budget.&lt;/p&gt; &lt;p&gt;As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.&lt;/p&gt;</value>
+    <comment>Organization catalog</comment>
   </data>
   <data name="ENTITY_ORGANIZATION_NAME" xml:space="preserve">
     <value>Organization</value>
+    <comment>Organization catalog</comment>
   </data>
   <data name="LIST_OF" xml:space="preserve">
     <value>List of</value>

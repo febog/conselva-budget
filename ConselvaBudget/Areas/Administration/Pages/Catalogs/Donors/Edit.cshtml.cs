@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Donors
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Donors
 {
     public class EditModel : PageModel
     {
@@ -24,7 +24,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
                 return NotFound();
             }
 
-            Donor =  await _context.Donors.FindAsync(id);
+            Donor = await _context.Donors.FindAsync(id);
 
             if (Donor == null)
             {
@@ -42,7 +42,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Donors
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<Donor>(
+            if (await TryUpdateModelAsync(
                 donorToUpdate,
                 "Donor",
                 d => d.ShortName,
