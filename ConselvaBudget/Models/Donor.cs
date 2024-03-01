@@ -6,19 +6,20 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "ShortName")]
+        [Display(Name = "DONOR_SHORT_NAME")]
         [StringLength(255)]
         [Required]
         public string ShortName { get; set; }
 
-        [Display(Name = "FullName")]
+        [Display(Name = "DONOR_FULL_NAME")]
         [StringLength(255)]
         [Required]
         public string FullName { get; set; }
 
+        [Display(Name = "DONOR_PROJECTS")]
         public virtual ICollection<Project> Projects { get; set; }
 
-        [Display(Name = "Equivalent accounts")]
+        [Display(Name = "DONOR_EQUIVALENT_ACCOUNTS")]
         public virtual ICollection<EquivalentAccount> EquivalentAccounts { get; set; }
     }
 }
