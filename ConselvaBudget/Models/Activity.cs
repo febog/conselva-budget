@@ -26,12 +26,12 @@ namespace ConselvaBudget.Models
         [Display(Name = "ACTIVITY_TOTAL_EXPENSES")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal TotalExpenses => ActivityBudgets.Sum(e => e.ActivityBudgetExpenses);
+        public decimal TotalExpenses => ActivityBudgets.Sum(e => e.TotalExpenses);
 
         [Display(Name = "ACTIVITY_REMAINING_BUDGET")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal RemainingBudget => ActivityBudgets.Sum(e => e.ActivityBudgetRemainder);
+        public decimal RemainingBudget => ActivityBudgets.Sum(e => e.Remainder);
 
         [Display(Name = "ACTIVITY_RESULT")]
         public Result Result { get; set; }

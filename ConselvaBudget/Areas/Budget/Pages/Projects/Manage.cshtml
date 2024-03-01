@@ -129,10 +129,10 @@
                                                         @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Amount)
                                                     </th>
                                                     <th>
-                                                        @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].ActivityBudgetExpenses)
+                                                        @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].TotalExpenses)
                                                     </th>
                                                     <th>
-                                                        @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].ActivityBudgetRemainder)
+                                                        @Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Remainder)
                                                     </th>
                                                     <th style="width: 1px; white-space:nowrap;"></th>
                                                 </tr>
@@ -148,10 +148,10 @@
                                                             @Html.DisplayFor(modelItem => budget.Amount)
                                                         </td>
                                                         <td class="align-middle">
-                                                            @Html.DisplayFor(modelItem => budget.ActivityBudgetExpenses)
+                                                            @Html.DisplayFor(modelItem => budget.TotalExpenses)
                                                         </td>
                                                         <td class="align-middle">
-                                                            <span class="@(budget.ActivityBudgetRemainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => budget.ActivityBudgetRemainder)</span>
+                                                            <span class="@(budget.Remainder < 0 ? "text-danger" : "")">@Html.DisplayFor(modelItem => budget.Remainder)</span>
                                                         </td>
                                                         <td class="align-middle">
                                                             <div class="d-flex gap-1 justify-content-center">

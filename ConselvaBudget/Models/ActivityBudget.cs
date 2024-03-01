@@ -11,31 +11,31 @@ namespace ConselvaBudget.Models
 
         public int ActivityId { get; set; }
 
-        [Display(Name = "Account")]
         public int AccountAssignmentId { get; set; }
 
-        [Display(Name = "Amount")]
+        [Display(Name = "ACTIVITY_BUDGET_AMOUNT")]
         [Column(TypeName = "money")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Amount { get; set; }
 
-        [Display(Name = "Comments")]
+        [Display(Name = "ACTIVITY_BUDGET_COMMENTS")]
         [StringLength(255)]
         public string Comments { get; set; }
 
-        [Display(Name = "Expenses")]
+        [Display(Name = "ACTIVITY_BUDGET_TOTAL_EXPENSES")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ActivityBudgetExpenses => Expenses.Sum(e => e.Amount);
+        public decimal TotalExpenses => Expenses.Sum(e => e.Amount);
 
-        [Display(Name = "Remainder")]
+        [Display(Name = "ACTIVITY_BUDGET_REMAINDER")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal ActivityBudgetRemainder => Amount - ActivityBudgetExpenses;
+        public decimal Remainder => Amount - TotalExpenses;
 
-        [Display(Name = "Activity")]
+        [Display(Name = "ACTIVITY_BUDGET_ACTIVITY")]
         public Activity Activity { get; set; }
 
+        [Display(Name = "ACTIVITY_BUDGET_ACCOUNT_ASSIGNMENT")]
         public AccountAssignment AccountAssignment { get; set; }
 
         public virtual ICollection<Expense> Expenses { get; set; }
