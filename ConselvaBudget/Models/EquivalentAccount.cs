@@ -10,7 +10,7 @@ namespace ConselvaBudget.Models
 
         public int DonorId { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "EQUIVALENT_ACCOUNT_NAME")]
         [StringLength(255)]
         [Required]
         public string Name { get; set; }
