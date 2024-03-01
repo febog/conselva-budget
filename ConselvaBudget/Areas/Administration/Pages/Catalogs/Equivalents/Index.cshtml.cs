@@ -3,7 +3,7 @@ using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Equivalents
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Equivalents
 {
     public class IndexModel : PageModel
     {

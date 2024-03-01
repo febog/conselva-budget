@@ -193,6 +193,18 @@
     <value>Donor</value>
     <comment>Donor catalog</comment>
   </data>
+  <data name="ENTITY_EQUIVALENT_ACCOUNT_CATALOG_NAME" xml:space="preserve">
+    <value>Equivalent accounts</value>
+    <comment>Equivalent account catalog</comment>
+  </data>
+  <data name="ENTITY_EQUIVALENT_ACCOUNT_HELP" xml:space="preserve">
+    <value>&lt;p&gt;For each &lt;b&gt;Donor&lt;/b&gt;, you may select the alias or alternative name that an &lt;b&gt;Account&lt;/b&gt; will have for &lt;b&gt;Projects&lt;/b&gt; under that Donor.&lt;/p&gt;</value>
+    <comment>Equivalent account catalog</comment>
+  </data>
+  <data name="ENTITY_EQUIVALENT_ACCOUNT_NAME" xml:space="preserve">
+    <value>Equivalent account</value>
+    <comment>Equivalent account catalog</comment>
+  </data>
   <data name="ENTITY_ORGANIZATION_CATALOG_NAME" xml:space="preserve">
     <value>Organizations</value>
     <comment>Organization catalog</comment>
