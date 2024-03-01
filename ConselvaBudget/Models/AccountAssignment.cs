@@ -14,10 +14,10 @@ namespace ConselvaBudget.Models
         [ValidateNever]
         public string DisplayName => $"{Organization.Code} - {Account.DisplayName}";
 
-        [Display(Name = "Subprogram")]
+        [Display(Name = "ACCOUNT_ASSIGNMENT_ORGANIZATION")]
         public Organization Organization { get; set; }
 
-        [Display(Name = "Account")]
+        [Display(Name = "ACCOUNT_ASSIGNMENT_ACCOUNT")]
         public Account Account { get; set; }
 
         public virtual ICollection<ActivityBudget> ActivityBudgets { get; set; }
