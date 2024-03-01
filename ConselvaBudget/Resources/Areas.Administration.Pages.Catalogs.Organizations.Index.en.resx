@@ -117,78 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AREA_ADMINISTRATION" xml:space="preserve">
-    <value>Administration</value>
-    <comment>Area name</comment>
+  <data name="ACCOUNT_ASSIGNMENT" xml:space="preserve">
+    <value>Account assignment</value>
   </data>
-  <data name="AREA_BUDGET" xml:space="preserve">
-    <value>Budget</value>
-    <comment>Area name</comment>
+  <data name="ACCOUNT_ASSIGNMENT_DESCRIPTION" xml:space="preserve">
+    <value>&lt;p&gt;Assign the &lt;b&gt;Accounts&lt;/b&gt; that will be available for each &lt;b&gt;Organization&lt;/b&gt;.&lt;/p&gt;</value>
   </data>
-  <data name="AREA_EXPENSES" xml:space="preserve">
-    <value>Expenses</value>
-    <comment>Area name</comment>
-  </data>
-  <data name="AREA_REPORTING" xml:space="preserve">
-    <value>Reporting</value>
-    <comment>Area name</comment>
-  </data>
-  <data name="BUTTON_CANCEL" xml:space="preserve">
-    <value>Cancel</value>
-    <comment>Generic button</comment>
-  </data>
-  <data name="BUTTON_CREATE" xml:space="preserve">
-    <value>Create</value>
-    <comment>Generic button</comment>
-  </data>
-  <data name="BUTTON_DELETE" xml:space="preserve">
-    <value>Delete</value>
-    <comment>Generic button</comment>
-  </data>
-  <data name="BUTTON_DETAILS" xml:space="preserve">
-    <value>Details</value>
-    <comment>Generic button</comment>
-  </data>
-  <data name="BUTTON_EDIT" xml:space="preserve">
-    <value>Edit</value>
-    <comment>Generic button</comment>
-  </data>
-  <data name="BUTTON_SAVE" xml:space="preserve">
-    <value>Save</value>
-    <comment>Generic button</comment>
-  </data>
-  <data name="CREATE" xml:space="preserve">
-    <value>Create</value>
-    <comment>Generic action</comment>
-  </data>
-  <data name="DELETE" xml:space="preserve">
-    <value>Delete</value>
-    <comment>Generic action</comment>
-  </data>
-  <data name="EDIT" xml:space="preserve">
-    <value>Edit</value>
-    <comment>Generic action</comment>
-  </data>
-  <data name="ENTITY_ACCOUNT_CATALOG_NAME" xml:space="preserve">
-    <value>Accounts</value>
-  </data>
-  <data name="ENTITY_ACCOUNT_HELP" xml:space="preserve">
-    <value>&lt;p&gt;These are the base accounting categories used throughout the application. They serve as the foundation upon the rest of the data is built, so it’s important to keep this information accurate and up to date.&lt;/p&gt; &lt;p&gt;As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.&lt;/p&gt;</value>
-  </data>
-  <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
-    <value>Account</value>
-  </data>
-  <data name="ENTITY_ORGANIZATION_CATALOG_NAME" xml:space="preserve">
-    <value>Organizations</value>
-  </data>
-  <data name="ENTITY_ORGANIZATION_HELP" xml:space="preserve">
-    <value>&lt;p&gt;Organization business units. These are used in conjunction with the &lt;b&gt;Accounts&lt;/b&gt; catalog to create the specific accounts that can be used to track the budget.&lt;/p&gt; &lt;p&gt;As always, it is important to keep in mind that modifying a main database catalog item will affect all the items related to it.&lt;/p&gt;</value>
-  </data>
-  <data name="ENTITY_ORGANIZATION_NAME" xml:space="preserve">
-    <value>Organization</value>
-  </data>
-  <data name="LIST_OF" xml:space="preserve">
-    <value>List of</value>
-    <comment>Used in Index layout</comment>
+  <data name="ORGANIZATION_NO_ACCOUNTS" xml:space="preserve">
+    <value>This organization contains no assigned accounts.</value>
   </data>
 </root>

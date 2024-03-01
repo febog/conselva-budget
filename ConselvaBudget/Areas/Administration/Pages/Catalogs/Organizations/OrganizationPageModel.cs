@@ -1,10 +1,8 @@
 ﻿using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Organizations
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Organizations
 {
     public class OrganizationPageModel : PageModel
     {

@@ -15,7 +15,7 @@
         <a href="#catalogs">@Localizer["CATALOGS"]</a>
         <ul>
             <li><a href="#accounts">@SharedLocalizer["ENTITY_ACCOUNT_CATALOG_NAME"]</a></li>
-            <li><a href="#organizations">Organizations</a></li>
+            <li><a href="#organizations">@SharedLocalizer["ENTITY_ORGANIZATION_CATALOG_NAME"]</a></li>
             <li><a href="#donors">Donors</a></li>
             <li><a href="#equivalent-accounts">Equivalent Accounts</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -49,6 +49,12 @@
 @HtmlSharedLocalizer["ENTITY_ACCOUNT_HELP"]
 <p>
     <a class="btn btn-primary" asp-page="Catalogs/Accounts/Index">@SharedLocalizer["ENTITY_ACCOUNT_CATALOG_NAME"]</a>
+</p>
+
+<h3 id="organizations">@SharedLocalizer["ENTITY_ORGANIZATION_CATALOG_NAME"]</h3>
+@HtmlSharedLocalizer["ENTITY_ORGANIZATION_HELP"]
+<p>
+    <a class="btn btn-primary" asp-page="Catalogs/Organizations/Index">@SharedLocalizer["ENTITY_ORGANIZATION_CATALOG_NAME"]</a>
 </p>
 
 <h2 class="pb-2 border-bottom" id="finance">@Localizer["FINANCE"]</h2>

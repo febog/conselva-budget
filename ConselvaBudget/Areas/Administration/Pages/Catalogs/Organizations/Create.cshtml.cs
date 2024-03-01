@@ -2,7 +2,7 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Organizations
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Organizations
 {
     public class CreateModel : OrganizationPageModel
     {
@@ -27,7 +27,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 
             if (await TryUpdateModelAsync(
                 emptyOrganization,
-                "Organization",
+                emptyOrganization.GetType().Name,
                 o => o.Code,
                 o => o.Name))
             {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Organizations
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Organizations
 {
     public class DeleteModel : PageModel
     {
@@ -17,13 +17,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
         [BindProperty]
         public Organization Organization { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null || _context.Organizations == null)
-            {
-                return NotFound();
-            }
-
             Organization = await _context.Organizations.FindAsync(id);
 
             if (Organization == null)
@@ -35,7 +30,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Organizations == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -48,9 +43,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index",
-                    null,
-                    $"programs");
+            return RedirectToPage("./Index");
         }
     }
 }

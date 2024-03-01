@@ -1,9 +1,10 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
 @model DeleteModel
 
 @{
     Layout = "/Pages/Shared/_DeleteLayout.cshtml";
-    ViewData["Title"] = "Delete Program";
+    ViewData["Title"] = $"{Localizer["DELETE"]} {Localizer["ENTITY_ORGANIZATION_NAME"]}";
 }
 
 <dt class="col-sm-2">
@@ -21,8 +22,7 @@
 
 @section DeleteFormContents {
     <input type="hidden" asp-for="Organization.Id" />
-    <input class="btn btn-danger" type="submit" value="Delete">
-    <a class="btn btn-secondary"
-       asp-page="./Index"
-       asp-fragment="program-@Model.Organization.Id">Cancel</a>
+    <delete-confirm-button></delete-confirm-button>
+    <cancel-button asp-page="./Index"
+                   asp-fragment="program-@Model.Organization.Id"></cancel-button>
 }

@@ -1,9 +1,12 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
 @model EditModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Edit Program";
+    ViewData["Action"] = @Localizer["EDIT"];
+    ViewData["Entity"] = @Localizer["ENTITY_ORGANIZATION_NAME"];
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -42,8 +45,7 @@
        asp-fragment="program-@Model.Organization.Id">Cancel</a>
 </div>
 
-@section FormInfoCardBody {
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+@section FormInfo {
+    <h1 class="h4">@Localizer["ENTITY_ORGANIZATION_CATALOG_NAME"]</h1>
+    @HtmlLocalizer["ENTITY_ORGANIZATION_HELP"]
 }

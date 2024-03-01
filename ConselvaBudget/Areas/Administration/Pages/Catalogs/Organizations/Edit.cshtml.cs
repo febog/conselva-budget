@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Organizations
+namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Organizations
 {
     public class EditModel : OrganizationPageModel
     {
@@ -55,7 +55,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Organizations
 
             if (await TryUpdateModelAsync(
                 organizationToUpdate,
-                "Organization",
+                organizationToUpdate.GetType().Name,
                 o => o.Code,
                 o => o.Name))
             {
