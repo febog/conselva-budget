@@ -44,7 +44,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Catalogs.Donors
 
             if (await TryUpdateModelAsync(
                 donorToUpdate,
-                "Donor",
+                donorToUpdate.GetType().Name,
                 d => d.ShortName,
                 d => d.FullName))
             {
