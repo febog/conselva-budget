@@ -124,15 +124,18 @@
     <value>Name</value>
   </data>
   <data name="ACTIVITY_REMAINING_BUDGET" xml:space="preserve">
-    <value>Remaining budget</value>
+    <value>Remaining budget for activity</value>
+    <comment>Money</comment>
   </data>
   <data name="ACTIVITY_RESULT" xml:space="preserve">
     <value>Result</value>
   </data>
   <data name="ACTIVITY_TOTAL_BUDGET" xml:space="preserve">
-    <value>Total budget</value>
+    <value>Total budget for activity</value>
+    <comment>Money</comment>
   </data>
   <data name="ACTIVITY_TOTAL_EXPENSES" xml:space="preserve">
-    <value>Total expenses</value>
+    <value>Total expenses for activity</value>
+    <comment>Money</comment>
   </data>
 </root>

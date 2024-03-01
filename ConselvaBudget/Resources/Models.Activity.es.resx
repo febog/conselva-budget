@@ -124,15 +124,18 @@
     <value>Nombre</value>
   </data>
   <data name="ACTIVITY_REMAINING_BUDGET" xml:space="preserve">
-    <value>Presupuesto restante</value>
+    <value>Presupuesto restante de la actividad</value>
+    <comment>Money</comment>
   </data>
   <data name="ACTIVITY_RESULT" xml:space="preserve">
     <value>Resultado</value>
   </data>
   <data name="ACTIVITY_TOTAL_BUDGET" xml:space="preserve">
-    <value>Presupuesto total</value>
+    <value>Presupuesto total de la actividad</value>
+    <comment>Money</comment>
   </data>
   <data name="ACTIVITY_TOTAL_EXPENSES" xml:space="preserve">
-    <value>Total de gastos</value>
+    <value>Total de gastos de la actividad</value>
+    <comment>Money</comment>
   </data>
 </root>

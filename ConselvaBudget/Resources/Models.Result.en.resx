@@ -124,12 +124,15 @@
     <value>Project</value>
   </data>
   <data name="RESULT_REMAINING_BUDGET" xml:space="preserve">
-    <value>Remaining budget</value>
+    <value>Remaining budget for result</value>
+    <comment>Money</comment>
   </data>
   <data name="RESULT_TOTAL_BUDGET" xml:space="preserve">
-    <value>Total budget</value>
+    <value>Total budget for result</value>
+    <comment>Money</comment>
   </data>
   <data name="RESULT_TOTAL_EXPENSES" xml:space="preserve">
-    <value>Total expenses</value>
+    <value>Total expenses for result</value>
+    <comment>Money</comment>
   </data>
 </root>

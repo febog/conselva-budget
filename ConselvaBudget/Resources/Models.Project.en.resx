@@ -134,12 +134,15 @@
   </data>
   <data name="PROJECT_PENDING_TO_DEPOSIT" xml:space="preserve">
     <value>Pending to deposit</value>
+    <comment>Money</comment>
   </data>
   <data name="PROJECT_REMAINING_BUDGET" xml:space="preserve">
-    <value>Remaining budget</value>
+    <value>Remaining budget for project</value>
+    <comment>Money</comment>
   </data>
   <data name="PROJECT_REMAINING_IN_BANK" xml:space="preserve">
     <value>Remaining in bank</value>
+    <comment>Money</comment>
   </data>
   <data name="PROJECT_SEGMENT" xml:space="preserve">
     <value>Segment</value>
@@ -151,12 +154,15 @@
     <value>Start date</value>
   </data>
   <data name="PROJECT_TOTAL_BUDGET" xml:space="preserve">
-    <value>Total budget</value>
+    <value>Total budget for project</value>
+    <comment>Money</comment>
   </data>
   <data name="PROJECT_TOTAL_DEPOSITS" xml:space="preserve">
     <value>Total deposits</value>
+    <comment>Money</comment>
   </data>
   <data name="PROJECT_TOTAL_EXPENSES" xml:space="preserve">
-    <value>Total expenses</value>
+    <value>Total expenses for project</value>
+    <comment>Money</comment>
   </data>
 </root>
