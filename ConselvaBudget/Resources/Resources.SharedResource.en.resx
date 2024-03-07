@@ -241,6 +241,18 @@
     <value>Project</value>
     <comment>Project catalog</comment>
   </data>
+  <data name="ENTITY_ROLE_CATALOG_NAME" xml:space="preserve">
+    <value>Roles</value>
+    <comment>Role catalog</comment>
+  </data>
+  <data name="ENTITY_ROLE_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Application roles for granting user privileges.&lt;/p&gt;</value>
+    <comment>Role catalog</comment>
+  </data>
+  <data name="ENTITY_ROLE_NAME" xml:space="preserve">
+    <value>Role</value>
+    <comment>Role catalog</comment>
+  </data>
   <data name="ENTITY_VEHICLE_CATALOG_NAME" xml:space="preserve">
     <value>Vehicles</value>
     <comment>Vehicle catalog</comment>

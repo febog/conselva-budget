@@ -1,16 +1,18 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
 @model IndexModel
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = "User roles";
+    ViewData["Title"] = @Localizer["ENTITY_ROLE_CATALOG_NAME"];
 }
 
 @section Introduction {
-    <p>Select a <b>User</b> to assign <b>Roles</b> to give them access to different areas of the website.</p>
+    @HtmlLocalizer["ENTITY_ROLE_HELP"]
 }
 
-@section Headers {
+@section TableHeaders {
     <th>
         @Html.DisplayNameFor(model => model.UserAssignments[0].UserName)
     </th>
