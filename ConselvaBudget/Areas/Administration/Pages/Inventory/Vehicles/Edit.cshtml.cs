@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
+namespace ConselvaBudget.Areas.Administration.Pages.Inventory.Vehicles
 {
     public class EditModel : PageModel
     {
@@ -17,13 +17,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
         [BindProperty]
         public Vehicle Vehicle { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Vehicle = await _context.Vehicles.FindAsync(id);
 
             if (Vehicle == null)
@@ -42,9 +37,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<Vehicle>(
+            if (await TryUpdateModelAsync(
                 vehicleToUpdate,
-                "Vehicle",
+                vehicleToUpdate.GetType().Name,
                 v => v.Name))
             {
                 await _context.SaveChangesAsync();

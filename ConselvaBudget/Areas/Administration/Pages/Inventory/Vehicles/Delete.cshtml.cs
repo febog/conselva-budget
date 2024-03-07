@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
+namespace ConselvaBudget.Areas.Administration.Pages.Inventory.Vehicles
 {
     public class DeleteModel : PageModel
     {
@@ -18,13 +18,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
         [BindProperty]
         public Vehicle Vehicle { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Vehicle = await _context.Vehicles.FindAsync(id);
 
             if (Vehicle == null)
@@ -40,6 +35,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
             {
                 return NotFound();
             }
+
             var vehicle = await _context.Vehicles.FindAsync(id);
 
             if (vehicle != null)

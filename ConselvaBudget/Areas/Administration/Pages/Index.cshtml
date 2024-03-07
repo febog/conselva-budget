@@ -30,7 +30,7 @@
     <li>
         <a href="#inventory">@Localizer["INVENTORY"]</a>
         <ul>
-            <li><a href="#vehicles">Vehicles</a></li>
+            <li><a href="#vehicles">@SharedLocalizer["ENTITY_VEHICLE_CATALOG_NAME"]</a></li>
         </ul>
     </li>
     <li>
@@ -86,6 +86,12 @@
 
 <h2 class="pb-2 border-bottom" id="inventory">@Localizer["INVENTORY"]</h2>
 <p>@Localizer["INVENTORY_DESCRIPTION"]</p>
+
+<h3 id="vehicles">@SharedLocalizer["ENTITY_VEHICLE_CATALOG_NAME"]</h3>
+@HtmlSharedLocalizer["ENTITY_VEHICLE_HELP"]
+<p>
+    <a class="btn btn-primary" asp-page="Inventory/Vehicles/Index">@SharedLocalizer["ENTITY_VEHICLE_CATALOG_NAME"]</a>
+</p>
 
 <h2 class="pb-2 border-bottom" id="access">@Localizer["ACCESS"]</h2>
 <p>@Localizer["ACCESS_DESCRIPTION"]</p>

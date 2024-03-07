@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
+namespace ConselvaBudget.Areas.Administration.Pages.Inventory.Vehicles
 {
     public class CreateModel : PageModel
     {
@@ -26,9 +26,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
         {
             var emptyVehicle = new Vehicle();
 
-            if (await TryUpdateModelAsync<Vehicle>(
+            if (await TryUpdateModelAsync(
                 emptyVehicle,
-                "Vehicle",
+                emptyVehicle.GetType().Name,
                 v => v.Name))
             {
                 _context.Vehicles.Add(emptyVehicle);

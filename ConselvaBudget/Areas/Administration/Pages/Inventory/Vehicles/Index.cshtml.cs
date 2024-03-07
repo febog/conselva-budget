@@ -3,7 +3,7 @@ using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
+namespace ConselvaBudget.Areas.Administration.Pages.Inventory.Vehicles
 {
     public class IndexModel : PageModel
     {
@@ -14,7 +14,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Vehicles
             _context = context;
         }
 
-        public IList<Vehicle> Vehicles { get;set; } = default!;
+        public IList<Vehicle> Vehicles { get; set; } = default!;
 
         public async Task OnGetAsync()
         {

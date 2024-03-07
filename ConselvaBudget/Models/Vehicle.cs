@@ -6,7 +6,7 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "VEHICLE_NAME")]
         [StringLength(255)]
         [Required]
         public string Name { get; set; }

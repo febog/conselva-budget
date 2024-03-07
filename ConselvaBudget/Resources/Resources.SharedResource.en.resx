@@ -241,6 +241,18 @@
     <value>Project</value>
     <comment>Project catalog</comment>
   </data>
+  <data name="ENTITY_VEHICLE_CATALOG_NAME" xml:space="preserve">
+    <value>Vehicles</value>
+    <comment>Vehicle catalog</comment>
+  </data>
+  <data name="ENTITY_VEHICLE_HELP" xml:space="preserve">
+    <value>&lt;p&gt;This relates to the available vehicles when creating Trip requests.&lt;/p&gt;</value>
+    <comment>Vehicle catalog</comment>
+  </data>
+  <data name="ENTITY_VEHICLE_NAME" xml:space="preserve">
+    <value>Vehicle</value>
+    <comment>Vehicle catalog</comment>
+  </data>
   <data name="LIST_OF" xml:space="preserve">
     <value>List of</value>
     <comment>Used in Index layout</comment>

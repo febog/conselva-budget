@@ -1,0 +1,26 @@
+﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
+@model CreateModel
+
+@{
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
+    ViewData["Action"] = @Localizer["CREATE"];
+    ViewData["Entity"] = @Localizer["ENTITY_VEHICLE_NAME"];
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="col-12">
+    <label asp-for="Vehicle.Name" class="form-label"></label>
+    <input asp-for="Vehicle.Name" class="form-control" />
+    <span asp-validation-for="Vehicle.Name" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <create-button></create-button>
+    <cancel-button asp-page="./Index"></cancel-button>
+</div>
+
+@section FormInfo {
+    <h1 class="h4">@Localizer["ENTITY_VEHICLE_CATALOG_NAME"]</h1>
+    @HtmlLocalizer["ENTITY_VEHICLE_HELP"]
+}
