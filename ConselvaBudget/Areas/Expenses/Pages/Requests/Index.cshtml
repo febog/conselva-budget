@@ -31,6 +31,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].ModifiedDate)
+                </th>
                 <th style="width: 1px; white-space:nowrap;"></th>
             </tr>
         </thead>
@@ -52,6 +55,9 @@
                         @Html.DisplayFor(modelItem => item.CreatedDate)
                     </td>
                     <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+                    <td class="align-middle">
                         <table-buttons>
                             <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
                             <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
@@ -65,7 +71,7 @@
 }
 else
 {
-    <div class="alert alert-secondary" role="alert">
+    <div class="alert alert-light" role="alert">
         There are no requests with this status.
     </div>
 }
@@ -90,6 +96,9 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].ModifiedDate)
+                </th>
                 <th style="width: 1px; white-space:nowrap;"></th>
             </tr>
         </thead>
@@ -111,6 +120,9 @@ else
                         @Html.DisplayFor(modelItem => item.CreatedDate)
                     </td>
                     <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+                    <td class="align-middle">
                         <table-buttons>
                             <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
                             <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
@@ -124,7 +136,7 @@ else
 }
 else
 {
-    <div class="alert alert-secondary" role="alert">
+    <div class="alert alert-light" role="alert">
         There are no requests with this status.
     </div>
 }
@@ -149,6 +161,9 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].ModifiedDate)
+                </th>
                 <th style="width: 1px; white-space:nowrap;"></th>
             </tr>
         </thead>
@@ -170,6 +185,9 @@ else
                         @Html.DisplayFor(modelItem => item.CreatedDate)
                     </td>
                     <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+                    <td class="align-middle">
                         <table-buttons>
                             <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
                             <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
@@ -183,7 +201,7 @@ else
 }
 else
 {
-    <div class="alert alert-secondary" role="alert">
+    <div class="alert alert-light" role="alert">
         There are no requests with this status.
     </div>
 }
@@ -208,6 +226,9 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].ModifiedDate)
+                </th>
                 <th style="width: 1px; white-space:nowrap;"></th>
             </tr>
         </thead>
@@ -229,6 +250,9 @@ else
                         @Html.DisplayFor(modelItem => item.CreatedDate)
                     </td>
                     <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+                    <td class="align-middle">
                         <table-buttons>
                             <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
                             <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
@@ -242,7 +266,7 @@ else
 }
 else
 {
-    <div class="alert alert-secondary" role="alert">
+    <div class="alert alert-light" role="alert">
         There are no requests with this status.
     </div>
 }
@@ -267,6 +291,9 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].ModifiedDate)
+                </th>
                 <th style="width: 1px; white-space:nowrap;"></th>
             </tr>
         </thead>
@@ -288,6 +315,9 @@ else
                         @Html.DisplayFor(modelItem => item.CreatedDate)
                     </td>
                     <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+                    <td class="align-middle">
                         <table-buttons>
                             <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
                             <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
@@ -301,7 +331,7 @@ else
 }
 else
 {
-    <div class="alert alert-secondary" role="alert">
+    <div class="alert alert-light" role="alert">
         There are no requests with this status.
     </div>
 }
