@@ -57,7 +57,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
             {
                 expenseToUpdate.ModifiedDate = DateTime.Now;
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return RedirectToPage("/Requests/Details", new { id = expenseToUpdate.SpendingRequestId });
             }
 
             PopulateActivityBudgetDropDownList(_context, expenseToUpdate.ActivityBudgetId);
