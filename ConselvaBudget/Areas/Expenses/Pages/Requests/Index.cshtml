@@ -19,13 +19,13 @@
         @Html.DisplayNameFor(model => model.SpendingRequests[0].Id)
     </th>
     <th>
+        @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
+    </th>
+    <th>
         @Html.DisplayNameFor(model => model.SpendingRequests[0].Activity)
     </th>
     <th>
         @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
     </th>
 }
 
@@ -36,14 +36,14 @@
             @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td class="align-middle">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td class="align-middle">
             @Html.DisplayFor(modelItem => item.Activity.Name)
             @Html.DisplayFor(modelItem => item.Activity.Description)
         </td>
         <td class="align-middle">
             @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td class="align-middle">
             <table-buttons>
