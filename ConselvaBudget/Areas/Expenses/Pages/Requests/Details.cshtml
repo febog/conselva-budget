@@ -76,6 +76,12 @@
     <a class="btn btn-secondary" asp-page="./Edit" asp-route-request="@Model.SpendingRequest.Id">Edit request</a>
 </p>
 
+<p>
+    <form method="post" asp-page-handler="submitForReview" asp-route-request="@Model.SpendingRequest.Id">
+        <input class="btn btn-success" type="submit" value="Submit for review">
+    </form>
+</p>
+
 @section TableHeaders {
     <th>
         @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].Description)

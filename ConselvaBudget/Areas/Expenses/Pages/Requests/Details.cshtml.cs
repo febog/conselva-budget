@@ -1,5 +1,6 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,20 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
             }
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostSubmitForReviewAsync(int request)
+        {
+            var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+
+            if (requestToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            requestToUpdate.Status = RequestStatus.Submitted;
+            await _context.SaveChangesAsync();
+            return RedirectToPage("./Index");
         }
     }
 }
