@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Deposits
+namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
 {
     public class DeleteModel : PageModel
     {
@@ -17,13 +17,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Deposits
         [BindProperty]
         public Deposit Deposit { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Deposit = await _context.Deposits.FindAsync(id);
 
             if (Deposit == null)

@@ -2,7 +2,7 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Deposits
+namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
 {
     public class EditModel : DepositPageModel
     {
@@ -16,13 +16,8 @@ namespace ConselvaBudget.Areas.Administration.Pages.Deposits
         [BindProperty]
         public Deposit Deposit { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Deposit = await _context.Deposits.FindAsync(id);
 
             if (Deposit == null)
@@ -43,9 +38,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Deposits
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<Deposit>(
+            if (await TryUpdateModelAsync(
                  depositToUpdate,
-                 "Deposit",
+                 depositToUpdate.GetType().Name,
                  d => d.ProjectId,
                  d => d.Amount,
                  d => d.Date,

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Deposits
+namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
 {
     public class IndexModel : PageModel
     {
@@ -14,7 +14,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Deposits
             _context = context;
         }
 
-        public IList<Deposit> Deposit { get;set; } = default!;
+        public IList<Deposit> Deposit { get; set; } = default!;
 
         public async Task OnGetAsync()
         {

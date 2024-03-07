@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Deposits
+namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
 {
     public class DepositPageModel : PageModel
     {

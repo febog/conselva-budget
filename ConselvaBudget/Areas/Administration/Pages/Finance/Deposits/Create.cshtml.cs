@@ -2,7 +2,7 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Deposits
+namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
 {
     public class CreateModel : DepositPageModel
     {
@@ -26,9 +26,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Deposits
         {
             var emptyDeposit = new Deposit();
 
-            if (await TryUpdateModelAsync<Deposit>(
+            if (await TryUpdateModelAsync(
                 emptyDeposit,
-                "Deposit",
+                emptyDeposit.GetType().Name,
                 d => d.ProjectId,
                 d => d.Amount,
                 d => d.Date,

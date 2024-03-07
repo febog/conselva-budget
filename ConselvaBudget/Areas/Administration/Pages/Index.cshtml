@@ -24,7 +24,7 @@
     <li>
         <a href="#finance">@Localizer["FINANCE"]</a>
         <ul>
-            <li><a href="#deposits">Deposits</a></li>
+            <li><a href="#deposits">@SharedLocalizer["ENTITY_DEPOSIT_CATALOG_NAME"]</a></li>
         </ul>
     </li>
     <li>
@@ -77,6 +77,12 @@
 
 <h2 class="pb-2 border-bottom" id="finance">@Localizer["FINANCE"]</h2>
 <p>@Localizer["FINANCE_DESCRIPTION"]</p>
+
+<h3 id="deposits">@SharedLocalizer["ENTITY_DEPOSIT_CATALOG_NAME"]</h3>
+@HtmlSharedLocalizer["ENTITY_DEPOSIT_HELP"]
+<p>
+    <a class="btn btn-primary" asp-page="Finance/Deposits/Index">@SharedLocalizer["ENTITY_DEPOSIT_CATALOG_NAME"]</a>
+</p>
 
 <h2 class="pb-2 border-bottom" id="inventory">@Localizer["INVENTORY"]</h2>
 <p>@Localizer["INVENTORY_DESCRIPTION"]</p>

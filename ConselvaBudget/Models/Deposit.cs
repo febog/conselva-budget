@@ -7,23 +7,23 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Project")]
+        [Display(Name = "DEPOSIT_PROJECT")]
         public int ProjectId { get; set; }
 
-        [Display(Name = "Amount")]
+        [Display(Name = "DEPOSIT_AMOUNT")]
         [Column(TypeName = "money")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Amount { get; set; }
 
-        [Display(Name = "Date")]
+        [Display(Name = "DEPOSIT_DATE")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        [Display(Name = "Comments")]
+        [Display(Name = "DEPOSIT_COMMENTS")]
         [StringLength(255)]
         public string Comments { get; set; }
 
-        [Display(Name = "Project")]
+        [Display(Name = "DEPOSIT_PROJECT")]
         public Project Project { get; set; }
     }
 }

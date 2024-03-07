@@ -1,18 +1,20 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
 @model IndexModel
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = "Deposits";
+    ViewData["Title"] = @Localizer["ENTITY_DEPOSIT_CATALOG_NAME"];
 }
 
 @section Introduction {
-    <p>Deposit management.</p>
+    @HtmlLocalizer["ENTITY_DEPOSIT_HELP"]
 
-    <p><a class="btn btn-primary" asp-page="Create">Add deposit</a></p>
+    <p><a class="btn btn-primary" asp-page="Create">@Localizer["CREATE"]</a></p>
 }
 
-@section Headers {
+@section TableHeaders {
     <th>
         @Html.DisplayNameFor(model => model.Deposit[0].Amount)
     </th>
