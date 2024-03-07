@@ -2,55 +2,306 @@
 @model IndexModel
 
 @{
-    Layout = "/Pages/Shared/_IndexLayout.cshtml";
     ViewData["Title"] = "Spending Requests";
 }
 
-@section Introduction {
-    <p>To use the budget, start by creating a Spending Request.</p>
+<h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
-    <p><a class="btn btn-primary" asp-page="SelectProject">Create request</a></p>
+<p>To use the budget, start by creating a Spending Request.</p>
 
-    <h2>Active requests</h2>
-}
+<p><a class="btn btn-primary" asp-page="SelectProject">Create request</a></p>
 
-@section TableHeaders {
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequests[0].Id)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequests[0].Activity)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
-    </th>
-}
+<h2>Created requests</h2>
 
-@foreach (var item in Model.SpendingRequests)
+@if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Created).Any())
 {
-    <tr>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Activity.Name)
-            @Html.DisplayFor(modelItem => item.Activity.Description)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td class="align-middle">
-            <table-buttons>
-                <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
-                <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
-                <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
-            </table-buttons>
-        </td>
-    </tr>
+    <table class="table table-sm table-bordered table-striped caption-top">
+        <caption>Created spending requests</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Activity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
+                </th>
+                <th style="width: 1px; white-space:nowrap;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Created))
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Activity.Name)
+                        @Html.DisplayFor(modelItem => item.Activity.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td class="align-middle">
+                        <table-buttons>
+                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+                            <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
+                        </table-buttons>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-secondary" role="alert">
+        There are no requests with this status.
+    </div>
+}
+
+<h2>Submitted requests</h2>
+
+@if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Submitted).Any())
+{
+    <table class="table table-sm table-bordered table-striped caption-top">
+        <caption>Created spending requests</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Activity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
+                </th>
+                <th style="width: 1px; white-space:nowrap;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Submitted))
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Activity.Name)
+                        @Html.DisplayFor(modelItem => item.Activity.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td class="align-middle">
+                        <table-buttons>
+                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+                            <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
+                        </table-buttons>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-secondary" role="alert">
+        There are no requests with this status.
+    </div>
+}
+
+<h2>Approved requests</h2>
+
+@if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Approved).Any())
+{
+    <table class="table table-sm table-bordered table-striped caption-top">
+        <caption>Created spending requests</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Activity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
+                </th>
+                <th style="width: 1px; white-space:nowrap;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Approved))
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Activity.Name)
+                        @Html.DisplayFor(modelItem => item.Activity.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td class="align-middle">
+                        <table-buttons>
+                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+                            <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
+                        </table-buttons>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-secondary" role="alert">
+        There are no requests with this status.
+    </div>
+}
+
+<h2>Requests waiting verification</h2>
+
+@if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Verification).Any())
+{
+    <table class="table table-sm table-bordered table-striped caption-top">
+        <caption>Created spending requests</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Activity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
+                </th>
+                <th style="width: 1px; white-space:nowrap;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Verification))
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Activity.Name)
+                        @Html.DisplayFor(modelItem => item.Activity.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td class="align-middle">
+                        <table-buttons>
+                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+                            <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
+                        </table-buttons>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-secondary" role="alert">
+        There are no requests with this status.
+    </div>
+}
+
+<h2>Completed requests</h2>
+
+@if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Completed).Any())
+{
+    <table class="table table-sm table-bordered table-striped caption-top">
+        <caption>Created spending requests</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].Activity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].CreatedDate)
+                </th>
+                <th style="width: 1px; white-space:nowrap;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Completed))
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Activity.Name)
+                        @Html.DisplayFor(modelItem => item.Activity.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td class="align-middle">
+                        <table-buttons>
+                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
+                            <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
+                        </table-buttons>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-secondary" role="alert">
+        There are no requests with this status.
+    </div>
 }

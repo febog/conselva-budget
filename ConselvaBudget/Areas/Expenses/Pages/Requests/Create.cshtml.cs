@@ -68,7 +68,7 @@ namespace ConselvaBudget.Areas.Expenses.Pages.Requests
                 emptyRequest.ActivityId = foundActivity.Id;
                 emptyRequest.RequestorUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 emptyRequest.RequestorUserName = User.Identity.Name;
-                emptyRequest.Status = RequestStatus.Submitted;
+                emptyRequest.Status = RequestStatus.Created;
                 emptyRequest.CreatedDate = DateTime.Now;
                 emptyRequest.ModifiedDate = DateTime.Now;
 
