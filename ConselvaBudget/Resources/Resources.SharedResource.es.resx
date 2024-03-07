@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AREA_ADMINISTRATION" xml:space="preserve">
+    <value>Administración</value>
+    <comment>Area name</comment>
+  </data>
+  <data name="AREA_BUDGET" xml:space="preserve">
+    <value>Presupuesto</value>
+    <comment>Area name</comment>
+  </data>
+  <data name="AREA_EXPENSES" xml:space="preserve">
+    <value>Gastos</value>
+    <comment>Area name</comment>
+  </data>
+  <data name="AREA_REPORTING" xml:space="preserve">
+    <value>Reportes</value>
+    <comment>Area name</comment>
+  </data>
+  <data name="BUTTON_CANCEL" xml:space="preserve">
+    <value>Cancelar</value>
+    <comment>Generic button</comment>
+  </data>
+  <data name="BUTTON_CREATE" xml:space="preserve">
+    <value>Crear</value>
+    <comment>Generic button</comment>
+  </data>
+  <data name="BUTTON_DELETE" xml:space="preserve">
+    <value>Borrar</value>
+    <comment>Generic button</comment>
+  </data>
+  <data name="BUTTON_DETAILS" xml:space="preserve">
+    <value>Detalles</value>
+    <comment>Generic button</comment>
+  </data>
+  <data name="BUTTON_EDIT" xml:space="preserve">
+    <value>Editar</value>
+    <comment>Generic button</comment>
+  </data>
+  <data name="BUTTON_SAVE" xml:space="preserve">
+    <value>Guardar</value>
+    <comment>Generic button</comment>
+  </data>
+  <data name="CREATE" xml:space="preserve">
+    <value>Crear</value>
+    <comment>Generic action</comment>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Borrar</value>
+    <comment>Generic action</comment>
+  </data>
+  <data name="EDIT" xml:space="preserve">
+    <value>Editar</value>
+    <comment>Generic action</comment>
+  </data>
+  <data name="ENTITY_ACCOUNT_CATALOG_NAME" xml:space="preserve">
+    <value>Cuentas</value>
+    <comment>Account catalog</comment>
+  </data>
+  <data name="ENTITY_ACCOUNT_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Estas son las categorías contables básicas que se utilizan en toda la aplicación. Sirven como base sobre la que se construye el resto de los datos, por lo que es importante mantener esta información precisa y actualizada.&lt;/p&gt; &lt;p&gt;Como siempre, es importante tener en cuenta que la modificación de un elemento del catálogo de la base de datos principal afectará a todos los elementos relacionados con él.&lt;/p&gt;</value>
+    <comment>Account catalog</comment>
+  </data>
+  <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
+    <value>Cuenta</value>
+    <comment>Account catalog</comment>
+  </data>
+  <data name="ENTITY_DEPOSIT_CATALOG_NAME" xml:space="preserve">
+    <value>Depósitos</value>
+    <comment>Deposits catalog</comment>
+  </data>
+  <data name="ENTITY_DEPOSIT_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Seguimiento de los depósitos bancarios de cada &lt;b&gt;Proyecto&lt;/b&gt;.&lt;/p&gt;</value>
+    <comment>Deposits catalog</comment>
+  </data>
+  <data name="ENTITY_DEPOSIT_NAME" xml:space="preserve">
+    <value>Depósito</value>
+    <comment>Deposits catalog</comment>
+  </data>
+  <data name="ENTITY_DONOR_CATALOG_NAME" xml:space="preserve">
+    <value>Donantes</value>
+    <comment>Donor catalog</comment>
+  </data>
+  <data name="ENTITY_DONOR_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Entidad u organización que proporciona la financiación principal para un &lt;b&gt;proyecto&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;Como siempre, es importante tener en cuenta que la modificación de un elemento del catálogo de la base de datos principal afectará a todos los elementos relacionados con él.&lt;/p&gt;</value>
+    <comment>Donor catalog</comment>
+  </data>
+  <data name="ENTITY_DONOR_NAME" xml:space="preserve">
+    <value>Donante</value>
+    <comment>Donor catalog</comment>
+  </data>
+  <data name="ENTITY_EQUIVALENT_ACCOUNT_CATALOG_NAME" xml:space="preserve">
+    <value>Cuentas equivalentes</value>
+    <comment>Equivalent account catalog</comment>
+  </data>
+  <data name="ENTITY_EQUIVALENT_ACCOUNT_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Para cada &lt;b&gt;Donante&lt;/b&gt;, puede seleccionar el alias o nombre alternativo que tendrá una &lt;b&gt;Cuenta&lt;/b&gt; para &lt;b&gt;los Proyectos&lt;/b&gt; de ese Donante.&lt;/p&gt;</value>
+    <comment>Equivalent account catalog</comment>
+  </data>
+  <data name="ENTITY_EQUIVALENT_ACCOUNT_NAME" xml:space="preserve">
+    <value>Cuenta equivalente</value>
+    <comment>Equivalent account catalog</comment>
+  </data>
+  <data name="ENTITY_ORGANIZATION_CATALOG_NAME" xml:space="preserve">
+    <value>Programas</value>
+    <comment>Organization catalog</comment>
+  </data>
+  <data name="ENTITY_ORGANIZATION_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Unidades de negocio de la organización. Se utilizan junto con el catálogo de &lt;b&gt;Cuentas&lt;/b&gt; para crear las cuentas específicas que se pueden usar para realizar un seguimiento del presupuesto.&lt;/p&gt; &lt;p&gt;Como siempre, es importante tener en cuenta que la modificación de un elemento del catálogo de la base de datos principal afectará a todos los elementos relacionados con él.&lt;/p&gt;</value>
+    <comment>Organization catalog</comment>
+  </data>
+  <data name="ENTITY_ORGANIZATION_NAME" xml:space="preserve">
+    <value>Programa</value>
+    <comment>Organization catalog</comment>
+  </data>
+  <data name="ENTITY_PROJECT_CATALOG_NAME" xml:space="preserve">
+    <value>Proyectos</value>
+    <comment>Project catalog</comment>
+  </data>
+  <data name="ENTITY_PROJECT_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Unidad de trabajo principal para la base de datos. Los presupuestos y los gastos se crean a nivel de proyecto. Los proyectos pueden contener fechas de inicio y finalización, gestión del flujo de caja, entre otras características. Nivel superior de la jerarquía de Proyecto, Resultado, Actividad.&lt;/p&gt;</value>
+    <comment>Project catalog</comment>
+  </data>
+  <data name="ENTITY_PROJECT_NAME" xml:space="preserve">
+    <value>Proyecto</value>
+    <comment>Project catalog</comment>
+  </data>
+  <data name="ENTITY_ROLE_CATALOG_NAME" xml:space="preserve">
+    <value>Roles</value>
+    <comment>Role catalog</comment>
+  </data>
+  <data name="ENTITY_ROLE_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Roles de aplicación para conceder privilegios de usuario.&lt;/p&gt;</value>
+    <comment>Role catalog</comment>
+  </data>
+  <data name="ENTITY_ROLE_NAME" xml:space="preserve">
+    <value>Rol</value>
+    <comment>Role catalog</comment>
+  </data>
+  <data name="ENTITY_VEHICLE_CATALOG_NAME" xml:space="preserve">
+    <value>Vehículos</value>
+    <comment>Vehicle catalog</comment>
+  </data>
+  <data name="ENTITY_VEHICLE_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Esto se relaciona con los vehículos disponibles al crear solicitudes de viaje.&lt;/p&gt;</value>
+    <comment>Vehicle catalog</comment>
+  </data>
+  <data name="ENTITY_VEHICLE_NAME" xml:space="preserve">
+    <value>Vehículo</value>
+    <comment>Vehicle catalog</comment>
+  </data>
+  <data name="LIST_OF" xml:space="preserve">
+    <value>Lista de</value>
+    <comment>Used in Index layout</comment>
+  </data>
+</root>
