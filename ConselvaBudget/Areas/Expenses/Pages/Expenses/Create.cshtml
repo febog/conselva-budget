@@ -1,9 +1,12 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
 @model CreateModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Create Expense";
+    ViewData["Action"] = @Localizer["CREATE"];
+    ViewData["Entity"] = "Expense";
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>

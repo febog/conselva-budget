@@ -1,9 +1,12 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
 @model EditModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Edit Spending Request";
+    ViewData["Action"] = @Localizer["EDIT"];
+    ViewData["Entity"] = "Spending request";
 }
 
 <div><b>Activity</b></div>
