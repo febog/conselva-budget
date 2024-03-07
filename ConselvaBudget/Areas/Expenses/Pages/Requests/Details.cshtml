@@ -76,7 +76,7 @@
     <a class="btn btn-secondary" asp-page="./Edit" asp-route-request="@Model.SpendingRequest.Id">Edit request</a>
 </p>
 
-@section Headers {
+@section TableHeaders {
     <th>
         @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].Description)
     </th>
