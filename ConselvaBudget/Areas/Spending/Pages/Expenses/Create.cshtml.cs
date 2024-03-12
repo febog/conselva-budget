@@ -6,7 +6,7 @@ using ConselvaBudget.Models;
 using System.Diagnostics;
 using Microsoft.CodeAnalysis;
 
-namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
+namespace ConselvaBudget.Areas.Spending.Pages.Expenses
 {
     public class CreateModel : ExpensePageModel
     {

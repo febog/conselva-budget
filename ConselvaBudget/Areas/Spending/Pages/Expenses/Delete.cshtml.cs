@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
+namespace ConselvaBudget.Areas.Spending.Pages.Expenses
 {
     public class DeleteModel : PageModel
     {

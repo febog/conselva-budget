@@ -9,7 +9,7 @@ using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using ConselvaBudget.Authorization;
 
-namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
+namespace ConselvaBudget.Areas.Spending.Pages.Expenses
 {
     public class DetailsModel : PageModel
     {

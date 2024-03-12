@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Expenses.Pages.Expenses
+namespace ConselvaBudget.Areas.Spending.Pages.Expenses
 {
     public class IndexModel : PageModel
     {

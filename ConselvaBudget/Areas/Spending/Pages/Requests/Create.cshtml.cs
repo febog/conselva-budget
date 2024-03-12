@@ -3,7 +3,7 @@ using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace ConselvaBudget.Areas.Expenses.Pages.Requests
+namespace ConselvaBudget.Areas.Spending.Pages.Requests
 {
     public class CreateModel : SpendingRequestPageModel
     {

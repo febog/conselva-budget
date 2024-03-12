@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ConselvaBudget.Areas.Expenses.Pages.Requests
+namespace ConselvaBudget.Areas.Spending.Pages.Requests
 {
     public class SpendingRequestPageModel : PageModel
     {

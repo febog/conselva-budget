@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Expenses.Pages.Requests
+namespace ConselvaBudget.Areas.Spending.Pages.Requests
 {
     public class DetailsModel : PageModel
     {
