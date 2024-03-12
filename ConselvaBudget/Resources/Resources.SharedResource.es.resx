@@ -142,7 +142,7 @@
     <comment>Generic button</comment>
   </data>
   <data name="BUTTON_DELETE" xml:space="preserve">
-    <value>Borrar</value>
+    <value>Eliminar</value>
     <comment>Generic button</comment>
   </data>
   <data name="BUTTON_DETAILS" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>Generic action</comment>
   </data>
   <data name="DELETE" xml:space="preserve">
-    <value>Borrar</value>
+    <value>Eliminar</value>
     <comment>Generic action</comment>
   </data>
   <data name="EDIT" xml:space="preserve">
