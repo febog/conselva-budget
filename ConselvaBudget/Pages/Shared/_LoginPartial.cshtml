@@ -7,18 +7,18 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link text-body" href="#"><i class="bi bi-person-fill"></i> @User.Identity?.Name</a>
+            <a class="nav-link text-body me-2" href="#"><i class="bi bi-person-fill"></i> @User.Identity?.Name</a>
         </li>
         <li class="nav-item">
             <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-body">@Localizer["LOGOUT"]</button>
+                <button type="submit" class="btn btn-outline-secondary">@Localizer["LOGOUT"]</button>
             </form>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-body" asp-area="Identity" asp-page="/Account/Login">@Localizer["LOGIN"]</a>
+            <a class="btn btn-success" asp-area="Identity" asp-page="/Account/Login">@Localizer["LOGIN"]</a>
         </li>
     }
 </ul>

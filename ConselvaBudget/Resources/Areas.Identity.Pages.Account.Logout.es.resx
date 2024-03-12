@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LOGIN" xml:space="preserve">
-    <value>Iniciar sesión</value>
+  <data name="LOGOUT" xml:space="preserve">
+    <value>Cerrar sesión</value>
   </data>
-  <data name="LOGIN_PROMPT" xml:space="preserve">
-    <value>Usa tu cuenta de trabajo para iniciar sesión en la aplicación.</value>
+  <data name="LOGOUT_PROMPT" xml:space="preserve">
+    <value>Haz cerrado sesión correctamente.</value>
   </data>
 </root>
