@@ -125,12 +125,12 @@
     <value>Budget</value>
     <comment>Area name</comment>
   </data>
-  <data name="AREA_EXPENSES" xml:space="preserve">
-    <value>Expenses</value>
-    <comment>Area name</comment>
-  </data>
   <data name="AREA_REPORTING" xml:space="preserve">
     <value>Reporting</value>
+    <comment>Area name</comment>
+  </data>
+  <data name="AREA_SPENDING" xml:space="preserve">
+    <value>Spending</value>
     <comment>Area name</comment>
   </data>
   <data name="BUTTON_CANCEL" xml:space="preserve">

@@ -37,7 +37,7 @@
                         @if (User.IsInRole(Roles.Employee))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-body" asp-area="Expenses" asp-page="/Requests/Index">@Localizer["AREA_EXPENSES"]</a>
+                                <a class="nav-link text-body" asp-area="Spending" asp-page="/Requests/Index">@Localizer["AREA_SPENDING"]</a>
                             </li>
                         }
                         @if (User.IsInRole(Roles.Management))
