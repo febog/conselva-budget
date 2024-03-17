@@ -49,7 +49,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Requests/Details", new { id = expense.SpendingRequestId });
         }
     }
 }
