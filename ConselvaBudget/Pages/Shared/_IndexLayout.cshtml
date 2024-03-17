@@ -7,6 +7,7 @@
 <h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
 @await RenderSectionAsync("Introduction", required: false)
+@await RenderSectionAsync("PreTable", required: false)
 
 <table class="table table-sm table-bordered table-striped caption-top">
     <caption>@Localizer["LIST_OF"] @ViewData["Title"]</caption>
