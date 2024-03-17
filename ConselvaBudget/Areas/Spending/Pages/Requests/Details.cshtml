@@ -6,81 +6,81 @@
     ViewData["Title"] = "Spending Request Details";
 }
 
-<dl class="row">
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.SpendingRequest.Activity.Name)
-        @Html.DisplayFor(model => model.SpendingRequest.Activity.Description)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.SpendingRequest.Description)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.SpendingRequest.Description)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.SpendingRequest.RequestorUserName)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.SpendingRequest.RequestorUserName)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.SpendingRequest.CreatedDate)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.SpendingRequest.CreatedDate)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.SpendingRequest.ModifiedDate)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.SpendingRequest.ModifiedDate)
-    </dd>
-</dl>
+@section PreTable {
 
-@if (Model.SpendingRequest.Trip != null)
-{
-    <h2>Trip information</h2>
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.VehicleId)
+            @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SpendingRequest.Trip.VehicleId)
+            @Html.DisplayFor(model => model.SpendingRequest.Activity.Name)
+            @Html.DisplayFor(model => model.SpendingRequest.Activity.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Driver)
+            @Html.DisplayNameFor(model => model.SpendingRequest.Description)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SpendingRequest.Trip.Driver)
+            @Html.DisplayFor(model => model.SpendingRequest.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Destination)
+            @Html.DisplayNameFor(model => model.SpendingRequest.RequestorUserName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SpendingRequest.Trip.Destination)
+            @Html.DisplayFor(model => model.SpendingRequest.RequestorUserName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Participants)
+            @Html.DisplayNameFor(model => model.SpendingRequest.CreatedDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SpendingRequest.Trip.Participants)
+            @Html.DisplayFor(model => model.SpendingRequest.CreatedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.ModifiedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpendingRequest.ModifiedDate)
         </dd>
     </dl>
+
+    @if (Model.SpendingRequest.Trip != null)
+    {
+        <h2>Trip information</h2>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SpendingRequest.Trip.VehicleId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SpendingRequest.Trip.VehicleId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Driver)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SpendingRequest.Trip.Driver)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Destination)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SpendingRequest.Trip.Destination)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Participants)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SpendingRequest.Trip.Participants)
+            </dd>
+        </dl>
+    }
+
+    <div class="d-flex gap-1">
+        <a class="btn btn-primary" asp-page="/Expenses/Create" asp-route-request="@Model.SpendingRequest.Id">Create expense</a>
+        <a class="btn btn-secondary" asp-page="./Edit" asp-route-request="@Model.SpendingRequest.Id">Edit request</a>
+        <form method="post" asp-page-handler="submitForReview" asp-route-request="@Model.SpendingRequest.Id">
+            <input class="btn btn-success" type="submit" value="Submit for review">
+        </form>
+    </div>
 }
-
-<p>
-    <a class="btn btn-primary" asp-page="/Expenses/Create" asp-route-request="@Model.SpendingRequest.Id">Create expense</a>
-    <a class="btn btn-secondary" asp-page="./Edit" asp-route-request="@Model.SpendingRequest.Id">Edit request</a>
-</p>
-
-<p>
-    <form method="post" asp-page-handler="submitForReview" asp-route-request="@Model.SpendingRequest.Id">
-        <input class="btn btn-success" type="submit" value="Submit for review">
-    </form>
-</p>
 
 @section TableHeaders {
     <th>
