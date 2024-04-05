@@ -1,6 +1,6 @@
 # ConselvaBudget
 
-[![Staging workflow](https://github.com/febog/conselva-budget/actions/workflows/staging_conselvanet(staging).yml/badge.svg)](https://github.com/febog/conselva-budget/actions/workflows/staging_conselvanet(staging).yml)
+[![Staging workflow](https://github.com/febog/conselva-budget/actions/workflows/main_conselvanet(staging).yml/badge.svg)](https://github.com/febog/conselva-budget/actions/workflows/main_conselvanet(staging).yml)
 
 Business ASP.NET Core app hosted in Azure App service.
 
