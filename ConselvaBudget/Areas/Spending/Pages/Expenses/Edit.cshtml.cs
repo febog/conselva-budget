@@ -65,7 +65,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 return RedirectToPage("/Requests/Details", new { id = expenseToUpdate.SpendingRequestId });
             }
 
-            PopulateActivityBudgetDropDownList(_context, Expense.SpendingRequest.ActivityId, expenseToUpdate.ActivityBudgetId);
+            PopulateActivityBudgetDropDownList(_context, expenseToUpdate.SpendingRequest.ActivityId, expenseToUpdate.ActivityBudgetId);
             return Page();
         }
     }
