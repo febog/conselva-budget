@@ -2,7 +2,7 @@
 @model ManageModel
 
 @{
-    ViewData["Title"] = "Manage Project";
+    ViewData["Title"] = "Manage Project - " + Model.Project.Name;
 }
 
 <h1 class="border-bottom pb-2">@Html.DisplayFor(model => model.Project.Name)</h1>
