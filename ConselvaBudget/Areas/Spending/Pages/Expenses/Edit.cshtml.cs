@@ -26,19 +26,24 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 return NotFound();
             }
 
-            Expense = await _context.Expenses.FirstOrDefaultAsync(m => m.Id == id);
+            Expense = await _context.Expenses
+                .Include(e => e.SpendingRequest)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
             if (Expense == null)
             {
                 return NotFound();
             }
 
-            PopulateActivityBudgetDropDownList(_context, Expense.ActivityBudgetId);
+            PopulateActivityBudgetDropDownList(_context, Expense.SpendingRequest.ActivityId, Expense.ActivityBudgetId);
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            var expenseToUpdate = await _context.Expenses.FindAsync(id);
+            var expenseToUpdate = await _context.Expenses
+                .Include(e => e.SpendingRequest)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (expenseToUpdate == null)
             {
@@ -60,7 +65,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 return RedirectToPage("/Requests/Details", new { id = expenseToUpdate.SpendingRequestId });
             }
 
-            PopulateActivityBudgetDropDownList(_context, expenseToUpdate.ActivityBudgetId);
+            PopulateActivityBudgetDropDownList(_context, Expense.SpendingRequest.ActivityId, expenseToUpdate.ActivityBudgetId);
             return Page();
         }
     }
