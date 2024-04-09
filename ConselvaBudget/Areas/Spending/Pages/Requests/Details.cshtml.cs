@@ -57,6 +57,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                     return NotFound();
                 }
 
+                if (requestToUpdate.Status != RequestStatus.Created)
+                {
+                    return Forbid();
+                }
+
                 requestToUpdate.Status = RequestStatus.Submitted;
                 await _context.SaveChangesAsync();
             }
