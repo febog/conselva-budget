@@ -70,21 +70,7 @@
     </dl>
 </div>
 
-@if(User.IsInRole(Roles.Management) && Model.Expense.Status != ExpenseStatus.Completed)
-{
-    <form style="display:inline;" method="post">
-        <input type="hidden" name="id" value="@Model.Expense.Id" />
-        <input type="hidden" name="status" value="@ExpenseStatus.Approved" />
-        <button type="submit" class="btn btn-success">Approve</button>
-    </form>
-    <form style="display:inline;" method="post">
-        <input type="hidden" name="id" value="@Model.Expense.Id" />
-        <input type="hidden" name="status" value="@ExpenseStatus.Rejected" />
-        <button type="submit" class="btn btn-danger">Reject</button>
-    </form>
-}
-
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Expense?.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+<div class="d-flex gap-1">
+    <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@Model.Expense.Id">Edit expense</a>
+    <a class="btn btn-secondary" asp-page="/Requests/Details" asp-route-id="@Model.Expense.SpendingRequestId">Back</a>
 </div>
