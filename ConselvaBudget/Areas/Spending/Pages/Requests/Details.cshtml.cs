@@ -48,15 +48,19 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public async Task<IActionResult> OnPostSubmitForReviewAsync(int request)
         {
-            var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
-
-            if (requestToUpdate == null)
+            if (User.IsInRole(Roles.Employee))
             {
-                return NotFound();
+                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+
+                if (requestToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                requestToUpdate.Status = RequestStatus.Submitted;
+                await _context.SaveChangesAsync();
             }
 
-            requestToUpdate.Status = RequestStatus.Submitted;
-            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
 
