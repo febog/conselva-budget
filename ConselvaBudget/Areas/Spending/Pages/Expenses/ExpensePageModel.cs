@@ -17,11 +17,12 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 .Include(b => b.Activity.Result.Project)
                 .Include(b => b.AccountAssignment.Account)
                 .Include(b => b.AccountAssignment.Organization)
+                .Include(b => b.Expenses)
                 .OrderBy(b => b.Activity.Result.Project.Name)
                 .Select(b => new
                 {
                     b.Id,
-                    Name = $"{b.Activity.Name} - {b.AccountAssignment.DisplayName}",
+                    Name = $"{b.Activity.Name} - {b.AccountAssignment.DisplayName} ({b.Remainder})",
                     ActivityId = b.ActivityId,
                     Group = b.Activity.Result.Project.Name
                 });
