@@ -20,11 +20,9 @@ namespace ConselvaBudget
             if (isDevelopment && !isWindows)
             {
                 // Use SQLite
-                var appIdentityConn = builder.Configuration.GetConnectionString("SqlLiteAppIdentityConn") ?? throw new InvalidOperationException("Connection string 'SqlLiteAppIdentityConn' not found.");
-                builder.Services.AddDbContext<AppIdentityContext>(options => options.UseSqlite(appIdentityConn));
-
-                var conselvaBudgetConn = builder.Configuration.GetConnectionString("SqlLiteConselvaBudgetConn") ?? throw new InvalidOperationException("Connection string 'SqlLiteConselvaBudgetConn' not found.");
-                builder.Services.AddDbContext<ConselvaBudgetContext>(options => options.UseSqlite(conselvaBudgetConn));
+                var sqlLiteDevConselvaBudget = builder.Configuration.GetConnectionString("SqlLiteDevConselvaBudget") ?? throw new InvalidOperationException("Connection string 'SqlLiteDevConselvaBudget' not found.");
+                builder.Services.AddDbContext<AppIdentityContext>(options => options.UseSqlite(sqlLiteDevConselvaBudget));
+                builder.Services.AddDbContext<ConselvaBudgetContext>(options => options.UseSqlite(sqlLiteDevConselvaBudget));
             }
             else
             {
