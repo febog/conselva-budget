@@ -77,5 +77,28 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
             return RedirectToPage("./Index");
         }
+
+        public async Task<IActionResult> OnPostStartVerificationAsync(int request)
+        {
+            if (User.IsInRole(Roles.Employee))
+            {
+                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+
+                if (requestToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                if (requestToUpdate.Status != RequestStatus.Approved)
+                {
+                    return Forbid();
+                }
+
+                requestToUpdate.Status = RequestStatus.Verification;
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
+        }
     }
 }
