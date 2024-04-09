@@ -40,6 +40,11 @@ namespace ConselvaBudget.Models
         [Display(Name = "Trip")]
         public Trip Trip { get; set; }
 
+        [Display(Name = "Total")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [ValidateNever]
+        public decimal TotalAmount => Expenses.Sum(e => e.Amount);
+
         public virtual ICollection<Expense> Expenses { get; set; }
 
         public virtual ICollection<RequestLogEntry> RequestLogEntries { get; set; }
