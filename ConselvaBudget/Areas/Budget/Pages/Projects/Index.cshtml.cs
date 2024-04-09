@@ -16,13 +16,15 @@ namespace ConselvaBudget.Areas.Budget.Pages.Projects
 
         public IList<Project> Projects { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(bool showAll = false)
         {
-            if (_context.Projects != null)
-            {
-                Projects = await _context.Projects
+            Projects = await _context.Projects
                     .OrderBy(p => p.Segment)
                     .ToListAsync();
+
+            if (!showAll)
+            {
+                Projects = Projects.Where(p => p.IsActive).ToList();
             }
         }
     }
