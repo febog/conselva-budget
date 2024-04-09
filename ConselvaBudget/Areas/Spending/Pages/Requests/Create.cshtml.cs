@@ -1,6 +1,7 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Spending.Pages.Requests
@@ -21,7 +22,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            var foundActivity = await _context.Activities.FindAsync(activity);
+            var foundActivity = await _context.Activities
+                .Include(a => a.Result.Project)
+                .FirstOrDefaultAsync(a => a.Id == activity);
 
             if (foundActivity == null)
             {
