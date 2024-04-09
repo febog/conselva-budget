@@ -24,7 +24,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
             if (!User.IsInRole(Roles.Management))
             {
-                var userId =  User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 requests = requests.Where(r => r.RequestorUserId == userId);
             }
 
