@@ -9,10 +9,27 @@
     ViewData["Entity"] = "Spending request";
 }
 
-<div><b>Activity</b></div>
-<div>
-    <b>@Model.Activity.Name</b> @Model.Activity.Description
-</div>
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Activity.Result.Project)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Activity.Result.Project.Name)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Activity.Result)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Activity.Result.Name)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Activity)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Activity.Name)
+        @Html.DisplayFor(model => model.Activity.Description)
+    </dd>
+</dl>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="col-12">

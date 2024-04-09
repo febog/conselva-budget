@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using ConselvaBudget.Authorization;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,7 +20,15 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public async Task OnGetAsync()
         {
-            SpendingRequests = await _context.SpendingRequests
+            var requests = _context.SpendingRequests.Select(r => r);
+
+            if (!User.IsInRole(Roles.Management))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                requests = requests.Where(r => r.RequestorUserId == userId);
+            }
+
+            SpendingRequests = await requests
                 .Include(r => r.Activity)
                 .ToListAsync();
         }
