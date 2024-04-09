@@ -40,22 +40,5 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
             }
             return Page();
         }
-
-        public async Task<IActionResult> OnPostAsync(int? id, ExpenseStatus status)
-        {
-            var expense = await _context.Expenses.FindAsync(id);
-            if (expense == null)
-            {
-                return NotFound();
-            }
-
-            if (User.IsInRole(Roles.Management))
-            {
-                expense.Status = status;
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
-        }
     }
 }
