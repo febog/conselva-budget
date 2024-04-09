@@ -70,7 +70,7 @@
     </dl>
 </div>
 
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Expense?.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+<div class="d-flex gap-1">
+    <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@Model.Expense.Id">Edit expense</a>
+    <a class="btn btn-secondary" asp-page="Requests/Details" asp-route-id="@Model.Expense.SpendingRequestId">Back</a>
 </div>
