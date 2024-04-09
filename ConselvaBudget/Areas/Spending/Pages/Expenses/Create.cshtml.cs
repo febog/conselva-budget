@@ -31,7 +31,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 return NotFound();
             }
 
-            PopulateActivityBudgetDropDownList(_context);
+            PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId);
             return Page();
         }
 
@@ -73,7 +73,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 return RedirectToPage("/Requests/Details", new { id = foundRequest.Id });
             }
 
-            PopulateActivityBudgetDropDownList(_context, emptyExpense.ActivityBudgetId);
+            PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId, emptyExpense.ActivityBudgetId);
             return Page();
         }
     }

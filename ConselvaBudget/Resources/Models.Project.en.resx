@@ -153,7 +153,7 @@
     <comment>Money</comment>
   </data>
   <data name="PROJECT_REMAINING_IN_BANK" xml:space="preserve">
-    <value>Remaining in bank</value>
+    <value>Cash remaining</value>
     <comment>Money</comment>
   </data>
   <data name="PROJECT_SEGMENT" xml:space="preserve">

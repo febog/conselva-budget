@@ -10,6 +10,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
         public SelectList ActivityBudgetSL { get; set; }
 
         public void PopulateActivityBudgetDropDownList(ConselvaBudgetContext context,
+            int? activityId = null,
             object selectedActivityBudget = null)
         {
             var activitybudgetsQuery = context.ActivityBudgets
@@ -21,8 +22,14 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 {
                     b.Id,
                     Name = $"{b.Activity.Name} - {b.AccountAssignment.DisplayName}",
+                    ActivityId = b.ActivityId,
                     Group = b.Activity.Result.Project.Name
                 });
+
+            if (activityId != null)
+            {
+                activitybudgetsQuery = activitybudgetsQuery.Where(b => b.ActivityId == activityId);
+            }
 
             ActivityBudgetSL = new SelectList(activitybudgetsQuery.AsNoTracking(),
                 "Id",
