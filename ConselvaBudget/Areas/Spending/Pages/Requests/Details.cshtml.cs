@@ -80,6 +80,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                     return NotFound();
                 }
 
+                if (requestToUpdate.Status != RequestStatus.Submitted)
+                {
+                    return Forbid();
+                }
+
                 requestToUpdate.Status = RequestStatus.Approved;
                 await _context.SaveChangesAsync();
             }
