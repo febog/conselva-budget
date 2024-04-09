@@ -102,6 +102,12 @@
                 <input class="btn btn-success" type="submit" value="Verification">
             </form>
         }
+        @if(User.IsInRole(Roles.Management) && Model.SpendingRequest.Status == RequestStatus.Verification)
+        {
+            <form method="post" asp-page-handler="completeRequest" asp-route-request="@Model.SpendingRequest.Id">
+                <input class="btn btn-success" type="submit" value="Complete">
+            </form>
+        }
     </div>
 }
 
