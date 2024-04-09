@@ -14,11 +14,27 @@ namespace ConselvaBudget
             builder.Services.ConfigureConselvaBudgetServices();
 
             // Add services to the container.
-            var appIdentityConn = builder.Configuration.GetConnectionString("AppIdentityConnection") ?? throw new InvalidOperationException("Connection string 'AppIdentityConnection' not found.");
-            builder.Services.AddDbContext<AppIdentityContext>(options => options.UseSqlServer(appIdentityConn));
+            // If developing in non-Windows environments, load the connection strings as SQLite
+            bool isWindows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
+            bool isDevelopment = builder.Environment.IsDevelopment();
+            if (isDevelopment && !isWindows)
+            {
+                // Use SQLite
+                var appIdentityConn = builder.Configuration.GetConnectionString("SqlLiteAppIdentityConn") ?? throw new InvalidOperationException("Connection string 'SqlLiteAppIdentityConn' not found.");
+                builder.Services.AddDbContext<AppIdentityContext>(options => options.UseSqlite(appIdentityConn));
 
-            var conselvaBudgetConn = builder.Configuration.GetConnectionString("ConselvaBudgetConnection") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetConnection' not found.");
-            builder.Services.AddDbContext<ConselvaBudgetContext>(options => options.UseSqlServer(conselvaBudgetConn));
+                var conselvaBudgetConn = builder.Configuration.GetConnectionString("SqlLiteConselvaBudgetConn") ?? throw new InvalidOperationException("Connection string 'SqlLiteConselvaBudgetConn' not found.");
+                builder.Services.AddDbContext<ConselvaBudgetContext>(options => options.UseSqlite(conselvaBudgetConn));
+            }
+            else
+            {
+                // Use SQLServer
+                var appIdentityConn = builder.Configuration.GetConnectionString("AppIdentityConnection") ?? throw new InvalidOperationException("Connection string 'AppIdentityConnection' not found.");
+                builder.Services.AddDbContext<AppIdentityContext>(options => options.UseSqlServer(appIdentityConn));
+
+                var conselvaBudgetConn = builder.Configuration.GetConnectionString("ConselvaBudgetConnection") ?? throw new InvalidOperationException("Connection string 'ConselvaBudgetConnection' not found.");
+                builder.Services.AddDbContext<ConselvaBudgetContext>(options => options.UseSqlServer(conselvaBudgetConn));
+            }
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
