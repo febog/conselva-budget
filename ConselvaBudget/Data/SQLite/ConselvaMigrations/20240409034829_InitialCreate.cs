@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ConselvaBudget.Data.ConselvaMigrations
+namespace ConselvaBudget.Data.SQLite.ConselvaMigrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -15,11 +15,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Accounts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Code = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,9 +30,10 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Donors",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ShortName = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    FullName = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,10 +44,10 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Organizations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Code = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,9 +58,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Vehicles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,11 +71,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "EquivalentAccounts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountId = table.Column<int>(type: "int", nullable: false),
-                    DonorId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AccountId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DonorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,15 +98,15 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Projects",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DonorId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    ShortName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Segment = table.Column<int>(type: "int", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DonorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    ShortName = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Segment = table.Column<int>(type: "INTEGER", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -122,10 +123,10 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "AccountAssignments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrganizationId = table.Column<int>(type: "int", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    OrganizationId = table.Column<int>(type: "INTEGER", nullable: false),
+                    AccountId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,12 +149,12 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Deposits",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProjectId = table.Column<int>(type: "INTEGER", nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Comments = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -170,10 +171,10 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Results",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProjectId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -190,11 +191,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Activities",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ResultId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ResultId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -211,12 +212,12 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "ActivityBudgets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ActivityId = table.Column<int>(type: "int", nullable: false),
-                    AccountAssignmentId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ActivityId = table.Column<int>(type: "INTEGER", nullable: false),
+                    AccountAssignmentId = table.Column<int>(type: "INTEGER", nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Comments = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -239,15 +240,15 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "SpendingRequests",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ActivityId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    RequestorUserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    RequestorUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ActivityId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    RequestorUserId = table.Column<string>(type: "TEXT", maxLength: 450, nullable: false),
+                    RequestorUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -264,18 +265,18 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Expenses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ActivityBudgetId = table.Column<int>(type: "int", nullable: false),
-                    SpendingRequestId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Vendor = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ActivityBudgetId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SpendingRequestId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Vendor = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
-                    ExpenseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    ExpenseDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Comments = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -298,12 +299,12 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "RequestLogEntries",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ExpenseRequestId = table.Column<int>(type: "int", nullable: false),
-                    EventAuthor = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    EventTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Operation = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ExpenseRequestId = table.Column<int>(type: "INTEGER", nullable: false),
+                    EventAuthor = table.Column<string>(type: "TEXT", maxLength: 450, nullable: false),
+                    EventTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Operation = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -320,12 +321,12 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "Trips",
                 columns: table => new
                 {
-                    SpendingRequestId = table.Column<int>(type: "int", nullable: false),
-                    VehicleId = table.Column<int>(type: "int", nullable: true),
-                    Driver = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Destination = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Participants = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    SelectedDates = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    SpendingRequestId = table.Column<int>(type: "INTEGER", nullable: false),
+                    VehicleId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Driver = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true),
+                    Destination = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true),
+                    Participants = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true),
+                    SelectedDates = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
