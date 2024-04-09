@@ -1,3 +1,4 @@
+using ConselvaBudget.Authorization;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Localization;
@@ -56,6 +57,24 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
             requestToUpdate.Status = RequestStatus.Submitted;
             await _context.SaveChangesAsync();
+            return RedirectToPage("./Index");
+        }
+
+        public async Task<IActionResult> OnPostApproveAsync(int request)
+        {
+            if (User.IsInRole(Roles.Management))
+            {
+                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+
+                if (requestToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                requestToUpdate.Status = RequestStatus.Approved;
+                await _context.SaveChangesAsync();
+            }
+
             return RedirectToPage("./Index");
         }
     }

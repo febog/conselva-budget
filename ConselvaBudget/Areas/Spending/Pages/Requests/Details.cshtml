@@ -1,5 +1,7 @@
 ﻿@page
 @model DetailsModel
+@using ConselvaBudget.Authorization
+@using ConselvaBudget.Models
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
@@ -85,6 +87,12 @@
         <form method="post" asp-page-handler="submitForReview" asp-route-request="@Model.SpendingRequest.Id">
             <input class="btn btn-success" type="submit" value="Submit for review">
         </form>
+        @if(User.IsInRole(Roles.Management) && Model.SpendingRequest.Status == RequestStatus.Submitted)
+        {
+            <form method="post" asp-page-handler="approve" asp-route-request="@Model.SpendingRequest.Id">
+                <input class="btn btn-success" type="submit" value="Approve">
+            </form>
+        }
     </div>
 }
 
