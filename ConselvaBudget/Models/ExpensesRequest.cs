@@ -56,8 +56,7 @@ namespace ConselvaBudget.Models
         Created = 0,
         Submitted = 1,
         Approved = 2,
-        Rejected = 3,
-        Verification = 4,
-        Completed = 5
+        Verification = 3,
+        Completed = 4
     }
 }
