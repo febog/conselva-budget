@@ -30,6 +30,11 @@ namespace ConselvaBudget.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Amount { get; set; }
 
+        [Display(Name = "Amount")]
+        [Column(TypeName = "money")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal? InvoiceAmount { get; set; }
+
         [Display(Name = "ExpenseDate")]
         [DataType(DataType.Date)]
         public DateTime ExpenseDate { get; set; }
