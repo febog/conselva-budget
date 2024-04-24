@@ -7,7 +7,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<table class="table table-bordered table-striped caption-top use-data-tables">
+<table class="table table-sm table-bordered table-striped caption-top">
     <caption>Currently active Projects.</caption>
     <thead>
         <tr>
@@ -43,6 +43,8 @@
         }
     </tbody>
 </table>
+
+<a class="btn btn-sm btn-secondary" role="button" asp-route-showAll="true">Show all projects</a>
 
 @section CSS {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
