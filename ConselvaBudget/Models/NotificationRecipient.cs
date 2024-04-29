@@ -11,14 +11,15 @@ namespace ConselvaBudget.Models
         [Required]
         public string AspNetUserId { get; set; }
 
-        [Display(Name = "Notification email address")]
         [StringLength(256)]
         [Required]
         [ValidateNever]
         [DataType(DataType.EmailAddress)]
+        [Display(Name = "NOTIFICATION_RECIPIENT_NOTIFICATION_EMAIL")]
         public string NotificationEmail { get; set; }
 
         [NotMapped]
+        [Display(Name = "NOTIFICATION_RECIPIENT_USERNAME_EMAIL")]
         public string UsernameEmail { get; set; }
     }
 }
