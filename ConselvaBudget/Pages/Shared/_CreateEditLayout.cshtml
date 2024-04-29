@@ -19,6 +19,7 @@
     </div>
     <div class="col-lg-7">
         <h2 class="h4">@ViewData["Entity"]</h2>
+        @await RenderSectionAsync("PreForm", required: false)
         <form method="post" class="row g-3">
             @RenderBody()
         </form>
