@@ -3,7 +3,7 @@
     ViewData["Title"] = $"{ViewData["Action"]} {ViewData["Entity"]}";
 }
 
-<h1 class="pb-2 border-bottom">@ViewData["Action"]</h1>
+<h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
 <div class="row g-4">
     <div class="col-lg-5 order-lg-last">
@@ -18,7 +18,6 @@
         </div>
     </div>
     <div class="col-lg-7">
-        <h2 class="h4">@ViewData["Entity"]</h2>
         @await RenderSectionAsync("PreForm", required: false)
         <form method="post" class="row g-3">
             @RenderBody()
