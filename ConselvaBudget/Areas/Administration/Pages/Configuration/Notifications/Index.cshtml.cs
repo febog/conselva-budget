@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Access.Notifications
+namespace ConselvaBudget.Areas.Administration.Pages.Configuration.Notifications
 {
     public class IndexModel : PageModel
     {

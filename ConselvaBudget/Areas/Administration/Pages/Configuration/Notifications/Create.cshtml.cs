@@ -3,7 +3,7 @@ using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Access.Notifications
+namespace ConselvaBudget.Areas.Administration.Pages.Configuration.Notifications
 {
     public class CreateModel : NotificationPageModel
     {

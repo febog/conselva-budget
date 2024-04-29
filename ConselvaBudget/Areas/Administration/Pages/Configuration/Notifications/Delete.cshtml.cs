@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Access.Notifications
+namespace ConselvaBudget.Areas.Administration.Pages.Configuration.Notifications
 {
     public class DeleteModel : PageModel
     {

@@ -4,7 +4,7 @@ using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Access.Notifications
+namespace ConselvaBudget.Areas.Administration.Pages.Configuration.Notifications
 {
     public class EditModel : NotificationPageModel
     {

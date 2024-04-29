@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Access.Notifications
+namespace ConselvaBudget.Areas.Administration.Pages.Configuration.Notifications
 {
     public class NotificationPageModel : PageModel
     {
