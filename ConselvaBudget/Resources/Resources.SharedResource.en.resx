@@ -253,6 +253,18 @@
     <value>Project</value>
     <comment>Project catalog</comment>
   </data>
+  <data name="ENTITY_RESULT_CATALOG_NAME" xml:space="preserve">
+    <value>Results</value>
+    <comment>Result entity</comment>
+  </data>
+  <data name="ENTITY_RESULT_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Main goals of the project.&lt;/p&gt;</value>
+    <comment>Result entity</comment>
+  </data>
+  <data name="ENTITY_RESULT_NAME" xml:space="preserve">
+    <value>Result</value>
+    <comment>Result entity</comment>
+  </data>
   <data name="ENTITY_ROLE_CATALOG_NAME" xml:space="preserve">
     <value>Roles</value>
     <comment>Role catalog</comment>
