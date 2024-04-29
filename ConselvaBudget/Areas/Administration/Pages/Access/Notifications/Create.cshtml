@@ -5,7 +5,7 @@
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
     ViewData["Action"] = @SharedLocalizer["CREATE"];
-    ViewData["Entity"] = "Email";
+    ViewData["Entity"] = @SharedLocalizer["ENTITY_NOTIFICATION_NAME"]; ;
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>

@@ -217,6 +217,18 @@
     <value>Cuenta equivalente</value>
     <comment>Equivalent account catalog</comment>
   </data>
+  <data name="ENTITY_NOTIFICATION_CATALOG_NAME" xml:space="preserve">
+    <value>Notificaciones por email</value>
+    <comment>Email notification catalog</comment>
+  </data>
+  <data name="ENTITY_NOTIFICATION_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Configurar las direcciones de correo para las notificaciones de cada usuario.&lt;/p&gt;</value>
+    <comment>Email notification catalog</comment>
+  </data>
+  <data name="ENTITY_NOTIFICATION_NAME" xml:space="preserve">
+    <value>Notificación por email</value>
+    <comment>Email notification catalog</comment>
+  </data>
   <data name="ENTITY_ORGANIZATION_CATALOG_NAME" xml:space="preserve">
     <value>Programas</value>
     <comment>Organization catalog</comment>
