@@ -13,9 +13,21 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
             _context = context;
         }
 
-        public IActionResult OnGet(int? projectId)
+        public async Task<IActionResult> OnGetAsync(int? project)
         {
-            PopulateProjectDropDownList(_context, projectId);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            var foundProject = await _context.Projects.FindAsync(project);
+
+            if (foundProject == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["SelectedProject"] = foundProject.Name;
             return Page();
         }
 

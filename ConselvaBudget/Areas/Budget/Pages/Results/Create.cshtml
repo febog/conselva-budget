@@ -6,12 +6,12 @@
     ViewData["Title"] = "Create Result";
 }
 
+@section PreForm {
+    <h3 class="h5">Project</h3>
+    <p>@ViewData["SelectedProject"]</p>
+}
+
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<div class="col-12">
-    <label asp-for="Result.ProjectId" class="form-label"></label>
-    <select asp-for="Result.ProjectId" class="form-select" asp-items="@Model.ProjectNameSL"></select>
-    <span asp-validation-for="Result.ProjectId" class="text-danger"></span>
-</div>
 <div class="col-12">
     <label asp-for="Result.Code" class="form-label"></label>
     <input asp-for="Result.Code" class="form-control" />
