@@ -29,8 +29,3 @@
     <input class="btn btn-primary" type="submit" value="Create">
     <a class="btn btn-secondary" asp-page="/Projects/Manage" asp-route-id="@Request.Query["projectId"]">Cancel</a>
 </div>
-
-@section FormInfo {
-    <h1 class="h4">@SharedLocalizer["ENTITY_RESULT_CATALOG_NAME"]</h1>
-    @HtmlLocalizer["ENTITY_RESULT_HELP"]
-}
