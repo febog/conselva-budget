@@ -15,6 +15,7 @@ namespace ConselvaBudget.Models
         [StringLength(256)]
         [Required]
         [ValidateNever]
+        [DataType(DataType.EmailAddress)]
         public string NotificationEmail { get; set; }
 
         [NotMapped]
