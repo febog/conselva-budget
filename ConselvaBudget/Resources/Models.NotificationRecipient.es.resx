@@ -117,31 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CATALOGS" xml:space="preserve">
-    <value>Catalogs</value>
+  <data name="NOTIFICATION_RECIPIENT_NOTIFICATION_EMAIL" xml:space="preserve">
+    <value>Email para notificaciones</value>
   </data>
-  <data name="CATALOGS_DESCRIPTION" xml:space="preserve">
-    <value>Manage the main catalogs used by the database. These serve as the base upon the rest of the data is created.</value>
-  </data>
-  <data name="CONFIGURATION" xml:space="preserve">
-    <value>Application configuration</value>
-  </data>
-  <data name="CONFIGURATION_DESCRIPTION" xml:space="preserve">
-    <value>Manage application configurations.</value>
-  </data>
-  <data name="FINANCE" xml:space="preserve">
-    <value>Finance</value>
-  </data>
-  <data name="FINANCE_DESCRIPTION" xml:space="preserve">
-    <value>Tools related to money flow.</value>
-  </data>
-  <data name="INVENTORY" xml:space="preserve">
-    <value>Inventory</value>
-  </data>
-  <data name="INVENTORY_DESCRIPTION" xml:space="preserve">
-    <value>Manage the organization inventories.</value>
-  </data>
-  <data name="TABLE_OF_CONTENTS" xml:space="preserve">
-    <value>Table of contents</value>
+  <data name="NOTIFICATION_RECIPIENT_USERNAME_EMAIL" xml:space="preserve">
+    <value>Usuario</value>
   </data>
 </root>

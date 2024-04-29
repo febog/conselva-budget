@@ -1,0 +1,30 @@
+﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@model CreateModel
+
+@{
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
+    ViewData["Action"] = @SharedLocalizer["CREATE"];
+    ViewData["Entity"] = @SharedLocalizer["ENTITY_NOTIFICATION_NAME"]; ;
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="col-12">
+    <label asp-for="NotificationRecipient.AspNetUserId" class="form-label"></label>
+    <select asp-for="NotificationRecipient.AspNetUserId" class="form-select" asp-items="@Model.UserSL">
+    </select>
+    <span asp-validation-for="NotificationRecipient.AspNetUserId" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="NotificationRecipient.NotificationEmail" class="form-label"></label>
+    <input asp-for="NotificationRecipient.NotificationEmail" class="form-control" />
+    <span asp-validation-for="NotificationRecipient.NotificationEmail" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <create-button></create-button>
+    <cancel-button asp-page="./Index"></cancel-button>
+</div>
+
+@section FormInfo {
+    <p>Test</p>
+}

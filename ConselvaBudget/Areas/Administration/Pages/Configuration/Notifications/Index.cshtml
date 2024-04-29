@@ -1,0 +1,39 @@
+﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@model IndexModel
+
+@{
+    Layout = "/Pages/Shared/_IndexLayout.cshtml";
+    ViewData["Title"] = "Emails";
+}
+
+@section Introduction {
+    <p><a class="btn btn-primary" asp-page="Create">@SharedLocalizer["CREATE"]</a></p>
+}
+
+@section TableHeaders {
+    <th>
+        @Html.DisplayNameFor(model => model.NotificationRecipients[0].UsernameEmail)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.NotificationRecipients[0].NotificationEmail)
+    </th>
+}
+
+@foreach (var item in Model.NotificationRecipients)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsernameEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NotificationEmail)
+        </td>
+        <td class="align-middle">
+            <table-buttons>
+                <edit-button asp-page="Edit" asp-route-id="@item.AspNetUserId"></edit-button>
+                <delete-button asp-page="Delete" asp-route-id="@item.AspNetUserId"></delete-button>
+            </table-buttons>
+        </td>
+    </tr>
+}

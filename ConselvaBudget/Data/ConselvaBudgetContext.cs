@@ -38,5 +38,7 @@ namespace ConselvaBudget.Data
         public DbSet<Deposit> Deposits { get; set; }
 
         public DbSet<Vehicle> Vehicles { get; set; }
+
+        public DbSet<NotificationRecipient> NotificationRecipients { get; set; }
     }
 }

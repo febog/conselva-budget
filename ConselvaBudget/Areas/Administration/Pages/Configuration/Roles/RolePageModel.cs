@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Administration.Pages.Access.Roles
+namespace ConselvaBudget.Areas.Administration.Pages.Configuration.Roles
 {
     public class RolePageModel : PageModel
     {

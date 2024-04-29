@@ -117,17 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ACCESS" xml:space="preserve">
-    <value>Acceso a la aplicación</value>
-  </data>
-  <data name="ACCESS_DESCRIPTION" xml:space="preserve">
-    <value>Administre el acceso a las aplicaciones a diferentes usuarios a través de roles.</value>
-  </data>
   <data name="CATALOGS" xml:space="preserve">
     <value>Catálogos</value>
   </data>
   <data name="CATALOGS_DESCRIPTION" xml:space="preserve">
     <value>Gestionar los principales catálogos utilizados por la base de datos. Estos sirven como base sobre la que se crea el resto de los datos.</value>
+  </data>
+  <data name="CONFIGURATION" xml:space="preserve">
+    <value>Configuración de la aplicación</value>
+  </data>
+  <data name="CONFIGURATION_DESCRIPTION" xml:space="preserve">
+    <value>Configuraciones relacionadas con el funcionamiento de la aplicación.</value>
   </data>
   <data name="FINANCE" xml:space="preserve">
     <value>Finanzas</value>

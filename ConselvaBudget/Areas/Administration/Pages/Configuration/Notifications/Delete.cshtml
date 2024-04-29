@@ -1,0 +1,27 @@
+﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@model DeleteModel
+
+@{
+    Layout = "/Pages/Shared/_DeleteLayout.cshtml";
+    ViewData["Title"] = $"{SharedLocalizer["DELETE"]} Email";
+}
+
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.NotificationRecipient.UsernameEmail)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.NotificationRecipient.UsernameEmail)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.NotificationRecipient.NotificationEmail)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.NotificationRecipient.NotificationEmail)
+</dd>
+
+@section DeleteFormContents {
+    <input type="hidden" asp-for="NotificationRecipient.AspNetUserId" />
+    <delete-confirm-button></delete-confirm-button>
+    <cancel-button asp-page="./Index"></cancel-button>
+}
