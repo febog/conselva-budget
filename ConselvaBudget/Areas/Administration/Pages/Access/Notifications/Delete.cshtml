@@ -1,34 +1,27 @@
 ﻿@page
-@model ConselvaBudget.Areas.Administration.Pages.Access.Notifications.DeleteModel
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@model DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    Layout = "/Pages/Shared/_DeleteLayout.cshtml";
+    ViewData["Title"] = $"{SharedLocalizer["DELETE"]} Email";
 }
 
-<h1>Delete</h1>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.NotificationRecipient.UsernameEmail)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.NotificationRecipient.UsernameEmail)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.NotificationRecipient.NotificationEmail)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.NotificationRecipient.NotificationEmail)
+</dd>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>NotificationRecipient</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NotificationRecipient.UsernameEmail)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NotificationRecipient.UsernameEmail)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NotificationRecipient.NotificationEmail)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NotificationRecipient.NotificationEmail)
-        </dd>
-    </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="NotificationRecipient.AspNetUserId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
-</div>
+@section DeleteFormContents {
+    <input type="hidden" asp-for="NotificationRecipient.AspNetUserId" />
+    <delete-confirm-button></delete-confirm-button>
+    <cancel-button asp-page="./Index"></cancel-button>
+}
