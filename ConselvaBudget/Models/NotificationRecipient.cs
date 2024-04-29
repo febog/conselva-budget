@@ -14,7 +14,7 @@ namespace ConselvaBudget.Models
         [StringLength(256)]
         [Required]
         [ValidateNever]
-        public string UsernameEmial { get; set; }
+        public string UsernameEmail { get; set; }
 
         [Display(Name = "Notification email address")]
         [StringLength(256)]
