@@ -38,7 +38,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Access.Notifications
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(string id)
         {
             var notificationToUpdate = await _context.NotificationRecipients.FindAsync(id);
 
