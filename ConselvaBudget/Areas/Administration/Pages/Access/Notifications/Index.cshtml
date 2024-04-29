@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NotificationRecipient[0].UsernameEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotificationRecipient[0].NotificationEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.NotificationRecipient) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsernameEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotificationEmail)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AspNetUserId">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AspNetUserId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

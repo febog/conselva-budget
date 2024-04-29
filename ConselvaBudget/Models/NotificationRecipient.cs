@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConselvaBudget.Models
 {
@@ -15,5 +16,8 @@ namespace ConselvaBudget.Models
         [Required]
         [ValidateNever]
         public string NotificationEmail { get; set; }
+
+        [NotMapped]
+        public string UsernameEmail { get; set; }
     }
 }
