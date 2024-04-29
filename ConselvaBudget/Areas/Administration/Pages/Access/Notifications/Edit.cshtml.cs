@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConselvaBudget.Areas.Administration.Pages.Access.Notifications
 {
-    public class EditModel : PageModel
+    public class EditModel : NotificationPageModel
     {
-        private readonly ConselvaBudget.Data.ConselvaBudgetContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ConselvaBudgetContext _context;
 
-        public EditModel(ConselvaBudget.Data.ConselvaBudgetContext context)
+        public EditModel(UserManager<IdentityUser> userManager, ConselvaBudgetContext context)
         {
+            _userManager = userManager;
             _context = context;
         }
 
         [BindProperty]
-        public NotificationRecipient NotificationRecipient { get; set; } = default!;
+        public NotificationRecipient NotificationRecipient { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -30,48 +27,37 @@ namespace ConselvaBudget.Areas.Administration.Pages.Access.Notifications
                 return NotFound();
             }
 
-            var notificationrecipient =  await _context.NotificationRecipients.FirstOrDefaultAsync(m => m.AspNetUserId == id);
+            var notificationrecipient = await _context.NotificationRecipients.FindAsync(id);
+
             if (notificationrecipient == null)
             {
                 return NotFound();
             }
+
             NotificationRecipient = notificationrecipient;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var notificationToUpdate = await _context.NotificationRecipients.FindAsync(id);
+
+            if (notificationToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(NotificationRecipient).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync(
+                notificationToUpdate,
+                notificationToUpdate.GetType().Name,
+                n => n.AspNetUserId,
+                n => n.NotificationEmail))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NotificationRecipientExists(NotificationRecipient.AspNetUserId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool NotificationRecipientExists(string id)
-        {
-            return _context.NotificationRecipients.Any(e => e.AspNetUserId == id);
+            return Page();
         }
     }
 }

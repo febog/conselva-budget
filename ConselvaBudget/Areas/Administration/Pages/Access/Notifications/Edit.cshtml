@@ -1,40 +1,21 @@
 ﻿@page
-@model ConselvaBudget.Areas.Administration.Pages.Access.Notifications.EditModel
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@model EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
+    ViewData["Action"] = @SharedLocalizer["EDIT"];
+    ViewData["Entity"] = "Email";
 }
 
-<h1>Edit</h1>
-
-<h4>NotificationRecipient</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="NotificationRecipient.AspNetUserId" />
-            <div class="form-group">
-                <label asp-for="NotificationRecipient.UsernameEmail" class="control-label"></label>
-                <input asp-for="NotificationRecipient.UsernameEmail" class="form-control" />
-                <span asp-validation-for="NotificationRecipient.UsernameEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NotificationRecipient.NotificationEmail" class="control-label"></label>
-                <input asp-for="NotificationRecipient.NotificationEmail" class="form-control" />
-                <span asp-validation-for="NotificationRecipient.NotificationEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="NotificationRecipient.AspNetUserId" />
+<div class="col-12">
+    <label asp-for="NotificationRecipient.NotificationEmail" class="form-label"></label>
+    <input asp-for="NotificationRecipient.NotificationEmail" class="form-control" />
+    <span asp-validation-for="NotificationRecipient.NotificationEmail" class="text-danger"></span>
 </div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
+<div class="col-12">
+    <create-button></create-button>
+    <cancel-button asp-page="./Index"></cancel-button>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

@@ -1,40 +1,26 @@
 ﻿@page
-@model ConselvaBudget.Areas.Administration.Pages.Access.Notifications.CreateModel
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@model CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
+    ViewData["Action"] = @SharedLocalizer["CREATE"];
+    ViewData["Entity"] = "Email";
 }
 
-<h1>Create</h1>
-
-<h4>NotificationRecipient</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NotificationRecipient.AspNetUserId" class="control-label"></label>
-                <select asp-for="NotificationRecipient.AspNetUserId" class="form-select" asp-items="@Model.UserSL">
-                </select>
-                <span asp-validation-for="NotificationRecipient.AspNetUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NotificationRecipient.NotificationEmail" class="control-label"></label>
-                <input asp-for="NotificationRecipient.NotificationEmail" class="form-control" />
-                <span asp-validation-for="NotificationRecipient.NotificationEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="col-12">
+    <label asp-for="NotificationRecipient.AspNetUserId" class="form-label"></label>
+    <select asp-for="NotificationRecipient.AspNetUserId" class="form-select" asp-items="@Model.UserSL">
+    </select>
+    <span asp-validation-for="NotificationRecipient.AspNetUserId" class="text-danger"></span>
 </div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
+<div class="col-12">
+    <label asp-for="NotificationRecipient.NotificationEmail" class="form-label"></label>
+    <input asp-for="NotificationRecipient.NotificationEmail" class="form-control" />
+    <span asp-validation-for="NotificationRecipient.NotificationEmail" class="text-danger"></span>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<div class="col-12">
+    <create-button></create-button>
+    <cancel-button asp-page="./Index"></cancel-button>
+</div>
