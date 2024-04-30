@@ -15,7 +15,7 @@ namespace ConselvaBudget.Models
         public string Name { get; set; }
 
         [Display(Name = "ACTIVITY_DESCRIPTION")]
-        [StringLength(255)]
+        [StringLength(1024)]
         public string Description { get; set; }
 
         [Display(Name = "ACTIVITY_TOTAL_BUDGET")]
