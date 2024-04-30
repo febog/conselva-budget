@@ -67,3 +67,19 @@ Add-Migration ChangeDescription -Context ConselvaBudgetContext
 ```
 Update-Database -Context ConselvaBudgetContext
 ```
+
+### Deploying migrations
+
+To run the database migrations on the App Service using SSH:
+
+1. Navigate to the deployed files.
+
+```
+cd /home/site/wwwroot
+```
+
+2. Run the migration bundle created by the [deployment workflow](https://learn.microsoft.com/en-us/azure/app-service/tutorial-dotnetcore-sqldb-app?toc=%2Faspnet%2Fcore%2Ftoc.json&bc=%2Faspnet%2Fcore%2Fbreadcrumb%2Ftoc.json&view=aspnetcore-8.0#4-generate-database-schema).
+
+```
+./migrate
+```
