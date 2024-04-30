@@ -7,10 +7,10 @@
 }
 
 <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.Activity.Name)
+    @Html.DisplayNameFor(model => model.Activity.Code)
 </dt>
 <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Activity.Name)
+    @Html.DisplayFor(model => model.Activity.Code)
 </dd>
 <dt class="col-sm-2">
     @Html.DisplayNameFor(model => model.Activity.Description)
@@ -22,7 +22,7 @@
     @Html.DisplayNameFor(model => model.Activity.Result)
 </dt>
 <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Activity.Result.Name)
+    @Html.DisplayFor(model => model.Activity.Result.Code)
 </dd>
 
 @section DeleteFormContents {

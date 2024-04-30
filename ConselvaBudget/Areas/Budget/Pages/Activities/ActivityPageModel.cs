@@ -17,11 +17,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
                 .Include(r => r.Project)
                 .Where(r => r.ProjectId == projectId)
                 .OrderBy(r => r.Project.Name)
-                .ThenBy(r => r.Name)
+                .ThenBy(r => r.Code)
                 .Select(r => new
                 {
                     r.Id,
-                    r.Name,
+                    r.Code,
                     Group = r.Project.Name
                 });
 

@@ -22,7 +22,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 .Select(b => new
                 {
                     b.Id,
-                    Name = $"{b.Activity.Name} - {b.AccountAssignment.DisplayName} ({b.Remainder.ToString("c")})",
+                    Name = $"{b.Activity.Code} - {b.AccountAssignment.DisplayName} ({b.Remainder.ToString("c")})",
                     ActivityId = b.ActivityId,
                     Group = b.Activity.Result.Project.Name
                 });

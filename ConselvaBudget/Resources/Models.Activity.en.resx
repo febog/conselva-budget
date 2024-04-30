@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ACTIVITY_CODE" xml:space="preserve">
+    <value>Code</value>
+  </data>
   <data name="ACTIVITY_DESCRIPTION" xml:space="preserve">
     <value>Description</value>
-  </data>
-  <data name="ACTIVITY_NAME" xml:space="preserve">
-    <value>Name</value>
   </data>
   <data name="ACTIVITY_REMAINING_BUDGET" xml:space="preserve">
     <value>Remaining budget for activity</value>

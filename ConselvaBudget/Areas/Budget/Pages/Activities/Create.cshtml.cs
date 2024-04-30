@@ -40,7 +40,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
                 emptyActivity,
                 "Activity",
                 a => a.ResultId,
-                a => a.Name,
+                a => a.Code,
                 a => a.Description))
             {
                 _context.Activities.Add(emptyActivity);

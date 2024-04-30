@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SpendingRequest.Activity.Name)
+            @Html.DisplayFor(model => model.SpendingRequest.Activity.Code)
             @Html.DisplayFor(model => model.SpendingRequest.Activity.Description)
         </dd>
         <dt class="col-sm-2">
@@ -154,7 +154,7 @@
             @Html.DisplayFor(modelItem => item.ActivityBudget.Activity.Result.Project.Name)
         </td>
         <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.ActivityBudget.Activity.Name)
+            @Html.DisplayFor(modelItem => item.ActivityBudget.Activity.Code)
         </td>
         <td class="align-middle">
             @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)

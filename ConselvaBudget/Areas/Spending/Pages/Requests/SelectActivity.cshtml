@@ -12,7 +12,7 @@
 
 @section TableHeaders {
     <th>
-        @Html.DisplayNameFor(model => model.Activities[0].Name)
+        @Html.DisplayNameFor(model => model.Activities[0].Code)
     </th>
     <th>
         @Html.DisplayNameFor(model => model.Activities[0].Description)
@@ -23,7 +23,7 @@
 {
     <tr>
         <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Code)
         </td>
         <td class="align-middle">
             @Html.DisplayFor(modelItem => item.Description)
