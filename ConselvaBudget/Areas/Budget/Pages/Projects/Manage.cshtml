@@ -96,7 +96,7 @@
             @if (result.Activities.Count > 0)
             {
                 <ul class="list-group">
-                    @foreach (var activity in result.Activities)
+                    @foreach (var activity in result.Activities.OrderBy(a => a.Code))
                     {
                         <li class="list-group-item p-3" id="activity-@activity.Id">
                             <div class="d-flex w-100 align-items-center gap-2">
