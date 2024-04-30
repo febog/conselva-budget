@@ -85,6 +85,10 @@
             </div>
         </div>
         <div class="card-body collapse show" id="result-body-@result.Id">
+            @if (!string.IsNullOrEmpty(result.Description))
+            {
+                <p>@Html.DisplayFor(model => result.Description)</p>
+            }
             <p>
                 <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id" asp-route-resultId="@result.Id">Create Activity</a>
             </p>

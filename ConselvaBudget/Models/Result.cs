@@ -14,6 +14,10 @@ namespace ConselvaBudget.Models
         [Required]
         public string Name { get; set; }
 
+        [Display(Name = "RESULT_DESCRIPTION")]
+        [StringLength(512)]
+        public string Description { get; set; }
+
         [Display(Name = "RESULT_TOTAL_BUDGET")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]

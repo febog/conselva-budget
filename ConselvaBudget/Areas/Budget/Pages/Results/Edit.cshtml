@@ -19,6 +19,11 @@
     <span asp-validation-for="Result.Name" class="text-danger"></span>
 </div>
 <div class="col-12">
+    <label asp-for="Result.Description" class="form-label"></label>
+    <input asp-for="Result.Description" class="form-control" />
+    <span asp-validation-for="Result.Description" class="text-danger"></span>
+</div>
+<div class="col-12">
     <input class="btn btn-primary" type="submit" value="Save">
     <a class="btn btn-secondary"
        asp-page="/Projects/Manage"

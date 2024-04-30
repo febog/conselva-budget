@@ -30,7 +30,8 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
                 emptyResult,
                 "Result",
                 r => r.ProjectId,
-                r => r.Name))
+                r => r.Name,
+                r => r.Description))
             {
                 _context.Results.Add(emptyResult);
                 await _context.SaveChangesAsync();
