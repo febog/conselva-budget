@@ -123,9 +123,6 @@
   <data name="ACTIVITY_DESCRIPTION" xml:space="preserve">
     <value>Descripción</value>
   </data>
-  <data name="ACTIVITY_NAME" xml:space="preserve">
-    <value>Nombre</value>
-  </data>
   <data name="ACTIVITY_REMAINING_BUDGET" xml:space="preserve">
     <value>Presupuesto restante de la actividad</value>
     <comment>Money</comment>
