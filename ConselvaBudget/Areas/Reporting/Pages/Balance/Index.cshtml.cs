@@ -44,7 +44,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
                     Donor = activityBudget.Activity.Result.Project.Donor.ShortName,
                     Project = activityBudget.Activity.Result.Project.Name,
                     Result = activityBudget.Activity.Result.Name,
-                    Activity = activityBudget.Activity.Name,
+                    Activity = activityBudget.Activity.Code,
                     Program = activityBudget.AccountAssignment.Organization.Name,
                     Account = activityBudget.AccountAssignment.DisplayName,
                     Comments = activityBudget.Comments,

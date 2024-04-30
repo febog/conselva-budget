@@ -9,10 +9,10 @@ namespace ConselvaBudget.Models
 
         public int ResultId { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "ACTIVITY_CODE")]
         [StringLength(255)]
         [Required]
-        public string Name { get; set; }
+        public string Code { get; set; }
 
         [Display(Name = "ACTIVITY_DESCRIPTION")]
         [StringLength(1024)]

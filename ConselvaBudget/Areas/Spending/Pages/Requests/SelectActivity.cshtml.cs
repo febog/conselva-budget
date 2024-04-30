@@ -27,7 +27,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             Activities = await _context.Activities
                 .Include(a => a.Result.Project)
                 .Where(a => a.Result.ProjectId == project)
-                .OrderBy(a => a.Name)
+                .OrderBy(a => a.Code)
                 .ToListAsync();
 
             return Page();
