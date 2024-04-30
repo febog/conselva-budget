@@ -47,7 +47,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
                 resultToUpdate,
                 "Result",
                 r => r.ProjectId,
-                r => r.Name,
+                r => r.Code,
                 r => r.Description))
             {
                 await _context.SaveChangesAsync();
