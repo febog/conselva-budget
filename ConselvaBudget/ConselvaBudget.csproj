@@ -6,19 +6,19 @@
     <UserSecretsId>aspnet-ConselvaBudget-18b78dec-e3b7-4870-a41a-0e57da5315c5</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="EPPlus" Version="7.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
+    <PackageReference Include="EPPlus" Version="7.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.6" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.1" />
-    <PackageReference Include="NuGet.Protocol" Version="6.9.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <PackageReference Include="NuGet.Protocol" Version="6.10.0" />
   </ItemGroup>
 </Project>
