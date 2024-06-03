@@ -103,7 +103,7 @@
                 <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_VERIFICATION"]">
             </form>
         }
-        @if(User.IsInRole(Roles.Management) && Model.SpendingRequest.Status == RequestStatus.Verification)
+        @if(User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status == RequestStatus.Verification)
         {
             <form method="post" asp-page-handler="completeRequest" asp-route-request="@Model.SpendingRequest.Id">
                 <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_COMPLETE"]">

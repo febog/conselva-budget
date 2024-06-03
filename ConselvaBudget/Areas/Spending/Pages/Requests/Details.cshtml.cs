@@ -117,7 +117,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public async Task<IActionResult> OnPostCompleteRequestAsync(int request)
         {
-            if (User.IsInRole(Roles.Management))
+            if (User.IsInRole(Roles.Administrator))
             {
                 var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
 
