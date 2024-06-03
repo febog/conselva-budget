@@ -46,7 +46,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Accounts", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.AccountAssignment", b =>
@@ -69,7 +69,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("AccountAssignments");
+                    b.ToTable("AccountAssignments", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Activity", b =>
@@ -96,7 +96,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("ResultId");
 
-                    b.ToTable("Activities");
+                    b.ToTable("Activities", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.ActivityBudget", b =>
@@ -126,7 +126,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("ActivityId");
 
-                    b.ToTable("ActivityBudgets");
+                    b.ToTable("ActivityBudgets", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Deposit", b =>
@@ -154,7 +154,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Deposits");
+                    b.ToTable("Deposits", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Donor", b =>
@@ -177,7 +177,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Donors");
+                    b.ToTable("Donors", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.EquivalentAccount", b =>
@@ -205,7 +205,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("DonorId");
 
-                    b.ToTable("EquivalentAccounts");
+                    b.ToTable("EquivalentAccounts", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Expense", b =>
@@ -260,7 +260,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("SpendingRequestId");
 
-                    b.ToTable("Expenses");
+                    b.ToTable("Expenses", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.ExpensesRequest", b =>
@@ -302,7 +302,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("ActivityId");
 
-                    b.ToTable("SpendingRequests");
+                    b.ToTable("SpendingRequests", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.NotificationRecipient", b =>
@@ -318,7 +318,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasKey("AspNetUserId");
 
-                    b.ToTable("NotificationRecipients");
+                    b.ToTable("NotificationRecipients", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Organization", b =>
@@ -341,7 +341,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organizations");
+                    b.ToTable("Organizations", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Project", b =>
@@ -382,7 +382,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("DonorId");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.RequestLogEntry", b =>
@@ -411,7 +411,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("ExpenseRequestId");
 
-                    b.ToTable("RequestLogEntries");
+                    b.ToTable("RequestLogEntries", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Result", b =>
@@ -438,7 +438,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Results");
+                    b.ToTable("Results", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Trip", b =>
@@ -468,7 +468,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Trips");
+                    b.ToTable("Trips", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Vehicle", b =>
@@ -486,7 +486,7 @@ namespace ConselvaBudget.Data.ConselvaMigrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vehicles");
+                    b.ToTable("Vehicles", (string)null);
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.AccountAssignment", b =>

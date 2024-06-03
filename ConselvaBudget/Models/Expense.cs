@@ -57,7 +57,7 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Spending Request")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
-        public ExpensesRequest SpendingRequest { get; set; }
+        public Request SpendingRequest { get; set; }
     }
 
     public enum ExpenseStatus

@@ -24,7 +24,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 return NotFound();
             }
 
-            var foundRequest = await _context.SpendingRequests.FindAsync(request);
+            var foundRequest = await _context.Requests.FindAsync(request);
 
             if (foundRequest == null)
             {
@@ -45,7 +45,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Expenses
                 return NotFound();
             }
 
-            var foundRequest = await _context.SpendingRequests.FindAsync(request);
+            var foundRequest = await _context.Requests.FindAsync(request);
 
             if (foundRequest == null)
             {

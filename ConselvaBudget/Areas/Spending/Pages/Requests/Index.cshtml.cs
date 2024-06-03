@@ -16,11 +16,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             _context = context;
         }
 
-        public IList<ExpensesRequest> SpendingRequests { get; set; } = default!;
+        public IList<Request> SpendingRequests { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
-            var requests = _context.SpendingRequests.Select(r => r);
+            var requests = _context.Requests.Select(r => r);
 
             if (!User.IsInRole(Roles.Management))
             {

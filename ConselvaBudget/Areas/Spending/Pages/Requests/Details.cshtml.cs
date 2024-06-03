@@ -18,7 +18,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         }
 
         [BindProperty]
-        public ExpensesRequest SpendingRequest { get; set; }
+        public Request SpendingRequest { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,7 +27,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            SpendingRequest = await _context.SpendingRequests
+            SpendingRequest = await _context.Requests
                 .Include(r => r.Activity)
                 .Include(r => r.Trip)
                 .Include(r => r.Expenses)
@@ -50,7 +50,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         {
             if (User.IsInRole(Roles.Employee))
             {
-                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+                var requestToUpdate = await _context.Requests.FindAsync(request);
 
                 if (requestToUpdate == null)
                 {
@@ -73,7 +73,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         {
             if (User.IsInRole(Roles.Management))
             {
-                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+                var requestToUpdate = await _context.Requests.FindAsync(request);
 
                 if (requestToUpdate == null)
                 {
@@ -96,7 +96,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         {
             if (User.IsInRole(Roles.Employee))
             {
-                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+                var requestToUpdate = await _context.Requests.FindAsync(request);
 
                 if (requestToUpdate == null)
                 {
@@ -119,7 +119,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         {
             if (User.IsInRole(Roles.Administrator))
             {
-                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+                var requestToUpdate = await _context.Requests.FindAsync(request);
 
                 if (requestToUpdate == null)
                 {
