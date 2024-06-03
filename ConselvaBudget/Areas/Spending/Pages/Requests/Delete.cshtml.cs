@@ -42,7 +42,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
             var expensesRequest = await _context.SpendingRequests.FindAsync(id);
 
-            if (expensesRequest != null)
+            // Only allow deletions of just created Requests
+
+            if (expensesRequest != null && expensesRequest.Status == RequestStatus.Created)
             {
                 ExpensesRequest = expensesRequest;
                 _context.SpendingRequests.Remove(ExpensesRequest);
