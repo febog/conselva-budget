@@ -1,18 +1,19 @@
 ﻿@page
 @inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
 @model IndexModel
 
 @{
-    ViewData["Title"] = "Spending Requests";
+    ViewData["Title"] = @Localizer["PAGE_TITLE"];
 }
 
 <h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
-<p>To use the budget, start by creating a Spending Request.</p>
+<p> @Localizer["PAGE_DESCRIPTION"]</p>
 
-<p><a class="btn btn-primary" asp-page="SelectProject">Create request</a></p>
+<p><a class="btn btn-primary" asp-page="SelectProject">@Localizer["BUTTON_CREATE_REQUEST"]</a></p>
 
-<h2>Created requests</h2>
+<h2>@Localizer["TITLE_CREATED_REQUESTS"]</h2>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Created).Any())
 {
@@ -72,11 +73,11 @@
 else
 {
     <div class="alert alert-light" role="alert">
-        There are no requests with this status.
+        @Localizer["NO_REQUEST_ALERT"]
     </div>
 }
 
-<h2>Submitted requests</h2>
+<h2>@Localizer["TITLE_SUBMITTED_REQUESTS"]</h2>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Submitted).Any())
 {
@@ -135,11 +136,11 @@ else
 else
 {
     <div class="alert alert-light" role="alert">
-        There are no requests with this status.
+        @Localizer["NO_REQUEST_ALERT"]
     </div>
 }
 
-<h2>Approved requests</h2>
+<h2>@Localizer["TITLE_APPROVED_REQUESTS"]</h2>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Approved).Any())
 {
@@ -198,11 +199,11 @@ else
 else
 {
     <div class="alert alert-light" role="alert">
-        There are no requests with this status.
+        @Localizer["NO_REQUEST_ALERT"]
     </div>
 }
 
-<h2>Requests waiting verification</h2>
+<h2>@Localizer["TITLE_VERIFICATION_REQUESTS"]</h2>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Verification).Any())
 {
@@ -261,11 +262,11 @@ else
 else
 {
     <div class="alert alert-light" role="alert">
-        There are no requests with this status.
+        @Localizer["NO_REQUEST_ALERT"]
     </div>
 }
 
-<h2>Completed requests</h2>
+<h2>@Localizer["TITLE_COMPLETED_REQUESTS"]</h2>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Completed).Any())
 {
@@ -324,6 +325,6 @@ else
 else
 {
     <div class="alert alert-light" role="alert">
-        There are no requests with this status.
+        @Localizer["NO_REQUEST_ALERT"]
     </div>
 }
