@@ -140,7 +140,7 @@
     <value>Submit for review</value>
   </data>
   <data name="BUTTON_VERIFICATION" xml:space="preserve">
-    <value>Send to verification</value>
+    <value>Start verification</value>
     <comment>Iniciar comprobacion</comment>
   </data>
 </root>
