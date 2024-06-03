@@ -30,7 +30,7 @@ namespace ConselvaBudget.TagHelpers
             a.Attributes.Add("class", "btn btn-success btn-sm");
             output.MergeAttributes(a);
 
-            output.Content.SetHtmlContent(@"<i class=""bi bi-plus-circle""></i>");
+            output.Content.SetHtmlContent(@"<i class=""bi bi-file-earmark-text""></i>");
         }
     }
 }
