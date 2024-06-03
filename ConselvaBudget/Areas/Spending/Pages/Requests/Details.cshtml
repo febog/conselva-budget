@@ -85,25 +85,25 @@
     <div class="d-flex gap-1">
         <a class="btn btn-primary" asp-page="/Expenses/Create" asp-route-request="@Model.SpendingRequest.Id">Create expense</a>
         <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@Model.SpendingRequest.Id">@Localizer["BUTTON_EDIT_REQUEST"]</a>
-        @if(Model.SpendingRequest.Status == RequestStatus.Created)
+        @if (Model.SpendingRequest.Status == RequestStatus.Created)
         {
             <form method="post" asp-page-handler="submitForReview" asp-route-request="@Model.SpendingRequest.Id">
                 <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_SUBMIT_FOR_REVIEW"]">
             </form>
         }
-        @if(User.IsInRole(Roles.Management) && Model.SpendingRequest.Status == RequestStatus.Submitted)
+        @if (User.IsInRole(Roles.Management) && Model.SpendingRequest.Status == RequestStatus.Submitted)
         {
             <form method="post" asp-page-handler="approve" asp-route-request="@Model.SpendingRequest.Id">
                 <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_APPROVE"]">
             </form>
         }
-        @if(Model.SpendingRequest.Status == RequestStatus.Approved)
+        @if (Model.SpendingRequest.Status == RequestStatus.Approved)
         {
             <form method="post" asp-page-handler="startVerification" asp-route-request="@Model.SpendingRequest.Id">
                 <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_VERIFICATION"]">
             </form>
         }
-        @if(User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status == RequestStatus.Verification)
+        @if (User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status == RequestStatus.Verification)
         {
             <form method="post" asp-page-handler="completeRequest" asp-route-request="@Model.SpendingRequest.Id">
                 <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_COMPLETE"]">
