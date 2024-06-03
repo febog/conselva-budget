@@ -1,18 +1,21 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
 @model EditModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Edit Result";
+    ViewData["Action"] = @SharedLocalizer["CREATE"];
+    ViewData["Entity"] = @SharedLocalizer["ENTITY_RESULT_NAME"];
+}
+
+@section PreForm {
+    <h3 class="h5">Project</h3>
+    <p>@ViewData["SelectedProject"]</p>
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <input type="hidden" asp-for="Result.Id" />
-<div class="col-12">
-    <label asp-for="Result.ProjectId" class="form-label"></label>
-    <select asp-for="Result.ProjectId" class="form-select" asp-items="@Model.ProjectNameSL"></select>
-    <span asp-validation-for="Result.ProjectId" class="text-danger"></span>
-</div>
 <div class="col-12">
     <label asp-for="Result.Code" class="form-label"></label>
     <input asp-for="Result.Code" class="form-control" />
@@ -33,8 +36,3 @@
     </a>
 </div>
 
-@section FormInfo {
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-}
