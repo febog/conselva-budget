@@ -24,19 +24,24 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
                 return NotFound();
             }
 
-            Result = await _context.Results.FindAsync(id);
+            Result = await _context.Results
+                .Include(r => r.Project)
+                .FirstOrDefaultAsync(r => r.Id == id);
 
             if (Result == null)
             {
                 return NotFound();
             }
-            PopulateProjectDropDownList(_context, Result.ProjectId);
+
+            ViewData["SelectedProject"] = Result.Project.Name;
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            var resultToUpdate = await _context.Results.FindAsync(id);
+            var resultToUpdate = await _context.Results
+                .Include(r => r.Project)
+                .FirstOrDefaultAsync(r => r.Id == id);
 
             if (resultToUpdate == null)
             {
@@ -57,7 +62,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
                     $"result-{resultToUpdate.Id}");
             }
 
-            PopulateProjectDropDownList(_context, resultToUpdate.ProjectId);
+            ViewData["SelectedProject"] = resultToUpdate.Project.Name;
             return Page();
         }
     }
