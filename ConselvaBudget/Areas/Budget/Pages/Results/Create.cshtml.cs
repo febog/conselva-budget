@@ -34,9 +34,18 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
         [BindProperty]
         public Result Result { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int project)
         {
             var emptyResult = new Result();
+
+            var foundProject = await _context.Projects.FindAsync(project);
+
+            if (foundProject == null)
+            {
+                return NotFound();
+            }
+
+            emptyResult.ProjectId = foundProject.Id;
 
             if (await TryUpdateModelAsync<Result>(
                 emptyResult,
@@ -49,7 +58,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
                 return RedirectToPage("/Projects/Manage", new { id = emptyResult.ProjectId });
             }
 
-            PopulateProjectDropDownList(_context, emptyResult.ProjectId);
+            ViewData["SelectedProject"] = foundProject.Name;
             return Page();
         }
     }
