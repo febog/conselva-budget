@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Results
 {
-    public class CreateModel : ResultPageModel
+    public class CreateModel : PageModel
     {
         private readonly ConselvaBudgetContext _context;
 

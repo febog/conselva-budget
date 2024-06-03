@@ -2,10 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Results
 {
-    public class EditModel : ResultPageModel
+    public class EditModel : PageModel
     {
         private readonly ConselvaBudgetContext _context;
 
