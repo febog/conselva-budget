@@ -1,0 +1,70 @@
+﻿@page
+@model ConselvaBudget.Areas.Spending.Pages.AmountRequests.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>AmountRequest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AmountRequest.Id" />
+            <div class="form-group">
+                <label asp-for="AmountRequest.ActivityBudgetId" class="control-label"></label>
+                <select asp-for="AmountRequest.ActivityBudgetId" class="form-control" asp-items="ViewBag.ActivityBudgetId"></select>
+                <span asp-validation-for="AmountRequest.ActivityBudgetId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountRequest.RequestId" class="control-label"></label>
+                <select asp-for="AmountRequest.RequestId" class="form-control" asp-items="ViewBag.RequestId"></select>
+                <span asp-validation-for="AmountRequest.RequestId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountRequest.Description" class="control-label"></label>
+                <input asp-for="AmountRequest.Description" class="form-control" />
+                <span asp-validation-for="AmountRequest.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountRequest.Amount" class="control-label"></label>
+                <input asp-for="AmountRequest.Amount" class="form-control" />
+                <span asp-validation-for="AmountRequest.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountRequest.CreatedByUserId" class="control-label"></label>
+                <input asp-for="AmountRequest.CreatedByUserId" class="form-control" />
+                <span asp-validation-for="AmountRequest.CreatedByUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountRequest.ModifiedByUserId" class="control-label"></label>
+                <input asp-for="AmountRequest.ModifiedByUserId" class="form-control" />
+                <span asp-validation-for="AmountRequest.ModifiedByUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountRequest.CreatedDate" class="control-label"></label>
+                <input asp-for="AmountRequest.CreatedDate" class="form-control" />
+                <span asp-validation-for="AmountRequest.CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountRequest.ModifiedDate" class="control-label"></label>
+                <input asp-for="AmountRequest.ModifiedDate" class="form-control" />
+                <span asp-validation-for="AmountRequest.ModifiedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
