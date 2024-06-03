@@ -1,4 +1,5 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
 @model IndexModel
 
 @{
@@ -59,7 +60,7 @@
                     </td>
                     <td class="align-middle">
                         <table-buttons>
-                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <a class="btn btn-primary btn-sm" asp-page="Details" asp-route-id="@item.Id">@SharedLocalizer["BUTTON_DETAILS"]</a>
                             <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
                         </table-buttons>
                     </td>
@@ -123,7 +124,7 @@ else
                     </td>
                     <td class="align-middle">
                         <table-buttons>
-                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <a class="btn btn-primary btn-sm" asp-page="Details" asp-route-id="@item.Id">@SharedLocalizer["BUTTON_DETAILS"]</a>
                         </table-buttons>
                     </td>
                 </tr>
@@ -186,7 +187,7 @@ else
                     </td>
                     <td class="align-middle">
                         <table-buttons>
-                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <a class="btn btn-primary btn-sm" asp-page="Details" asp-route-id="@item.Id">@SharedLocalizer["BUTTON_DETAILS"]</a>
                         </table-buttons>
                     </td>
                 </tr>
@@ -249,7 +250,7 @@ else
                     </td>
                     <td class="align-middle">
                         <table-buttons>
-                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <a class="btn btn-primary btn-sm" asp-page="Details" asp-route-id="@item.Id">@SharedLocalizer["BUTTON_DETAILS"]</a>
                         </table-buttons>
                     </td>
                 </tr>
@@ -312,7 +313,7 @@ else
                     </td>
                     <td class="align-middle">
                         <table-buttons>
-                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                            <a class="btn btn-primary btn-sm" asp-page="Details" asp-route-id="@item.Id">@SharedLocalizer["BUTTON_DETAILS"]</a>
                         </table-buttons>
                     </td>
                 </tr>
