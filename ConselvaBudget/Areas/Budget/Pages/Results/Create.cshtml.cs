@@ -41,7 +41,6 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
             if (await TryUpdateModelAsync<Result>(
                 emptyResult,
                 "Result",
-                r => r.ProjectId,
                 r => r.Code,
                 r => r.Description))
             {
