@@ -143,4 +143,7 @@
     <value>Iniciar comprobación</value>
     <comment>Iniciar comprobacion</comment>
   </data>
+  <data name="PAGE_TITLE" xml:space="preserve">
+    <value>Detalles de solicitud</value>
+  </data>
 </root>
