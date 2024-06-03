@@ -49,6 +49,8 @@ namespace ConselvaBudget.Models
 
         public virtual ICollection<AmountRequest> AmountRequests { get; set; }
 
+        public virtual ICollection<ExpenseInvoice> ExpenseInvoices { get; set; }
+
         public virtual ICollection<RequestLogEntry> RequestLogEntries { get; set; }
     }
 
