@@ -22,6 +22,10 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Comments { get; set; }
 
+        [Display(Name = "ACTIVITY_BUDGET_EQUIVALENT_ACCOUNT")]
+        [StringLength(255)]
+        public string EquivalentAccount { get; set; }
+
         [Display(Name = "ACTIVITY_BUDGET_TOTAL_EXPENSES")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]

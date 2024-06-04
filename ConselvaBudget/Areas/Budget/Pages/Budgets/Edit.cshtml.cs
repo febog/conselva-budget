@@ -55,6 +55,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                 "ActivityBudget",
                 b => b.AccountAssignmentId,
                 b => b.Amount,
+                b => b.EquivalentAccount,
                 b => b.Comments))
             {
                 await _context.SaveChangesAsync();
