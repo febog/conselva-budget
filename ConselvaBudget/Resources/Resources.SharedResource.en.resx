@@ -157,6 +157,10 @@
     <value>Save</value>
     <comment>Generic button</comment>
   </data>
+  <data name="BUTTON_SELECT" xml:space="preserve">
+    <value>Select</value>
+    <comment>Generic button</comment>
+  </data>
   <data name="CREATE" xml:space="preserve">
     <value>Create</value>
     <comment>Generic action</comment>
