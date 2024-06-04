@@ -1,8 +1,9 @@
 ﻿@page
+@inject IViewLocalizer Localizer
 @model ManageModel
 
 @{
-    ViewData["Title"] = "Manage Project - " + Model.Project.Name;
+    ViewData["Title"] = $"{Localizer["TITLE_START"].Value} - {Model.Project.Name}";
 }
 
 <h1 class="border-bottom pb-2">@Html.DisplayFor(model => model.Project.Name)</h1>
@@ -65,7 +66,7 @@
 </div>
 
 <p>
-    <a class="btn btn-primary btn-sm" asp-page="/Results/Create" asp-route-project="@Model.Project.Id">Create Result</a>
+    <a class="btn btn-primary btn-sm" asp-page="/Results/Create" asp-route-project="@Model.Project.Id">@Localizer["BUTTON_CREATE_RESULT"]</a>
 </p>
 
 @foreach (var result in Model.Project.Results.OrderBy(r => r.Code))
@@ -90,7 +91,7 @@
                 <p>@Html.DisplayFor(model => result.Description)</p>
             }
             <p>
-                <a class="btn btn-primary btn-sm" asp-page="/Activities/Create" asp-route-result="@result.Id">Create Activity</a>
+                <a class="btn btn-primary btn-sm" asp-page="/Activities/Create" asp-route-result="@result.Id">@Localizer["BUTTON_CREATE_ACTIVITY"]</a>
             </p>
             <h3 class="h6 text-body-secondary">Activities</h3>
             @if (result.Activities.Count > 0)
@@ -117,7 +118,7 @@
                                     @Html.DisplayFor(model => activity.Description)
                                 </p>
                                 <p>
-                                    <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Create budget</a>
+                                    <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">@Localizer["BUTTON_CREATE_BUDGET"]</a>
                                 </p>
                                 <h4 class="h6 text-body-secondary">Budget</h4>
                                 @if (activity.ActivityBudgets.Count > 0)
