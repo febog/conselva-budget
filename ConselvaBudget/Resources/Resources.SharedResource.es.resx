@@ -181,6 +181,18 @@
     <value>Cuenta</value>
     <comment>Account catalog</comment>
   </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_CATALOG_NAME" xml:space="preserve">
+    <value>Presupuestos de actividad</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Una cantidad de presupuesto dado una &lt;b&gt;Actividad&lt;/b&gt; y una &lt;b&gt;Cuenta&lt;/b&gt;.&lt;/p&gt;</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_NAME" xml:space="preserve">
+    <value>Presupuesto de actividad</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
   <data name="ENTITY_ACTIVITY_CATALOG_NAME" xml:space="preserve">
     <value>Actividades</value>
     <comment>Activity entity</comment>
