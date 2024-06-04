@@ -1,4 +1,5 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
 @model IndexModel
 
 @{
@@ -37,7 +38,7 @@
                     @Html.DisplayFor(modelItem => item.ShortName)
                 </td>
                 <td class="align-middle text-center">
-                    <a class="btn btn-primary btn-sm" asp-page="./Manage" asp-route-id="@item.Id">Manage</a>
+                    <a class="btn btn-primary btn-sm" asp-page="./Manage" asp-route-id="@item.Id">@SharedLocalizer["BUTTON_SELECT"]</a>
                 </td>
             </tr>
         }
