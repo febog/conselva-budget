@@ -181,6 +181,18 @@
     <value>Cuenta</value>
     <comment>Account catalog</comment>
   </data>
+  <data name="ENTITY_ACTIVITY_CATALOG_NAME" xml:space="preserve">
+    <value>Actividades</value>
+    <comment>Activity entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Las actividades del Proyecto, bajo un Resultado.&lt;/p&gt;</value>
+    <comment>Activity entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_NAME" xml:space="preserve">
+    <value>Actividad</value>
+    <comment>Activity entity</comment>
+  </data>
   <data name="ENTITY_DEPOSIT_CATALOG_NAME" xml:space="preserve">
     <value>Depósitos</value>
     <comment>Deposits catalog</comment>

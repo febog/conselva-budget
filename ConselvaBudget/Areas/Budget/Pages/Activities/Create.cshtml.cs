@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using System.Xml.Linq;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Activities
 {
@@ -13,33 +14,50 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
             _context = context;
         }
 
-        public IActionResult OnGet(int? projectId, int? resultId)
+        public async Task<IActionResult> OnGetAsync(int? result)
         {
-            if (projectId == null)
+            if (result == null)
             {
                 return NotFound();
             }
 
-            PopulateResultDropDownList(_context, projectId.Value, resultId);
+            var foundResult = await _context.Results.FindAsync(result);
+
+            if (foundResult == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["SelectedResult"] = $"{foundResult.Code} {foundResult.Description}";
+            ViewData["ProjectId"] = foundResult.ProjectId;
+            ViewData["ResultId"] = foundResult.Id;
             return Page();
         }
 
         [BindProperty]
         public Activity Activity { get; set; }
 
-        public async Task<IActionResult> OnPostAsync(int? projectId)
+        public async Task<IActionResult> OnPostAsync(int? result)
         {
-            if (projectId == null)
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            var foundResult = await _context.Results.FindAsync(result);
+
+            if (foundResult == null)
             {
                 return NotFound();
             }
 
             var emptyActivity = new Activity();
 
+            emptyActivity.ResultId = foundResult.Id;
+
             if (await TryUpdateModelAsync<Activity>(
                 emptyActivity,
                 "Activity",
-                a => a.ResultId,
                 a => a.Code,
                 a => a.Description))
             {
@@ -47,11 +65,13 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Projects/Manage",
                     null,
-                    new { id = projectId.Value },
+                    new { id = foundResult.ProjectId },
                     $"result-{emptyActivity.ResultId}");
             }
 
-            PopulateResultDropDownList(_context, projectId.Value, emptyActivity.ResultId);
+            ViewData["SelectedResult"] = $"{foundResult.Code} {foundResult.Description}";
+            ViewData["ProjectId"] = foundResult.ProjectId;
+            ViewData["ResultId"] = foundResult.Id;
             return Page();
         }
     }

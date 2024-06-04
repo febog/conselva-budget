@@ -90,7 +90,7 @@
                 <p>@Html.DisplayFor(model => result.Description)</p>
             }
             <p>
-                <a class="btn btn-primary btn-sm" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id" asp-route-resultId="@result.Id">Create Activity</a>
+                <a class="btn btn-primary btn-sm" asp-page="/Activities/Create" asp-route-result="@result.Id">Create Activity</a>
             </p>
             <h3 class="h6 text-body-secondary">Activities</h3>
             @if (result.Activities.Count > 0)
