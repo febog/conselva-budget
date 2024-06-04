@@ -277,6 +277,14 @@
     <value>Proyecto</value>
     <comment>Project catalog</comment>
   </data>
+  <data name="ENTITY_REQUEST_CATALOG_NAME" xml:space="preserve">
+    <value>Solicitudes</value>
+    <comment>Request entity</comment>
+  </data>
+  <data name="ENTITY_REQUEST_NAME" xml:space="preserve">
+    <value>Solicitud</value>
+    <comment>Request entity</comment>
+  </data>
   <data name="ENTITY_RESULT_CATALOG_NAME" xml:space="preserve">
     <value>Resultados</value>
     <comment>Result entity</comment>
@@ -316,5 +324,8 @@
   <data name="LIST_OF" xml:space="preserve">
     <value>Lista de</value>
     <comment>Used in Index layout</comment>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>String1</value>
   </data>
 </root>

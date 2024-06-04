@@ -1,18 +1,36 @@
 ﻿@page
-@inject IStringLocalizer<Resources.SharedResource> Localizer
-@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
 @model EditModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Action"] = @Localizer["EDIT"];
-    ViewData["Entity"] = "Spending request";
+    ViewData["Action"] = @SharedLocalizer["EDIT"];
+    ViewData["Entity"] = @SharedLocalizer["ENTITY_REQUEST_NAME"];
 }
 
-<div><b>Activity</b></div>
-<div>
-    <b>@Model.Activity.Code</b> @Model.Activity.Description
-</div>
+@section PreForm {
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Activity.Result.Project)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Activity.Result.Project.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Activity.Result)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Activity.Result.Code)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Activity.Code)
+            @Html.DisplayFor(model => model.Activity.Description)
+        </dd>
+    </dl>
+}
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <input type="hidden" asp-for="SpendingRequest.Id" />
