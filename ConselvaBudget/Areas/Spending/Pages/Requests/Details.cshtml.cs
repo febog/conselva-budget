@@ -39,8 +39,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 .Include(r => r.AmountRequests)
                 .ThenInclude(ar => ar.ActivityBudget.AccountAssignment.Account)
                 .Include(r => r.AmountRequests)
-                .ThenInclude(e => e.ActivityBudget.AccountAssignment.Organization)
+                .ThenInclude(ar => ar.ActivityBudget.AccountAssignment.Organization)
                 .Include(r => r.ExpenseInvoices)
+                .ThenInclude(ei => ei.ActivityBudget.AccountAssignment.Account)
+                .Include(r => r.ExpenseInvoices)
+                .ThenInclude(ei => ei.ActivityBudget.AccountAssignment.Organization)
                 .FirstOrDefaultAsync(r => r.Id == id);
 
             if (SpendingRequest == null)
