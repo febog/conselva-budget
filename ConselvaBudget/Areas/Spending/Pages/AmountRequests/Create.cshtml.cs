@@ -34,8 +34,15 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 return NotFound();
             }
 
-            PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId);
-            return Page();
+            if(CanCreateNewAmountRequest(foundRequest))
+            {
+                PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId);
+                return Page();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [BindProperty]
@@ -53,6 +60,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
             if (foundRequest == null)
             {
                 return NotFound();
+            }
+
+            if (!CanCreateNewAmountRequest(foundRequest))
+            {
+                return BadRequest();
             }
 
             var emptyAmountRequest = new AmountRequest();
@@ -76,6 +88,12 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
 
             PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId, emptyAmountRequest.ActivityBudgetId);
             return Page();
+        }
+
+        private bool CanCreateNewAmountRequest(Request r)
+        {
+            // Valid scenarios for creating a new AmountRequest under this Request
+            return r.Status == RequestStatus.Created || r.Status == RequestStatus.Submitted;
         }
     }
 }

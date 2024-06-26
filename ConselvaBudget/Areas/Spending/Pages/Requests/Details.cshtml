@@ -84,7 +84,10 @@
 }
 
 <div class="d-flex gap-1 mb-2">
-    <a class="btn btn-primary" asp-page="/AmountRequests/Create" asp-route-request="@Model.SpendingRequest.Id">Create expense</a>
+    @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
+    {
+        <a class="btn btn-primary" asp-page="/AmountRequests/Create" asp-route-request="@Model.SpendingRequest.Id">Crear solicitud de gasto</a>
+    }
     <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@Model.SpendingRequest.Id">@Localizer["BUTTON_EDIT_REQUEST"]</a>
     @if (Model.SpendingRequest.Status == RequestStatus.Created)
     {
