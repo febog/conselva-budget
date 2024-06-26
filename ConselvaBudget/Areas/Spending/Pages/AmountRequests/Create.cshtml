@@ -15,11 +15,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="AmountRequest.ActivityBudgetId" class="control-label"></label>
-                <select asp-for="AmountRequest.ActivityBudgetId" class ="form-control" asp-items="ViewBag.ActivityBudgetId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="AmountRequest.RequestId" class="control-label"></label>
-                <select asp-for="AmountRequest.RequestId" class ="form-control" asp-items="ViewBag.RequestId"></select>
+                <select asp-for="AmountRequest.ActivityBudgetId" class="form-select" asp-items="@Model.ActivityBudgetSL"></select>
+                <span asp-validation-for="AmountRequest.ActivityBudgetId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AmountRequest.Description" class="control-label"></label>
@@ -30,26 +27,6 @@
                 <label asp-for="AmountRequest.Amount" class="control-label"></label>
                 <input asp-for="AmountRequest.Amount" class="form-control" />
                 <span asp-validation-for="AmountRequest.Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AmountRequest.CreatedByUserId" class="control-label"></label>
-                <input asp-for="AmountRequest.CreatedByUserId" class="form-control" />
-                <span asp-validation-for="AmountRequest.CreatedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AmountRequest.ModifiedByUserId" class="control-label"></label>
-                <input asp-for="AmountRequest.ModifiedByUserId" class="form-control" />
-                <span asp-validation-for="AmountRequest.ModifiedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AmountRequest.CreatedDate" class="control-label"></label>
-                <input asp-for="AmountRequest.CreatedDate" class="form-control" />
-                <span asp-validation-for="AmountRequest.CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AmountRequest.ModifiedDate" class="control-label"></label>
-                <input asp-for="AmountRequest.ModifiedDate" class="form-control" />
-                <span asp-validation-for="AmountRequest.ModifiedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

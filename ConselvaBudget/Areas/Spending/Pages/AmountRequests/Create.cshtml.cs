@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
 {
-    public class CreateModel : PageModel
+    public class CreateModel : AmountRequestPageModel
     {
         private readonly ConselvaBudget.Data.ConselvaBudgetContext _context;
 
@@ -19,28 +20,62 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync(int? request)
         {
-        ViewData["ActivityBudgetId"] = new SelectList(_context.ActivityBudgets, "Id", "Id");
-        ViewData["RequestId"] = new SelectList(_context.Requests, "Id", "Description");
+            if (request == null)
+            {
+                return NotFound();
+            }
+
+            var foundRequest = await _context.Requests.FindAsync(request);
+
+            if (foundRequest == null)
+            {
+                return NotFound();
+            }
+
+            PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId);
             return Page();
         }
 
         [BindProperty]
         public AmountRequest AmountRequest { get; set; } = default!;
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? request)
         {
-            if (!ModelState.IsValid)
+            if (request == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.AmountRequests.Add(AmountRequest);
-            await _context.SaveChangesAsync();
+            var foundRequest = await _context.Requests.FindAsync(request);
 
-            return RedirectToPage("./Index");
+            if (foundRequest == null)
+            {
+                return NotFound();
+            }
+
+            var emptyAmountRequest = new AmountRequest();
+
+            if (await TryUpdateModelAsync<AmountRequest>(
+                emptyAmountRequest,
+                "AmountRequest",
+                r => r.ActivityBudgetId,
+                r => r.Description,
+                r => r.Amount))
+            {
+                emptyAmountRequest.RequestId = foundRequest.Id;
+                emptyAmountRequest.CreatedDate = DateTime.Now;
+                emptyAmountRequest.ModifiedDate = DateTime.Now;
+                emptyAmountRequest.CreatedByUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                emptyAmountRequest.ModifiedByUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                _context.AmountRequests.Add(emptyAmountRequest);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("/Requests/Details", new { id = foundRequest.Id });
+            }
+
+            PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId, emptyAmountRequest.ActivityBudgetId);
+            return Page();
         }
     }
 }
