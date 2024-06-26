@@ -29,7 +29,7 @@ namespace ConselvaBudget.Models
         [Display(Name = "ACTIVITY_BUDGET_TOTAL_EXPENSES")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal TotalExpenses => Expenses.Sum(e => e.Amount);
+        public decimal TotalExpenses => 0;
 
         [Display(Name = "ACTIVITY_BUDGET_REMAINDER")]
         [DisplayFormat(DataFormatString = "{0:C}")]
