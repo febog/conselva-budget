@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DELETE_CONFIRMATION" xml:space="preserve">
-    <value>Are you sure you want to delete this?</value>
+    <value>Confirm permanent delete?</value>
   </data>
   <data name="DELETE_RELATED_DATA" xml:space="preserve">
     <value>This will also delete all its related data.</value>
