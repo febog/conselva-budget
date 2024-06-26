@@ -112,7 +112,7 @@
     }
 </div>
 
-<h2>Amount requests</h2>
+<h2>Solicitud de gastos</h2>
 
 <table class="table table-sm table-bordered table-striped caption-top">
     <thead>
@@ -122,6 +122,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].ActivityBudgetId)
             </th>
             <th style="width: 1px; white-space:nowrap;"></th>
         </tr>
@@ -135,6 +138,9 @@
                 </td>
                 <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
                 </td>
                 <td class="align-middle">
                     <table-buttons>
