@@ -32,7 +32,7 @@
                                 <a class="nav-link text-body" asp-area="Administration" asp-page="/Index">@Localizer["AREA_ADMINISTRATION"]</a>
                             </li>
                         }
-                        @if (User.IsInRole(Roles.Management))
+                        @if (User.IsInRole(Roles.Employee))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-body" asp-area="Budget" asp-page="/Projects/Index">@Localizer["AREA_BUDGET"]</a>
