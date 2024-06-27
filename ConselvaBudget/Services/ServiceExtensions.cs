@@ -13,7 +13,7 @@ namespace ConselvaBudget.Services
             services.Configure<RazorPagesOptions>(options =>
             {
                 options.Conventions.AuthorizeAreaFolder("Administration", "/", Policies.RequireAdministratorRole);
-                options.Conventions.AuthorizeAreaFolder("Budget", "/", Policies.RequireManagementRole);
+                options.Conventions.AuthorizeAreaFolder("Budget", "/", Policies.RequireEmployeeRole);
                 options.Conventions.AuthorizeAreaFolder("Expenses", "/", Policies.RequireEmployeeRole);
                 options.Conventions.AuthorizeAreaFolder("Reporting", "/", Policies.RequireManagementRole);
             });
