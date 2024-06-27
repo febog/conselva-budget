@@ -22,7 +22,7 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Invoice amount")]
         [Column(TypeName = "money")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         public decimal InvoiceAmount { get; set; }
 
         [Display(Name = "Vendor")]

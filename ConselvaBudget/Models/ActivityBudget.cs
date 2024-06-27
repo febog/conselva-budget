@@ -15,7 +15,7 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "ACTIVITY_BUDGET_AMOUNT")]
         [Column(TypeName = "money")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
 
         [Display(Name = "ACTIVITY_BUDGET_COMMENTS")]
@@ -27,12 +27,12 @@ namespace ConselvaBudget.Models
         public string EquivalentAccount { get; set; }
 
         [Display(Name = "ACTIVITY_BUDGET_TOTAL_EXPENSES")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalExpenses => 0;
 
         [Display(Name = "ACTIVITY_BUDGET_REMAINDER")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal Remainder => Amount - TotalExpenses;
 

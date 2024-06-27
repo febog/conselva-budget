@@ -22,7 +22,7 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "Amount")]
         [Column(TypeName = "money")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
 
         [StringLength(450)]

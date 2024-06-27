@@ -38,32 +38,32 @@ namespace ConselvaBudget.Models
         public string DisplayName => $"{Segment} - {Name} ({ShortName})";
 
         [Display(Name = "PROJECT_TOTAL_BUDGET")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalBudget => Results.Sum(e => e.TotalBudget);
 
         [Display(Name = "PROJECT_TOTAL_EXPENSES")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalExpenses => Results.Sum(e => e.TotalExpenses);
 
         [Display(Name = "PROJECT_REMAINING_BUDGET")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal RemainingBudget => TotalBudget - TotalExpenses;
 
         [Display(Name = "PROJECT_TOTAL_DEPOSITS")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalDeposits => Deposits.Sum(d => d.Amount);
 
         [Display(Name = "PROJECT_PENDING_TO_DEPOSIT")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal PendingToDeposit => TotalBudget - TotalDeposits;
 
         [Display(Name = "PROJECT_REMAINING_IN_BANK")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal RemainingInBank => TotalDeposits - TotalExpenses;
 

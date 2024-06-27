@@ -12,7 +12,7 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "DEPOSIT_AMOUNT")]
         [Column(TypeName = "money")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
 
         [Display(Name = "DEPOSIT_DATE")]
