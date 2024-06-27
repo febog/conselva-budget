@@ -29,16 +29,20 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 return NotFound();
             }
 
-            var expenseinvoice = await _context.ExpenseInvoices.FirstOrDefaultAsync(m => m.Id == id);
+            ExpenseInvoice = await _context.ExpenseInvoices
+                .Include(ei => ei.Request)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (expenseinvoice == null)
+            if (ExpenseInvoice == null)
             {
                 return NotFound();
             }
-            else
+
+            if (!CanDeleteExpenseInvoice(ExpenseInvoice.Request))
             {
-                ExpenseInvoice = expenseinvoice;
+                return BadRequest();
             }
+
             return Page();
         }
 
@@ -49,15 +53,28 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 return NotFound();
             }
 
-            var expenseinvoice = await _context.ExpenseInvoices.FindAsync(id);
-            if (expenseinvoice != null)
+            ExpenseInvoice = await _context.ExpenseInvoices
+                .Include(ei => ei.Request)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (!CanDeleteExpenseInvoice(ExpenseInvoice.Request))
             {
-                ExpenseInvoice = expenseinvoice;
+                return BadRequest();
+            }
+
+            if (ExpenseInvoice != null)
+            {
                 _context.ExpenseInvoices.Remove(ExpenseInvoice);
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Requests/Details", new { id = ExpenseInvoice.RequestId });
+        }
+
+        private bool CanDeleteExpenseInvoice(Request r)
+        {
+            // Valid scenarios for deleting an ExpenseInvoice under this Request
+            return r.Status == RequestStatus.Verification;
         }
     }
 }
