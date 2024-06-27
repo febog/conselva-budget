@@ -2,6 +2,8 @@
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using System.Xml.Linq;
+using ConselvaBudget.Authorization;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Activities
 {
@@ -16,6 +18,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
 
         public async Task<IActionResult> OnGetAsync(int? result)
         {
+            if (!CanCreateNewActivity(User))
+            {
+                return Forbid();
+            }
+
             if (result == null)
             {
                 return NotFound();
@@ -39,6 +46,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
 
         public async Task<IActionResult> OnPostAsync(int? result)
         {
+            if (!CanCreateNewActivity(User))
+            {
+                return Forbid();
+            }
+
             if (result == null)
             {
                 return NotFound();
@@ -73,6 +85,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
             ViewData["ProjectId"] = foundResult.ProjectId;
             ViewData["ResultId"] = foundResult.Id;
             return Page();
+        }
+
+        private bool CanCreateNewActivity(ClaimsPrincipal user)
+        {
+            return user.IsInRole(Roles.Management);
         }
     }
 }

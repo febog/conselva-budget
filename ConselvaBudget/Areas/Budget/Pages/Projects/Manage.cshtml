@@ -97,9 +97,12 @@
             {
                 <p>@Html.DisplayFor(model => result.Description)</p>
             }
-            <p>
-                <a class="btn btn-primary btn-sm" asp-page="/Activities/Create" asp-route-result="@result.Id">@Localizer["BUTTON_CREATE_ACTIVITY"]</a>
-            </p>
+            @if (User.IsInRole(Roles.Management))
+            {
+                <div class="mb-2">
+                    <a class="btn btn-primary btn-sm" asp-page="/Activities/Create" asp-route-result="@result.Id">@Localizer["BUTTON_CREATE_ACTIVITY"]</a>
+                </div>
+            }
             <h3 class="h6 text-body-secondary">Activities</h3>
             @if (result.Activities.Count > 0)
             {
@@ -116,8 +119,11 @@
                                             title="Collapse this Activity section.">
                                         <i class="bi bi-chevron-expand"></i>
                                     </button>
-                                    <edit-button asp-page="/Activities/Edit" asp-route-projectId="@Model.Project.Id" asp-route-id="@activity.Id"></edit-button>
-                                    <delete-button asp-page="/Activities/Delete" asp-route-id="@activity.Id"></delete-button>
+                                    @if (User.IsInRole(Roles.Management))
+                                    {
+                                        <edit-button asp-page="/Activities/Edit" asp-route-projectId="@Model.Project.Id" asp-route-id="@activity.Id"></edit-button>
+                                        <delete-button asp-page="/Activities/Delete" asp-route-id="@activity.Id"></delete-button>
+                                    }
                                 </div>
                             </div>
                             <div class="collapse show" id="activity-body-@activity.Id">

@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using ConselvaBudget.Authorization;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Activities
 {
@@ -19,6 +21,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (!CanEditActivity(User))
+            {
+                return Forbid();
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -39,6 +46,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
 
         public async Task<IActionResult> OnPostAsync(int id)
         {
+            if (!CanEditActivity(User))
+            {
+                return Forbid();
+            }
+
             var activityToUpdate = await _context.Activities
                 .Include(a => a.Result)
                 .FirstOrDefaultAsync(a => a.Id == id);
@@ -63,6 +75,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Activities
 
             ViewData["SelectedResult"] = $"{activityToUpdate.Result.Code} {activityToUpdate.Result.Description}";
             return Page();
+        }
+
+        private bool CanEditActivity(ClaimsPrincipal user)
+        {
+            return user.IsInRole(Roles.Management);
         }
     }
 }
