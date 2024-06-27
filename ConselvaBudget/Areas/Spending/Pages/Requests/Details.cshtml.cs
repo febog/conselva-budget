@@ -1,6 +1,7 @@
 using ConselvaBudget.Authorization;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,10 +12,12 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
     public class DetailsModel : PageModel
     {
         private readonly ConselvaBudgetContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public DetailsModel(ConselvaBudgetContext context)
+        public DetailsModel(ConselvaBudgetContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -50,6 +53,10 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             {
                 return NotFound();
             }
+
+            // Get username of requestor instead of displaying the user ID.
+            var requestor = await _userManager.FindByIdAsync(SpendingRequest.RequestorUserId);
+            ViewData["RequestorUsername"] = requestor.UserName;
 
             return Page();
         }

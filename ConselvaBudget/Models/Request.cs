@@ -17,12 +17,6 @@ namespace ConselvaBudget.Models
         [ValidateNever]
         public string RequestorUserId { get; set; }
 
-        [Display(Name = "Requestor")]
-        [StringLength(256)]
-        [Required]
-        [ValidateNever]
-        public string RequestorUserName { get; set; }
-
         [Display(Name = "CreatedDate")]
         public DateTime CreatedDate { get; set; }
 
