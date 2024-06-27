@@ -130,9 +130,12 @@
                                 <p>
                                     @Html.DisplayFor(model => activity.Description)
                                 </p>
-                                <p>
-                                    <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">@Localizer["BUTTON_CREATE_BUDGET"]</a>
-                                </p>
+                                @if (User.IsInRole(Roles.Management))
+                                {
+                                    <div class="mb-2">
+                                        <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">@Localizer["BUTTON_CREATE_BUDGET"]</a>
+                                    </div>
+                                }
                                 <h4 class="h6 text-body-secondary">Budget</h4>
                                 @if (activity.ActivityBudgets.Count > 0)
                                 {
@@ -179,8 +182,11 @@
                                                                         title="Expand details such as comments and Expenses made to this budget.">
                                                                     <i class="bi bi-chevron-expand"></i>
                                                                 </button>
-                                                                <edit-button asp-page="/Budgets/Edit" asp-route-id="@budget.Id"></edit-button>
-                                                                <delete-button asp-page="/Budgets/Delete" asp-route-id="@budget.Id"></delete-button>
+                                                                @if (User.IsInRole(Roles.Management))
+                                                                {
+                                                                    <edit-button asp-page="/Budgets/Edit" asp-route-id="@budget.Id"></edit-button>
+                                                                    <delete-button asp-page="/Budgets/Delete" asp-route-id="@budget.Id"></delete-button>
+                                                                }
                                                             </div>
                                                         </td>
                                                     </tr>

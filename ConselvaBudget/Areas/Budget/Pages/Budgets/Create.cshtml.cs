@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using ConselvaBudget.Authorization;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Budgets
 {
@@ -17,6 +19,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
 
         public IActionResult OnGet(int? projectId, int? activityId)
         {
+            if (!CanCreateNewActivityBudget(User))
+            {
+                return Forbid();
+            }
+
             if (projectId == null || activityId == null)
             {
                 return NotFound();
@@ -31,6 +38,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
 
         public async Task<IActionResult> OnPostAsync(int? projectId, int? activityId)
         {
+            if (!CanCreateNewActivityBudget(User))
+            {
+                return Forbid();
+            }
+
             if (projectId == null || activityId == null)
             {
                 return NotFound();
@@ -57,6 +69,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
 
             PopulateAccountDropDownList(_context, emptyActivityBudget.AccountAssignmentId, emptyActivityBudget.ActivityId);
             return Page();
+        }
+
+        private bool CanCreateNewActivityBudget(ClaimsPrincipal user)
+        {
+            return user.IsInRole(Roles.Management);
         }
     }
 }
