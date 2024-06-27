@@ -160,6 +160,107 @@
     </tbody>
 </table>
 
+@if (Model.SpendingRequest.ExpenseInvoices.Count > 0)
+{
+    <h2>Facturas</h2>
+
+    <table class="table table-sm table-bordered table-striped caption-top">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].Vendor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].InvoiceAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].ActivityBudgetId)
+                </th>
+                <th style="width: 1px; white-space:nowrap;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SpendingRequest.ExpenseInvoices)
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Vendor)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.InvoiceAmount)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
+                    </td>
+                    <td class="align-middle">
+                        <table-buttons>
+                            <details-button asp-page="/ExpenseInvoices/Details" asp-route-id="@item.Id"></details-button>
+                            @if (Model.SpendingRequest.Status == RequestStatus.Verification)
+                            {
+                                <edit-button asp-page="/ExpenseInvoices/Edit" asp-route-id="@item.Id"></edit-button>
+                                <delete-button asp-page="/ExpenseInvoices/Delete" asp-route-id="@item.Id"></delete-button>
+                            }
+                        </table-buttons>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@* <h2>Facturas</h2>
+
+<table class="table table-sm table-bordered table-striped caption-top">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].ActivityBudgetId)
+            </th>
+            <th style="width: 1px; white-space:nowrap;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SpendingRequest.AmountRequests)
+        {
+            <tr>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
+                </td>
+                <td class="align-middle">
+                    <table-buttons>
+                        <details-button asp-page="/AmountRequests/Details" asp-route-id="@item.Id"></details-button>
+                        @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
+                        {
+                            <edit-button asp-page="/AmountRequests/Edit" asp-route-id="@item.Id"></edit-button>
+                            <delete-button asp-page="/AmountRequests/Delete" asp-route-id="@item.Id"></delete-button>
+                        }
+                    </table-buttons>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> *@
+
+
 @*
 @section TableHeaders {
     <th>
