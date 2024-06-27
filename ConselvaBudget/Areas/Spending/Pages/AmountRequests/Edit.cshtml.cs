@@ -76,7 +76,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 amountRequestToUpdate.ModifiedDate = DateTime.Now;
                 amountRequestToUpdate.ModifiedByUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("/Requests/Details", new { id = amountRequestToUpdate.SpendingRequestId });
+                return RedirectToPage("/Requests/Details", new { id = amountRequestToUpdate.RequestId });
             }
 
             PopulateActivityBudgetDropDownList(_context, amountRequestToUpdate.Request.ActivityId, amountRequestToUpdate.ActivityBudgetId);
