@@ -31,7 +31,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 return NotFound();
             }
 
-            var amountrequest =  await _context.AmountRequests
+            var amountrequest = await _context.AmountRequests
                 .Include(ar => ar.Request)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (amountrequest == null)
@@ -45,8 +45,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
             }
 
             AmountRequest = amountrequest;
-           ViewData["ActivityBudgetId"] = new SelectList(_context.ActivityBudgets, "Id", "Id");
-           ViewData["RequestId"] = new SelectList(_context.Requests, "Id", "Description");
+            PopulateActivityBudgetDropDownList(_context, amountrequest.Request.ActivityId);
             return Page();
         }
 
