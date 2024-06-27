@@ -43,6 +43,18 @@
             @Html.DisplayFor(model => model.ExpenseInvoice.InvoiceNumber)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExpenseInvoice.PdfUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExpenseInvoice.PdfUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExpenseInvoice.XmlUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExpenseInvoice.XmlUrl)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ExpenseInvoice.CreatedByUserId)
         </dt>
         <dd class="col-sm-10">
@@ -79,7 +91,7 @@
             @Html.DisplayFor(model => model.ExpenseInvoice.Request.Description)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="ExpenseInvoice.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

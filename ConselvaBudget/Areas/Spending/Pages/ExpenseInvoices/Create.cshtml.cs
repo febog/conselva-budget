@@ -75,6 +75,8 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 ei => ei.InvoiceAmount,
                 ei => ei.Vendor,
                 ei => ei.InvoiceDate,
+                ei => ei.PdfUrl,
+                ei => ei.XmlUrl,
                 ei => ei.InvoiceNumber))
             {
                 emptyExpenseInvoice.RequestId = foundRequest.Id;

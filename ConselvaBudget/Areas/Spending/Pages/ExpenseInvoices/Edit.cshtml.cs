@@ -74,6 +74,8 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 ar => ar.InvoiceAmount,
                 ar => ar.Vendor,
                 ar => ar.InvoiceDate,
+                ar => ar.PdfUrl,
+                ar => ar.XmlUrl,
                 ar => ar.InvoiceNumber))
             {
                 expenseInvoiceToUpdate.ModifiedDate = DateTime.Now;

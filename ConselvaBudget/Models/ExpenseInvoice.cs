@@ -55,6 +55,16 @@ namespace ConselvaBudget.Models
         [Display(Name = "ModifiedDate")]
         public DateTime ModifiedDate { get; set; }
 
+        [Display(Name = "PDF link")]
+        [StringLength(2048)]
+        [DataType(DataType.Url)]
+        public string PdfUrl { get; set; }
+
+        [Display(Name = "XML link")]
+        [StringLength(2048)]
+        [DataType(DataType.Url)]
+        public string XmlUrl { get; set; }
+
         [Display(Name = "Account")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public ActivityBudget ActivityBudget { get; set; }
