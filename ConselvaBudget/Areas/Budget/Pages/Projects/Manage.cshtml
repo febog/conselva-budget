@@ -1,5 +1,6 @@
 ﻿@page
 @inject IViewLocalizer Localizer
+@using ConselvaBudget.Authorization
 @model ManageModel
 
 @{
@@ -65,9 +66,12 @@
     </div>
 </div>
 
-<p>
-    <a class="btn btn-primary btn-sm" asp-page="/Results/Create" asp-route-project="@Model.Project.Id">@Localizer["BUTTON_CREATE_RESULT"]</a>
-</p>
+@if (User.IsInRole(Roles.Management))
+{
+    <div class="mb-2">
+        <a class="btn btn-primary btn-sm" asp-page="/Results/Create" asp-route-project="@Model.Project.Id">@Localizer["BUTTON_CREATE_RESULT"]</a>
+    </div>
+}
 
 @foreach (var result in Model.Project.Results.OrderBy(r => r.Code))
 {
@@ -81,8 +85,11 @@
                         title="Collapse this Result section.">
                     <i class="bi bi-chevron-expand"></i>
                 </button>
-                <edit-button asp-page="/Results/Edit" asp-route-id="@result.Id"></edit-button>
-                <delete-button asp-page="/Results/Delete" asp-route-id="@result.Id"></delete-button>
+                @if (User.IsInRole(Roles.Management))
+                {
+                    <edit-button asp-page="/Results/Edit" asp-route-id="@result.Id"></edit-button>
+                    <delete-button asp-page="/Results/Delete" asp-route-id="@result.Id"></delete-button>
+                }
             </div>
         </div>
         <div class="card-body collapse show" id="result-body-@result.Id">
