@@ -16,13 +16,8 @@
             <input type="hidden" asp-for="ExpenseInvoice.Id" />
             <div class="form-group">
                 <label asp-for="ExpenseInvoice.ActivityBudgetId" class="control-label"></label>
-                <select asp-for="ExpenseInvoice.ActivityBudgetId" class="form-control" asp-items="ViewBag.ActivityBudgetId"></select>
+                <select asp-for="ExpenseInvoice.ActivityBudgetId" class="form-control" asp-items="@Model.ActivityBudgetSL"></select>
                 <span asp-validation-for="ExpenseInvoice.ActivityBudgetId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpenseInvoice.RequestId" class="control-label"></label>
-                <select asp-for="ExpenseInvoice.RequestId" class="form-control" asp-items="ViewBag.RequestId"></select>
-                <span asp-validation-for="ExpenseInvoice.RequestId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ExpenseInvoice.Description" class="control-label"></label>
@@ -48,26 +43,6 @@
                 <label asp-for="ExpenseInvoice.InvoiceNumber" class="control-label"></label>
                 <input asp-for="ExpenseInvoice.InvoiceNumber" class="form-control" />
                 <span asp-validation-for="ExpenseInvoice.InvoiceNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpenseInvoice.CreatedByUserId" class="control-label"></label>
-                <input asp-for="ExpenseInvoice.CreatedByUserId" class="form-control" />
-                <span asp-validation-for="ExpenseInvoice.CreatedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpenseInvoice.ModifiedByUserId" class="control-label"></label>
-                <input asp-for="ExpenseInvoice.ModifiedByUserId" class="form-control" />
-                <span asp-validation-for="ExpenseInvoice.ModifiedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpenseInvoice.CreatedDate" class="control-label"></label>
-                <input asp-for="ExpenseInvoice.CreatedDate" class="form-control" />
-                <span asp-validation-for="ExpenseInvoice.CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpenseInvoice.ModifiedDate" class="control-label"></label>
-                <input asp-for="ExpenseInvoice.ModifiedDate" class="form-control" />
-                <span asp-validation-for="ExpenseInvoice.ModifiedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

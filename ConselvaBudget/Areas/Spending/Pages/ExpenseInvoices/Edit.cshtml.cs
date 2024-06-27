@@ -8,10 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
 {
-    public class EditModel : PageModel
+    public class EditModel : ExpenseInvoicePageModel
     {
         private readonly ConselvaBudget.Data.ConselvaBudgetContext _context;
 
@@ -30,50 +31,65 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 return NotFound();
             }
 
-            var expenseinvoice =  await _context.ExpenseInvoices.FirstOrDefaultAsync(m => m.Id == id);
+            var expenseinvoice = await _context.ExpenseInvoices
+                .Include(ei => ei.Request)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (expenseinvoice == null)
             {
                 return NotFound();
             }
+
+            if (!CanEditExpenseInvoice(expenseinvoice.Request))
+            {
+                return BadRequest();
+            }
+
             ExpenseInvoice = expenseinvoice;
-           ViewData["ActivityBudgetId"] = new SelectList(_context.ActivityBudgets, "Id", "Id");
-           ViewData["RequestId"] = new SelectList(_context.Requests, "Id", "Description");
+
+            PopulateActivityBudgetDropDownList(_context, expenseinvoice.Request.ActivityId);
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var expenseInvoiceToUpdate = await _context.ExpenseInvoices
+                .Include(e => e.Request)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (expenseInvoiceToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(ExpenseInvoice).State = EntityState.Modified;
-
-            try
+            if (!CanEditExpenseInvoice(expenseInvoiceToUpdate.Request))
             {
+                return BadRequest();
+            }
+
+            if (await TryUpdateModelAsync<ExpenseInvoice>(
+                expenseInvoiceToUpdate,
+                "ExpenseInvoice",
+                ar => ar.ActivityBudgetId,
+                ar => ar.Description,
+                ar => ar.InvoiceAmount,
+                ar => ar.Vendor,
+                ar => ar.InvoiceDate,
+                ar => ar.InvoiceNumber))
+            {
+                expenseInvoiceToUpdate.ModifiedDate = DateTime.Now;
+                expenseInvoiceToUpdate.ModifiedByUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ExpenseInvoiceExists(ExpenseInvoice.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("/Requests/Details", new { id = expenseInvoiceToUpdate.RequestId });
             }
 
-            return RedirectToPage("./Index");
+            PopulateActivityBudgetDropDownList(_context, expenseInvoiceToUpdate.Request.ActivityId, expenseInvoiceToUpdate.ActivityBudgetId);
+            return Page();
         }
 
-        private bool ExpenseInvoiceExists(int id)
+        private bool CanEditExpenseInvoice(Request r)
         {
-            return _context.ExpenseInvoices.Any(e => e.Id == id);
+            // Valid scenarios for editing an ExpenseInvoice under this Request
+            return r.Status == RequestStatus.Verification;
         }
     }
 }
