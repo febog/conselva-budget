@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
 {
-    public class CreateModel : PageModel
+    public class CreateModel : ExpenseInvoicePageModel
     {
         private readonly ConselvaBudget.Data.ConselvaBudgetContext _context;
 
@@ -19,28 +20,81 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync(int? request)
         {
-        ViewData["ActivityBudgetId"] = new SelectList(_context.ActivityBudgets, "Id", "Id");
-        ViewData["RequestId"] = new SelectList(_context.Requests, "Id", "Description");
+            if (request == null)
+            {
+                return NotFound();
+            }
+
+            var foundRequest = await _context.Requests.FindAsync(request);
+
+            if (foundRequest == null)
+            {
+                return NotFound();
+            }
+
+            if (!CanCreateNewExpenseInvoice(foundRequest))
+            {
+                return BadRequest();
+            }
+
+            PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId);
             return Page();
         }
 
         [BindProperty]
         public ExpenseInvoice ExpenseInvoice { get; set; } = default!;
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? request)
         {
-            if (!ModelState.IsValid)
+            if (request == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.ExpenseInvoices.Add(ExpenseInvoice);
-            await _context.SaveChangesAsync();
+            var foundRequest = await _context.Requests.FindAsync(request);
 
-            return RedirectToPage("./Index");
+            if (foundRequest == null)
+            {
+                return NotFound();
+            }
+
+            if (!CanCreateNewExpenseInvoice(foundRequest))
+            {
+                return BadRequest();
+            }
+
+            var emptyExpenseInvoice = new ExpenseInvoice();
+
+            if (await TryUpdateModelAsync<ExpenseInvoice>(
+                emptyExpenseInvoice,
+                "ExpenseInvoice",
+                ei => ei.ActivityBudgetId,
+                ei => ei.Description,
+                ei => ei.InvoiceAmount,
+                ei => ei.Vendor,
+                ei => ei.InvoiceDate,
+                ei => ei.InvoiceNumber))
+            {
+                emptyExpenseInvoice.RequestId = foundRequest.Id;
+                emptyExpenseInvoice.CreatedDate = DateTime.Now;
+                emptyExpenseInvoice.ModifiedDate = DateTime.Now;
+                emptyExpenseInvoice.CreatedByUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                emptyExpenseInvoice.ModifiedByUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                _context.ExpenseInvoices.Add(emptyExpenseInvoice);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("/Requests/Details", new { id = foundRequest.Id });
+            }
+
+            PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId, emptyExpenseInvoice.ActivityBudgetId);
+            return Page();
+        }
+
+        private bool CanCreateNewExpenseInvoice(Request r)
+        {
+            // Valid scenarios for creating a new ExpenseInvoice under this Request
+            return r.Status == RequestStatus.Verification;
         }
     }
 }
