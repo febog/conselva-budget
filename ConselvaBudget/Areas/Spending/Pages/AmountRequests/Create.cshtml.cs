@@ -34,15 +34,13 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 return NotFound();
             }
 
-            if(CanCreateNewAmountRequest(foundRequest))
-            {
-                PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId);
-                return Page();
-            }
-            else
+            if(!CanCreateNewAmountRequest(foundRequest))
             {
                 return BadRequest();
             }
+
+            PopulateActivityBudgetDropDownList(_context, foundRequest.ActivityId);
+            return Page();
         }
 
         [BindProperty]
