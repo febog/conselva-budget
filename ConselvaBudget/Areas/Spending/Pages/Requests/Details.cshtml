@@ -172,7 +172,7 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].Description)
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].InvoiceDate)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].Vendor)
@@ -184,7 +184,7 @@
                     @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].InvoiceNumber)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].InvoiceDate)
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].Description)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].ActivityBudgetId)
@@ -197,7 +197,7 @@
             {
                 <tr>
                     <td class="align-middle">
-                        @Html.DisplayFor(modelItem => item.Description)
+                        @Html.DisplayFor(modelItem => item.InvoiceDate)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.Vendor)
@@ -209,7 +209,7 @@
                         @Html.DisplayFor(modelItem => item.InvoiceNumber)
                     </td>
                     <td class="align-middle">
-                        @Html.DisplayFor(modelItem => item.InvoiceDate)
+                        @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
