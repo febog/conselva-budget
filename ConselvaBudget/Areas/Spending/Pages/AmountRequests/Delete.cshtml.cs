@@ -72,7 +72,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Requests/Details", new { id = amountrequest.RequestId });
         }
 
         private bool CanDeleteAmountRequest(Request r)
