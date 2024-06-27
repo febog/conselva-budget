@@ -148,8 +148,11 @@
                 <td class="align-middle">
                     <table-buttons>
                         <details-button asp-page="/AmountRequests/Details" asp-route-id="@item.Id"></details-button>
-                        <edit-button asp-page="/AmountRequests/Edit" asp-route-id="@item.Id"></edit-button>
-                        <delete-button asp-page="/AmountRequests/Delete" asp-route-id="@item.Id"></delete-button>
+                        @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
+                        {
+                            <edit-button asp-page="/AmountRequests/Edit" asp-route-id="@item.Id"></edit-button>
+                            <delete-button asp-page="/AmountRequests/Delete" asp-route-id="@item.Id"></delete-button>
+                        }
                     </table-buttons>
                 </td>
             </tr>

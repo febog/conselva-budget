@@ -29,7 +29,14 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 return NotFound();
             }
 
-            var amountrequest = await _context.AmountRequests.FirstOrDefaultAsync(m => m.Id == id);
+            var amountrequest = await _context.AmountRequests
+               .Include(ar => ar.Request)
+               .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (!CanDeleteAmountRequest(amountrequest.Request))
+            {
+                return BadRequest();
+            }
 
             if (amountrequest == null)
             {
@@ -49,7 +56,15 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 return NotFound();
             }
 
-            var amountrequest = await _context.AmountRequests.FindAsync(id);
+            var amountrequest = await _context.AmountRequests
+               .Include(ar => ar.Request)
+               .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (!CanDeleteAmountRequest(amountrequest.Request))
+            {
+                return BadRequest();
+            }
+
             if (amountrequest != null)
             {
                 AmountRequest = amountrequest;
@@ -58,6 +73,12 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
             }
 
             return RedirectToPage("./Index");
+        }
+
+        private bool CanDeleteAmountRequest(Request r)
+        {
+            // Valid scenarios for deleting an AmountRequest under this Request
+            return r.Status == RequestStatus.Created || r.Status == RequestStatus.Submitted;
         }
     }
 }

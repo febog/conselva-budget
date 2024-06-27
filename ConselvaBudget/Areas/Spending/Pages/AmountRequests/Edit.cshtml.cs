@@ -8,10 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
 {
-    public class EditModel : PageModel
+    public class EditModel : AmountRequestPageModel
     {
         private readonly ConselvaBudget.Data.ConselvaBudgetContext _context;
 
@@ -30,50 +31,67 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 return NotFound();
             }
 
-            var amountrequest =  await _context.AmountRequests.FirstOrDefaultAsync(m => m.Id == id);
+            var amountrequest =  await _context.AmountRequests
+                .Include(ar => ar.Request)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (amountrequest == null)
             {
                 return NotFound();
             }
+
+            if (!CanEditAmountRequest(amountrequest.Request))
+            {
+                return BadRequest();
+            }
+
             AmountRequest = amountrequest;
            ViewData["ActivityBudgetId"] = new SelectList(_context.ActivityBudgets, "Id", "Id");
            ViewData["RequestId"] = new SelectList(_context.Requests, "Id", "Description");
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var amountRequestToUpdate = await _context.AmountRequests
+                .Include(e => e.Request)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (amountRequestToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(AmountRequest).State = EntityState.Modified;
-
-            try
+            if (!CanEditAmountRequest(amountRequestToUpdate.Request))
             {
+                return BadRequest();
+            }
+
+            if (await TryUpdateModelAsync<AmountRequest>(
+                amountRequestToUpdate,
+                "AmountRequest",
+                ar => ar.ActivityBudgetId,
+                ar => ar.Description,
+                ar => ar.Amount))
+            {
+                amountRequestToUpdate.ModifiedDate = DateTime.Now;
+                amountRequestToUpdate.ModifiedByUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AmountRequestExists(AmountRequest.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("/Requests/Details", new { id = amountRequestToUpdate.SpendingRequestId });
             }
 
-            return RedirectToPage("./Index");
+            PopulateActivityBudgetDropDownList(_context, amountRequestToUpdate.Request.ActivityId, amountRequestToUpdate.ActivityBudgetId);
+            return Page();
         }
 
         private bool AmountRequestExists(int id)
         {
             return _context.AmountRequests.Any(e => e.Id == id);
+        }
+
+        private bool CanEditAmountRequest(Request r)
+        {
+            // Valid scenarios for editing an AmountRequest under this Request
+            return r.Status == RequestStatus.Created || r.Status == RequestStatus.Submitted;
         }
     }
 }

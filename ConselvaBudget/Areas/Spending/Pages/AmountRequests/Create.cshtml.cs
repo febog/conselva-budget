@@ -72,9 +72,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
             if (await TryUpdateModelAsync<AmountRequest>(
                 emptyAmountRequest,
                 "AmountRequest",
-                r => r.ActivityBudgetId,
-                r => r.Description,
-                r => r.Amount))
+                ar => ar.ActivityBudgetId,
+                ar => ar.Description,
+                ar => ar.Amount))
             {
                 emptyAmountRequest.RequestId = foundRequest.Id;
                 emptyAmountRequest.CreatedDate = DateTime.Now;
