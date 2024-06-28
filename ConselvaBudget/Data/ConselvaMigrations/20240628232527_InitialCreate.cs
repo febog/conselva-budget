@@ -230,7 +230,8 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     ActivityId = table.Column<int>(type: "int", nullable: false),
                     AccountAssignmentId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Comments = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    EquivalentAccount = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -240,13 +241,13 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         column: x => x.AccountAssignmentId,
                         principalTable: "AccountAssignments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ActivityBudgets_Activities_ActivityId",
                         column: x => x.ActivityId,
                         principalTable: "Activities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -258,7 +259,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     ActivityId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     RequestorUserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
-                    RequestorUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
@@ -270,6 +270,29 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         name: "FK_Requests_Activities_ActivityId",
                         column: x => x.ActivityId,
                         principalTable: "Activities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ActivityBudgetLogEntries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ActivityBudgetId = table.Column<int>(type: "int", nullable: false),
+                    EventAuthorUserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    EventTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Operation = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<decimal>(type: "money", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ActivityBudgetLogEntries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ActivityBudgetLogEntries_ActivityBudgets_ActivityBudgetId",
+                        column: x => x.ActivityBudgetId,
+                        principalTable: "ActivityBudgets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -322,7 +345,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     CreatedByUserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     ModifiedByUserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PdfUrl = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: true),
+                    XmlUrl = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -423,7 +448,8 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         name: "FK_Trips_Vehicles_VehicleId",
                         column: x => x.VehicleId,
                         principalTable: "Vehicles",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -440,6 +466,11 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                 name: "IX_Activities_ResultId",
                 table: "Activities",
                 column: "ResultId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ActivityBudgetLogEntries_ActivityBudgetId",
+                table: "ActivityBudgetLogEntries",
+                column: "ActivityBudgetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ActivityBudgets_AccountAssignmentId",
@@ -525,6 +556,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ActivityBudgetLogEntries");
+
             migrationBuilder.DropTable(
                 name: "AmountRequests");
 
