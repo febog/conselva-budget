@@ -39,8 +39,6 @@ namespace ConselvaBudget.Data
 
         public DbSet<Trip> Trips { get; set; }
 
-        public DbSet<Expense> Expenses { get; set; }
-
         public DbSet<Deposit> Deposits { get; set; }
 
         public DbSet<Vehicle> Vehicles { get; set; }

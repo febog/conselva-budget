@@ -45,8 +45,6 @@ namespace ConselvaBudget.Models
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public AccountAssignment AccountAssignment { get; set; }
 
-        public virtual ICollection<Expense> Expenses { get; set; }
-
         public virtual ICollection<AmountRequest> AmountRequests { get; set; }
 
         public virtual ICollection<ExpenseInvoice> ExpenseInvoices { get; set; }

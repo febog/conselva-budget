@@ -37,9 +37,7 @@ namespace ConselvaBudget.Models
         [Display(Name = "Total")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal TotalAmount => Expenses.Sum(e => e.Amount);
-
-        public virtual ICollection<Expense> Expenses { get; set; }
+        public decimal TotalAmount => ExpenseInvoices.Sum(e => e.InvoiceAmount);
 
         public virtual ICollection<AmountRequest> AmountRequests { get; set; }
 

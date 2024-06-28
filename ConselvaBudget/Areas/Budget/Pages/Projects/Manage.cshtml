@@ -196,47 +196,53 @@
                                                             <p>
                                                                 @Html.DisplayFor(model => budget.Comments)
                                                             </p>
-                                                            @if (budget.Expenses.Count > 0)
+                                                            @if (budget.ExpenseInvoices.Count > 0)
                                                             {
                                                                 <h5 class="h6 text-body-secondary">Expenses</h5>
                                                                 <table class="table table-sm table-bordered table-striped">
                                                                     <thead>
                                                                         <tr>
                                                                             <th>
-                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Description)
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].InvoiceDate)
                                                                             </th>
                                                                             <th>
-                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Vendor)
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].Vendor)
                                                                             </th>
                                                                             <th>
-                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Amount)
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].InvoiceAmount)
                                                                             </th>
                                                                             <th>
-                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].ExpenseDate)
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].InvoiceNumber)
+                                                                            </th>
+                                                                            <th>
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].Description)
                                                                             </th>
                                                                             <th style="width: 1px; white-space:nowrap;"></th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        @foreach (var expense in budget.Expenses)
+                                                                        @foreach (var item in budget.ExpenseInvoices)
                                                                         {
                                                                             <tr>
                                                                                 <td class="align-middle">
-                                                                                    @Html.DisplayFor(modelItem => expense.Description)
+                                                                                    @Html.DisplayFor(modelItem => item.InvoiceDate)
                                                                                 </td>
                                                                                 <td class="align-middle">
-                                                                                    @Html.DisplayFor(modelItem => expense.Vendor)
+                                                                                    @Html.DisplayFor(modelItem => item.Vendor)
                                                                                 </td>
                                                                                 <td class="align-middle">
-                                                                                    @Html.DisplayFor(modelItem => expense.Amount)
+                                                                                    @Html.DisplayFor(modelItem => item.InvoiceAmount)
                                                                                 </td>
                                                                                 <td class="align-middle">
-                                                                                    @Html.DisplayFor(modelItem => expense.ExpenseDate)
+                                                                                    @Html.DisplayFor(modelItem => item.InvoiceNumber)
                                                                                 </td>
                                                                                 <td class="align-middle">
-                                                                                    <div class="d-flex gap-1 justify-content-center">
-                                                                                        <details-button asp-area="Expenses" asp-page="/Expenses/Details" asp-route-id="@expense.Id"></details-button>
-                                                                                    </div>
+                                                                                    @Html.DisplayFor(modelItem => item.Description)
+                                                                                </td>
+                                                                                <td class="align-middle">
+                                                                                    <table-buttons>
+                                                                                        <details-button asp-area="Spending" asp-page="/ExpenseInvoices/Details" asp-route-id="@item.Id"></details-button>
+                                                                                    </table-buttons>
                                                                                 </td>
                                                                             </tr>
                                                                         }
