@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -45,6 +46,7 @@ namespace ConselvaBudget.Models
         public Request SpendingRequest { get; set; }
 
         [Display(Name = "Vehicle")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Vehicle Vehicle { get; set; }
     }
 }

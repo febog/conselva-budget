@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -37,9 +38,11 @@ namespace ConselvaBudget.Models
         public decimal Remainder => Amount - TotalExpenses;
 
         [Display(Name = "ACTIVITY_BUDGET_ACTIVITY")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Activity Activity { get; set; }
 
         [Display(Name = "ACTIVITY_BUDGET_ACCOUNT_ASSIGNMENT")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public AccountAssignment AccountAssignment { get; set; }
 
         public virtual ICollection<Expense> Expenses { get; set; }
