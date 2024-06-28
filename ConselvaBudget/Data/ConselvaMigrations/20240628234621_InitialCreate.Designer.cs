@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    [Migration("20240628232527_InitialCreate")]
+    [Migration("20240628234621_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -292,61 +292,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.HasIndex("DonorId");
 
                     b.ToTable("EquivalentAccounts");
-                });
-
-            modelBuilder.Entity("ConselvaBudget.Models.Expense", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ActivityBudgetId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("money");
-
-                    b.Property<string>("Comments")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime>("ExpenseDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal?>("InvoiceAmount")
-                        .HasColumnType("money");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SpendingRequestId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Vendor")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActivityBudgetId");
-
-                    b.HasIndex("SpendingRequestId");
-
-                    b.ToTable("Expenses");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.ExpenseInvoice", b =>
@@ -750,25 +695,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("Donor");
                 });
 
-            modelBuilder.Entity("ConselvaBudget.Models.Expense", b =>
-                {
-                    b.HasOne("ConselvaBudget.Models.ActivityBudget", "ActivityBudget")
-                        .WithMany("Expenses")
-                        .HasForeignKey("ActivityBudgetId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("ConselvaBudget.Models.Request", "SpendingRequest")
-                        .WithMany("Expenses")
-                        .HasForeignKey("SpendingRequestId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("ActivityBudget");
-
-                    b.Navigation("SpendingRequest");
-                });
-
             modelBuilder.Entity("ConselvaBudget.Models.ExpenseInvoice", b =>
                 {
                     b.HasOne("ConselvaBudget.Models.ActivityBudget", "ActivityBudget")
@@ -874,8 +800,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("AmountRequests");
 
                     b.Navigation("ExpenseInvoices");
-
-                    b.Navigation("Expenses");
                 });
 
             modelBuilder.Entity("ConselvaBudget.Models.Donor", b =>
@@ -902,8 +826,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Navigation("AmountRequests");
 
                     b.Navigation("ExpenseInvoices");
-
-                    b.Navigation("Expenses");
 
                     b.Navigation("RequestLogEntries");
 
