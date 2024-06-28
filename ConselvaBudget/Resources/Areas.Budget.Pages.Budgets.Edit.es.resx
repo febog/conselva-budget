@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ACCOUNT_HELP" xml:space="preserve">
-    <value>Seleccione la cuenta para la que está creando el presupuesto. Solo se muestran las cuentas que no tienen presupuesto previo. Si la cuenta que está buscando no está en la lista, edite el presupuesto de la cuenta.</value>
-    <comment>Help for Account menu.</comment>
-  </data>
   <data name="ACTIVITY_BUDGET" xml:space="preserve">
     <value>Presupuesto de Actividad</value>
   </data>

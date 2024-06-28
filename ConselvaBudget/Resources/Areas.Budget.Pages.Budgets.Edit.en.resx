@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ACCOUNT_HELP" xml:space="preserve">
-    <value>Select the account you are creating a budget for. Only accounts that don't have a budget are shown. If the account you are looking for is not on the list edit the budget for the account instead.</value>
-    <comment>Help for Account menu.</comment>
-  </data>
   <data name="ACTIVITY_BUDGET" xml:space="preserve">
     <value>Activity budget</value>
   </data>

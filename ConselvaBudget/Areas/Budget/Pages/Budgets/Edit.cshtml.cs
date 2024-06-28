@@ -5,10 +5,11 @@ using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using ConselvaBudget.Authorization;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Budgets
 {
-    public class EditModel : ActivityBudgetPageModel
+    public class EditModel : PageModel
     {
         private readonly ConselvaBudgetContext _context;
 
@@ -34,6 +35,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
 
             ActivityBudget = await _context.ActivityBudgets
                 .Include(b => b.AccountAssignment.Account)
+                .Include(b => b.AccountAssignment.Organization)
                 .Include(b => b.Activity.Result)
                 .FirstOrDefaultAsync(b => b.Id == id);
 
@@ -41,7 +43,8 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
             {
                 return NotFound();
             }
-            PopulateAccountDropDownList(_context, ActivityBudget.AccountAssignmentId, ActivityBudget.ActivityId);
+
+            ViewData["AccountAssignment"] = ActivityBudget.AccountAssignment.DisplayName;
             return Page();
         }
 
@@ -54,6 +57,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
 
             var activityBudgetToUpdate = await _context.ActivityBudgets
                 .Include(a => a.AccountAssignment.Account)
+                .Include(a => a.AccountAssignment.Organization)
                 .Include(b => b.Activity.Result)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
@@ -65,7 +69,6 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
             if (await TryUpdateModelAsync<ActivityBudget>(
                 activityBudgetToUpdate,
                 "ActivityBudget",
-                b => b.AccountAssignmentId,
                 b => b.Amount,
                 b => b.EquivalentAccount,
                 b => b.Comments))
@@ -77,7 +80,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Budgets
                     $"activity-{activityBudgetToUpdate.ActivityId}");
             }
 
-            PopulateAccountDropDownList(_context, activityBudgetToUpdate.AccountAssignmentId, activityBudgetToUpdate.ActivityId);
+            ViewData["AccountAssignment"] = ActivityBudget.AccountAssignment.DisplayName;
             return Page();
         }
 

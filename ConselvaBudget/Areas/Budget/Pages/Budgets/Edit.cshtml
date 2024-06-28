@@ -9,16 +9,19 @@
     ViewData["Entity"] = @SharedLocalizer["ENTITY_ACTIVITY_BUDGET_NAME"];
 }
 
+@section PreForm {
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ActivityBudget.AccountAssignment)
+        </dt>
+        <dd class="col-sm-9">
+            @ViewData["AccountAssignment"]
+        </dd>
+    </dl>
+}
+
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <input type="hidden" asp-for="ActivityBudget.Id" />
-<div class="col-12">
-    <label asp-for="ActivityBudget.AccountAssignmentId" class="form-label"></label>
-    <select asp-for="ActivityBudget.AccountAssignmentId" class="form-select" asp-items="@Model.AccountSL" aria-describedby="accounts-select-help"></select>
-    <div id="accounts-select-help" class="form-text">
-        @Localizer["ACCOUNT_HELP"]
-    </div>
-    <span asp-validation-for="ActivityBudget.AccountAssignmentId" class="text-danger"></span>
-</div>
 <div class="col-12 col-sm-4">
     <label asp-for="ActivityBudget.Amount" class="form-label"></label>
     <div class="input-group">
