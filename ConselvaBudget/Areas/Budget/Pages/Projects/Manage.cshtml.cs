@@ -38,7 +38,7 @@ namespace ConselvaBudget.Areas.Budget.Pages.Projects
                 .Include(p => p.Results)
                 .ThenInclude(r => r.Activities)
                 .ThenInclude(a => a.ActivityBudgets)
-                .ThenInclude(b => b.Expenses)
+                .ThenInclude(b => b.ExpenseInvoices)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (project == null)

@@ -1,0 +1,70 @@
+﻿@page
+@model ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ExpenseInvoice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ExpenseInvoice.Id" />
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.ActivityBudgetId" class="control-label"></label>
+                <select asp-for="ExpenseInvoice.ActivityBudgetId" class="form-control" asp-items="@Model.ActivityBudgetSL"></select>
+                <span asp-validation-for="ExpenseInvoice.ActivityBudgetId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.Description" class="control-label"></label>
+                <input asp-for="ExpenseInvoice.Description" class="form-control" />
+                <span asp-validation-for="ExpenseInvoice.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.InvoiceAmount" class="control-label"></label>
+                <input asp-for="ExpenseInvoice.InvoiceAmount" class="form-control" />
+                <span asp-validation-for="ExpenseInvoice.InvoiceAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.Vendor" class="control-label"></label>
+                <input asp-for="ExpenseInvoice.Vendor" class="form-control" />
+                <span asp-validation-for="ExpenseInvoice.Vendor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.InvoiceDate" class="control-label"></label>
+                <input asp-for="ExpenseInvoice.InvoiceDate" class="form-control" />
+                <span asp-validation-for="ExpenseInvoice.InvoiceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.InvoiceNumber" class="control-label"></label>
+                <input asp-for="ExpenseInvoice.InvoiceNumber" class="form-control" />
+                <span asp-validation-for="ExpenseInvoice.InvoiceNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.PdfUrl" class="control-label"></label>
+                <input asp-for="ExpenseInvoice.PdfUrl" class="form-control" />
+                <span asp-validation-for="ExpenseInvoice.PdfUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.XmlUrl" class="control-label"></label>
+                <input asp-for="ExpenseInvoice.XmlUrl" class="form-control" />
+                <span asp-validation-for="ExpenseInvoice.XmlUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

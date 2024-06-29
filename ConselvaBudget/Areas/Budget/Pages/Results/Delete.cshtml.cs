@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using ConselvaBudget.Authorization;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Results
 {
@@ -20,6 +22,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (!CanDeleteResult(User))
+            {
+                return Forbid();
+            }
+
             if (id == null || _context.Results == null)
             {
                 return NotFound();
@@ -39,6 +46,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
+            if (!CanDeleteResult(User))
+            {
+                return Forbid();
+            }
+
             if (id == null || _context.Results == null)
             {
                 return NotFound();
@@ -53,6 +65,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
             }
 
             return RedirectToPage("/Projects/Manage", new { id = result.ProjectId });
+        }
+
+        private bool CanDeleteResult(ClaimsPrincipal user)
+        {
+            return user.IsInRole(Roles.Management);
         }
     }
 }

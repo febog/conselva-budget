@@ -1,4 +1,5 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
 @model SelectActivityModel
 
 @{
@@ -30,7 +31,7 @@
         </td>
         <td class="align-middle">
             <table-buttons>
-                <a class="btn btn-primary btn-sm" asp-page="./Create" asp-route-activity="@item.Id">Select</a>
+                <a class="btn btn-primary btn-sm" asp-page="./Create" asp-route-activity="@item.Id">@SharedLocalizer["BUTTON_SELECT"]</a>
             </table-buttons>
         </td>
     </tr>

@@ -3,12 +3,14 @@
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
+<h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
+
 <div class="alert alert-danger mb-0 d-flex align-items-center" role="alert">
     <div class="fs-1 me-3">
         <i class="bi bi-exclamation-triangle-fill"></i>
     </div>
     <div class="flex-grow-1">
-        <h1 class="alert-heading">@ViewData["Title"]</h1>
+        <h2 class="alert-heading">@ViewData["Title"]</h2>
         <p>@Localizer["DELETE_CONFIRMATION"]</p>
         <dl class="row">
             @RenderBody()

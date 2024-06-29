@@ -1,14 +1,24 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
 @model IndexModel
 
 @{
-    ViewData["Title"] = "Projects";
+    ViewData["Title"] = @Localizer["PAGE_TITLE"].Value;
+    bool showAll = Request.Query["showAll"] == "true";
 }
 
 <h1>@ViewData["Title"]</h1>
 
 <table class="table table-sm table-bordered table-striped caption-top">
-    <caption>Currently active Projects.</caption>
+    @if (showAll)
+    {
+        <caption>@Localizer["ALL_PROJECTS"]</caption>
+    }
+    else
+    {
+        <caption>@Localizer["CURRENTLY_ACTIVE"]</caption>
+    }
     <thead>
         <tr>
             <th>
@@ -37,14 +47,21 @@
                     @Html.DisplayFor(modelItem => item.ShortName)
                 </td>
                 <td class="align-middle text-center">
-                    <a class="btn btn-primary btn-sm" asp-page="./Manage" asp-route-id="@item.Id">Manage</a>
+                    <a class="btn btn-primary btn-sm" asp-page="./Manage" asp-route-id="@item.Id">@SharedLocalizer["BUTTON_SELECT"]</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<a class="btn btn-sm btn-secondary" role="button" asp-route-showAll="true">Show all projects</a>
+@if (!showAll)
+{
+    <a class="btn btn-sm btn-secondary" role="button" asp-route-showAll="true">@Localizer["BUTTON_SHOW_ALL_PROJECTS"]</a>
+}
+else
+{
+    <a class="btn btn-sm btn-secondary" role="button" asp-route-showAll="">@Localizer["BUTTON_ONLY_SHOW_ACTIVE"]</a>
+}
 
 @section CSS {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />

@@ -117,16 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BUTTON_APPROVED_REQUESTS" xml:space="preserve">
+    <value>Aprobadas</value>
+    <comment>Button for Status Approved</comment>
+  </data>
+  <data name="BUTTON_COMPLETED_REQUESTS" xml:space="preserve">
+    <value>Completadas</value>
+    <comment>Button for Status Completed</comment>
+  </data>
+  <data name="BUTTON_CREATED_REQUESTS" xml:space="preserve">
+    <value>Creadas</value>
+    <comment>Button for Status Created</comment>
+  </data>
   <data name="BUTTON_CREATE_REQUEST" xml:space="preserve">
     <value>Crear solicitud</value>
     <comment>Used in the Request Index page</comment>
+  </data>
+  <data name="BUTTON_SUBMITTED_REQUESTS" xml:space="preserve">
+    <value>En revisión</value>
+    <comment>Button for Status Submitted</comment>
+  </data>
+  <data name="BUTTON_VERIFICATION_REQUESTS" xml:space="preserve">
+    <value>En comprobación</value>
+    <comment>Button for Status Verification</comment>
   </data>
   <data name="NO_REQUEST_ALERT" xml:space="preserve">
     <value>No hay solicitudes con este status.</value>
     <comment>When there are none of the given requests in a section</comment>
   </data>
   <data name="PAGE_DESCRIPTION" xml:space="preserve">
-    <value>Para usar el presupuesto, inicia creando una nueva Solicitud.</value>
+    <value>Para usar el presupuesto, inicia creando una nueva Solicitud. Solo se muestran las últimas 10 solicitudes en cada categoría.</value>
     <comment>Initial instructions</comment>
   </data>
   <data name="PAGE_TITLE" xml:space="preserve">

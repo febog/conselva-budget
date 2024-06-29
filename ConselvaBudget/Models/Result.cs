@@ -19,17 +19,17 @@ namespace ConselvaBudget.Models
         public string Description { get; set; }
 
         [Display(Name = "RESULT_TOTAL_BUDGET")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalBudget => Activities.Sum(e => e.TotalBudget);
 
         [Display(Name = "RESULT_TOTAL_EXPENSES")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalExpenses => Activities.Sum(e => e.TotalExpenses);
 
         [Display(Name = "RESULT_REMAINING_BUDGET")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal RemainingBudget => Activities.Sum(e => e.RemainingBudget);
 

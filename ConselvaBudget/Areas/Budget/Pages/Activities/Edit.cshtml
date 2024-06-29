@@ -1,18 +1,20 @@
 ﻿@page
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
 @model EditModel
 
 @{
     Layout = "/Pages/Shared/_CreateEditLayout.cshtml";
-    ViewData["Title"] = "Edit Activity";
+    ViewData["Action"] = @SharedLocalizer["EDIT"];
+    ViewData["Entity"] = @SharedLocalizer["ENTITY_ACTIVITY_NAME"];
+}
+
+@section PreForm {
+    <h3 class="h5">@SharedLocalizer["ENTITY_RESULT_NAME"]</h3>
+    <p>@ViewData["SelectedResult"]</p>
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <input type="hidden" asp-for="Activity.Id" />
-<div class="col-12">
-    <label asp-for="Activity.ResultId" class="form-label"></label>
-    <select asp-for="Activity.ResultId" class="form-select" asp-items="@Model.ResultSL"></select>
-    <span asp-validation-for="Activity.ResultId" class="text-danger"></span>
-</div>
 <div class="col-12">
     <label asp-for="Activity.Code" class="form-label"></label>
     <input asp-for="Activity.Code" class="form-control" />
@@ -27,7 +29,7 @@
     <input class="btn btn-primary" type="submit" value="Save">
     <a class="btn btn-secondary"
        asp-page="/Projects/Manage"
-       asp-route-id="@Request.Query["projectId"]"
+       asp-route-id="@Model.Activity.Result.ProjectId"
        asp-fragment="activity-@Model.Activity.Id">
         Cancel
     </a>

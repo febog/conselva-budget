@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ConselvaBudget.Authorization;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Budget.Pages.Results
 {
@@ -16,6 +18,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
 
         public async Task<IActionResult> OnGetAsync(int? project)
         {
+            if (!CanCreateNewResult(User))
+            {
+                return Forbid();
+            }
+
             if (project == null)
             {
                 return NotFound();
@@ -37,6 +44,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
 
         public async Task<IActionResult> OnPostAsync(int project)
         {
+            if (!CanCreateNewResult(User))
+            {
+                return Forbid();
+            }
+
             var emptyResult = new Result();
 
             var foundProject = await _context.Projects.FindAsync(project);
@@ -61,6 +73,11 @@ namespace ConselvaBudget.Areas.Budget.Pages.Results
 
             ViewData["SelectedProject"] = foundProject.Name;
             return Page();
+        }
+
+        private bool CanCreateNewResult(ClaimsPrincipal user)
+        {
+            return user.IsInRole(Roles.Management);
         }
     }
 }

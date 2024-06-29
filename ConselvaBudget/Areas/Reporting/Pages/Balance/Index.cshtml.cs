@@ -24,7 +24,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
                     .Include(b => b.Activity.Result.Project.Donor)
                     .Include(b => b.AccountAssignment.Organization)
                     .Include(b => b.AccountAssignment.Account)
-                    .Include(b => b.Expenses)
+                    .Include(b => b.ExpenseInvoices)
                     .ToListAsync();
 
             // Map to report view model

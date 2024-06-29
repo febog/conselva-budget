@@ -1,6 +1,7 @@
 using ConselvaBudget.Authorization;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,14 +12,16 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
     public class DetailsModel : PageModel
     {
         private readonly ConselvaBudgetContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public DetailsModel(ConselvaBudgetContext context)
+        public DetailsModel(ConselvaBudgetContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
-        public ExpensesRequest SpendingRequest { get; set; }
+        public Request SpendingRequest { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,21 +30,27 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            SpendingRequest = await _context.SpendingRequests
+            SpendingRequest = await _context.Requests
                 .Include(r => r.Activity)
                 .Include(r => r.Trip)
-                .Include(r => r.Expenses)
-                .ThenInclude(e => e.ActivityBudget.Activity.Result.Project)
-                .Include(r => r.Expenses)
-                .ThenInclude(e => e.ActivityBudget.AccountAssignment.Account)
-                .Include(r => r.Expenses)
-                .ThenInclude(e => e.ActivityBudget.AccountAssignment.Organization)
+                .Include(r => r.AmountRequests)
+                .ThenInclude(ar => ar.ActivityBudget.AccountAssignment.Account)
+                .Include(r => r.AmountRequests)
+                .ThenInclude(ar => ar.ActivityBudget.AccountAssignment.Organization)
+                .Include(r => r.ExpenseInvoices)
+                .ThenInclude(ei => ei.ActivityBudget.AccountAssignment.Account)
+                .Include(r => r.ExpenseInvoices)
+                .ThenInclude(ei => ei.ActivityBudget.AccountAssignment.Organization)
                 .FirstOrDefaultAsync(r => r.Id == id);
 
             if (SpendingRequest == null)
             {
                 return NotFound();
             }
+
+            // Get username of requestor instead of displaying the user ID.
+            var requestor = await _userManager.FindByIdAsync(SpendingRequest.RequestorUserId);
+            ViewData["RequestorUsername"] = requestor.UserName;
 
             return Page();
         }
@@ -50,7 +59,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         {
             if (User.IsInRole(Roles.Employee))
             {
-                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+                var requestToUpdate = await _context.Requests.FindAsync(request);
 
                 if (requestToUpdate == null)
                 {
@@ -73,7 +82,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         {
             if (User.IsInRole(Roles.Management))
             {
-                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+                var requestToUpdate = await _context.Requests.FindAsync(request);
 
                 if (requestToUpdate == null)
                 {
@@ -96,7 +105,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         {
             if (User.IsInRole(Roles.Employee))
             {
-                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+                var requestToUpdate = await _context.Requests.FindAsync(request);
 
                 if (requestToUpdate == null)
                 {
@@ -119,7 +128,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         {
             if (User.IsInRole(Roles.Administrator))
             {
-                var requestToUpdate = await _context.SpendingRequests.FindAsync(request);
+                var requestToUpdate = await _context.Requests.FindAsync(request);
 
                 if (requestToUpdate == null)
                 {

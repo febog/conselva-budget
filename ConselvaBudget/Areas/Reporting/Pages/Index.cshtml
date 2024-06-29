@@ -1,16 +1,18 @@
 ﻿@page
+@inject IViewLocalizer Localizer
 @model IndexModel
 @{
-    ViewData["Title"] = "Reporting";
+    ViewData["Title"] = @Localizer["REPORTING_TITLE"];
 }
 
 <h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
-<p>Reporting creation dashboard.</p>
+<p>@Localizer["REPORTING_DESCRIPTION"]</p>
 
-<h2>Global balance</h2>
+<h2>@Localizer["REPORT_GLOBAL_BALANCE_TITLE"]</h2>
 
-<p>Global balance report.</p>
+<p>@Localizer["REPORT_GLOBAL_BALANCE_DESCRIPTION"]</p>
+
 <p>
-    <a class="btn btn-primary" asp-page="Balance/Index"><i class="bi bi-download"></i> Download</a>
+    <a class="btn btn-primary" asp-page="Balance/Index"><i class="bi bi-download"></i> @Localizer["DOWNLOAD"]</a>
 </p>

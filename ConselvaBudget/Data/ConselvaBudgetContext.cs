@@ -27,13 +27,17 @@ namespace ConselvaBudget.Data
 
         public DbSet<ActivityBudget> ActivityBudgets { get; set; }
 
-        public DbSet<ExpensesRequest> SpendingRequests { get; set; }
+        public DbSet<ActivityBudgetLogEntry> ActivityBudgetLogEntries { get; set; }
 
-        public DbSet<Trip> Trips { get; set; }
+        public DbSet<Request> Requests { get; set; }
 
         public DbSet<RequestLogEntry> RequestLogEntries { get; set; }
 
-        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<AmountRequest> AmountRequests { get; set; }
+
+        public DbSet<ExpenseInvoice> ExpenseInvoices { get; set; }
+
+        public DbSet<Trip> Trips { get; set; }
 
         public DbSet<Deposit> Deposits { get; set; }
 

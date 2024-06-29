@@ -15,7 +15,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         }
 
         [BindProperty]
-        public ExpensesRequest ExpensesRequest { get; set; }
+        public Request ExpensesRequest { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -24,7 +24,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            ExpensesRequest = await _context.SpendingRequests.FindAsync(id);
+            ExpensesRequest = await _context.Requests.FindAsync(id);
 
             if (ExpensesRequest == null)
             {
@@ -40,14 +40,14 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            var expensesRequest = await _context.SpendingRequests.FindAsync(id);
+            var expensesRequest = await _context.Requests.FindAsync(id);
 
             // Only allow deletions of just created Requests
 
             if (expensesRequest != null && expensesRequest.Status == RequestStatus.Created)
             {
                 ExpensesRequest = expensesRequest;
-                _context.SpendingRequests.Remove(ExpensesRequest);
+                _context.Requests.Remove(ExpensesRequest);
                 await _context.SaveChangesAsync();
             }
 

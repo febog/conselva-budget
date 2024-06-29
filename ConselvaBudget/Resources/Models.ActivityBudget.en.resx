@@ -129,6 +129,9 @@
   <data name="ACTIVITY_BUDGET_COMMENTS" xml:space="preserve">
     <value>Comments</value>
   </data>
+  <data name="ACTIVITY_BUDGET_EQUIVALENT_ACCOUNT" xml:space="preserve">
+    <value>Equivalent account</value>
+  </data>
   <data name="ACTIVITY_BUDGET_REMAINDER" xml:space="preserve">
     <value>Remaining budget</value>
   </data>

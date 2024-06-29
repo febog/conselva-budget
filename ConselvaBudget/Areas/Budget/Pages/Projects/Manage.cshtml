@@ -1,8 +1,10 @@
 ﻿@page
+@inject IViewLocalizer Localizer
+@using ConselvaBudget.Authorization
 @model ManageModel
 
 @{
-    ViewData["Title"] = "Manage Project - " + Model.Project.Name;
+    ViewData["Title"] = $"{Localizer["TITLE_START"].Value} - {Model.Project.Name}";
 }
 
 <h1 class="border-bottom pb-2">@Html.DisplayFor(model => model.Project.Name)</h1>
@@ -64,9 +66,12 @@
     </div>
 </div>
 
-<p>
-    <a class="btn btn-primary" asp-page="/Results/Create" asp-route-project="@Model.Project.Id">Create Result</a>
-</p>
+@if (User.IsInRole(Roles.Management))
+{
+    <div class="mb-2">
+        <a class="btn btn-primary btn-sm" asp-page="/Results/Create" asp-route-project="@Model.Project.Id">@Localizer["BUTTON_CREATE_RESULT"]</a>
+    </div>
+}
 
 @foreach (var result in Model.Project.Results.OrderBy(r => r.Code))
 {
@@ -80,8 +85,11 @@
                         title="Collapse this Result section.">
                     <i class="bi bi-chevron-expand"></i>
                 </button>
-                <edit-button asp-page="/Results/Edit" asp-route-id="@result.Id"></edit-button>
-                <delete-button asp-page="/Results/Delete" asp-route-id="@result.Id"></delete-button>
+                @if (User.IsInRole(Roles.Management))
+                {
+                    <edit-button asp-page="/Results/Edit" asp-route-id="@result.Id"></edit-button>
+                    <delete-button asp-page="/Results/Delete" asp-route-id="@result.Id"></delete-button>
+                }
             </div>
         </div>
         <div class="card-body collapse show" id="result-body-@result.Id">
@@ -89,9 +97,12 @@
             {
                 <p>@Html.DisplayFor(model => result.Description)</p>
             }
-            <p>
-                <a class="btn btn-primary" asp-page="/Activities/Create" asp-route-projectId="@Model.Project.Id" asp-route-resultId="@result.Id">Create Activity</a>
-            </p>
+            @if (User.IsInRole(Roles.Management))
+            {
+                <div class="mb-2">
+                    <a class="btn btn-primary btn-sm" asp-page="/Activities/Create" asp-route-result="@result.Id">@Localizer["BUTTON_CREATE_ACTIVITY"]</a>
+                </div>
+            }
             <h3 class="h6 text-body-secondary">Activities</h3>
             @if (result.Activities.Count > 0)
             {
@@ -108,17 +119,23 @@
                                             title="Collapse this Activity section.">
                                         <i class="bi bi-chevron-expand"></i>
                                     </button>
-                                    <edit-button asp-page="/Activities/Edit" asp-route-projectId="@Model.Project.Id" asp-route-id="@activity.Id"></edit-button>
-                                    <delete-button asp-page="/Activities/Delete" asp-route-id="@activity.Id"></delete-button>
+                                    @if (User.IsInRole(Roles.Management))
+                                    {
+                                        <edit-button asp-page="/Activities/Edit" asp-route-projectId="@Model.Project.Id" asp-route-id="@activity.Id"></edit-button>
+                                        <delete-button asp-page="/Activities/Delete" asp-route-id="@activity.Id"></delete-button>
+                                    }
                                 </div>
                             </div>
                             <div class="collapse show" id="activity-body-@activity.Id">
                                 <p>
                                     @Html.DisplayFor(model => activity.Description)
                                 </p>
-                                <p>
-                                    <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">Create budget</a>
-                                </p>
+                                @if (User.IsInRole(Roles.Management))
+                                {
+                                    <div class="mb-2">
+                                        <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">@Localizer["BUTTON_CREATE_BUDGET"]</a>
+                                    </div>
+                                }
                                 <h4 class="h6 text-body-secondary">Budget</h4>
                                 @if (activity.ActivityBudgets.Count > 0)
                                 {
@@ -165,8 +182,11 @@
                                                                         title="Expand details such as comments and Expenses made to this budget.">
                                                                     <i class="bi bi-chevron-expand"></i>
                                                                 </button>
-                                                                <edit-button asp-page="/Budgets/Edit" asp-route-id="@budget.Id"></edit-button>
-                                                                <delete-button asp-page="/Budgets/Delete" asp-route-id="@budget.Id"></delete-button>
+                                                                @if (User.IsInRole(Roles.Management))
+                                                                {
+                                                                    <edit-button asp-page="/Budgets/Edit" asp-route-id="@budget.Id"></edit-button>
+                                                                    <delete-button asp-page="/Budgets/Delete" asp-route-id="@budget.Id"></delete-button>
+                                                                }
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -176,47 +196,53 @@
                                                             <p>
                                                                 @Html.DisplayFor(model => budget.Comments)
                                                             </p>
-                                                            @if (budget.Expenses.Count > 0)
+                                                            @if (budget.ExpenseInvoices.Count > 0)
                                                             {
                                                                 <h5 class="h6 text-body-secondary">Expenses</h5>
                                                                 <table class="table table-sm table-bordered table-striped">
                                                                     <thead>
                                                                         <tr>
                                                                             <th>
-                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Description)
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].InvoiceDate)
                                                                             </th>
                                                                             <th>
-                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Vendor)
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].Vendor)
                                                                             </th>
                                                                             <th>
-                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].Amount)
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].InvoiceAmount)
                                                                             </th>
                                                                             <th>
-                                                                                @Html.DisplayNameFor(model => budget.Expenses.ToList()[0].ExpenseDate)
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].InvoiceNumber)
+                                                                            </th>
+                                                                            <th>
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].Description)
                                                                             </th>
                                                                             <th style="width: 1px; white-space:nowrap;"></th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        @foreach (var expense in budget.Expenses)
+                                                                        @foreach (var item in budget.ExpenseInvoices)
                                                                         {
                                                                             <tr>
                                                                                 <td class="align-middle">
-                                                                                    @Html.DisplayFor(modelItem => expense.Description)
+                                                                                    @Html.DisplayFor(modelItem => item.InvoiceDate)
                                                                                 </td>
                                                                                 <td class="align-middle">
-                                                                                    @Html.DisplayFor(modelItem => expense.Vendor)
+                                                                                    @Html.DisplayFor(modelItem => item.Vendor)
                                                                                 </td>
                                                                                 <td class="align-middle">
-                                                                                    @Html.DisplayFor(modelItem => expense.Amount)
+                                                                                    @Html.DisplayFor(modelItem => item.InvoiceAmount)
                                                                                 </td>
                                                                                 <td class="align-middle">
-                                                                                    @Html.DisplayFor(modelItem => expense.ExpenseDate)
+                                                                                    @Html.DisplayFor(modelItem => item.InvoiceNumber)
                                                                                 </td>
                                                                                 <td class="align-middle">
-                                                                                    <div class="d-flex gap-1 justify-content-center">
-                                                                                        <details-button asp-area="Expenses" asp-page="/Expenses/Details" asp-route-id="@expense.Id"></details-button>
-                                                                                    </div>
+                                                                                    @Html.DisplayFor(modelItem => item.Description)
+                                                                                </td>
+                                                                                <td class="align-middle">
+                                                                                    <table-buttons>
+                                                                                        <details-button asp-area="Spending" asp-page="/ExpenseInvoices/Details" asp-route-id="@item.Id"></details-button>
+                                                                                    </table-buttons>
                                                                                 </td>
                                                                             </tr>
                                                                         }

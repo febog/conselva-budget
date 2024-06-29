@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -42,9 +43,10 @@ namespace ConselvaBudget.Models
         public string SelectedDatesInput { get; set; }
 
         [Display(Name = "Spending Request")]
-        public ExpensesRequest SpendingRequest { get; set; }
+        public Request SpendingRequest { get; set; }
 
         [Display(Name = "Vehicle")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Vehicle Vehicle { get; set; }
     }
 }

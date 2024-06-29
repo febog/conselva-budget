@@ -157,6 +157,10 @@
     <value>Guardar</value>
     <comment>Generic button</comment>
   </data>
+  <data name="BUTTON_SELECT" xml:space="preserve">
+    <value>Seleccionar</value>
+    <comment>Generic button</comment>
+  </data>
   <data name="CREATE" xml:space="preserve">
     <value>Crear</value>
     <comment>Generic action</comment>
@@ -180,6 +184,30 @@
   <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
     <value>Cuenta</value>
     <comment>Account catalog</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_CATALOG_NAME" xml:space="preserve">
+    <value>Presupuestos de actividad</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Una cantidad de presupuesto dado una &lt;b&gt;Actividad&lt;/b&gt; y una &lt;b&gt;Cuenta&lt;/b&gt;.&lt;/p&gt;</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_NAME" xml:space="preserve">
+    <value>Presupuesto de actividad</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_CATALOG_NAME" xml:space="preserve">
+    <value>Actividades</value>
+    <comment>Activity entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_HELP" xml:space="preserve">
+    <value>&lt;p&gt;Las actividades del Proyecto, bajo un Resultado.&lt;/p&gt;</value>
+    <comment>Activity entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_NAME" xml:space="preserve">
+    <value>Actividad</value>
+    <comment>Activity entity</comment>
   </data>
   <data name="ENTITY_DEPOSIT_CATALOG_NAME" xml:space="preserve">
     <value>Depósitos</value>
@@ -253,6 +281,14 @@
     <value>Proyecto</value>
     <comment>Project catalog</comment>
   </data>
+  <data name="ENTITY_REQUEST_CATALOG_NAME" xml:space="preserve">
+    <value>Solicitudes</value>
+    <comment>Request entity</comment>
+  </data>
+  <data name="ENTITY_REQUEST_NAME" xml:space="preserve">
+    <value>Solicitud</value>
+    <comment>Request entity</comment>
+  </data>
   <data name="ENTITY_RESULT_CATALOG_NAME" xml:space="preserve">
     <value>Resultados</value>
     <comment>Result entity</comment>
@@ -292,5 +328,8 @@
   <data name="LIST_OF" xml:space="preserve">
     <value>Lista de</value>
     <comment>Used in Index layout</comment>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>String1</value>
   </data>
 </root>

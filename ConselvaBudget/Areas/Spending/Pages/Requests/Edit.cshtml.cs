@@ -15,7 +15,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         }
 
         [BindProperty]
-        public ExpensesRequest SpendingRequest { get; set; }
+        public Request SpendingRequest { get; set; }
 
         public Activity Activity { get; set; }
 
@@ -26,7 +26,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            SpendingRequest = await _context.SpendingRequests
+            SpendingRequest = await _context.Requests
                 .Include(r => r.Activity)
                 .Include(r => r.Trip)
                 .FirstOrDefaultAsync(r => r.Id == id);
@@ -44,7 +44,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            var requestToUpdate = await _context.SpendingRequests
+            var requestToUpdate = await _context.Requests
                 .Include(r => r.Activity)
                 .Include(r => r.Trip)
                 .FirstOrDefaultAsync(r => r.Id == id);
@@ -54,7 +54,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<ExpensesRequest>(
+            if (await TryUpdateModelAsync<Request>(
                 requestToUpdate,
                 "SpendingRequest",
                 a => a.Description,

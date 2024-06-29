@@ -7,20 +7,23 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        public int ExpenseRequestId { get; set; }
+        public int RequestId { get; set; }
 
         [StringLength(450)]
         [Required]
-        public string EventAuthor { get; set; }
+        [ValidateNever]
+        public string EventAuthorUserId { get; set; }
 
         public DateTime EventTime { get; set; }
 
-        public ExpensesRequestOperation Operation { get; set; }
+        public RequestLogEntryOperation Operation { get; set; }
 
-        public ExpensesRequest ExpenseRequest { get; set; }
+        public RequestStatus? Status { get; set; }
+
+        public Request Request { get; set; }
     }
 
-    public enum ExpensesRequestOperation
+    public enum RequestLogEntryOperation
     {
         CreateRequest,
         UpdateRequestDetails,

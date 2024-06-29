@@ -1,0 +1,96 @@
+﻿@page
+@model ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].InvoiceAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].Vendor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].InvoiceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].InvoiceNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].CreatedByUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].ModifiedByUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].ActivityBudget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseInvoice[0].Request)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ExpenseInvoice) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedByUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedByUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivityBudget.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Request.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -157,6 +157,10 @@
     <value>Save</value>
     <comment>Generic button</comment>
   </data>
+  <data name="BUTTON_SELECT" xml:space="preserve">
+    <value>Select</value>
+    <comment>Generic button</comment>
+  </data>
   <data name="CREATE" xml:space="preserve">
     <value>Create</value>
     <comment>Generic action</comment>
@@ -180,6 +184,30 @@
   <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
     <value>Account</value>
     <comment>Account catalog</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_CATALOG_NAME" xml:space="preserve">
+    <value>Activity budgets</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_HELP" xml:space="preserve">
+    <value>&lt;p&gt;A certain amount of budget for the given &lt;b&gt;Activity&lt;/b&gt; and &lt;b&gt;Account&lt;/b&gt;.&lt;/p&gt;</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_BUDGET_NAME" xml:space="preserve">
+    <value>Activity budget</value>
+    <comment>ActivityBudget entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_CATALOG_NAME" xml:space="preserve">
+    <value>Activities</value>
+    <comment>Activity entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_HELP" xml:space="preserve">
+    <value>&lt;p&gt;The activities of the Project, under a Result.&lt;/p&gt;</value>
+    <comment>Activity entity</comment>
+  </data>
+  <data name="ENTITY_ACTIVITY_NAME" xml:space="preserve">
+    <value>Activity</value>
+    <comment>Activity entity</comment>
   </data>
   <data name="ENTITY_DEPOSIT_CATALOG_NAME" xml:space="preserve">
     <value>Deposits</value>
@@ -252,6 +280,14 @@
   <data name="ENTITY_PROJECT_NAME" xml:space="preserve">
     <value>Project</value>
     <comment>Project catalog</comment>
+  </data>
+  <data name="ENTITY_REQUEST_CATALOG_NAME" xml:space="preserve">
+    <value>Requests</value>
+    <comment>Request entity</comment>
+  </data>
+  <data name="ENTITY_REQUEST_NAME" xml:space="preserve">
+    <value>Request</value>
+    <comment>Request entity</comment>
   </data>
   <data name="ENTITY_RESULT_CATALOG_NAME" xml:space="preserve">
     <value>Results</value>

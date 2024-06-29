@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,29 +16,37 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "ACTIVITY_BUDGET_AMOUNT")]
         [Column(TypeName = "money")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
 
         [Display(Name = "ACTIVITY_BUDGET_COMMENTS")]
         [StringLength(255)]
         public string Comments { get; set; }
 
+        [Display(Name = "ACTIVITY_BUDGET_EQUIVALENT_ACCOUNT")]
+        [StringLength(255)]
+        public string EquivalentAccount { get; set; }
+
         [Display(Name = "ACTIVITY_BUDGET_TOTAL_EXPENSES")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
-        public decimal TotalExpenses => Expenses.Sum(e => e.Amount);
+        public decimal TotalExpenses => 0;
 
         [Display(Name = "ACTIVITY_BUDGET_REMAINDER")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal Remainder => Amount - TotalExpenses;
 
         [Display(Name = "ACTIVITY_BUDGET_ACTIVITY")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Activity Activity { get; set; }
 
         [Display(Name = "ACTIVITY_BUDGET_ACCOUNT_ASSIGNMENT")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public AccountAssignment AccountAssignment { get; set; }
 
-        public virtual ICollection<Expense> Expenses { get; set; }
+        public virtual ICollection<AmountRequest> AmountRequests { get; set; }
+
+        public virtual ICollection<ExpenseInvoice> ExpenseInvoices { get; set; }
     }
 }

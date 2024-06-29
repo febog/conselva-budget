@@ -38,7 +38,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         }
 
         [BindProperty]
-        public ExpensesRequest SpendingRequest { get; set; }
+        public Request SpendingRequest { get; set; }
 
         public Activity Activity { get; set; }
 
@@ -56,9 +56,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            var emptyRequest = new ExpensesRequest();
+            var emptyRequest = new Request();
 
-            if (await TryUpdateModelAsync<ExpensesRequest>(
+            if (await TryUpdateModelAsync<Request>(
                 emptyRequest,
                 "SpendingRequest",
                 r => r.Description,
@@ -70,12 +70,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 // Set calculated fields
                 emptyRequest.ActivityId = foundActivity.Id;
                 emptyRequest.RequestorUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                emptyRequest.RequestorUserName = User.Identity.Name;
                 emptyRequest.Status = RequestStatus.Created;
                 emptyRequest.CreatedDate = DateTime.Now;
                 emptyRequest.ModifiedDate = DateTime.Now;
 
-                _context.SpendingRequests.Add(emptyRequest);
+                _context.Requests.Add(emptyRequest);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }

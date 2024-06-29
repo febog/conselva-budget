@@ -29,7 +29,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         /// the Trip.
         /// </summary>
         /// <param name="r">SpendingRequest to clean</param>
-        private protected void RemoveTripIfEmpty(ExpensesRequest r)
+        private protected void RemoveTripIfEmpty(Request r)
         {
             if (r.Trip?.VehicleId == null &&
                 string.IsNullOrWhiteSpace(r.Trip?.Driver) &&
@@ -45,7 +45,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         /// Parse multidates given by the UI. Sent as a comma-separted string.
         /// </summary>
         /// <param name="r">Request to set the dates to.</param>
-        private protected void ParseSelectedDates(ExpensesRequest r)
+        private protected void ParseSelectedDates(Request r)
         {
             // By default, bootstrap-datepicker sends multidate as a comma-separted string
             // Transforms from "yyyy-mm-dd,yyyy-mm-dd" to ["yyyy-mm-dd","yyyy-mm-dd"]
@@ -64,7 +64,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         /// Populates the attribute that is mapped to the field in the UI.
         /// </summary>
         /// <param name="r">Request to populate.</param>
-        private protected void PopulateDatesInput(ExpensesRequest r)
+        private protected void PopulateDatesInput(Request r)
         {
             if (r.Trip != null)
             {

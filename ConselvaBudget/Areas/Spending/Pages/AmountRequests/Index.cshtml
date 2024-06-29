@@ -1,0 +1,78 @@
+﻿@page
+@model ConselvaBudget.Areas.Spending.Pages.AmountRequests.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRequest[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRequest[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRequest[0].CreatedByUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRequest[0].ModifiedByUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRequest[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRequest[0].ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRequest[0].ActivityBudget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRequest[0].Request)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AmountRequest) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedByUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedByUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivityBudget.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Request.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
