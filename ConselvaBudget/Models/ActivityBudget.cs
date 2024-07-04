@@ -30,12 +30,22 @@ namespace ConselvaBudget.Models
         [Display(Name = "ACTIVITY_BUDGET_TOTAL_EXPENSES")]
         [DataType(DataType.Currency)]
         [ValidateNever]
-        public decimal TotalExpenses => 0;
+        public decimal TotalExpenses
+        {
+            get
+            {
+                var completedInvoices = ExpenseInvoices
+                    .Where(ei => ei.Request.Status == RequestStatus.Completed)
+                    .Sum(ei => ei.InvoiceAmount);
+
+                return completedInvoices;
+            }
+        }
 
         [Display(Name = "ACTIVITY_BUDGET_REMAINDER")]
         [DataType(DataType.Currency)]
         [ValidateNever]
-        public decimal Remainder => Amount - TotalExpenses;
+        public decimal RemainingBudget => Amount - TotalExpenses;
 
         [Display(Name = "ACTIVITY_BUDGET_ACTIVITY")]
         [DeleteBehavior(DeleteBehavior.Restrict)]

@@ -17,14 +17,17 @@ namespace ConselvaBudget.Areas.Spending.Pages.AmountRequests
                 .Include(b => b.Activity.Result.Project)
                 .Include(b => b.AccountAssignment.Account)
                 .Include(b => b.AccountAssignment.Organization)
+                .Include(b => b.ExpenseInvoices)
+                .ThenInclude(ei => ei.Request)
                 .OrderBy(b => b.Activity.Result.Project.Name)
+                .ThenBy(b => b.Activity.Code)
                 .ThenBy(b => b.AccountAssignment.Organization.Code)
                 .ThenBy(b => b.AccountAssignment.Account.Code)
                 .Where(b => b.ActivityId == activityId)
                 .Select(b => new
                 {
                     b.Id,
-                    Name = $"{b.Activity.Code} - {b.AccountAssignment.DisplayName} ({b.Remainder.ToString("c")})",
+                    Name = $"{b.Activity.Code} - {b.AccountAssignment.DisplayName} ({b.RemainingBudget.ToString("c")})",
                     Group = b.Activity.Result.Project.Name
                 });            
 

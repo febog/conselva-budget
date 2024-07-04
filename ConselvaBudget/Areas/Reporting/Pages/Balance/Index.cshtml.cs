@@ -25,6 +25,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
                     .Include(b => b.AccountAssignment.Organization)
                     .Include(b => b.AccountAssignment.Account)
                     .Include(b => b.ExpenseInvoices)
+                    .ThenInclude(ei => ei.Request)
                     .ToListAsync();
 
             // Map to report view model
@@ -50,7 +51,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
                     Comments = activityBudget.Comments,
                     Amount = activityBudget.Amount,
                     Expenses = activityBudget.TotalExpenses,
-                    Remainder = activityBudget.Remainder,
+                    Remainder = activityBudget.RemainingBudget,
                 });
             }
             return data;
