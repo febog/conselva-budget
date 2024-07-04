@@ -31,7 +31,7 @@ namespace ConselvaBudget.Models
         [Display(Name = "RESULT_REMAINING_BUDGET")]
         [DataType(DataType.Currency)]
         [ValidateNever]
-        public decimal RemainingBudget => Activities.Sum(e => e.RemainingBudget);
+        public decimal RemainingBudget => TotalBudget - TotalExpenses;
 
         [Display(Name = "RESULT_PROJECT")]
         public Project Project { get; set; }
