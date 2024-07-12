@@ -20,7 +20,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public async Task OnGetAsync()
         {
-            var requests = _context.Requests.Select(r => r);
+            var requests = _context.Requests
+                .Include(r => r.Activity.Result.Project)
+                .Select(r => r);
 
             if (!User.IsInRole(Roles.Management))
             {
