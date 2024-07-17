@@ -73,4 +73,19 @@ namespace ConselvaBudget.Models
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public Request Request { get; set; }
     }
+
+    public enum PaymentMethod
+    {
+        // Do not reorder
+        [Display(Name = "PAYMENT_METHOD_CASH")]
+        Cash = 0,
+        [Display(Name = "PAYMENT_METHOD_DEBIT_CARD")]
+        DebitCard = 1,
+        [Display(Name = "PAYMENT_METHOD_CREDIT_CARD")]
+        CreditCard = 2,
+        [Display(Name = "PAYMENT_METHOD_TRANSFER")]
+        Transfer = 3,
+        [Display(Name = "PAYMENT_METHOD_PAID")]
+        Paid = 4
+    }
 }
