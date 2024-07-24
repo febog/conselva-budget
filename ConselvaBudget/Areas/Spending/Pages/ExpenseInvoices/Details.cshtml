@@ -18,16 +18,22 @@
             @Html.DisplayFor(model => model.ExpenseInvoice.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.InvoiceAmount)
+            @Html.DisplayNameFor(model => model.ExpenseInvoice.Amount)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.InvoiceAmount)
+            @Html.DisplayFor(model => model.ExpenseInvoice.Amount)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ExpenseInvoice.Vendor)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ExpenseInvoice.Vendor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExpenseInvoice.PaymentMethod)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExpenseInvoice.PaymentMethod)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ExpenseInvoice.InvoiceDate)

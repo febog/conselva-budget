@@ -4,6 +4,7 @@ using ConselvaBudget.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConselvaBudget.Data.ConselvaMigrations
 {
     [DbContext(typeof(ConselvaBudgetContext))]
-    partial class ConselvaBudgetContextModelSnapshot : ModelSnapshot
+    [Migration("20240724223455_AddPaymentMethod")]
+    partial class AddPaymentMethod
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,9 +305,6 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                     b.Property<int>("ActivityBudgetId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("money");
-
                     b.Property<string>("CreatedByUserId")
                         .IsRequired()
                         .HasMaxLength(450)
@@ -317,6 +317,9 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .IsRequired()
                         .HasMaxLength(512)
                         .HasColumnType("nvarchar(512)");
+
+                    b.Property<decimal>("InvoiceAmount")
+                        .HasColumnType("money");
 
                     b.Property<DateTime>("InvoiceDate")
                         .HasColumnType("datetime2");
