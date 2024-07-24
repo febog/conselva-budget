@@ -208,6 +208,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].ActivityBudget.AccountAssignment)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].PaymentMethod)
+                </th>
                 <th style="width: 1px; white-space:nowrap;"></th>
             </tr>
         </thead>
@@ -232,6 +235,9 @@
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.PaymentMethod)
                     </td>
                     <td class="align-middle">
                         <table-buttons>
