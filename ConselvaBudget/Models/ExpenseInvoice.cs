@@ -9,70 +9,70 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Budget")]
         public int ActivityBudgetId { get; set; }
 
-        [Display(Name = "Request")]
         public int RequestId { get; set; }
 
-        [Display(Name = "Description")]
+        [Display(Name = "EXPENSE_INVOICE_DESCRIPTION")]
         [StringLength(512)]
         [Required]
         public string Description { get; set; }
 
-        [Display(Name = "Invoice amount")]
+        [Display(Name = "EXPENSE_INVOICE_AMOUNT")]
         [Column(TypeName = "money")]
         [DataType(DataType.Currency)]
-        public decimal InvoiceAmount { get; set; }
+        public decimal Amount { get; set; }
 
-        [Display(Name = "Vendor")]
+        [Display(Name = "EXPENSE_INVOICE_VENDOR")]
         [StringLength(255)]
         [Required]
         public string Vendor { get; set; }
 
-        [Display(Name = "Payment method")]
+        [Display(Name = "EXPENSE_INVOICE_PAYMENT_METHOD")]
         public PaymentMethod PaymentMethod { get; set; }
 
-        [Display(Name = "Invoice date")]
+        [Display(Name = "EXPENSE_INVOICE_INVOICE_DATE")]
         [DataType(DataType.Date)]
         public DateTime InvoiceDate { get; set; }
 
-        [Display(Name = "Invoice number")]
+        [Display(Name = "EXPENSE_INVOICE_INVOICE_NUMBER")]
         [StringLength(255)]
         [Required]
         public string InvoiceNumber { get; set; }
 
+        [Display(Name = "EXPENSE_INVOICE_CREATED_BY_USER_ID")]
         [StringLength(450)]
         [Required]
         [ValidateNever]
         public string CreatedByUserId { get; set; }
 
+        [Display(Name = "EXPENSE_INVOICE_MODIFIED_BY_USER_ID")]
         [StringLength(450)]
         [Required]
         [ValidateNever]
         public string ModifiedByUserId { get; set; }
 
-        [Display(Name = "CreatedDate")]
+        [Display(Name = "EXPENSE_INVOICE_CREATED_DATE")]
         public DateTime CreatedDate { get; set; }
 
-        [Display(Name = "ModifiedDate")]
+        [Display(Name = "EXPENSE_INVOICE_MODIFIED_DATE")]
         public DateTime ModifiedDate { get; set; }
 
-        [Display(Name = "PDF link")]
+        [Display(Name = "EXPENSE_INVOICE_PDF_URL")]
         [StringLength(2048)]
         [DataType(DataType.Url)]
         public string PdfUrl { get; set; }
 
-        [Display(Name = "XML link")]
+        [Display(Name = "EXPENSE_INVOICE_XML_URL")]
         [StringLength(2048)]
         [DataType(DataType.Url)]
         public string XmlUrl { get; set; }
 
-        [Display(Name = "Account")]
+        [Display(Name = "EXPENSE_INVOICE_ACTIVITY_BUDGET")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public ActivityBudget ActivityBudget { get; set; }
 
-        [Display(Name = "Request")]
+        [Display(Name = "EXPENSE_INVOICE_REQUEST")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public Request Request { get; set; }
     }

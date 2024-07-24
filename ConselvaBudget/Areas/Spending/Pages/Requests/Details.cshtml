@@ -197,7 +197,7 @@
                     @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].Vendor)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].InvoiceAmount)
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].Amount)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].InvoiceNumber)
@@ -222,7 +222,7 @@
                         @Html.DisplayFor(modelItem => item.Vendor)
                     </td>
                     <td class="align-middle">
-                        @Html.DisplayFor(modelItem => item.InvoiceAmount)
+                        @Html.DisplayFor(modelItem => item.Amount)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.InvoiceNumber)
