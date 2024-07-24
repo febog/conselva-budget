@@ -73,6 +73,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 ar => ar.Description,
                 ar => ar.InvoiceAmount,
                 ar => ar.Vendor,
+                ar => ar.PaymentMethod,
                 ar => ar.InvoiceDate,
                 ar => ar.PdfUrl,
                 ar => ar.XmlUrl,

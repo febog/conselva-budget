@@ -74,6 +74,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 ei => ei.Description,
                 ei => ei.InvoiceAmount,
                 ei => ei.Vendor,
+                ei => ei.PaymentMethod,
                 ei => ei.InvoiceDate,
                 ei => ei.PdfUrl,
                 ei => ei.XmlUrl,

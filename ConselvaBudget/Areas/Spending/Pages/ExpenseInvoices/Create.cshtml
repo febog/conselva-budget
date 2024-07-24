@@ -1,4 +1,5 @@
 ﻿@page
+@using ConselvaBudget.Models
 @model ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices.CreateModel
 
 @{
@@ -31,6 +32,11 @@
                 <label asp-for="ExpenseInvoice.Vendor" class="control-label"></label>
                 <input asp-for="ExpenseInvoice.Vendor" class="form-control" />
                 <span asp-validation-for="ExpenseInvoice.Vendor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpenseInvoice.PaymentMethod" class="control-label"></label>
+                <select asp-for="ExpenseInvoice.PaymentMethod" class="form-select" asp-items="Html.GetEnumSelectList<PaymentMethod>()"></select>
+                <span asp-validation-for="ExpenseInvoice.PaymentMethod" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ExpenseInvoice.InvoiceDate" class="control-label"></label>

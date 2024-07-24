@@ -30,6 +30,9 @@ namespace ConselvaBudget.Models
         [Required]
         public string Vendor { get; set; }
 
+        [Display(Name = "Payment method")]
+        public PaymentMethod PaymentMethod { get; set; }
+
         [Display(Name = "Invoice date")]
         [DataType(DataType.Date)]
         public DateTime InvoiceDate { get; set; }
