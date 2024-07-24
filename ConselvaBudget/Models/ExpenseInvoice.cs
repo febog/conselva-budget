@@ -88,7 +88,7 @@ namespace ConselvaBudget.Models
         CreditCard = 2,
         [Display(Name = "PAYMENT_METHOD_TRANSFER")]
         Transfer = 3,
-        [Display(Name = "PAYMENT_METHOD_PAID")]
-        Paid = 4
+        [Display(Name = "PAYMENT_METHOD_PREPAID")]
+        PrePaid = 4
     }
 }
