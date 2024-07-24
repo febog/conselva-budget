@@ -9,6 +9,7 @@ namespace ConselvaBudget.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "EXPENSE_INVOICE_ACTIVITY_BUDGET_ID")]
         public int ActivityBudgetId { get; set; }
 
         public int RequestId { get; set; }
