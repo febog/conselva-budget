@@ -253,6 +253,49 @@
             }
         </tbody>
     </table>
+
+    <h2>Subtotales</h2>
+
+    <table class="table table-sm table-bordered table-striped caption-top">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subtotals.CashSubtotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subtotals.DebitCardSubtotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subtotals.CreditCardSubtotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subtotals.TransferSubtotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subtotals.PrePaidSubtotal)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="align-middle">
+                    @Html.DisplayFor(model => model.Subtotals.CashSubtotal)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(model => model.Subtotals.DebitCardSubtotal)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(model => model.Subtotals.CreditCardSubtotal)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(model => model.Subtotals.TransferSubtotal)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(model => model.Subtotals.PrePaidSubtotal)
+                </td>
+            </tr>
+        </tbody>
+    </table>
 }
 
 

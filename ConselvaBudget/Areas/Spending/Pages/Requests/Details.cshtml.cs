@@ -23,6 +23,8 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         [BindProperty]
         public Request SpendingRequest { get; set; }
 
+        public SubtotalsViewModel Subtotals {  get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -51,6 +53,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             // Get username of requestor instead of displaying the user ID.
             var requestor = await _userManager.FindByIdAsync(SpendingRequest.RequestorUserId);
             ViewData["RequestorUsername"] = requestor.UserName;
+            Subtotals = GetSubtotals(SpendingRequest);
 
             return Page();
         }
@@ -145,6 +148,18 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             }
 
             return RedirectToPage("./Index");
+        }
+
+        private SubtotalsViewModel GetSubtotals(Request r)
+        {
+            return new SubtotalsViewModel
+            {
+                CashSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.Cash).Sum(e => e.Amount),
+                DebitCardSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.DebitCard).Sum(e => e.Amount),
+                CreditCardSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.CreditCard).Sum(e => e.Amount),
+                TransferSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.Transfer).Sum(e => e.Amount),
+                PrePaidSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.PrePaid).Sum(e => e.Amount)
+            };
         }
     }
 }
