@@ -132,6 +132,9 @@
   <data name="BUTTON_EDIT_REQUEST" xml:space="preserve">
     <value>Editar solicitud</value>
   </data>
+  <data name="BUTTON_MARK_AS_PAID" xml:space="preserve">
+    <value>Marcar como pagada</value>
+  </data>
   <data name="BUTTON_REQUEST_AMOUNT" xml:space="preserve">
     <value>Solicitar monto</value>
     <comment>When creating AmountRequest</comment>
