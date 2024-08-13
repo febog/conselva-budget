@@ -331,6 +331,9 @@ else
                 <th>
                     @Html.DisplayNameFor(model => model.SpendingRequests[0].ModifiedDate)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequests[0].IsPaid)
+                </th>
                 <th style="width: 1px; white-space:nowrap;"></th>
             </tr>
         </thead>
@@ -356,6 +359,16 @@ else
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+                    <td class="align-middle">
+                        @if (item.IsPaid)
+                        {
+                            <span class="badge text-bg-success"><i class="bi bi-check-lg"></i></span>
+                        }
+                        else
+                        {
+                            <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i></span>
+                        }
                     </td>
                     <td class="align-middle">
                         <table-buttons>
