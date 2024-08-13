@@ -36,6 +36,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
+            if (SpendingRequest.Status == RequestStatus.Completed)
+            {
+                return Forbid();
+            }
+
             Activity = SpendingRequest.Activity;
             PopulateVehicleDropDownList(_context, SpendingRequest.Trip?.VehicleId);
             PopulateDatesInput(SpendingRequest);
@@ -52,6 +57,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             if (requestToUpdate == null)
             {
                 return NotFound();
+            }
+
+            if (SpendingRequest.Status == RequestStatus.Completed)
+            {
+                return Forbid();
             }
 
             if (await TryUpdateModelAsync<Request>(

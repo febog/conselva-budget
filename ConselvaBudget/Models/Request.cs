@@ -12,6 +12,9 @@ namespace ConselvaBudget.Models
 
         public RequestStatus Status { get; set; }
 
+        [Display(Name = "Paid")]
+        public bool IsPaid { get; set; }
+
         [StringLength(450)]
         [Required]
         [ValidateNever]
