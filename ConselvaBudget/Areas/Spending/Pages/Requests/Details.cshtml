@@ -123,7 +123,10 @@
     {
         <a class="btn btn-primary" asp-page="/ExpenseInvoices/Create" asp-route-request="@Model.SpendingRequest.Id">Agregar factura</a>
     }
-    <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@Model.SpendingRequest.Id">@Localizer["BUTTON_EDIT_REQUEST"]</a>
+    @if (Model.SpendingRequest.Status != RequestStatus.Completed)
+    {
+        <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@Model.SpendingRequest.Id">@Localizer["BUTTON_EDIT_REQUEST"]</a>
+    }
     @if (Model.SpendingRequest.Status == RequestStatus.Created)
     {
         <form method="post" asp-page-handler="submitForReview" asp-route-request="@Model.SpendingRequest.Id">
