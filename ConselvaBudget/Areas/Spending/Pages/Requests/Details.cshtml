@@ -73,7 +73,14 @@
         @Html.DisplayNameFor(model => model.SpendingRequest.IsPaid)
     </dt>
     <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.SpendingRequest.IsPaid)
+        @if (Model.SpendingRequest.IsPaid)
+        {
+            <span class="badge text-bg-success"><i class="bi bi-check-lg"></i> @Localizer["PAID"]</span>
+        }
+        else
+        {
+            <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i> @Localizer["PENDING"]</span>
+        }
     </dd>
 </dl>
 

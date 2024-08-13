@@ -149,4 +149,10 @@
   <data name="PAGE_TITLE" xml:space="preserve">
     <value>Detalles de solicitud</value>
   </data>
+  <data name="PAID" xml:space="preserve">
+    <value>Pagado</value>
+  </data>
+  <data name="PENDING" xml:space="preserve">
+    <value>Pendiente</value>
+  </data>
 </root>
