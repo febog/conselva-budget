@@ -139,6 +139,10 @@
     <value>Request Amount</value>
     <comment>When creating AmountRequest</comment>
   </data>
+  <data name="BUTTON_SET_AS_CREATED" xml:space="preserve">
+    <value>Set status as created</value>
+    <comment>To allow edits or corrections</comment>
+  </data>
   <data name="BUTTON_SUBMIT_FOR_REVIEW" xml:space="preserve">
     <value>Submit for review</value>
   </data>

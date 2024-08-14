@@ -158,6 +158,12 @@
             <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_COMPLETE"]">
         </form>
     }
+    @if (User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status != RequestStatus.Created)
+    {
+        <form method="post" asp-page-handler="setAsCreated" asp-route-request="@Model.SpendingRequest.Id">
+            <input class="btn btn-danger" type="submit" value="@Localizer["BUTTON_SET_AS_CREATED"]">
+        </form>
+    }
     @if (User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status == RequestStatus.Completed && !Model.SpendingRequest.IsPaid)
     {
         <form method="post" asp-page-handler="markAsPaid" asp-route-request="@Model.SpendingRequest.Id">

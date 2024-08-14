@@ -150,6 +150,24 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             return RedirectToPage("./Index");
         }
 
+        public async Task<IActionResult> OnPostSetAsCreatedAsync(int request)
+        {
+            if (User.IsInRole(Roles.Administrator))
+            {
+                var requestToUpdate = await _context.Requests.FindAsync(request);
+
+                if (requestToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                requestToUpdate.Status = RequestStatus.Created;
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
+        }
+
         public async Task<IActionResult> OnPostMarkAsPaidAsync(int request)
         {
             if (User.IsInRole(Roles.Administrator))
