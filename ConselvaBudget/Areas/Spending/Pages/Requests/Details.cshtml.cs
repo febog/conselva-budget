@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConselvaBudget.Areas.Spending.Pages.Requests
 {
@@ -23,7 +24,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         [BindProperty]
         public Request SpendingRequest { get; set; }
 
-        public SubtotalsViewModel Subtotals {  get; set; }
+        public PaymentSubtotalsViewModel PaymentSubtotals { get; set; }
+
+        public ICollection<AccountSubtotalsViewModel> RequestedSubtotals { get; set; }
+
+        public ICollection<AccountSubtotalsViewModel> InvoicedSubtotals { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -53,7 +58,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             // Get username of requestor instead of displaying the user ID.
             var requestor = await _userManager.FindByIdAsync(SpendingRequest.RequestorUserId);
             ViewData["RequestorUsername"] = requestor.UserName;
-            Subtotals = GetSubtotals(SpendingRequest);
+            RequestedSubtotals = GetAccountSubtotals(SpendingRequest.AmountRequests);
+            InvoicedSubtotals = GetAccountSubtotals(SpendingRequest.ExpenseInvoices);
+            PaymentSubtotals = GetPaymentSubtotals(SpendingRequest);
 
             return Page();
         }
@@ -191,9 +198,32 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             return RedirectToPage("./Index");
         }
 
-        private SubtotalsViewModel GetSubtotals(Request r)
+        public async Task<IActionResult> OnPostMarkAsNotPaidAsync(int request)
         {
-            return new SubtotalsViewModel
+            if (User.IsInRole(Roles.Administrator))
+            {
+                var requestToUpdate = await _context.Requests.FindAsync(request);
+
+                if (requestToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                if (requestToUpdate.Status != RequestStatus.Completed)
+                {
+                    return Forbid();
+                }
+
+                requestToUpdate.IsPaid = false;
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
+        }
+
+        private PaymentSubtotalsViewModel GetPaymentSubtotals(Request r)
+        {
+            return new PaymentSubtotalsViewModel
             {
                 CashSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.Cash).Sum(e => e.Amount),
                 DebitCardSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.DebitCard).Sum(e => e.Amount),
@@ -201,6 +231,31 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 TransferSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.Transfer).Sum(e => e.Amount),
                 PrePaidSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.PrePaid).Sum(e => e.Amount)
             };
+        }
+
+        private ICollection<AccountSubtotalsViewModel> GetAccountSubtotals(ICollection<AmountRequest> requests)
+        {
+            var subtotals = requests.GroupBy(r => r.ActivityBudget.AccountAssignment.Id)
+                .Select(g => new AccountSubtotalsViewModel
+                {
+                    AccountAssignment = g.First().ActivityBudget.AccountAssignment.DisplayName,
+                    Amount = g.Sum(r => r.Amount)
+                });
+
+            return subtotals.ToList();
+        }
+
+        private ICollection<AccountSubtotalsViewModel> GetAccountSubtotals(ICollection<ExpenseInvoice> invoices)
+        {
+
+            var subtotals = invoices.GroupBy(i => i.ActivityBudget.AccountAssignment.Id)
+                .Select(g => new AccountSubtotalsViewModel
+                {
+                    AccountAssignment = g.First().ActivityBudget.AccountAssignment.DisplayName,
+                    Amount = g.Sum(i => i.Amount)
+                });
+
+            return subtotals.ToList();
         }
     }
 }

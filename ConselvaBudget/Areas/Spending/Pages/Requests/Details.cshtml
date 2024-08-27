@@ -170,6 +170,12 @@
             <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_MARK_AS_PAID"]">
         </form>
     }
+    @if (User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status == RequestStatus.Completed && Model.SpendingRequest.IsPaid)
+    {
+        <form method="post" asp-page-handler="markAsNotPaid" asp-route-request="@Model.SpendingRequest.Id">
+            <input class="btn btn-danger" type="submit" value="@Localizer["BUTTON_MARK_AS_NOT_PAID"]">
+        </form>
+    }
 </div>
 
 <h2>Solicitud de gastos</h2>
@@ -215,6 +221,46 @@
             </tr>
         }
     </tbody>
+</table>
+
+<h3>Subtotales de lo solicitado</h3>
+
+<table class="table table-sm table-bordered table-striped caption-top">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestedSubtotals.ToList()[0].AccountAssignment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestedSubtotals.ToList()[0].Amount)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RequestedSubtotals)
+        {
+            <tr>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.AccountAssignment)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Total</th>
+            <th>
+                @{
+                    var requestedTotal = string.Format("{0:C}", Model.RequestedSubtotals.Sum(r => r.Amount));
+                }
+                @Html.DisplayFor(modelItem => requestedTotal)
+
+            </th>
+        </tr>
+    </tfoot>
 </table>
 
 @if (Model.SpendingRequest.ExpenseInvoices.Count > 0)
@@ -288,44 +334,84 @@
         </tbody>
     </table>
 
-    <h2>Subtotales</h2>
+    <h3>Subtotales de lo facturado</h3>
 
     <table class="table table-sm table-bordered table-striped caption-top">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Subtotals.CashSubtotal)
+                    @Html.DisplayNameFor(model => model.RequestedSubtotals.ToList()[0].AccountAssignment)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Subtotals.DebitCardSubtotal)
+                    @Html.DisplayNameFor(model => model.RequestedSubtotals.ToList()[0].Amount)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.RequestedSubtotals)
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.AccountAssignment)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total</th>
+                <th>
+                    @{
+                        var invoicedTotal = string.Format("{0:C}", Model.RequestedSubtotals.Sum(r => r.Amount));
+                    }
+                    @Html.DisplayFor(modelItem => invoicedTotal)
+
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h3>Subtotales por modo de pago</h3>
+
+    <table class="table table-sm table-bordered table-striped caption-top">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentSubtotals.CashSubtotal)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Subtotals.CreditCardSubtotal)
+                    @Html.DisplayNameFor(model => model.PaymentSubtotals.DebitCardSubtotal)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Subtotals.TransferSubtotal)
+                    @Html.DisplayNameFor(model => model.PaymentSubtotals.CreditCardSubtotal)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Subtotals.PrePaidSubtotal)
+                    @Html.DisplayNameFor(model => model.PaymentSubtotals.TransferSubtotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentSubtotals.PrePaidSubtotal)
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="align-middle">
-                    @Html.DisplayFor(model => model.Subtotals.CashSubtotal)
+                    @Html.DisplayFor(model => model.PaymentSubtotals.CashSubtotal)
                 </td>
                 <td class="align-middle">
-                    @Html.DisplayFor(model => model.Subtotals.DebitCardSubtotal)
+                    @Html.DisplayFor(model => model.PaymentSubtotals.DebitCardSubtotal)
                 </td>
                 <td class="align-middle">
-                    @Html.DisplayFor(model => model.Subtotals.CreditCardSubtotal)
+                    @Html.DisplayFor(model => model.PaymentSubtotals.CreditCardSubtotal)
                 </td>
                 <td class="align-middle">
-                    @Html.DisplayFor(model => model.Subtotals.TransferSubtotal)
+                    @Html.DisplayFor(model => model.PaymentSubtotals.TransferSubtotal)
                 </td>
                 <td class="align-middle">
-                    @Html.DisplayFor(model => model.Subtotals.PrePaidSubtotal)
+                    @Html.DisplayFor(model => model.PaymentSubtotals.PrePaidSubtotal)
                 </td>
             </tr>
         </tbody>
