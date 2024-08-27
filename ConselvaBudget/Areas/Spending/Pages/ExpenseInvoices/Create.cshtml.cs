@@ -73,6 +73,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 ei => ei.ActivityBudgetId,
                 ei => ei.Description,
                 ei => ei.Amount,
+                ei => ei.TaxWithheld,
                 ei => ei.Vendor,
                 ei => ei.PaymentMethod,
                 ei => ei.InvoiceDate,

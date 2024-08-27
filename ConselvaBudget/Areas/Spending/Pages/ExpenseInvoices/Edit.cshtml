@@ -31,6 +31,11 @@
                 <span asp-validation-for="ExpenseInvoice.Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ExpenseInvoice.TaxWithheld" class="control-label"></label>
+                <input asp-for="ExpenseInvoice.TaxWithheld" class="form-control" />
+                <span asp-validation-for="ExpenseInvoice.TaxWithheld" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="ExpenseInvoice.Vendor" class="control-label"></label>
                 <input asp-for="ExpenseInvoice.Vendor" class="form-control" />
                 <span asp-validation-for="ExpenseInvoice.Vendor" class="text-danger"></span>
