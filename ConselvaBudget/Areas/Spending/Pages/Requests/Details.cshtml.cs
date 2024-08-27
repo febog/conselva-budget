@@ -23,7 +23,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         [BindProperty]
         public Request SpendingRequest { get; set; }
 
-        public SubtotalsViewModel Subtotals {  get; set; }
+        public PaymentSubtotalsViewModel Subtotals {  get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -214,9 +214,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             return RedirectToPage("./Index");
         }
 
-        private SubtotalsViewModel GetSubtotals(Request r)
+        private PaymentSubtotalsViewModel GetSubtotals(Request r)
         {
-            return new SubtotalsViewModel
+            return new PaymentSubtotalsViewModel
             {
                 CashSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.Cash).Sum(e => e.Amount),
                 DebitCardSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.DebitCard).Sum(e => e.Amount),

@@ -2,7 +2,7 @@
 
 namespace ConselvaBudget.Areas.Spending.Pages.Requests
 {
-    public class SubtotalsViewModel
+    public class PaymentSubtotalsViewModel
     {
         [Display(Name = "SUBTOTALS_CASH_SUBTOTAL")]
         [DataType(DataType.Currency)]
