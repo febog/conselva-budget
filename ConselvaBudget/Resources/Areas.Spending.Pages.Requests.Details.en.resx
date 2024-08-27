@@ -132,6 +132,9 @@
   <data name="BUTTON_EDIT_REQUEST" xml:space="preserve">
     <value>Edit Request</value>
   </data>
+  <data name="BUTTON_MARK_AS_NOT_PAID" xml:space="preserve">
+    <value>Mark as not paid</value>
+  </data>
   <data name="BUTTON_MARK_AS_PAID" xml:space="preserve">
     <value>Mark as paid</value>
   </data>

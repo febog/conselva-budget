@@ -191,6 +191,29 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             return RedirectToPage("./Index");
         }
 
+        public async Task<IActionResult> OnPostMarkAsNotPaidAsync(int request)
+        {
+            if (User.IsInRole(Roles.Administrator))
+            {
+                var requestToUpdate = await _context.Requests.FindAsync(request);
+
+                if (requestToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                if (requestToUpdate.Status != RequestStatus.Completed)
+                {
+                    return Forbid();
+                }
+
+                requestToUpdate.IsPaid = false;
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
+        }
+
         private SubtotalsViewModel GetSubtotals(Request r)
         {
             return new SubtotalsViewModel
