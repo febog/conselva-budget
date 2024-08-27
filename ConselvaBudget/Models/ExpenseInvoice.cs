@@ -69,6 +69,11 @@ namespace ConselvaBudget.Models
         [DataType(DataType.Url)]
         public string XmlUrl { get; set; }
 
+        [Display(Name = "EXPENSE_INVOICE_TAX")]
+        [Column(TypeName = "money")]
+        [DataType(DataType.Currency)]
+        public decimal? TaxWithheld { get; set; }
+
         [Display(Name = "EXPENSE_INVOICE_ACTIVITY_BUDGET")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public ActivityBudget ActivityBudget { get; set; }

@@ -156,6 +156,9 @@
   <data name="EXPENSE_INVOICE_REQUEST" xml:space="preserve">
     <value>Request</value>
   </data>
+  <data name="EXPENSE_INVOICE_TAX" xml:space="preserve">
+    <value>Tax withheld</value>
+  </data>
   <data name="EXPENSE_INVOICE_VENDOR" xml:space="preserve">
     <value>Vendor</value>
   </data>
