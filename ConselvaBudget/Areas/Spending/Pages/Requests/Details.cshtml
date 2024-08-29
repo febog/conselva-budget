@@ -280,6 +280,12 @@
                     @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].Amount)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].TaxWithheld)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].NetAmount)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].InvoiceNumber)
                 </th>
                 <th>
@@ -306,6 +312,15 @@
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td class="align-middle">
+                        @{
+                            var taxWithheldAmount = string.Format("{0:C}", item.TaxWithheld ?? 0);
+                        }
+                        @Html.DisplayFor(model => taxWithheldAmount)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.NetAmount)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.InvoiceNumber)
