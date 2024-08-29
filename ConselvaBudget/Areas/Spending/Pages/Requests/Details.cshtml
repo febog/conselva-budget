@@ -355,15 +355,15 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.RequestedSubtotals.ToList()[0].AccountAssignment)
+                    @Html.DisplayNameFor(model => model.InvoicedSubtotals.ToList()[0].AccountAssignment)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.RequestedSubtotals.ToList()[0].Amount)
+                    @Html.DisplayNameFor(model => model.InvoicedSubtotals.ToList()[0].Amount)
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.RequestedSubtotals)
+            @foreach (var item in Model.InvoicedSubtotals)
             {
                 <tr>
                     <td class="align-middle">
@@ -380,7 +380,7 @@
                 <th>Total</th>
                 <th>
                     @{
-                        var invoicedTotal = string.Format("{0:C}", Model.RequestedSubtotals.Sum(r => r.Amount));
+                        var invoicedTotal = string.Format("{0:C}", Model.InvoicedSubtotals.Sum(r => r.Amount));
                     }
                     @Html.DisplayFor(modelItem => invoicedTotal)
 
