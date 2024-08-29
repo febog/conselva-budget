@@ -74,6 +74,10 @@ namespace ConselvaBudget.Models
         [DataType(DataType.Currency)]
         public decimal? TaxWithheld { get; set; }
 
+        [Display(Name = "EXPENSE_NET_AMOUNT")]
+        [DataType(DataType.Currency)]
+        public decimal NetAmount => Amount - (TaxWithheld ?? 0);
+
         [Display(Name = "EXPENSE_INVOICE_ACTIVITY_BUDGET")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public ActivityBudget ActivityBudget { get; set; }
