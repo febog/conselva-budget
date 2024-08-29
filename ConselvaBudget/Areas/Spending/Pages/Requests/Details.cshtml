@@ -408,6 +408,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.PaymentSubtotals.PrePaidSubtotal)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].TaxWithheld)
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -426,6 +429,12 @@
                 </td>
                 <td class="align-middle">
                     @Html.DisplayFor(model => model.PaymentSubtotals.PrePaidSubtotal)
+                </td>
+                <td class="align-middle">
+                    @{
+                        var taxWithheldTotalAmount = string.Format("{0:C}", Model.SpendingRequest.ExpenseInvoices.Sum(i => i.TaxWithheld));
+                    }
+                    @Html.DisplayFor(model => taxWithheldTotalAmount)
                 </td>
             </tr>
         </tbody>
