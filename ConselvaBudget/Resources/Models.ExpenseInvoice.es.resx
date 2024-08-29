@@ -124,7 +124,8 @@
     <value>Presupuesto</value>
   </data>
   <data name="EXPENSE_INVOICE_AMOUNT" xml:space="preserve">
-    <value>Monto</value>
+    <value>Monto total</value>
+    <comment>Total</comment>
   </data>
   <data name="EXPENSE_INVOICE_CREATED_BY_USER_ID" xml:space="preserve">
     <value>Creado por</value>
@@ -164,5 +165,8 @@
   </data>
   <data name="EXPENSE_INVOICE_XML_URL" xml:space="preserve">
     <value>Link a XML</value>
+  </data>
+  <data name="EXPENSE_NET_AMOUNT" xml:space="preserve">
+    <value>Importe neto</value>
   </data>
 </root>
