@@ -82,7 +82,7 @@ namespace ConselvaBudget.Models
         /// <summary>
         /// Total amount that will be deducted from the budget for this Invoice. "Monto Descargado = Importe pagado + Impuestos retenidos"
         /// </summary>
-        [Display(Name = "EXPENSE_TOTAL_SPENT_AMOUNT")]
+        [Display(Name = "EXPENSE_INVOICE_TOTAL_SPENT_AMOUNT")]
         [DataType(DataType.Currency)]
         public decimal TotalSpentAmount => Amount + (TaxWithheld ?? 0);
 
