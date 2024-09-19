@@ -19,6 +19,7 @@ namespace ConselvaBudget.Models
         [Required]
         public string Description { get; set; }
 
+        // The "total" on the invoice
         [Display(Name = "EXPENSE_INVOICE_AMOUNT")]
         [Column(TypeName = "money")]
         [DataType(DataType.Currency)]

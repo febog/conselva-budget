@@ -124,8 +124,8 @@
     <value>Budget</value>
   </data>
   <data name="EXPENSE_INVOICE_AMOUNT" xml:space="preserve">
-    <value>Total amount</value>
-    <comment>Total</comment>
+    <value>Paid amount</value>
+    <comment>Known as "total" on the invoice.</comment>
   </data>
   <data name="EXPENSE_INVOICE_CREATED_BY_USER_ID" xml:space="preserve">
     <value>Created by</value>

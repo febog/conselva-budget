@@ -124,8 +124,8 @@
     <value>Presupuesto</value>
   </data>
   <data name="EXPENSE_INVOICE_AMOUNT" xml:space="preserve">
-    <value>Monto total</value>
-    <comment>Total</comment>
+    <value>Importe pagado</value>
+    <comment>Known as "total" on the invoice.</comment>
   </data>
   <data name="EXPENSE_INVOICE_CREATED_BY_USER_ID" xml:space="preserve">
     <value>Creado por</value>
