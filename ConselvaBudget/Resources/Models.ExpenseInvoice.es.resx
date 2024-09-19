@@ -158,7 +158,7 @@
     <value>Solicitud</value>
   </data>
   <data name="EXPENSE_INVOICE_TAX" xml:space="preserve">
-    <value>Impuesto retenido</value>
+    <value>Impuestos retenido</value>
   </data>
   <data name="EXPENSE_INVOICE_VENDOR" xml:space="preserve">
     <value>Proveedor</value>
