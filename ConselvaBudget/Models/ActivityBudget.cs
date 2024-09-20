@@ -36,7 +36,7 @@ namespace ConselvaBudget.Models
             {
                 var completedInvoices = ExpenseInvoices
                     .Where(ei => ei.Request.Status == RequestStatus.Completed)
-                    .Sum(ei => ei.Amount);
+                    .Sum(ei => ei.TotalSpentAmount);
 
                 return completedInvoices;
             }

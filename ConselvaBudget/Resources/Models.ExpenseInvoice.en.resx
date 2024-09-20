@@ -124,8 +124,8 @@
     <value>Budget</value>
   </data>
   <data name="EXPENSE_INVOICE_AMOUNT" xml:space="preserve">
-    <value>Total amount</value>
-    <comment>Total</comment>
+    <value>Paid amount</value>
+    <comment>Known as "total" on the invoice.</comment>
   </data>
   <data name="EXPENSE_INVOICE_CREATED_BY_USER_ID" xml:space="preserve">
     <value>Created by</value>
@@ -159,6 +159,10 @@
   </data>
   <data name="EXPENSE_INVOICE_TAX" xml:space="preserve">
     <value>Tax withheld</value>
+  </data>
+  <data name="EXPENSE_INVOICE_TOTAL_SPENT_AMOUNT" xml:space="preserve">
+    <value>Total spent amount</value>
+    <comment>Sum of the "total" on the invoice plus the tax withheld. Amount deducted from the budget.</comment>
   </data>
   <data name="EXPENSE_INVOICE_VENDOR" xml:space="preserve">
     <value>Vendor</value>
