@@ -11,14 +11,14 @@
 
 <p> @Localizer["PAGE_DESCRIPTION"]</p>
 
-<form class="row row-cols-lg-auto g-3 align-items-center" asp-page="Details">
+<form method="get" class="row row-cols-lg-auto g-2 mb-2 align-items-center" asp-page="Details">
     <div class="col-12">
         <label class="visually-hidden" for="request-id-jump">Request ID</label>
         <input type="text" class="form-control" id="request-id-jump" name="id" placeholder="Request ID">
     </div>
 
     <div class="col-12">
-        <input class="btn btn-primary" type="submit" value="Go">
+        <input class="btn btn-success" type="submit" value="Go">
     </div>
 </form>
 
