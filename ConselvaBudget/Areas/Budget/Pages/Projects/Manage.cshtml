@@ -215,6 +215,9 @@
                                                                                 @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].InvoiceNumber)
                                                                             </th>
                                                                             <th>
+                                                                                @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].Request)
+                                                                            </th>
+                                                                            <th>
                                                                                 @Html.DisplayNameFor(model => budget.ExpenseInvoices.ToList()[0].Description)
                                                                             </th>
                                                                             <th style="width: 1px; white-space:nowrap;"></th>
@@ -235,6 +238,9 @@
                                                                                 </td>
                                                                                 <td class="align-middle">
                                                                                     @Html.DisplayFor(modelItem => item.InvoiceNumber)
+                                                                                </td>
+                                                                                <td class="align-middle">
+                                                                                    <a asp-area="Spending" asp-page="/Requests/Details" asp-route-id="@item.RequestId">@item.RequestId</a>
                                                                                 </td>
                                                                                 <td class="align-middle">
                                                                                     @Html.DisplayFor(modelItem => item.Description)
