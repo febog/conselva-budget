@@ -13,66 +13,66 @@
 
 
 <dl class="row">
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.Id)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @Html.DisplayFor(model => model.SpendingRequest.Id)
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.Activity.Result.Project)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @Html.DisplayFor(model => model.SpendingRequest.Activity.Result.Project.Name)
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.Activity.Result)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @Html.DisplayFor(model => model.SpendingRequest.Activity.Result.Code)
         @Html.DisplayFor(model => model.SpendingRequest.Activity.Result.Description)
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @Html.DisplayFor(model => model.SpendingRequest.Activity.Code)
         @Html.DisplayFor(model => model.SpendingRequest.Activity.Description)
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.Description)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @Html.DisplayFor(model => model.SpendingRequest.Description)
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.RequestorUserId)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @ViewData["RequestorUsername"]
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.CreatedDate)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @Html.DisplayFor(model => model.SpendingRequest.CreatedDate)
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.ModifiedDate)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @Html.DisplayFor(model => model.SpendingRequest.ModifiedDate)
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.TotalAmount)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @Html.DisplayFor(model => model.SpendingRequest.TotalAmount)
     </dd>
-    <dt class="col-sm-3">
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.IsPaid)
     </dt>
-    <dd class="col-sm-9">
+    <dd class="col-sm-9 col-lg-10">
         @if (Model.SpendingRequest.IsPaid)
         {
             <span class="badge text-bg-success"><i class="bi bi-check-lg"></i> @Localizer["PAID"]</span>
@@ -88,34 +88,34 @@
 {
     <h2>Trip information</h2>
     <dl class="row">
-        <dt class="col-sm-3">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.VehicleId)
         </dt>
-        <dd class="col-sm-9">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.SpendingRequest.Trip.VehicleId)
         </dd>
-        <dt class="col-sm-3">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Driver)
         </dt>
-        <dd class="col-sm-9">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.SpendingRequest.Trip.Driver)
         </dd>
-        <dt class="col-sm-3">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Destination)
         </dt>
-        <dd class="col-sm-9">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.SpendingRequest.Trip.Destination)
         </dd>
-        <dt class="col-sm-3">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Participants)
         </dt>
-        <dd class="col-sm-9">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.SpendingRequest.Trip.Participants)
         </dd>
-        <dt class="col-sm-3">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.SelectedDates)
         </dt>
-        <dd class="col-sm-9">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.SpendingRequest.Trip.SelectedDatesString)
         </dd>
     </dl>
