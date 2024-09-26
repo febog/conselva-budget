@@ -11,6 +11,17 @@
 
 <p> @Localizer["PAGE_DESCRIPTION"]</p>
 
+<form class="row row-cols-lg-auto g-3 align-items-center" asp-page="Details">
+    <div class="col-12">
+        <label class="visually-hidden" for="request-id-jump">Request ID</label>
+        <input type="text" class="form-control" id="request-id-jump" name="id" placeholder="Request ID">
+    </div>
+
+    <div class="col-12">
+        <input class="btn btn-primary" type="submit" value="Go">
+    </div>
+</form>
+
 <p><a class="btn btn-primary" asp-page="SelectProject">@Localizer["BUTTON_CREATE_REQUEST"]</a></p>
 
 <h2>@Localizer["TITLE_CREATED_REQUESTS"] <span class="badge text-bg-light"><i class="bi bi-file-earmark-plus"></i></span></h2>
