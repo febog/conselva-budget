@@ -20,6 +20,29 @@
         @Html.DisplayFor(model => model.SpendingRequest.Id)
     </dd>
     <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.Status)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @switch (Model.SpendingRequest.Status)
+        {
+            case RequestStatus.Created:
+                <span class="badge text-bg-light"><i class="bi bi-file-earmark-plus"></i> @Localizer["Creada"]</span>
+                break;
+            case RequestStatus.Submitted:
+                <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i> @Localizer["En revisión"]</span>
+                break;
+            case RequestStatus.Approved:
+                <span class="badge text-bg-info"><i class="bi bi-file-earmark-check"></i> @Localizer["Aprobada"]</span>
+                break;
+            case RequestStatus.Verification:
+                <span class="badge text-bg-warning"><i class="bi bi-list-check"></i> @Localizer["En comprobación"]</span>
+                break;
+            case RequestStatus.Completed:
+                <span class="badge text-bg-success"><i class="bi bi-check2-circle"></i> @Localizer["Completada"]</span>
+                break;
+        }
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.Activity.Result.Project)
     </dt>
     <dd class="col-sm-9 col-lg-10">
