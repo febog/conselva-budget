@@ -39,7 +39,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
             SpendingRequest = await _context.Requests
                 .Include(r => r.Activity.Result.Project)
-                .Include(r => r.Trip)
+                .Include(r => r.Trip.Vehicle)
                 .Include(r => r.AmountRequests)
                 .ThenInclude(ar => ar.ActivityBudget.AccountAssignment.Account)
                 .Include(r => r.AmountRequests)
