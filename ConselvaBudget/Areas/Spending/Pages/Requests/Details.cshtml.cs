@@ -252,7 +252,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 .Select(g => new AccountSubtotalsViewModel
                 {
                     AccountAssignment = g.First().ActivityBudget.AccountAssignment.DisplayName,
-                    Amount = g.Sum(i => i.Amount)
+                    Amount = g.Sum(i => i.TotalSpentAmount)
                 });
 
             return subtotals.ToList();
