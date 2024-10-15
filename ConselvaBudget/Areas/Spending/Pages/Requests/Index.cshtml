@@ -30,7 +30,7 @@
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Created).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -101,7 +101,7 @@ else
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Submitted).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -171,7 +171,7 @@ else
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Approved).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -241,7 +241,7 @@ else
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Verification).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -311,7 +311,7 @@ else
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Completed).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
