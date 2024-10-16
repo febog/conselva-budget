@@ -32,6 +32,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
             SpendingRequests = await requests
                 .Include(r => r.Activity)
+                .OrderByDescending(r => r.CreatedDate)
                 .ToListAsync();
         }
     }

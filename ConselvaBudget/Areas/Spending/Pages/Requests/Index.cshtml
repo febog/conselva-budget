@@ -24,14 +24,13 @@
 
 <p><a class="btn btn-primary" asp-page="SelectProject">@Localizer["BUTTON_CREATE_REQUEST"]</a></p>
 
-<h2>@Localizer["TITLE_CREATED_REQUESTS"] <span class="badge text-bg-light"><i class="bi bi-file-earmark-plus"></i></span></h2>
-<p>
-    <a class="btn btn-primary"><i class="bi bi-file-earmark-plus"></i> @Localizer["BUTTON_CREATED_REQUESTS"]</a>
-</p>
+<h2>@Localizer["TITLE_CREATED_REQUESTS"]</h2>
+
+<p><a class="btn btn-light"><i class="bi bi-file-earmark-plus"></i> @Localizer["BUTTON_CREATED_REQUESTS"]</a></p>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Created).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -71,7 +70,6 @@
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.Activity.Code)
-                        @Html.DisplayFor(modelItem => item.Activity.Description)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.CreatedDate)
@@ -97,14 +95,13 @@ else
     </div>
 }
 
-<h2>@Localizer["TITLE_SUBMITTED_REQUESTS"] <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i></span></h2>
-<p>
-    <a class="btn btn-primary"><i class="bi bi-hourglass"></i> @Localizer["BUTTON_SUBMITTED_REQUESTS"]</a>
-</p>
+<h2>@Localizer["TITLE_SUBMITTED_REQUESTS"]</h2>
+
+<p><a class="btn btn-secondary"><i class="bi bi-hourglass"></i> @Localizer["BUTTON_SUBMITTED_REQUESTS"]</a></p>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Submitted).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -144,7 +141,6 @@ else
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.Activity.Code)
-                        @Html.DisplayFor(modelItem => item.Activity.Description)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.CreatedDate)
@@ -169,14 +165,13 @@ else
     </div>
 }
 
-<h2>@Localizer["TITLE_APPROVED_REQUESTS"] <span class="badge text-bg-info"><i class="bi bi-file-earmark-check"></i></span></h2>
-<p>
-    <a class="btn btn-primary"><i class="bi bi-file-earmark-check"></i> @Localizer["BUTTON_APPROVED_REQUESTS"]</a>
-</p>
+<h2>@Localizer["TITLE_APPROVED_REQUESTS"]</h2>
+
+<p><a class="btn btn-info"><i class="bi bi-file-earmark-check"></i> @Localizer["BUTTON_APPROVED_REQUESTS"]</a></p>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Approved).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -216,7 +211,6 @@ else
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.Activity.Code)
-                        @Html.DisplayFor(modelItem => item.Activity.Description)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.CreatedDate)
@@ -241,14 +235,13 @@ else
     </div>
 }
 
-<h2>@Localizer["TITLE_VERIFICATION_REQUESTS"] <span class="badge text-bg-warning"><i class="bi bi-list-check"></i></span></h2>
-<p>
-    <a class="btn btn-primary"><i class="bi bi-list-check"></i> @Localizer["BUTTON_VERIFICATION_REQUESTS"]</a>
-</p>
+<h2>@Localizer["TITLE_VERIFICATION_REQUESTS"]</h2>
+
+<p><a class="btn btn-warning"><i class="bi bi-list-check"></i> @Localizer["BUTTON_VERIFICATION_REQUESTS"]</a></p>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Verification).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -288,7 +281,6 @@ else
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.Activity.Code)
-                        @Html.DisplayFor(modelItem => item.Activity.Description)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.CreatedDate)
@@ -313,14 +305,13 @@ else
     </div>
 }
 
-<h2>@Localizer["TITLE_COMPLETED_REQUESTS"] <span class="badge text-bg-success"><i class="bi bi-check2-circle"></i></span></h2>
-<p>
-    <a class="btn btn-primary"><i class="bi bi-check2-circle"></i> @Localizer["BUTTON_COMPLETED_REQUESTS"]</a>
-</p>
+<h2>@Localizer["TITLE_COMPLETED_REQUESTS"]</h2>
+
+<p><a class="btn btn-success"><i class="bi bi-check2-circle"></i> @Localizer["BUTTON_COMPLETED_REQUESTS"]</a></p>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Completed).Any())
 {
-    <table class="table table-sm table-bordered table-striped caption-top">
+    <table class="table table-bordered table-striped caption-top">
         <caption>Created spending requests</caption>
         <thead>
             <tr>
@@ -363,7 +354,6 @@ else
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.Activity.Code)
-                        @Html.DisplayFor(modelItem => item.Activity.Description)
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.CreatedDate)
