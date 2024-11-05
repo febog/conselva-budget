@@ -13,15 +13,15 @@ namespace ConselvaBudget.Models
 
         public int? VehicleId { get; set; }
 
-        [Display(Name = "Driver")]
+        [Display(Name = "Conductor")]
         [StringLength(255)]
         public string Driver { get; set; }
 
-        [Display(Name = "Destination")]
+        [Display(Name = "Destino")]
         [StringLength(255)]
         public string Destination { get; set; }
 
-        [Display(Name = "Participants")]
+        [Display(Name = "Participantes")]
         [StringLength(255)]
         public string Participants { get; set; }
 
@@ -64,13 +64,13 @@ namespace ConselvaBudget.Models
         /// As provided by the datepicker UI
         /// </summary>
         [NotMapped]
-        [Display(Name = "Dates for the trip")]
+        [Display(Name = "Fechas de la salida")]
         public string SelectedDatesInput { get; set; }
 
         [Display(Name = "Spending Request")]
         public Request SpendingRequest { get; set; }
 
-        [Display(Name = "Vehicle")]
+        [Display(Name = "Vehículo")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public Vehicle Vehicle { get; set; }
     }

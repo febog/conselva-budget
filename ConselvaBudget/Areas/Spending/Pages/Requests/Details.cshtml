@@ -109,14 +109,8 @@
 
 @if (Model.SpendingRequest.Trip != null)
 {
-    <h2>Trip information</h2>
+    <h2>Información de salida</h2>
     <dl class="row">
-        <dt class="col-sm-3 col-lg-2">
-            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Vehicle)
-        </dt>
-        <dd class="col-sm-9 col-lg-10">
-            @Html.DisplayFor(model => model.SpendingRequest.Trip.Vehicle.Name)
-        </dd>
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Driver)
         </dt>
@@ -130,6 +124,12 @@
             @Html.DisplayFor(model => model.SpendingRequest.Trip.Destination)
         </dd>
         <dt class="col-sm-3 col-lg-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Vehicle)
+        </dt>
+        <dd class="col-sm-9 col-lg-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.Vehicle.Name)
+        </dd>
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Participants)
         </dt>
         <dd class="col-sm-9 col-lg-10">
@@ -140,6 +140,51 @@
         </dt>
         <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.SpendingRequest.Trip.SelectedDatesString)
+        </dd>
+    </dl>
+    <h3>Informe de salida de campo</h3>
+    <dl class="row">
+        <dt class="col-sm-3 col-lg-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.CarriedOutActivities)
+        </dt>
+        <dd class="col-sm-9 col-lg-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.CarriedOutActivities)
+        </dd>
+    </dl>
+    <h4>Resultados cuantitativos</h4>
+    <dl class="row">
+        <dt class="col-sm-3 col-lg-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.SocialResults)
+        </dt>
+        <dd class="col-sm-9 col-lg-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.SocialResults)
+        </dd>
+        <dt class="col-sm-3 col-lg-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.TechnicalResults)
+        </dt>
+        <dd class="col-sm-9 col-lg-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.TechnicalResults)
+        </dd>
+        <dt class="col-sm-3 col-lg-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.ContributedResources)
+        </dt>
+        <dd class="col-sm-9 col-lg-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.ContributedResources)
+        </dd>
+    </dl>
+    <h4>Resultados cualitativos</h4>
+    <dl class="row">
+        <dt class="col-sm-3 col-lg-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.QualitativeResults)
+        </dt>
+        <dd class="col-sm-9 col-lg-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.QualitativeResults)
+        </dd>
+        <dt class="col-sm-3 col-lg-2">
+            @Html.DisplayNameFor(model => model.SpendingRequest.Trip.PicturesUrl)
+        </dt>
+        <dd class="col-sm-9 col-lg-10">
+            @Html.DisplayFor(model => model.SpendingRequest.Trip.PicturesUrl)
         </dd>
     </dl>
 }
