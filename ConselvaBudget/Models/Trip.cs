@@ -55,6 +55,7 @@ namespace ConselvaBudget.Models
         /// sends the dates as a comma-separated string.
         /// </summary>
         [BindNever]
+        [Display(Name = "Fechas de la salida")]
         public List<DateTime> SelectedDates { get; set; }
 
         [ValidateNever]
