@@ -35,14 +35,18 @@
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <h2>Información de solicitud</h2>
-<p>Campo obligatiorio. Describa para que es esta solicitud de recursos.</p>
+<div class="alert alert-info" role="alert">
+    Campo obligatiorio. Describa para que es esta solicitud de recursos.
+</div>
 <div class="col-12">
     <label asp-for="SpendingRequest.Description" class="form-label"></label>
     <input asp-for="SpendingRequest.Description" class="form-control" />
     <span asp-validation-for="SpendingRequest.Description" class="text-danger"></span>
 </div>
 <h2>Información de salida</h2>
-<p>Opcional, solo llenar en caso de que la solicitud contenga una salida.</p>
+<div class="alert alert-info" role="alert">
+    Opcional, solo llenar en caso de que la solicitud contenga una salida.
+</div>
 <div class="col-sm-6">
     <label asp-for="SpendingRequest.Trip.Driver" class="form-label"></label>
     <input asp-for="SpendingRequest.Trip.Driver" class="form-control" />
@@ -71,7 +75,9 @@
     <span asp-validation-for="SpendingRequest.Trip.SelectedDates" class="text-danger"></span>
 </div>
 <h3>Informe de salida de campo</h3>
-<p>Llenar una vez realizada la salida.</p>
+<div class="alert alert-info" role="alert">
+    Llenar una vez realizada la salida.
+</div>
 <div class="col-12">
     <label asp-for="SpendingRequest.Trip.CarriedOutActivities" class="form-label"></label>
     <input asp-for="SpendingRequest.Trip.CarriedOutActivities" class="form-control" aria-describedby="carried-out-activities-help" />
@@ -81,7 +87,9 @@
     <span asp-validation-for="SpendingRequest.Trip.CarriedOutActivities" class="text-danger"></span>
 </div>
 <h4>Resultados cuantitativos</h4>
-<p>Si aplican. Presen en número sin describir, los resultados globales de la actividad y/o resultados específicos. Comenzar por el número.</p>
+<div class="alert alert-info" role="alert">
+    Si aplican. Presen en número sin describir, los resultados globales de la actividad y/o resultados específicos. Comenzar por el número.
+</div>
 <div class="col-12">
     <label asp-for="SpendingRequest.Trip.SocialResults" class="form-label"></label>
     <input asp-for="SpendingRequest.Trip.SocialResults" class="form-control" aria-describedby="social-results-help" />
@@ -109,8 +117,8 @@
 <h4>Resultados cualitativos</h4>
 <div class="col-12">
     <label asp-for="SpendingRequest.Trip.QualitativeResults" class="form-label"></label>
-    <input asp-for="SpendingRequest.Trip.QualitativeResults" class="form-control" aria-describedby="contributed-resources-help" />
-    <div id="contributed-resources-help" class="form-text">
+    <input asp-for="SpendingRequest.Trip.QualitativeResults" class="form-control" aria-describedby="qualitative-results-help" />
+    <div id="qualitative-results-help" class="form-text">
         Breve descripción de resultados y logros de la salida de campo, en relación con el objetivo de la salida y del resultado esperado del proyecto.
     </div>
     <span asp-validation-for="SpendingRequest.Trip.QualitativeResults" class="text-danger"></span>
