@@ -25,6 +25,31 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string Participants { get; set; }
 
+        [Display(Name = "Actividades realizadas")]
+        [StringLength(1024)]
+        public string CarriedOutActivities { get; set; }
+
+        [Display(Name = "Resultados cuantitativos sociales")]
+        [StringLength(255)]
+        public string SocialResults { get; set; }
+
+        [Display(Name = "Resultados cuantitativos técnicos")]
+        [StringLength(255)]
+        public string TechnicalResults { get; set; }
+
+        [Display(Name = "Recursos aportados por involucrados")]
+        [StringLength(255)]
+        public string ContributedResources { get; set; }
+
+        [Display(Name = "Resultados cuantitativos técnicos")]
+        [StringLength(1024)]
+        public string QualitativeResults { get; set; }
+
+        [Display(Name = "Imágenes de salida a campo")]
+        [StringLength(2048)]
+        [DataType(DataType.Url)]
+        public string PicturesUrl { get; set; }
+
         /// <summary>
         /// I bind this manually since the datepicker I am using in the UI
         /// sends the dates as a comma-separated string.

@@ -49,7 +49,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 return NotFound();
             }
 
-            var foundActivity = await _context.Activities.FindAsync(activity);
+            var foundActivity = await _context.Activities
+                .Include(a => a.Result.Project)
+                .FirstOrDefaultAsync(a => a.Id == activity);
 
             if (foundActivity == null)
             {

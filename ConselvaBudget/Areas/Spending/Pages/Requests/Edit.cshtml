@@ -10,22 +10,23 @@
 
 @section PreForm {
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.Activity.Result.Project)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.Activity.Result.Project.Name)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.Activity.Result)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.Activity.Result.Code)
+            @Html.DisplayFor(model => model.Activity.Result.Description)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.Activity.Code)
             @Html.DisplayFor(model => model.Activity.Description)
         </dd>
@@ -34,15 +35,15 @@
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <input type="hidden" asp-for="SpendingRequest.Id" />
-<h2>Request description</h2>
-<div class="form-text">Required. Description for this request.</div>
+<h2>Información de solicitud</h2>
+<p>Campo obligatiorio. Describa para que es esta solicitud de recursos.</p>
 <div class="col-12">
     <label asp-for="SpendingRequest.Description" class="form-label"></label>
     <input asp-for="SpendingRequest.Description" class="form-control" />
     <span asp-validation-for="SpendingRequest.Description" class="text-danger"></span>
 </div>
-<h2>Trip information</h2>
-<div class="form-text">Optional. Only fill the following fields if trip.</div>
+<h2>Información de salida</h2>
+<p>Opcional, solo llenar en caso de que la solicitud contenga una salida.</p>
 <div class="col-sm-6">
     <label asp-for="SpendingRequest.Trip.Driver" class="form-label"></label>
     <input asp-for="SpendingRequest.Trip.Driver" class="form-control" />
@@ -69,6 +70,59 @@
     <label asp-for="SpendingRequest.Trip.SelectedDatesInput" class="form-label"></label>
     <input asp-for="SpendingRequest.Trip.SelectedDatesInput" class="form-control" />
     <span asp-validation-for="SpendingRequest.Trip.SelectedDates" class="text-danger"></span>
+</div>
+<h3>Informe de salida de campo</h3>
+<p>Llenar una vez realizada la salida.</p>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.CarriedOutActivities" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.CarriedOutActivities" class="form-control" aria-describedby="carried-out-activities-help" />
+    <div id="carried-out-activities-help" class="form-text">
+        Mencionar la(s) principal(es) tarea(s) efectuada(s) durante la salida (identificar bienes y servicios entregados, si aplica).
+    </div>
+    <span asp-validation-for="SpendingRequest.Trip.CarriedOutActivities" class="text-danger"></span>
+</div>
+<h4>Resultados cuantitativos</h4>
+<p>Si aplican. Presen en número sin describir, los resultados globales de la actividad y/o resultados específicos. Comenzar por el número.</p>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.SocialResults" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.SocialResults" class="form-control" aria-describedby="social-results-help" />
+    <div id="social-results-help" class="form-text">
+        Ej. No. de participantes por género, capacitados, informados, implementadores, representantes sectoriales, etc.
+    </div>
+    <span asp-validation-for="SpendingRequest.Trip.SocialResults" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.TechnicalResults" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.TechnicalResults" class="form-control" aria-describedby="technical-results-help" />
+    <div id="technical-results-help" class="form-text">
+        Ej. % de avance de obra, superficie, equipamiento, registros, no. de acuerdos, planes, etapas, etc.
+    </div>
+    <span asp-validation-for="SpendingRequest.Trip.TechnicalResults" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.ContributedResources" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.ContributedResources" class="form-control" aria-describedby="contributed-resources-help" />
+    <div id="contributed-resources-help" class="form-text">
+        Con el valor monetario equivalente si se tiene.
+    </div>
+    <span asp-validation-for="SpendingRequest.Trip.ContributedResources" class="text-danger"></span>
+</div>
+<h4>Resultados cualitativos</h4>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.QualitativeResults" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.QualitativeResults" class="form-control" aria-describedby="contributed-resources-help" />
+    <div id="contributed-resources-help" class="form-text">
+        Breve descripción de resultados y logros de la salida de campo, en relación con el objetivo de la salida y del resultado esperado del proyecto.
+    </div>
+    <span asp-validation-for="SpendingRequest.Trip.QualitativeResults" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="SpendingRequest.Trip.PicturesUrl" class="form-label"></label>
+    <input asp-for="SpendingRequest.Trip.PicturesUrl" class="form-control" aria-describedby="pictures-url-help" />
+    <div id="pictures-url-help" class="form-text">
+        Poner una foto representativa de la salida. Colocar enlace a drive donde se encuentre una selección de máximo 5 fotos.
+    </div>
+    <span asp-validation-for="SpendingRequest.Trip.PicturesUrl" class="text-danger"></span>
 </div>
 <div class="col-12">
     <input class="btn btn-primary" type="submit" value="Save">
