@@ -10,22 +10,23 @@
 
 @section PreForm {
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.Activity.Result.Project)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.Activity.Result.Project.Name)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.Activity.Result)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.Activity.Result.Code)
+            @Html.DisplayFor(model => model.Activity.Result.Description)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-9 col-lg-10">
             @Html.DisplayFor(model => model.Activity.Code)
             @Html.DisplayFor(model => model.Activity.Description)
         </dd>
