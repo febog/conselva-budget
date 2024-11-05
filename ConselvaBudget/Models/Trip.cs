@@ -41,7 +41,7 @@ namespace ConselvaBudget.Models
         [StringLength(255)]
         public string ContributedResources { get; set; }
 
-        [Display(Name = "Resultados cuantitativos técnicos")]
+        [Display(Name = "Resultados cualitativos")]
         [StringLength(1024)]
         public string QualitativeResults { get; set; }
 
