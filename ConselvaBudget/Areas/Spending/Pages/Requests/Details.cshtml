@@ -5,7 +5,7 @@
 @using ConselvaBudget.Models
 
 @{
-    ViewData["Title"] = @Localizer["PAGE_TITLE"];
+    ViewData["Title"] = @Localizer["PAGE_TITLE"] + " " + Model.SpendingRequest.Id;
 }
 
 <h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
