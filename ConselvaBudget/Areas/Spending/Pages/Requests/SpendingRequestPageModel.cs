@@ -35,6 +35,12 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 string.IsNullOrWhiteSpace(r.Trip?.Driver) &&
                 string.IsNullOrWhiteSpace(r.Trip?.Destination) &&
                 string.IsNullOrWhiteSpace(r.Trip?.Participants) &&
+                string.IsNullOrWhiteSpace(r.Trip?.CarriedOutActivities) &&
+                string.IsNullOrWhiteSpace(r.Trip?.SocialResults) &&
+                string.IsNullOrWhiteSpace(r.Trip?.TechnicalResults) &&
+                string.IsNullOrWhiteSpace(r.Trip?.ContributedResources) &&
+                string.IsNullOrWhiteSpace(r.Trip?.QualitativeResults) &&
+                string.IsNullOrWhiteSpace(r.Trip?.PicturesUrl) &&
                 r.Trip.SelectedDates.IsNullOrEmpty())
             {
                 r.Trip = null;
