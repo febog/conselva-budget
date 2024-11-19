@@ -77,7 +77,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 requestToUpdate.ModifiedDate = DateTime.Now;
 
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return RedirectToPage("./Details", new { id = requestToUpdate.Id });
             }
 
             Activity = requestToUpdate.Activity;
