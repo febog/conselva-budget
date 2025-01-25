@@ -20,7 +20,7 @@ namespace ConselvaBudget.Models
         public decimal Amount { get; set; }
 
         [Display(Name = "ACTIVITY_BUDGET_COMMENTS")]
-        [StringLength(255)]
+        [StringLength(512)]
         public string Comments { get; set; }
 
         [Display(Name = "ACTIVITY_BUDGET_EQUIVALENT_ACCOUNT")]
