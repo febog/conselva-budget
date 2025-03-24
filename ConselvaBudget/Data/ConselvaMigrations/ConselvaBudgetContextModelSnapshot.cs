@@ -224,8 +224,8 @@ namespace ConselvaBudget.Data.ConselvaMigrations
                         .HasColumnType("money");
 
                     b.Property<string>("Comments")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
