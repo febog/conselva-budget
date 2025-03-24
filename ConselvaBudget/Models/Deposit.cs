@@ -20,7 +20,7 @@ namespace ConselvaBudget.Models
         public DateTime Date { get; set; }
 
         [Display(Name = "DEPOSIT_COMMENTS")]
-        [StringLength(255)]
+        [StringLength(512)]
         public string Comments { get; set; }
 
         [Display(Name = "DEPOSIT_PROJECT")]
