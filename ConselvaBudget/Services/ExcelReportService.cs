@@ -21,7 +21,7 @@ namespace ConselvaBudget.Services
 
         private byte[] GenerateExcelFile<T>(IList<T> data)
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            ExcelPackage.License.SetNonCommercialOrganization("Conselva");
             using (var package = new ExcelPackage())
             {
                 // Add a worksheet
