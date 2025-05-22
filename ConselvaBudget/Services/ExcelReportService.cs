@@ -15,7 +15,7 @@ namespace ConselvaBudget.Services
 
             return new FileContentResult(excelFile, ContentType)
             {
-                FileDownloadName = string.IsNullOrEmpty(name) ? "Report" : name + FileExtension
+                FileDownloadName = (string.IsNullOrEmpty(name) ? "Report" : name) + FileExtension
             };
         }
 
