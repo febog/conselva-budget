@@ -8,23 +8,14 @@ namespace ConselvaBudget.Services
         private const string ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
         private const string FileExtension = ".xlsx";
 
-        private readonly string _name;
-
-        public ExcelReportService(string name)
-        {
-            _name = name;
-        }
-
-        private string FileName => string.IsNullOrEmpty(_name) ? "Report" : _name + FileExtension;
-
-        public FileContentResult GenerateExcelFileDownload<T>(IList<T> data)
+        public FileContentResult GenerateExcelFileDownload<T>(IList<T> data, string name = null)
         {
             // Generate Excel file content
             byte[] excelFile = GenerateExcelFile<T>(data);
 
             return new FileContentResult(excelFile, ContentType)
             {
-                FileDownloadName = FileName
+                FileDownloadName = string.IsNullOrEmpty(name) ? "Report" : name + FileExtension
             };
         }
 

@@ -8,6 +8,6 @@ namespace ConselvaBudget.Services
         /// Creates a report download for the tabular data given.
         /// </summary>
         /// <returns></returns>
-        FileContentResult GenerateExcelFileDownload<T>(IList<T> data);
+        FileContentResult GenerateExcelFileDownload<T>(IList<T> data, string name = null);
     }
 }
