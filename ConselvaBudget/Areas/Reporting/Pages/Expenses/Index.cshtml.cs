@@ -12,7 +12,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Expenses
         private readonly ConselvaBudgetContext _context;
         private readonly IReportService _reportService;
 
-        private const string ReportFileName = "ConselvaExpensesBreakdownReport";
+        private const string ReportBaseFileName = "ConselvaExpensesBreakdownReport";
 
         public IndexModel(ConselvaBudgetContext context, IReportService reportService)
         {
@@ -32,7 +32,8 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Expenses
             var reportData = MapExpensesReportData(expenses);
 
             // Generate Excel file download
-            return _reportService.GenerateExcelFileDownload<ExpensesReportViewModel>(reportData, ReportFileName);
+            string downloadName = $"{ReportBaseFileName}-{DateTime.Now.ToString("yyyy-MM-dd")}";
+            return _reportService.GenerateExcelFileDownload<ExpensesReportViewModel>(reportData, downloadName);
         }
 
         private IList<ExpensesReportViewModel> MapExpensesReportData(IList<ExpenseInvoice> expenses)
