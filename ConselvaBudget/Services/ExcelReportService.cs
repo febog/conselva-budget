@@ -6,7 +6,16 @@ namespace ConselvaBudget.Services
     public class ExcelReportService : IReportService
     {
         private const string ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        private const string FileName = "ConselvaBalanceReportData.xlsx";
+        private const string FileExtension = ".xlsx";
+
+        private readonly string _name;
+
+        public ExcelReportService(string name)
+        {
+            _name = name;
+        }
+
+        private string FileName => string.IsNullOrEmpty(_name) ? "Report" : _name + FileExtension;
 
         public FileContentResult GenerateExcelFileDownload<T>(IList<T> data)
         {
