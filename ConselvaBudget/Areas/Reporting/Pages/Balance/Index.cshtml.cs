@@ -12,7 +12,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
         private readonly ConselvaBudgetContext _context;
         private readonly IReportService _reportService;
 
-        private const string ReportBaseFileName = "ConselvaGlobalBalanceReport";
+        private const string ReportBaseFileName = "ConselvaBalanceReport";
 
         public IndexModel(ConselvaBudgetContext context, IReportService reportService)
         {
