@@ -27,7 +27,7 @@ namespace ConselvaBudget.Models
         public DateTime ModifiedDate { get; set; }
 
         [Display(Name = "Description")]
-        [StringLength(255)]
+        [StringLength(512)]
         [Required]
         public string Description { get; set; }
 
