@@ -53,6 +53,8 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Expenses
                     Vendor = expense.Vendor,
                     InvoiceNumber = expense.InvoiceNumber,
                     RequestId = expense.RequestId,
+                    PaidAmount = expense.Amount,
+                    TaxWithheld = expense.TaxWithheld ?? 0,
                     TotalSpentAmount = expense.TotalSpentAmount,
                 });
             }
