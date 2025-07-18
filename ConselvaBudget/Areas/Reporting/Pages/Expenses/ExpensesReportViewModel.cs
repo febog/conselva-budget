@@ -22,6 +22,10 @@
 
         public int RequestId { get; set; }
 
+        public decimal PaidAmount { get; set; }
+
+        public decimal TaxWithheld { get; set; }
+
         public decimal TotalSpentAmount { get; set; }
     }
 }
