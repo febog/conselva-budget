@@ -11,6 +11,8 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
     {
         private readonly ConselvaBudgetContext _context;
 
+        private const int DefaultDaySpan = 90;
+
         public IndexModel(ConselvaBudgetContext context)
         {
             _context = context;
@@ -30,8 +32,12 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 requests = requests.Where(r => r.RequestorUserId == userId);
             }
 
+            // Only retrieve the requests created over the last DefaultDaySpan days
+            var cutOffDate = DateTime.Now.AddDays(-DefaultDaySpan);
+
             SpendingRequests = await requests
                 .Include(r => r.Activity)
+                .Where(r => r.CreatedDate >= cutOffDate)
                 .OrderByDescending(r => r.CreatedDate)
                 .ToListAsync();
         }
