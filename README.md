@@ -6,7 +6,7 @@ Business ASP.NET Core app hosted in Azure App service.
 
 ## Table of contents
 
-  - [Introduction](#introduction)
+  - [Background](#background)
   - [Solution contents](#solution-contents)
   - [Database migrations](#database-migrations)
     - [Drop database and reset migrations](#drop-database-and-reset-migrations)
