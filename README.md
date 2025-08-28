@@ -12,9 +12,19 @@ Business ASP.NET Core app hosted in Azure App service.
     - [Drop database and reset migrations](#drop-database-and-reset-migrations)
     - [Add a migration](#add-a-migration)
 
-## Introduction
+## Background
 
 Conselva is a non-profit organization that works in the field of water conservation. As a non-profit working with different partners and projects, they have unique requirements for their budget management and the organization of their day-to-day activities. This project addresses their need for a tool that allows them to control and report on their budget spending effectively.
+
+The web application is designed to support the financial management needs of the organization. As a non-profit that relies on donations from multiple sources, the organization faces unique challenges in ensuring effective financial oversight and optimal use of its resources.
+
+Funding is received from various channels, including grants and programs provided by different donors. Each donor often places restrictions on how their contributions may be allocated, creating the challenge of managing funds that are “labeled” or “restricted” for specific purposes.
+
+Donors also impose diverse rules and compliance requirements regarding the use of their resources. This application addresses those needs by providing the financial visibility and management tools required to adhere to donor guidelines in a secure and efficient manner.
+
+To achieve this, the system organizes the budget into distinct projects, each funded by a specific donor. Within each project, funds are further classified into spending categories aligned with donor requirements.
+
+Additionally, project resources can be broken down into results and activities, providing a greater level of detail in how funds are allocated, spent, and reported.
 
 ## Solution contents
 
