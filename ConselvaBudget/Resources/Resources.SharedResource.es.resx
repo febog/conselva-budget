@@ -178,7 +178,7 @@
     <comment>Account catalog</comment>
   </data>
   <data name="ENTITY_ACCOUNT_HELP" xml:space="preserve">
-    <value>&lt;p&gt;Estas son las categorías contables básicas que se utilizan en toda la aplicación. Sirven como base sobre la que se construye el resto de los datos, por lo que es importante mantener esta información precisa y actualizada.&lt;/p&gt; &lt;p&gt;Como siempre, es importante tener en cuenta que la modificación de un elemento del catálogo de la base de datos principal afectará a todos los elementos relacionados con él.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Estas son las categorías contables básicas que se utilizan en toda la aplicación. Sirven como base sobre la que se construye el resto de los datos, por lo que es importante mantener esta información precisa y actualizada.&lt;/p&gt;</value>
     <comment>Account catalog</comment>
   </data>
   <data name="ENTITY_ACCOUNT_NAME" xml:space="preserve">
@@ -226,7 +226,7 @@
     <comment>Donor catalog</comment>
   </data>
   <data name="ENTITY_DONOR_HELP" xml:space="preserve">
-    <value>&lt;p&gt;Entidad u organización que proporciona la financiación principal para un &lt;b&gt;proyecto&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;Como siempre, es importante tener en cuenta que la modificación de un elemento del catálogo de la base de datos principal afectará a todos los elementos relacionados con él.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Entidad u organización que proporciona la financiación principal para un &lt;b&gt;proyecto&lt;/b&gt;.&lt;/p&gt;</value>
     <comment>Donor catalog</comment>
   </data>
   <data name="ENTITY_DONOR_NAME" xml:space="preserve">
@@ -262,7 +262,7 @@
     <comment>Organization catalog</comment>
   </data>
   <data name="ENTITY_ORGANIZATION_HELP" xml:space="preserve">
-    <value>&lt;p&gt;Unidades de negocio de la organización. Se utilizan junto con el catálogo de &lt;b&gt;Cuentas&lt;/b&gt; para crear las cuentas específicas que se pueden usar para realizar un seguimiento del presupuesto.&lt;/p&gt; &lt;p&gt;Como siempre, es importante tener en cuenta que la modificación de un elemento del catálogo de la base de datos principal afectará a todos los elementos relacionados con él.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Unidades de negocio de la organización. Se utilizan junto con el catálogo de &lt;b&gt;Cuentas&lt;/b&gt; para crear las cuentas específicas que se pueden usar para realizar un seguimiento del presupuesto.&lt;/p&gt;</value>
     <comment>Organization catalog</comment>
   </data>
   <data name="ENTITY_ORGANIZATION_NAME" xml:space="preserve">
