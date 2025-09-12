@@ -139,4 +139,10 @@
   <data name="REPORT_GLOBAL_BALANCE_TITLE" xml:space="preserve">
     <value>Balance global</value>
   </data>
+  <data name="REPORT_PROJECT_BALANCE_DESCRIPTION" xml:space="preserve">
+    <value>Una lista de los presupuestos por actividad y el presupuesto restante de un proyecto.</value>
+  </data>
+  <data name="REPORT_PROJECT_BALANCE_TITLE" xml:space="preserve">
+    <value>Balance de proyecto</value>
+  </data>
 </root>
