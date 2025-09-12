@@ -1,11 +1,21 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using ConselvaBudget.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ConselvaBudget.Areas.Reporting.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel : ReportsPageModel
     {
-        public void OnGet()
+        private readonly ConselvaBudgetContext _context;
+
+        public IndexModel(ConselvaBudgetContext context)
         {
+            _context = context;
+        }
+
+        public IActionResult OnGet()
+        {
+            PopulateProjectDropDownList(_context);
+            return Page();
         }
     }
 }
