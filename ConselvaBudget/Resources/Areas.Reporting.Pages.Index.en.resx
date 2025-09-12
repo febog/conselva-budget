@@ -128,13 +128,13 @@
     <value>Reporting</value>
   </data>
   <data name="REPORT_GLOBAL_EXPENSE_BREAKDOWN_DESCRIPTION" xml:space="preserve">
-    <value>A list of all expenses with their Account, Activity and Project information.</value>
+    <value>A list of all the organization expenses with their Account, Activity and Project information.</value>
   </data>
   <data name="REPORT_GLOBAL_EXPENSE_BREAKDOWN_TITLE" xml:space="preserve">
     <value>Global expense breakdown</value>
   </data>
   <data name="REPORT_GLOBAL_BALANCE_DESCRIPTION" xml:space="preserve">
-    <value>A list of all the activity budgets and the remaining amount.</value>
+    <value>A list of all the organization's activity budgets and the remaining amount.</value>
   </data>
   <data name="REPORT_GLOBAL_BALANCE_TITLE" xml:space="preserve">
     <value>Global balance</value>
@@ -144,5 +144,11 @@
   </data>
   <data name="REPORT_PROJECT_BALANCE_TITLE" xml:space="preserve">
     <value>Project balance</value>
+  </data>
+  <data name="REPORT_PROJECT_EXPENSE_BREAKDOWN_DESCRIPTION" xml:space="preserve">
+    <value>A list of all the project's expenses with their Account and Activity information.</value>
+  </data>
+  <data name="REPORT_PROJECT_EXPENSE_BREAKDOWN_TITLE" xml:space="preserve">
+    <value>Project expense breakdown</value>
   </data>
 </root>

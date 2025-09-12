@@ -128,21 +128,27 @@
     <value>Reportes</value>
   </data>
   <data name="REPORT_GLOBAL_EXPENSE_BREAKDOWN_DESCRIPTION" xml:space="preserve">
-    <value>Una lista de todos los gastos por Cuenta, Actividad y Proyecto.</value>
+    <value>Una lista de todos los gastos de la organización por Cuenta, Actividad y Proyecto.</value>
   </data>
   <data name="REPORT_GLOBAL_EXPENSE_BREAKDOWN_TITLE" xml:space="preserve">
     <value>Desglose de gastos globales</value>
   </data>
   <data name="REPORT_GLOBAL_BALANCE_DESCRIPTION" xml:space="preserve">
-    <value>Una lista de los presupuestos por actividad y el presupuesto restante.</value>
+    <value>Una lista de los presupuestos de la organización por actividad y el balance restante.</value>
   </data>
   <data name="REPORT_GLOBAL_BALANCE_TITLE" xml:space="preserve">
     <value>Balance global</value>
   </data>
   <data name="REPORT_PROJECT_BALANCE_DESCRIPTION" xml:space="preserve">
-    <value>Una lista de los presupuestos por actividad y el presupuesto restante de un proyecto.</value>
+    <value>Una lista de los presupuestos por actividad y el balance restante de un proyecto.</value>
   </data>
   <data name="REPORT_PROJECT_BALANCE_TITLE" xml:space="preserve">
     <value>Balance de proyecto</value>
+  </data>
+  <data name="REPORT_PROJECT_EXPENSE_BREAKDOWN_DESCRIPTION" xml:space="preserve">
+    <value>Una lista de todos los gastos de un proyecto por Cuenta y Actividad.</value>
+  </data>
+  <data name="REPORT_PROJECT_EXPENSE_BREAKDOWN_TITLE" xml:space="preserve">
+    <value>Desglose de gastos de proyecto</value>
   </data>
 </root>
