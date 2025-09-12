@@ -122,7 +122,7 @@
     <comment>Generic button.</comment>
   </data>
   <data name="REPORTS_DESCRIPTION" xml:space="preserve">
-    <value>Reporting creation dashboard.</value>
+    <value>Reports creation dashboard.</value>
   </data>
   <data name="REPORTS_TITLE" xml:space="preserve">
     <value>Reports</value>

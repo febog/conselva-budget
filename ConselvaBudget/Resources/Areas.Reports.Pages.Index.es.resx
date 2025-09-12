@@ -122,7 +122,7 @@
     <comment>Generic button.</comment>
   </data>
   <data name="REPORTS_DESCRIPTION" xml:space="preserve">
-    <value>Página de descargas de reportes.</value>
+    <value>Página de descargas de informes.</value>
   </data>
   <data name="REPORTS_TITLE" xml:space="preserve">
     <value>Informes</value>
