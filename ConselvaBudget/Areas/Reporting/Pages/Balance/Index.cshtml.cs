@@ -20,10 +20,18 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
             _reportService = reportService;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(int? project)
         {
-            var activityBudgets = await _context.ActivityBudgets
-                    .Include(b => b.Activity.Result.Project.Donor)
+            var activityBudgetsQuery = _context.ActivityBudgets
+                .Include(b => b.Activity.Result.Project.Donor)
+                .AsQueryable();
+
+            if (project != null)
+            {
+                activityBudgetsQuery = activityBudgetsQuery.Where(b => b.Activity.Result.Project.Id == project);
+            }
+
+            var activityBudgets = await activityBudgetsQuery
                     .Include(b => b.AccountAssignment.Organization)
                     .Include(b => b.AccountAssignment.Account)
                     .Include(b => b.ExpenseInvoices)
@@ -34,7 +42,8 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
             var reportData = MapBalanceReportData(activityBudgets);
 
             // Generate Excel file download
-            string downloadName = $"{ReportBaseFileName}-{DateTime.Now.ToString("yyyy-MM-dd")}";
+            string qualifier = project == null ? "Global" : activityBudgets.FirstOrDefault()?.Activity.Result.Project.ShortName ?? "Empty project";
+            string downloadName = $"{ReportBaseFileName}-{qualifier}-{DateTime.Now.ToString("yyyy-MM-dd")}";
             return _reportService.GenerateExcelFileDownload<BalanceReportViewModel>(reportData, downloadName);
         }
 

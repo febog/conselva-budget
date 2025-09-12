@@ -9,6 +9,15 @@
 
 <p>@Localizer["REPORTING_DESCRIPTION"]</p>
 
+<h2>@Localizer["REPORT_PROJECT_BALANCE_TITLE"]</h2>
+
+<p>@Localizer["REPORT_PROJECT_BALANCE_DESCRIPTION"]</p>
+
+<form asp-area="Reporting" asp-page="Balance/Index" method="get">
+    <select name="project" class="form-select mb-2" asp-items="@Model.ProjectSL"></select>
+    <button type="submit" class="btn btn-primary mb-3"><i class=" bi bi-download"></i> @Localizer["DOWNLOAD"]</button>
+</form>
+
 <h2>@Localizer["REPORT_GLOBAL_BALANCE_TITLE"]</h2>
 
 <p>@Localizer["REPORT_GLOBAL_BALANCE_DESCRIPTION"]</p>
@@ -17,9 +26,18 @@
     <a class="btn btn-primary" asp-page="Balance/Index"><i class="bi bi-download"></i> @Localizer["DOWNLOAD"]</a>
 </p>
 
-<h2>@Localizer["REPORT_EXPENSE_BREAKDOWN_TITLE"]</h2>
+<h2>@Localizer["REPORT_PROJECT_EXPENSE_BREAKDOWN_TITLE"]</h2>
 
-<p>@Localizer["REPORT_EXPENSE_BREAKDOWN_DESCRIPTION"]</p>
+<p>@Localizer["REPORT_PROJECT_EXPENSE_BREAKDOWN_DESCRIPTION"]</p>
+
+<form asp-area="Reporting" asp-page="Expenses/Index" method="get">
+    <select name="project" class="form-select mb-2" asp-items="@Model.ProjectSL"></select>
+    <button type="submit" class="btn btn-primary mb-3"><i class=" bi bi-download"></i> @Localizer["DOWNLOAD"]</button>
+</form>
+
+<h2>@Localizer["REPORT_GLOBAL_EXPENSE_BREAKDOWN_TITLE"]</h2>
+
+<p>@Localizer["REPORT_GLOBAL_EXPENSE_BREAKDOWN_DESCRIPTION"]</p>
 
 <p>
     <a class="btn btn-primary" asp-page="Expenses/Index"><i class="bi bi-download"></i> @Localizer["DOWNLOAD"]</a>
