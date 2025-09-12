@@ -118,37 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DOWNLOAD" xml:space="preserve">
-    <value>Descargar</value>
+    <value>Download</value>
     <comment>Generic button.</comment>
   </data>
-  <data name="REPORTING_DESCRIPTION" xml:space="preserve">
-    <value>Página de descargas de reportes.</value>
+  <data name="REPORTS_DESCRIPTION" xml:space="preserve">
+    <value>Reports creation dashboard.</value>
   </data>
-  <data name="REPORTING_TITLE" xml:space="preserve">
-    <value>Reportes</value>
+  <data name="REPORTS_TITLE" xml:space="preserve">
+    <value>Reports</value>
   </data>
   <data name="REPORT_GLOBAL_EXPENSE_BREAKDOWN_DESCRIPTION" xml:space="preserve">
-    <value>Una lista de todos los gastos de la organización por Cuenta, Actividad y Proyecto.</value>
+    <value>A list of all the organization expenses with their Account, Activity and Project information.</value>
   </data>
   <data name="REPORT_GLOBAL_EXPENSE_BREAKDOWN_TITLE" xml:space="preserve">
-    <value>Desglose de gastos globales</value>
+    <value>Global expense breakdown</value>
   </data>
   <data name="REPORT_GLOBAL_BALANCE_DESCRIPTION" xml:space="preserve">
-    <value>Una lista de los presupuestos de la organización por actividad y el balance restante.</value>
+    <value>A list of all the organization's activity budgets and the remaining amount.</value>
   </data>
   <data name="REPORT_GLOBAL_BALANCE_TITLE" xml:space="preserve">
-    <value>Balance global</value>
+    <value>Global balance</value>
   </data>
   <data name="REPORT_PROJECT_BALANCE_DESCRIPTION" xml:space="preserve">
-    <value>Una lista de los presupuestos por actividad y el balance restante de un proyecto.</value>
+    <value>A list of all the project's activity budgets and the remaining amount.</value>
   </data>
   <data name="REPORT_PROJECT_BALANCE_TITLE" xml:space="preserve">
-    <value>Balance de proyecto</value>
+    <value>Project balance</value>
   </data>
   <data name="REPORT_PROJECT_EXPENSE_BREAKDOWN_DESCRIPTION" xml:space="preserve">
-    <value>Una lista de todos los gastos de un proyecto por Cuenta y Actividad.</value>
+    <value>A list of all the project's expenses with their Account and Activity information.</value>
   </data>
   <data name="REPORT_PROJECT_EXPENSE_BREAKDOWN_TITLE" xml:space="preserve">
-    <value>Desglose de gastos de proyecto</value>
+    <value>Project expense breakdown</value>
   </data>
 </root>

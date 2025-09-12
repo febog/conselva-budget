@@ -1,4 +1,4 @@
-﻿namespace ConselvaBudget.Areas.Reporting.Pages.Balance
+﻿namespace ConselvaBudget.Areas.Reports.Pages.Balance
 {
     public class BalanceReportViewModel
     {

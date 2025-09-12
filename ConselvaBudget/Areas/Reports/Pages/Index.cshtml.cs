@@ -1,7 +1,7 @@
 using ConselvaBudget.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ConselvaBudget.Areas.Reporting.Pages
+namespace ConselvaBudget.Areas.Reports.Pages
 {
     public class IndexModel : ReportsPageModel
     {

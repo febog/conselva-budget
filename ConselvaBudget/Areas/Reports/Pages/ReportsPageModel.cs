@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Reporting.Pages
+namespace ConselvaBudget.Areas.Reports.Pages
 {
     public class ReportsPageModel : PageModel
     {

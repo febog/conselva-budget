@@ -15,7 +15,7 @@ namespace ConselvaBudget.Services
                 options.Conventions.AuthorizeAreaFolder("Administration", "/", Policies.RequireAdministratorRole);
                 options.Conventions.AuthorizeAreaFolder("Budget", "/", Policies.RequireEmployeeRole);
                 options.Conventions.AuthorizeAreaFolder("Expenses", "/", Policies.RequireEmployeeRole);
-                options.Conventions.AuthorizeAreaFolder("Reporting", "/", Policies.RequireManagementRole);
+                options.Conventions.AuthorizeAreaFolder("Reports", "/", Policies.RequireManagementRole);
             });
 
             // Used by services.AddAuthorization()

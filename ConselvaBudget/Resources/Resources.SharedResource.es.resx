@@ -125,8 +125,8 @@
     <value>Presupuesto</value>
     <comment>Area name</comment>
   </data>
-  <data name="AREA_REPORTING" xml:space="preserve">
-    <value>Reportes</value>
+  <data name="AREA_REPORTS" xml:space="preserve">
+    <value>Informes</value>
     <comment>Area name</comment>
   </data>
   <data name="AREA_SPENDING" xml:space="preserve">

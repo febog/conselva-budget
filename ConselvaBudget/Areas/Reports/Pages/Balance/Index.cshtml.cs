@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConselvaBudget.Areas.Reporting.Pages.Balance
+namespace ConselvaBudget.Areas.Reports.Pages.Balance
 {
     public class IndexModel : PageModel
     {
