@@ -42,7 +42,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Balance
             var reportData = MapBalanceReportData(activityBudgets);
 
             // Generate Excel file download
-            string qualifier = project == null ? "Global" : activityBudgets.FirstOrDefault()?.Activity.Result.Project.Name ?? "Empty project";
+            string qualifier = project == null ? "Global" : activityBudgets.FirstOrDefault()?.Activity.Result.Project.ShortName ?? "Empty project";
             string downloadName = $"{ReportBaseFileName}-{qualifier}-{DateTime.Now.ToString("yyyy-MM-dd")}";
             return _reportService.GenerateExcelFileDownload<BalanceReportViewModel>(reportData, downloadName);
         }

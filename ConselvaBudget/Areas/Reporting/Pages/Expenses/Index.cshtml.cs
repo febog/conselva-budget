@@ -40,7 +40,7 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Expenses
             var reportData = MapExpensesReportData(expenses);
 
             // Generate Excel file download
-            string qualifier = project == null ? "Global" : expenses.FirstOrDefault()?.ActivityBudget.Activity.Result.Project.Name ?? "Empty project";
+            string qualifier = project == null ? "Global" : expenses.FirstOrDefault()?.ActivityBudget.Activity.Result.Project.ShortName ?? "Empty project";
             string downloadName = $"{ReportBaseFileName}-{qualifier}-{DateTime.Now.ToString("yyyy-MM-dd")}";
             return _reportService.GenerateExcelFileDownload<ExpensesReportViewModel>(reportData, downloadName);
         }
