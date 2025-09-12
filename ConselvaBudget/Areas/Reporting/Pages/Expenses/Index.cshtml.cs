@@ -20,10 +20,18 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Expenses
             _reportService = reportService;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(int? project)
         {
-            var expenses = await _context.ExpenseInvoices
+            var expenseQuery = _context.ExpenseInvoices
                 .Include(e => e.ActivityBudget.Activity.Result.Project.Donor)
+                .AsQueryable();
+
+            if (project != null)
+            {
+                expenseQuery = expenseQuery.Where(e => e.ActivityBudget.Activity.Result.Project.Id == project);
+            }
+
+            var expenses = await expenseQuery
                 .Include(e => e.ActivityBudget.AccountAssignment.Organization)
                 .Include(e => e.ActivityBudget.AccountAssignment.Account)
                 .ToListAsync();
@@ -32,7 +40,8 @@ namespace ConselvaBudget.Areas.Reporting.Pages.Expenses
             var reportData = MapExpensesReportData(expenses);
 
             // Generate Excel file download
-            string downloadName = $"{ReportBaseFileName}-{DateTime.Now.ToString("yyyy-MM-dd")}";
+            string qualifier = project == null ? "Global" : expenses.FirstOrDefault()?.ActivityBudget.Activity.Result.Project.Name ?? "Empty project";
+            string downloadName = $"{ReportBaseFileName}-{qualifier}-{DateTime.Now.ToString("yyyy-MM-dd")}";
             return _reportService.GenerateExcelFileDownload<ExpensesReportViewModel>(reportData, downloadName);
         }
 
