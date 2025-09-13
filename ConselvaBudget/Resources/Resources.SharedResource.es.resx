@@ -233,18 +233,6 @@
     <value>Donante</value>
     <comment>Donor catalog</comment>
   </data>
-  <data name="ENTITY_EQUIVALENT_ACCOUNT_CATALOG_NAME" xml:space="preserve">
-    <value>Cuentas equivalentes</value>
-    <comment>Equivalent account catalog</comment>
-  </data>
-  <data name="ENTITY_EQUIVALENT_ACCOUNT_HELP" xml:space="preserve">
-    <value>&lt;p&gt;Para cada &lt;b&gt;Donante&lt;/b&gt;, puede seleccionar el alias o nombre alternativo que tendrá una &lt;b&gt;Cuenta&lt;/b&gt; para &lt;b&gt;los Proyectos&lt;/b&gt; de ese Donante.&lt;/p&gt;</value>
-    <comment>Equivalent account catalog</comment>
-  </data>
-  <data name="ENTITY_EQUIVALENT_ACCOUNT_NAME" xml:space="preserve">
-    <value>Cuenta equivalente</value>
-    <comment>Equivalent account catalog</comment>
-  </data>
   <data name="ENTITY_NOTIFICATION_CATALOG_NAME" xml:space="preserve">
     <value>Notificaciones por email</value>
     <comment>Email notification catalog</comment>
