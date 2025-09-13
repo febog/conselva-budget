@@ -146,7 +146,7 @@
     <comment>When there are none of the given requests in a section</comment>
   </data>
   <data name="PAGE_DESCRIPTION" xml:space="preserve">
-    <value>To use the budget, start by creating a Spending Request. Only the last 10 requests are shown in each category.</value>
+    <value>To use the budget, start by creating a Spending Request. Only the requests from the last 90 days are shown.</value>
     <comment>Initial instructions</comment>
   </data>
   <data name="PAGE_TITLE" xml:space="preserve">

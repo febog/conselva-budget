@@ -146,7 +146,7 @@
     <comment>When there are none of the given requests in a section</comment>
   </data>
   <data name="PAGE_DESCRIPTION" xml:space="preserve">
-    <value>Para usar el presupuesto, inicia creando una nueva Solicitud. Solo se muestran las últimas 10 solicitudes en cada categoría.</value>
+    <value>Para usar el presupuesto, inicia creando una nueva Solicitud. Solo se muestran las solicitudes de los últimos 90 días.</value>
     <comment>Initial instructions</comment>
   </data>
   <data name="PAGE_TITLE" xml:space="preserve">
