@@ -18,8 +18,5 @@ namespace ConselvaBudget.Models
 
         [Display(Name = "DONOR_PROJECTS")]
         public virtual ICollection<Project> Projects { get; set; }
-
-        [Display(Name = "DONOR_EQUIVALENT_ACCOUNTS")]
-        public virtual ICollection<EquivalentAccount> EquivalentAccounts { get; set; }
     }
 }
