@@ -129,6 +129,9 @@
   <data name="SUBTOTALS_PRE_PAID_SUBTOTAL" xml:space="preserve">
     <value>Precargado</value>
   </data>
+  <data name="SUBTOTALS_REIMBURSEMENT" xml:space="preserve">
+    <value>Total a reembolsar</value>
+  </data>
   <data name="SUBTOTALS_TRANSFER_SUBTOTAL" xml:space="preserve">
     <value>Transferencia</value>
   </data>
