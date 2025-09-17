@@ -37,10 +37,10 @@ namespace ConselvaBudget.Models
         [Display(Name = "Trip")]
         public Trip Trip { get; set; }
 
-        [Display(Name = "Total")]
+        [Display(Name = "Grand total")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal TotalAmount => ExpenseInvoices.Sum(e => e.Amount);
+        public decimal TotalAmount => ExpenseInvoices.Sum(e => e.TotalSpentAmount);
 
         public virtual ICollection<AmountRequest> AmountRequests { get; set; }
 
