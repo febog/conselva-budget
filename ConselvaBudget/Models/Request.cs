@@ -48,7 +48,7 @@ namespace ConselvaBudget.Models
         public decimal TotalTaxWithheld => ExpenseInvoices.Sum(e => e.TaxWithheld ?? 0);
 
         [Display(Name = "Gran total")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalSpentAmount => ExpenseInvoices.Sum(e => e.TotalSpentAmount);
 
