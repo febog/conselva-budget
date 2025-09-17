@@ -121,6 +121,6 @@
     <value>Account</value>
   </data>
   <data name="ACCOUNT_SUBTOTALS_AMOUNT" xml:space="preserve">
-    <value>Amount</value>
+    <value>Total spent amount</value>
   </data>
 </root>

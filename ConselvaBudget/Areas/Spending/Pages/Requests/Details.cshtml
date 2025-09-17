@@ -87,10 +87,28 @@
         @Html.DisplayFor(model => model.SpendingRequest.ModifiedDate)
     </dd>
     <dt class="col-sm-3 col-lg-2">
-        @Html.DisplayNameFor(model => model.SpendingRequest.TotalAmount)
+        @Html.DisplayNameFor(model => model.PaymentSubtotals.Reimbursement)
     </dt>
     <dd class="col-sm-9 col-lg-10">
-        @Html.DisplayFor(model => model.SpendingRequest.TotalAmount)
+        @Html.DisplayFor(model => model.PaymentSubtotals.Reimbursement)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.PaymentSubtotals.PrePaidSubtotal)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.PaymentSubtotals.PrePaidSubtotal)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.TotalTaxWithheld)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.SpendingRequest.TotalTaxWithheld)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.TotalSpentAmount)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.SpendingRequest.TotalSpentAmount)
     </dd>
     <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.IsPaid)
@@ -477,7 +495,7 @@
                     @Html.DisplayNameFor(model => model.PaymentSubtotals.PrePaidSubtotal)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.SpendingRequest.ExpenseInvoices.ToList()[0].TaxWithheld)
+                    @Html.DisplayNameFor(model => model.SpendingRequest.TotalTaxWithheld)
                 </th>
             </tr>
         </thead>
@@ -499,14 +517,20 @@
                     @Html.DisplayFor(model => model.PaymentSubtotals.PrePaidSubtotal)
                 </td>
                 <td class="align-middle">
-                    @{
-                        var taxWithheldTotalAmount = string.Format("{0:C}", Model.SpendingRequest.ExpenseInvoices.Sum(i => i.TaxWithheld));
-                    }
-                    @Html.DisplayFor(model => taxWithheldTotalAmount)
+                    @Html.DisplayFor(model => model.SpendingRequest.TotalTaxWithheld)
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentSubtotals.CashPlusDebit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PaymentSubtotals.CashPlusDebit)
+        </dd>
+    </dl>
 }
 
 

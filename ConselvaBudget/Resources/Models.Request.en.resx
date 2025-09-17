@@ -117,25 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SUBTOTALS_CASH_PLUS_DEBIT" xml:space="preserve">
-    <value>Suma de efectivo y tarjeta de débito</value>
+  <data name="REQUEST_ACTIVITY" xml:space="preserve">
+    <value>Activity</value>
   </data>
-  <data name="SUBTOTALS_CASH_SUBTOTAL" xml:space="preserve">
-    <value>Efectivo</value>
+  <data name="REQUEST_CREATED_DATE" xml:space="preserve">
+    <value>Created date</value>
   </data>
-  <data name="SUBTOTALS_CREDIT_CARD_SUBTOTAL" xml:space="preserve">
-    <value>Tarjeta de crédito</value>
+  <data name="REQUEST_DESCRIPTION" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="SUBTOTALS_DEBIT_CARD_SUBTOTAL" xml:space="preserve">
-    <value>Tarjeta de débito</value>
+  <data name="REQUEST_ID" xml:space="preserve">
+    <value>Request ID</value>
   </data>
-  <data name="SUBTOTALS_PRE_PAID_SUBTOTAL" xml:space="preserve">
-    <value>Precargado</value>
+  <data name="REQUEST_IS_PAID" xml:space="preserve">
+    <value>Payment status</value>
   </data>
-  <data name="SUBTOTALS_REIMBURSEMENT" xml:space="preserve">
-    <value>Total a reembolsar</value>
+  <data name="REQUEST_MODIFIED_DATE" xml:space="preserve">
+    <value>Modified date</value>
   </data>
-  <data name="SUBTOTALS_TRANSFER_SUBTOTAL" xml:space="preserve">
-    <value>Transferencia</value>
+  <data name="REQUEST_REQUESTOR" xml:space="preserve">
+    <value>Requestor</value>
+  </data>
+  <data name="REQUEST_TOTAL_AMOUNT" xml:space="preserve">
+    <value>Paid amount</value>
+  </data>
+  <data name="REQUEST_TOTAL_SPENT_AMOUNT" xml:space="preserve">
+    <value>Total spent amount</value>
+  </data>
+  <data name="REQUEST_TOTAL_TAX_WITHHELD" xml:space="preserve">
+    <value>Tax withheld</value>
   </data>
 </root>
