@@ -15,6 +15,7 @@ namespace ConselvaBudget.Models
         [Display(Name = "REQUEST_IS_PAID")]
         public bool IsPaid { get; set; }
 
+        [Display(Name = "REQUEST_REQUESTOR")]
         [StringLength(450)]
         [Required]
         [ValidateNever]

@@ -135,6 +135,9 @@
   <data name="REQUEST_MODIFIED_DATE" xml:space="preserve">
     <value>Fecha de modificación</value>
   </data>
+  <data name="REQUEST_REQUESTOR" xml:space="preserve">
+    <value>Solicitante</value>
+  </data>
   <data name="REQUEST_TOTAL_AMOUNT" xml:space="preserve">
     <value>Importe pagado</value>
   </data>
