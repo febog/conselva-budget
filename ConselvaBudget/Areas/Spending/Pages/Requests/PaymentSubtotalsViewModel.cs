@@ -35,5 +35,13 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             + DebitCardSubtotal
             + CreditCardSubtotal
             + TransferSubtotal;
+
+        /// <summary>
+        /// As a helper to the user, show the sum of the cash amount plus the
+        /// debit card amount.
+        /// </summary>
+        [Display(Name = "SUBTOTALS_CASH_PLUS_DEBIT")]
+        [DataType(DataType.Currency)]
+        public decimal CashPlusDebit => CashSubtotal + DebitCardSubtotal;
     }
 }

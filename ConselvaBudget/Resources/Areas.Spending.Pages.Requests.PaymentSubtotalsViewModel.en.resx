@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SUBTOTALS_CASH_PLUS_DEBIT" xml:space="preserve">
+    <value>Cash plus debit card</value>
+  </data>
   <data name="SUBTOTALS_CASH_SUBTOTAL" xml:space="preserve">
     <value>Cash</value>
   </data>
