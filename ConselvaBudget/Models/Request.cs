@@ -5,14 +5,14 @@ namespace ConselvaBudget.Models
 {
     public class Request
     {
-        [Display(Name = "ID")]
+        [Display(Name = "REQUEST_ID")]
         public int Id { get; set; }
 
         public int ActivityId { get; set; }
 
         public RequestStatus Status { get; set; }
 
-        [Display(Name = "Paid")]
+        [Display(Name = "REQUEST_IS_PAID")]
         public bool IsPaid { get; set; }
 
         [StringLength(450)]
@@ -20,34 +20,33 @@ namespace ConselvaBudget.Models
         [ValidateNever]
         public string RequestorUserId { get; set; }
 
-        [Display(Name = "CreatedDate")]
+        [Display(Name = "REQUEST_CREATED_DATE")]
         public DateTime CreatedDate { get; set; }
 
-        [Display(Name = "ModifiedDate")]
+        [Display(Name = "REQUEST_MODIFIED_DATE")]
         public DateTime ModifiedDate { get; set; }
 
-        [Display(Name = "Description")]
+        [Display(Name = "REQUEST_DESCRIPTION")]
         [StringLength(512)]
         [Required]
         public string Description { get; set; }
 
-        [Display(Name = "Activity")]
+        [Display(Name = "REQUEST_ACTIVITY")]
         public Activity Activity { get; set; }
 
-        [Display(Name = "Trip")]
         public Trip Trip { get; set; }
 
-        [Display(Name = "Importe total")]
+        [Display(Name = "REQUEST_TOTAL_AMOUNT")]
         [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalAmount => ExpenseInvoices.Sum(e => e.Amount);
 
-        [Display(Name = "Total de impuestos retenidos")]
+        [Display(Name = "REQUEST_TOTAL_TAX_WITHHELD")]
         [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalTaxWithheld => ExpenseInvoices.Sum(e => e.TaxWithheld ?? 0);
 
-        [Display(Name = "Gran total")]
+        [Display(Name = "REQUEST_TOTAL_SPENT_AMOUNT")]
         [DataType(DataType.Currency)]
         [ValidateNever]
         public decimal TotalSpentAmount => ExpenseInvoices.Sum(e => e.TotalSpentAmount);
