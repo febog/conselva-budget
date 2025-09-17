@@ -37,10 +37,20 @@ namespace ConselvaBudget.Models
         [Display(Name = "Trip")]
         public Trip Trip { get; set; }
 
-        [Display(Name = "Grand total")]
+        [Display(Name = "Importe total")]
+        [DataType(DataType.Currency)]
+        [ValidateNever]
+        public decimal TotalAmount => ExpenseInvoices.Sum(e => e.Amount);
+
+        [Display(Name = "Total de impuestos retenidos")]
+        [DataType(DataType.Currency)]
+        [ValidateNever]
+        public decimal TotalTaxWithheld => ExpenseInvoices.Sum(e => e.TaxWithheld ?? 0);
+
+        [Display(Name = "Gran total")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [ValidateNever]
-        public decimal TotalAmount => ExpenseInvoices.Sum(e => e.TotalSpentAmount);
+        public decimal TotalSpentAmount => ExpenseInvoices.Sum(e => e.TotalSpentAmount);
 
         public virtual ICollection<AmountRequest> AmountRequests { get; set; }
 
