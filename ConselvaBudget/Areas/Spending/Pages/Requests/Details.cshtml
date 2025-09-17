@@ -87,10 +87,28 @@
         @Html.DisplayFor(model => model.SpendingRequest.ModifiedDate)
     </dd>
     <dt class="col-sm-3 col-lg-2">
-        @Html.DisplayNameFor(model => model.SpendingRequest.TotalAmount)
+        @Html.DisplayNameFor(model => model.PaymentSubtotals.Reimbursement)
     </dt>
     <dd class="col-sm-9 col-lg-10">
-        @Html.DisplayFor(model => model.SpendingRequest.TotalAmount)
+        @Html.DisplayFor(model => model.PaymentSubtotals.Reimbursement)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.PaymentSubtotals.PrePaidSubtotal)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.PaymentSubtotals.PrePaidSubtotal)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.TotalTaxWithheld)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.SpendingRequest.TotalTaxWithheld)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.SpendingRequest.TotalSpentAmount)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.SpendingRequest.TotalSpentAmount)
     </dd>
     <dt class="col-sm-3 col-lg-2">
         @Html.DisplayNameFor(model => model.SpendingRequest.IsPaid)
