@@ -160,6 +160,14 @@
     <value>Solicitudes completadas</value>
     <comment>Title for Status Completed</comment>
   </data>
+  <data name="TITLE_COMPLETED_UNPAID_REQUESTS" xml:space="preserve">
+    <value>Solicitades completadas sin pagar</value>
+    <comment>Title for the section that may show completed but unpaid requests</comment>
+  </data>
+  <data name="TITLE_COMPLETED_UNPAID_REQUESTS_NOTICE" xml:space="preserve">
+    <value>Las siguientes solicitudes están marcadas como completadas, pero aún no se han pagado.</value>
+    <comment>Explainer of the completed but unpaid table</comment>
+  </data>
   <data name="TITLE_CREATED_REQUESTS" xml:space="preserve">
     <value>Solicitudes creadas</value>
     <comment>Title for Status Created</comment>

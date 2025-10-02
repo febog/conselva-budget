@@ -309,6 +309,84 @@ else
 
 <p><a class="btn btn-success"><i class="bi bi-check2-circle"></i> @Localizer["BUTTON_COMPLETED_REQUESTS"]</a></p>
 
+@if (Model.CompletedButUnpaidRequests.Count > 0)
+{
+    <h3>@Localizer["TITLE_COMPLETED_UNPAID_REQUESTS"]</h3>
+    <div class="alert alert-warning" role="alert">
+        <p class="mb-0"><i class="bi bi-exclamation-circle"></i> @Localizer["TITLE_COMPLETED_UNPAID_REQUESTS_NOTICE"]</p>
+    </div>
+
+    <table class="table table-bordered table-striped caption-top">
+        <caption>@Localizer["TITLE_COMPLETED_UNPAID_REQUESTS"]</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompletedButUnpaidRequests[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompletedButUnpaidRequests[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompletedButUnpaidRequests[0].Activity.Result.Project)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompletedButUnpaidRequests[0].Activity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompletedButUnpaidRequests[0].CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompletedButUnpaidRequests[0].ModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompletedButUnpaidRequests[0].IsPaid)
+                </th>
+                <th style="width: 1px; white-space:nowrap;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CompletedButUnpaidRequests)
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Activity.Result.Project.Name)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.Activity.Code)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                    </td>
+                    <td class="align-middle">
+                        @if (item.IsPaid)
+                        {
+                            <span class="badge text-bg-success"><i class="bi bi-check-lg"></i></span>
+                        }
+                        else
+                        {
+                            <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i></span>
+                        }
+                    </td>
+                    <td class="align-middle">
+                        <table-buttons>
+                            <details-button asp-page="Details" asp-route-id="@item.Id"></details-button>
+                        </table-buttons>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Completed).Any())
 {
     <table class="table table-bordered table-striped caption-top">
