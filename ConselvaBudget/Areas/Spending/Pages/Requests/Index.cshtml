@@ -31,7 +31,7 @@
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Created).Any())
 {
     <table class="table table-bordered table-striped caption-top">
-        <caption>Created spending requests</caption>
+        <caption>@Localizer["TITLE_CREATED_REQUESTS"]</caption>
         <thead>
             <tr>
                 <th>
@@ -102,7 +102,7 @@ else
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Submitted).Any())
 {
     <table class="table table-bordered table-striped caption-top">
-        <caption>Created spending requests</caption>
+        <caption>@Localizer["TITLE_SUBMITTED_REQUESTS"]</caption>
         <thead>
             <tr>
                 <th>
@@ -172,7 +172,7 @@ else
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Approved).Any())
 {
     <table class="table table-bordered table-striped caption-top">
-        <caption>Created spending requests</caption>
+        <caption>@Localizer["TITLE_APPROVED_REQUESTS"]</caption>
         <thead>
             <tr>
                 <th>
@@ -242,7 +242,7 @@ else
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Verification).Any())
 {
     <table class="table table-bordered table-striped caption-top">
-        <caption>Created spending requests</caption>
+        <caption>@Localizer["TITLE_VERIFICATION_REQUESTS"]</caption>
         <thead>
             <tr>
                 <th>
@@ -390,7 +390,7 @@ else
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Completed).Any())
 {
     <table class="table table-bordered table-striped caption-top">
-        <caption>Created spending requests</caption>
+        <caption>@Localizer["TITLE_COMPLETED_REQUESTS"]</caption>
         <thead>
             <tr>
                 <th>
