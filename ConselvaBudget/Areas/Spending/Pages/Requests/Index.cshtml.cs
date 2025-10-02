@@ -20,6 +20,8 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public IList<Request> SpendingRequests { get; set; } = default!;
 
+        public IList<Request> CompletedButUnpaidRequests { get; set; } = default!;
+
         public async Task OnGetAsync()
         {
             var requests = _context.Requests
@@ -40,6 +42,10 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 .Where(r => r.CreatedDate >= cutOffDate)
                 .OrderByDescending(r => r.CreatedDate)
                 .ToListAsync();
+
+            CompletedButUnpaidRequests = SpendingRequests
+                .Where(r => r.IsPaid == false && r.Status == RequestStatus.Completed)
+                .ToList();
         }
     }
 }

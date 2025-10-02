@@ -160,6 +160,14 @@
     <value>Completed requests</value>
     <comment>Title for Status Completed</comment>
   </data>
+  <data name="TITLE_COMPLETED_UNPAID_REQUESTS" xml:space="preserve">
+    <value>Completed unpaid requests</value>
+    <comment>Title for the section that may show completed but unpaid requests</comment>
+  </data>
+  <data name="TITLE_COMPLETED_UNPAID_REQUESTS_NOTICE" xml:space="preserve">
+    <value>The following requests are marked as completed, but they are still unpaid.</value>
+    <comment>Explainer of the completed but unpaid table</comment>
+  </data>
   <data name="TITLE_CREATED_REQUESTS" xml:space="preserve">
     <value>Created requests</value>
     <comment>Title for Status Created</comment>
