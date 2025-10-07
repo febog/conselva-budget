@@ -9,20 +9,35 @@
 
 <h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
-<p> @Localizer["PAGE_DESCRIPTION"]</p>
+<p>@Localizer["PAGE_DESCRIPTION"]</p>
 
-<form method="get" class="row row-cols-lg-auto g-2 mb-2 align-items-center" asp-page="Details">
-    <div class="col-12">
-        <label class="visually-hidden" for="request-id-jump">Request ID</label>
-        <input type="text" class="form-control" id="request-id-jump" name="id" placeholder="Request ID">
-    </div>
+<p><a class="btn btn-primary" asp-page="SelectProject"><i class="bi bi-plus-lg"></i> @Localizer["BUTTON_CREATE_REQUEST"]</a></p>
 
-    <div class="col-12">
-        <input class="btn btn-success" type="submit" value="Go">
+<h2>@Localizer["REQUEST_NAVIGATION_TITLE"]</h2>
+
+<form method="get" class="mb-3" asp-page="Details">
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="request-navigator-input" class="col-form-label">@Localizer["REQUEST_NAVIGATION_LABEL"]</label>
+        </div>
+        <div class="col-auto">
+            <input type="number"
+                name="id"
+                id="request-navigator-input"
+                class="form-control"
+                aria-describedby="request-navigator-help"
+                placeholder="@Localizer["REQUEST_NAVIGATION_LABEL"]">
+        </div>
+        <div class="col-auto">
+            <input class="btn btn-success" type="submit" value="@Localizer["REQUEST_NAVIGATION_SUBMIT"]">
+        </div>
+        <div class="col-auto">
+            <span id="request-navigator-help" class="form-text">
+                @Localizer["REQUEST_NAVIGATION_DESCRIPTION"]
+            </span>
+        </div>
     </div>
 </form>
-
-<p><a class="btn btn-primary" asp-page="SelectProject">@Localizer["BUTTON_CREATE_REQUEST"]</a></p>
 
 <h2>@Localizer["TITLE_CREATED_REQUESTS"]</h2>
 

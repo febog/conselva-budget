@@ -152,6 +152,22 @@
   <data name="PAGE_TITLE" xml:space="preserve">
     <value>Requests</value>
   </data>
+  <data name="REQUEST_NAVIGATION_DESCRIPTION" xml:space="preserve">
+    <value>You can navigate to any Request by providing its ID here.</value>
+    <comment>Explains the functionality of the go to request ID form.</comment>
+  </data>
+  <data name="REQUEST_NAVIGATION_LABEL" xml:space="preserve">
+    <value>Request ID</value>
+    <comment>Label for the request ID form field for the request navigator.</comment>
+  </data>
+  <data name="REQUEST_NAVIGATION_SUBMIT" xml:space="preserve">
+    <value>Look up request</value>
+    <comment>Text for the Go to Request ID submit button.</comment>
+  </data>
+  <data name="REQUEST_NAVIGATION_TITLE" xml:space="preserve">
+    <value>Go to request</value>
+    <comment>Title for the request navigation section.</comment>
+  </data>
   <data name="TITLE_APPROVED_REQUESTS" xml:space="preserve">
     <value>Approved requests</value>
     <comment>Title for Status Approved</comment>
