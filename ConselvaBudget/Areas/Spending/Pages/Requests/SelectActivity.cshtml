@@ -1,14 +1,15 @@
 ﻿@page
 @inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
 @model SelectActivityModel
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = "Activities";
+    ViewData["Title"] = @Localizer["PAGE_TITLE"];
 }
 
 @section Introduction {
-    <p>Select the activity for this request.</p>
+    <p>@Localizer["PAGE_DESCRIPTION"]</p>
 }
 
 @section TableHeaders {

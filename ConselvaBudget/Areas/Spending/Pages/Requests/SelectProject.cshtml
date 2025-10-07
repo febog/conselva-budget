@@ -1,14 +1,15 @@
 ﻿@page
 @inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
 @model SelectProjectModel
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = "Projects";
+    ViewData["Title"] = @Localizer["PAGE_TITLE"];
 }
 
 @section Introduction {
-    <p>Select the working project.</p>
+    <p>@Localizer["PAGE_DESCRIPTION"]</p>
 }
 
 @section TableHeaders {
