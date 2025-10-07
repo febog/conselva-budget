@@ -11,14 +11,29 @@
 
 <p> @Localizer["PAGE_DESCRIPTION"]</p>
 
-<form method="get" class="row row-cols-lg-auto g-2 mb-2 align-items-center" asp-page="Details">
-    <div class="col-12">
-        <label class="visually-hidden" for="request-id-jump">Request ID</label>
-        <input type="text" class="form-control" id="request-id-jump" name="id" placeholder="Request ID">
-    </div>
+<h2>@Localizer["REQUEST_NAVIGATION_TITLE"]</h2>
 
-    <div class="col-12">
-        <input class="btn btn-success" type="submit" value="Go">
+<form method="get" asp-page="Details">
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="request-navigator-input" class="col-form-label">@Localizer["REQUEST_NAVIGATION_LABEL"]</label>
+        </div>
+        <div class="col-auto">
+            <input type="text"
+                name="id"
+                id="request-navigator-input"
+                class="form-control"
+                aria-describedby="request-navigator-help"
+                placeholder="@Localizer["REQUEST_NAVIGATION_LABEL"]">
+        </div>
+        <div class="col-auto">
+            <input class="btn btn-success" type="submit" value="@Localizer["REQUEST_NAVIGATION_SUBMIT"]">
+        </div>
+        <div class="col-auto">
+            <span id="request-navigator-help" class="form-text">
+                @Localizer["REQUEST_NAVIGATION_DESCRIPTION"]
+            </span>
+        </div>
     </div>
 </form>
 
