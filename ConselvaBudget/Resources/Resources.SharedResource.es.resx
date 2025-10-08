@@ -209,6 +209,10 @@
     <value>Actividad</value>
     <comment>Activity entity</comment>
   </data>
+  <data name="ENTITY_AMOUNT_REQUEST_NAME" xml:space="preserve">
+    <value>Monto solicitado</value>
+    <comment>Amounts requested in a spending request.</comment>
+  </data>
   <data name="ENTITY_DEPOSIT_CATALOG_NAME" xml:space="preserve">
     <value>Depósitos</value>
     <comment>Deposits catalog</comment>
