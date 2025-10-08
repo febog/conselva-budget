@@ -19,42 +19,6 @@
 <dd class="col-sm-10">
     @Html.DisplayFor(model => model.AmountRequest.Amount)
 </dd>
-<dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.AmountRequest.CreatedByUserId)
-</dt>
-<dd class="col-sm-10">
-    @Html.DisplayFor(model => model.AmountRequest.CreatedByUserId)
-</dd>
-<dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.AmountRequest.ModifiedByUserId)
-</dt>
-<dd class="col-sm-10">
-    @Html.DisplayFor(model => model.AmountRequest.ModifiedByUserId)
-</dd>
-<dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.AmountRequest.CreatedDate)
-</dt>
-<dd class="col-sm-10">
-    @Html.DisplayFor(model => model.AmountRequest.CreatedDate)
-</dd>
-<dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.AmountRequest.ModifiedDate)
-</dt>
-<dd class="col-sm-10">
-    @Html.DisplayFor(model => model.AmountRequest.ModifiedDate)
-</dd>
-<dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.AmountRequest.ActivityBudget)
-</dt>
-<dd class="col-sm-10">
-    @Html.DisplayFor(model => model.AmountRequest.ActivityBudget.Id)
-</dd>
-<dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.AmountRequest.Request)
-</dt>
-<dd class="col-sm-10">
-    @Html.DisplayFor(model => model.AmountRequest.Request.Description)
-</dd>
 
 @section DeleteFormContents {
     <input type="hidden" asp-for="AmountRequest.Id" />
