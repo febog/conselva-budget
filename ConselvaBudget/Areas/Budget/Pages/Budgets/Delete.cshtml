@@ -24,20 +24,12 @@
 <dd class="col-sm-10">
     @Html.DisplayFor(model => model.ActivityBudget.Activity.Code)
 </dd>
-<dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.ActivityBudget.AccountAssignment)
-</dt>
-<dd class="col-sm-10">
-    @Html.DisplayFor(model => model.ActivityBudget.AccountAssignment.Id)
-</dd>
 
 @section DeleteFormContents {
     <input type="hidden" asp-for="ActivityBudget.Id" />
-    <input class="btn btn-danger" type="submit" value="Delete">
-    <a class="btn btn-secondary"
-       asp-page="/Projects/Manage"
-       asp-route-id="@Model.ActivityBudget.Activity.Result.ProjectId"
-       asp-fragment="activity-@Model.ActivityBudget.Activity.Id">
-        Cancel
-    </a>
+    <delete-confirm-button></delete-confirm-button>
+    <cancel-button asp-page="/Projects/Manage"
+                   asp-route-id="@Model.ActivityBudget.Activity.Result.ProjectId"
+                   asp-fragment="activity-@Model.ActivityBudget.ActivityId">
+    </cancel-button>
 }

@@ -12,6 +12,7 @@ namespace ConselvaBudget.Models
 
         public int ActivityId { get; set; }
 
+        [Display(Name = "ACTIVITY_BUDGET_ACCOUNT_ASSIGNMENT")]
         public int AccountAssignmentId { get; set; }
 
         [Display(Name = "ACTIVITY_BUDGET_AMOUNT")]
