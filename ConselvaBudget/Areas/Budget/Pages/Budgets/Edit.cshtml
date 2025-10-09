@@ -32,8 +32,8 @@
 </div>
 <div class="col-12 col-sm-8">
     <label asp-for="ActivityBudget.EquivalentAccount" class="form-label"></label>
-    <input asp-for="ActivityBudget.EquivalentAccount" class="form-control" />
-    <div id="accounts-select-help" class="form-text">
+    <input asp-for="ActivityBudget.EquivalentAccount" class="form-control" aria-describedby="equivalent-account-help" />
+    <div id="equivalent-account-help" class="form-text">
         @Localizer["EQUIVALENT_ACCOUNT_HELP"]
     </div>
     <span asp-validation-for="ActivityBudget.EquivalentAccount" class="text-danger"></span>
