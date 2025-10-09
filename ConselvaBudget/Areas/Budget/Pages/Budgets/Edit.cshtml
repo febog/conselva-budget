@@ -44,11 +44,9 @@
     <span asp-validation-for="ActivityBudget.Comments" class="text-danger"></span>
 </div>
 <div class="col-12">
-    <input class="btn btn-primary" type="submit" value="Save">
-    <a class="btn btn-secondary"
-       asp-page="/Projects/Manage"
-       asp-route-id="@Model.ActivityBudget.Activity.Result.ProjectId"
-       asp-fragment="activity-@Model.ActivityBudget.ActivityId">
-        Cancel
-    </a>
+    <save-button></save-button>
+    <cancel-button asp-page="/Projects/Manage"
+                   asp-route-id="@Model.ActivityBudget.Activity.Result.ProjectId"
+                   asp-fragment="activity-@Model.ActivityBudget.ActivityId">
+    </cancel-button>
 </div>
