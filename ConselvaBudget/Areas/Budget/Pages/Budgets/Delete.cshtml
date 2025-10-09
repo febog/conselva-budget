@@ -24,12 +24,6 @@
 <dd class="col-sm-10">
     @Html.DisplayFor(model => model.ActivityBudget.Activity.Code)
 </dd>
-<dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.ActivityBudget.AccountAssignment)
-</dt>
-<dd class="col-sm-10">
-    @Html.DisplayFor(model => model.ActivityBudget.AccountAssignment.Id)
-</dd>
 
 @section DeleteFormContents {
     <input type="hidden" asp-for="ActivityBudget.Id" />
