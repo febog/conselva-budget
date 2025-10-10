@@ -133,6 +133,10 @@
     <value>Spending</value>
     <comment>Area name</comment>
   </data>
+  <data name="BUTTON_BACK" xml:space="preserve">
+    <value>Go back</value>
+    <comment>Generic button</comment>
+  </data>
   <data name="BUTTON_CANCEL" xml:space="preserve">
     <value>Cancel</value>
     <comment>Generic button</comment>
