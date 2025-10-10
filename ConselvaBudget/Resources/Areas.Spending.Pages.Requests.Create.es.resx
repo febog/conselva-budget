@@ -129,4 +129,7 @@
     <value>Opcional. Los siguientes campos solo aplican si la solicitud incluye una salida. De lo contrario, deje todos los campos siguientes en blanco.</value>
     <comment>Alert shown to the user regarding the trip information when creating or editing a spending request.</comment>
   </data>
+  <data name="TRIP_INFORMATION_HEADING" xml:space="preserve">
+    <value>Información de la salida</value>
+  </data>
 </root>

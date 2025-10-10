@@ -129,4 +129,7 @@
     <value>Optional. The following fields only apply if the request includes a trip. Otherwise, leave all the following fields blank.</value>
     <comment>Alert shown to the user regarding the trip information when creating or editing a spending request.</comment>
   </data>
+  <data name="TRIP_INFORMATION_HEADING" xml:space="preserve">
+    <value>Trip information</value>
+  </data>
 </root>
