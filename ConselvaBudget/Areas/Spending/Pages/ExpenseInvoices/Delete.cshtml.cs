@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
@@ -12,9 +8,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
 {
     public class DeleteModel : PageModel
     {
-        private readonly ConselvaBudget.Data.ConselvaBudgetContext _context;
+        private readonly ConselvaBudgetContext _context;
 
-        public DeleteModel(ConselvaBudget.Data.ConselvaBudgetContext context)
+        public DeleteModel(ConselvaBudgetContext context)
         {
             _context = context;
         }

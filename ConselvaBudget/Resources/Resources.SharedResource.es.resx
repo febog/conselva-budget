@@ -241,6 +241,10 @@
     <value>Donante</value>
     <comment>Donor catalog</comment>
   </data>
+  <data name="ENTITY_EXPENSE_INVOICE_NAME" xml:space="preserve">
+    <value>Factura</value>
+    <comment>Entity representing an invoice.</comment>
+  </data>
   <data name="ENTITY_NOTIFICATION_CATALOG_NAME" xml:space="preserve">
     <value>Notificaciones por email</value>
     <comment>Email notification catalog</comment>
