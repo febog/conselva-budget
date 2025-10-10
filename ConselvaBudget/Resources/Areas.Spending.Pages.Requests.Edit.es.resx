@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CARRIED_OUT_ACTIVITIES_HELP" xml:space="preserve">
+    <value>Mencionar la(s) principal(es) tarea(s) efectuada(s) durante la salida (identificar bienes y servicios entregados, si aplica).</value>
+  </data>
+  <data name="CONTRIBUTED_RESOURCES_HELP" xml:space="preserve">
+    <value>Con el valor monetario equivalente si se tiene.</value>
+  </data>
+  <data name="PICTURES_URL_HELP" xml:space="preserve">
+    <value>Foto representativa de la salida. Proporcionar link donde se encuentre una selección de máximo 5 fotos.</value>
+  </data>
+  <data name="QUALITATIVE_RESULTS_HEADING" xml:space="preserve">
+    <value>Resultados cualitativos</value>
+  </data>
+  <data name="QUALITATIVE_RESULTS_HELP" xml:space="preserve">
+    <value>Breve descripción de resultados y logros de la salida a campo, en relación con el objetivo de la salida y del resultado esperado del proyecto.</value>
+  </data>
+  <data name="QUANTITATIVE_RESULTS_HEADING" xml:space="preserve">
+    <value>Resultados cuantitativos</value>
+  </data>
+  <data name="QUANTITATIVE_RESULTS_HELP" xml:space="preserve">
+    <value>Si aplican. Presentar en número sin describir, los resultados globales de la actividad y/o resultados específicos. Comenzar por el número.</value>
+  </data>
   <data name="REQUEST_DEFAULT_VEHICLE_ITEM" xml:space="preserve">
     <value>Seleccione un vehículo...</value>
     <comment>Default value for the Vehicle dropdown menu when creating or editing a spending request.</comment>
@@ -129,7 +150,19 @@
     <value>Opcional. Los siguientes campos solo aplican si la solicitud incluye una salida. De lo contrario, deje todos los campos siguientes en blanco.</value>
     <comment>Alert shown to the user regarding the trip information when creating or editing a spending request.</comment>
   </data>
+  <data name="SOCIAL_RESULTS_HELP" xml:space="preserve">
+    <value>Ej. No. de participantes por género, capacitados, informados, implementadores, representantes sectoriales, etc.</value>
+  </data>
+  <data name="TECHNICAL_RESULTS_HELP" xml:space="preserve">
+    <value>Ej. % de avance de obra, superficie, equipamiento, registros, no. de acuerdos, planes, etapas, etc.</value>
+  </data>
   <data name="TRIP_INFORMATION_HEADING" xml:space="preserve">
     <value>Información de salida</value>
+  </data>
+  <data name="TRIP_REPORT_HEADING" xml:space="preserve">
+    <value>Informe de salida a campo</value>
+  </data>
+  <data name="TRIP_REPORT_HELP" xml:space="preserve">
+    <value>Llenar una vez realizada la salida.</value>
   </data>
 </root>
