@@ -1,118 +1,95 @@
 ﻿@page
-@model ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices.DetailsModel
+@inject IStringLocalizer<Resources.SharedResource> Localizer
+@model DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"{Localizer["ENTITY_EXPENSE_INVOICE_NAME"]} {Model.ExpenseInvoice.InvoiceNumber}";
 }
 
-<h1>Details</h1>
+<h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
-<div>
-    <h4>ExpenseInvoice</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.Amount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.Amount)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.TaxWithheld)
-        </dt>
-        <dd class="col-sm-10">
-            @{
-                var taxWithheldAmount = string.Format("{0:C}", Model.ExpenseInvoice.TaxWithheld ?? 0);
-            }
-            @Html.DisplayFor(model => taxWithheldAmount)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.TotalSpentAmount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.TotalSpentAmount)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.Vendor)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.Vendor)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.PaymentMethod)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.PaymentMethod)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.InvoiceDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.InvoiceDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.InvoiceNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.InvoiceNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.PdfUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.PdfUrl)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.XmlUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.XmlUrl)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.CreatedByUserId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.CreatedByUserId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.ModifiedByUserId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.ModifiedByUserId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.CreatedDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.CreatedDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.ModifiedDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.ModifiedDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.ActivityBudget)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.ActivityBudget.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpenseInvoice.Request)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ExpenseInvoice.Request.Description)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.ExpenseInvoice.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+<dl class="row">
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.Request)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.RequestId)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.Description)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.Description)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.Amount)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.Amount)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.TaxWithheld)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @{
+            var taxWithheldAmount = string.Format("{0:C}", Model.ExpenseInvoice.TaxWithheld ?? 0);
+        }
+        @Html.DisplayFor(model => taxWithheldAmount)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.TotalSpentAmount)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.TotalSpentAmount)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.Vendor)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.Vendor)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.PaymentMethod)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.PaymentMethod)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.InvoiceDate)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.InvoiceDate)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.InvoiceNumber)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.InvoiceNumber)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.PdfUrl)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.PdfUrl)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.XmlUrl)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.XmlUrl)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.CreatedDate)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.CreatedDate)
+    </dd>
+    <dt class="col-sm-3 col-lg-2">
+        @Html.DisplayNameFor(model => model.ExpenseInvoice.ModifiedDate)
+    </dt>
+    <dd class="col-sm-9 col-lg-10">
+        @Html.DisplayFor(model => model.ExpenseInvoice.ModifiedDate)
+    </dd>
+</dl>
+
+<back-button asp-page="/Requests/Details" asp-route-id="@Model.ExpenseInvoice.RequestId"></back-button>
