@@ -168,6 +168,26 @@
   <data name="QUANTITATIVE_RESULTS_HEADING" xml:space="preserve">
     <value>Resultados cuantitativos</value>
   </data>
+  <data name="REQUEST_STATUS_APPROVED" xml:space="preserve">
+    <value>Aprobada</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="REQUEST_STATUS_COMPLETED" xml:space="preserve">
+    <value>Completada</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="REQUEST_STATUS_CREATED" xml:space="preserve">
+    <value>Creada</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="REQUEST_STATUS_SUBMITTED" xml:space="preserve">
+    <value>En revisión</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="REQUEST_STATUS_VERIFICATION" xml:space="preserve">
+    <value>En comprobación</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
   <data name="TRIP_INFORMATION_HEADING" xml:space="preserve">
     <value>Información de salida</value>
   </data>
