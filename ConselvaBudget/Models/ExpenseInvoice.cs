@@ -60,6 +60,21 @@ namespace ConselvaBudget.Models
         [Display(Name = "EXPENSE_INVOICE_MODIFIED_DATE")]
         public DateTime ModifiedDate { get; set; }
 
+        /// <summary>
+        /// Only applicable if the payment method is credit card.
+        /// Checks that only 4 digits are entered.
+        /// </summary>
+        [Display(Name = "EXPENSE_INVOICE_CREDIT_CARD_ENDING")]
+        [RegularExpression("([0-9][0-9][0-9][0-9])", ErrorMessage = "CREDIT_CARD_ENDING_FORMAT_INVALID")]
+        public int? CreditCardEnding { get; set; }
+
+        /// <summary>
+        /// Only applicable if the payment method is credit card.
+        /// </summary>
+        [Display(Name = "EXPENSE_INVOICE_CREDIT_CARD_ISSUING_BANK")]
+        [StringLength(512)]
+        public string CreditCardIssuingBank { get; set; }
+
         [Display(Name = "EXPENSE_INVOICE_PDF_URL")]
         [StringLength(2048)]
         [DataType(DataType.Url)]
