@@ -1,5 +1,6 @@
 ﻿@page
 @inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
 @model CreateModel
 
 @{
@@ -34,21 +35,17 @@
 }
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<h2>Información de solicitud</h2>
-<div class="alert alert-info" role="alert">
-    Campo obligatorio. Describa para que es esta solicitud de recursos.
-</div>
 <div class="col-12">
     <label asp-for="SpendingRequest.Description" class="form-label"></label>
-    <input asp-for="SpendingRequest.Description" class="form-control" />
+    <input asp-for="SpendingRequest.Description" class="form-control" aria-describedby="request-description-help" />
+    <div id="request-description-help" class="form-text">
+        @Localizer["REQUEST_DESCRIPTION_HELP"]
+    </div>
     <span asp-validation-for="SpendingRequest.Description" class="text-danger"></span>
 </div>
-<h2>Información de salida</h2>
-<div class="alert alert-info" role="alert">
-    Opcional, solo llenar en caso de que la solicitud contenga una salida.
-</div>
-<div class="alert alert-danger" role="alert">
-    Dejar todos los siguientes campos en blanco en caso de que no se reporte una salida.
+<h2 class="h5">Información de salida</h2>
+<div class="alert alert-warning" role="alert">
+    @Localizer["REQUEST_TRIP_INFORMATION_HELP"]
 </div>
 <div class="col-sm-6">
     <label asp-for="SpendingRequest.Trip.Driver" class="form-label"></label>
@@ -63,7 +60,7 @@
 <div class="col-12">
     <label asp-for="SpendingRequest.Trip.VehicleId" class="form-label"></label>
     <select asp-for="SpendingRequest.Trip.VehicleId" class="form-select" asp-items="@Model.VehicleSL">
-        <option value="">-- Vehicle --</option>
+        <option value="">@Localizer["REQUEST_DEFAULT_VEHICLE_ITEM"]</option>
     </select>
     <span asp-validation-for="SpendingRequest.Trip.VehicleId" class="text-danger"></span>
 </div>
@@ -74,69 +71,15 @@
 </div>
 <div class="col-12">
     <label asp-for="SpendingRequest.Trip.SelectedDatesInput" class="form-label"></label>
-    <input asp-for="SpendingRequest.Trip.SelectedDatesInput" class="form-control" />
+    <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+        <input asp-for="SpendingRequest.Trip.SelectedDatesInput" class="form-control" />
+    </div>
     <span asp-validation-for="SpendingRequest.Trip.SelectedDates" class="text-danger"></span>
 </div>
-<h3>Informe de salida de campo</h3>
-<div class="alert alert-info" role="alert">
-    Llenar una vez realizada la salida.
-</div>
 <div class="col-12">
-    <label asp-for="SpendingRequest.Trip.CarriedOutActivities" class="form-label"></label>
-    <input asp-for="SpendingRequest.Trip.CarriedOutActivities" class="form-control" aria-describedby="carried-out-activities-help" />
-    <div id="carried-out-activities-help" class="form-text">
-        Mencionar la(s) principal(es) tarea(s) efectuada(s) durante la salida (identificar bienes y servicios entregados, si aplica).
-    </div>
-    <span asp-validation-for="SpendingRequest.Trip.CarriedOutActivities" class="text-danger"></span>
-</div>
-<h4>Resultados cuantitativos</h4>
-<div class="alert alert-info" role="alert">
-    Si aplican. Presentar en número sin describir, los resultados globales de la actividad y/o resultados específicos. Comenzar por el número.
-</div>
-<div class="col-12">
-    <label asp-for="SpendingRequest.Trip.SocialResults" class="form-label"></label>
-    <input asp-for="SpendingRequest.Trip.SocialResults" class="form-control" aria-describedby="social-results-help" />
-    <div id="social-results-help" class="form-text">
-        Ej. No. de participantes por género, capacitados, informados, implementadores, representantes sectoriales, etc.
-    </div>
-    <span asp-validation-for="SpendingRequest.Trip.SocialResults" class="text-danger"></span>
-</div>
-<div class="col-12">
-    <label asp-for="SpendingRequest.Trip.TechnicalResults" class="form-label"></label>
-    <input asp-for="SpendingRequest.Trip.TechnicalResults" class="form-control" aria-describedby="technical-results-help" />
-    <div id="technical-results-help" class="form-text">
-        Ej. % de avance de obra, superficie, equipamiento, registros, no. de acuerdos, planes, etapas, etc.
-    </div>
-    <span asp-validation-for="SpendingRequest.Trip.TechnicalResults" class="text-danger"></span>
-</div>
-<div class="col-12">
-    <label asp-for="SpendingRequest.Trip.ContributedResources" class="form-label"></label>
-    <input asp-for="SpendingRequest.Trip.ContributedResources" class="form-control" aria-describedby="contributed-resources-help" />
-    <div id="contributed-resources-help" class="form-text">
-        Con el valor monetario equivalente si se tiene.
-    </div>
-    <span asp-validation-for="SpendingRequest.Trip.ContributedResources" class="text-danger"></span>
-</div>
-<h4>Resultados cualitativos</h4>
-<div class="col-12">
-    <label asp-for="SpendingRequest.Trip.QualitativeResults" class="form-label"></label>
-    <input asp-for="SpendingRequest.Trip.QualitativeResults" class="form-control" aria-describedby="qualitative-results-help" />
-    <div id="qualitative-results-help" class="form-text">
-        Breve descripción de resultados y logros de la salida de campo, en relación con el objetivo de la salida y del resultado esperado del proyecto.
-    </div>
-    <span asp-validation-for="SpendingRequest.Trip.QualitativeResults" class="text-danger"></span>
-</div>
-<div class="col-12">
-    <label asp-for="SpendingRequest.Trip.PicturesUrl" class="form-label"></label>
-    <input asp-for="SpendingRequest.Trip.PicturesUrl" class="form-control" aria-describedby="pictures-url-help" />
-    <div id="pictures-url-help" class="form-text">
-        Poner una foto representativa de la salida. Colocar enlace a drive donde se encuentre una selección de máximo 5 fotos.
-    </div>
-    <span asp-validation-for="SpendingRequest.Trip.PicturesUrl" class="text-danger"></span>
-</div>
-<div class="col-12">
-    <input class="btn btn-primary" type="submit" value="Create">
-    <a class="btn btn-secondary" asp-page="./Index">Cancel</a>
+    <create-button></create-button>
+    <cancel-button asp-page="/Requests/Index"></cancel-button>
 </div>
 
 @section FormCSS {
