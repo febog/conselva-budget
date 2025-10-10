@@ -127,7 +127,7 @@
 
 @if (Model.SpendingRequest.Trip != null)
 {
-    <h2>Información de salida</h2>
+    <h2 class="h5">@Localizer["TRIP_INFORMATION_HEADING"]</h2>
     <dl class="row">
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Driver)
@@ -160,7 +160,7 @@
             @Html.DisplayFor(model => model.SpendingRequest.Trip.SelectedDatesString)
         </dd>
     </dl>
-    <h3>Informe de salida de campo</h3>
+    <h2 class="h5">@Localizer["TRIP_REPORT_HEADING"]</h2>
     <dl class="row">
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.CarriedOutActivities)
@@ -169,7 +169,7 @@
             @Html.DisplayFor(model => model.SpendingRequest.Trip.CarriedOutActivities)
         </dd>
     </dl>
-    <h4>Resultados cuantitativos</h4>
+    <h3 class="h6">@Localizer["QUANTITATIVE_RESULTS_HEADING"]</h3>
     <dl class="row">
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.SocialResults)
@@ -190,7 +190,7 @@
             @Html.DisplayFor(model => model.SpendingRequest.Trip.ContributedResources)
         </dd>
     </dl>
-    <h4>Resultados cualitativos</h4>
+    <h3 class="h6">@Localizer["QUALITATIVE_RESULTS_HEADING"]</h3>
     <dl class="row">
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.QualitativeResults)

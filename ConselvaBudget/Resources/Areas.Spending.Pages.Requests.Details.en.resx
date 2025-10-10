@@ -162,4 +162,16 @@
   <data name="PENDING" xml:space="preserve">
     <value>Pending</value>
   </data>
+  <data name="QUALITATIVE_RESULTS_HEADING" xml:space="preserve">
+    <value>Qualitative results</value>
+  </data>
+  <data name="QUANTITATIVE_RESULTS_HEADING" xml:space="preserve">
+    <value>Quantitative results</value>
+  </data>
+  <data name="TRIP_INFORMATION_HEADING" xml:space="preserve">
+    <value>Trip information</value>
+  </data>
+  <data name="TRIP_REPORT_HEADING" xml:space="preserve">
+    <value>Trip report</value>
+  </data>
 </root>
