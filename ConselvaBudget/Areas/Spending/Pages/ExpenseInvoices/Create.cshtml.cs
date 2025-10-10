@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using System.Security.Claims;
@@ -13,9 +7,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
 {
     public class CreateModel : ExpenseInvoicePageModel
     {
-        private readonly ConselvaBudget.Data.ConselvaBudgetContext _context;
+        private readonly ConselvaBudgetContext _context;
 
-        public CreateModel(ConselvaBudget.Data.ConselvaBudgetContext context)
+        public CreateModel(ConselvaBudgetContext context)
         {
             _context = context;
         }
