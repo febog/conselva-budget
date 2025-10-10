@@ -210,11 +210,11 @@
 <div class="d-flex gap-1 mb-2">
     @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
     {
-        <a class="btn btn-primary" asp-page="/AmountRequests/Create" asp-route-request="@Model.SpendingRequest.Id">Crear solicitud de gasto</a>
+        <a class="btn btn-primary" asp-page="/AmountRequests/Create" asp-route-request="@Model.SpendingRequest.Id">@Localizer["BUTTON_REQUEST_AMOUNT"]</a>
     }
     @if (Model.SpendingRequest.Status == RequestStatus.Verification)
     {
-        <a class="btn btn-primary" asp-page="/ExpenseInvoices/Create" asp-route-request="@Model.SpendingRequest.Id">Agregar factura</a>
+        <a class="btn btn-primary" asp-page="/ExpenseInvoices/Create" asp-route-request="@Model.SpendingRequest.Id">@Localizer["BUTTON_ADD_INVOICE"]</a>
     }
     @if (Model.SpendingRequest.Status != RequestStatus.Completed)
     {
