@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CREDIT_CARD_ENDING_FORMAT_INVALID" xml:space="preserve">
+    <value>Ingrese solo los últimos 4 dígitos de la tarjeta de crédito</value>
+    <comment>Error message if the user doesn't enter exactly 4 digits.</comment>
+  </data>
   <data name="EXPENSE_INVOICE_ACTIVITY_BUDGET" xml:space="preserve">
     <value>Presupuesto</value>
   </data>
@@ -132,6 +136,14 @@
   </data>
   <data name="EXPENSE_INVOICE_CREATED_DATE" xml:space="preserve">
     <value>Fecha de creación</value>
+  </data>
+  <data name="EXPENSE_INVOICE_CREDIT_CARD_ENDING" xml:space="preserve">
+    <value>Terminación de la tarjeta de crédito</value>
+    <comment>Only applicable if the payment method is credit card.</comment>
+  </data>
+  <data name="EXPENSE_INVOICE_CREDIT_CARD_ISSUING_BANK" xml:space="preserve">
+    <value>Banco emisor</value>
+    <comment>Credit card issuing bank, only applicable if payment method set to CC.</comment>
   </data>
   <data name="EXPENSE_INVOICE_DESCRIPTION" xml:space="preserve">
     <value>Descripción</value>
