@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BUTTON_ADD_INVOICE" xml:space="preserve">
-    <value>Añadir factura</value>
+    <value>Agregar factura</value>
     <comment>When creating ExpenseInvoice</comment>
   </data>
   <data name="BUTTON_APPROVE" xml:space="preserve">
