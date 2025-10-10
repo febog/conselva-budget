@@ -41,8 +41,6 @@
 
 <h2><span class="badge text-bg-light"><i class="bi bi-file-earmark-plus"></i></span> @Localizer["TITLE_CREATED_REQUESTS"]</h2>
 
-<p><a class="btn btn-light"><i class="bi bi-file-earmark-plus"></i> @Localizer["BUTTON_CREATED_REQUESTS"]</a></p>
-
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Created).Any())
 {
     <table class="table table-bordered table-striped caption-top">
@@ -112,8 +110,6 @@ else
 
 <h2><span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i></span> @Localizer["TITLE_SUBMITTED_REQUESTS"]</h2>
 
-<p><a class="btn btn-secondary"><i class="bi bi-hourglass"></i> @Localizer["BUTTON_SUBMITTED_REQUESTS"]</a></p>
-
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Submitted).Any())
 {
     <table class="table table-bordered table-striped caption-top">
@@ -181,8 +177,6 @@ else
 }
 
 <h2><span class="badge text-bg-info"><i class="bi bi-file-earmark-check"></i></span> @Localizer["TITLE_APPROVED_REQUESTS"]</h2>
-
-<p><a class="btn btn-info"><i class="bi bi-file-earmark-check"></i> @Localizer["BUTTON_APPROVED_REQUESTS"]</a></p>
 
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Approved).Any())
 {
@@ -252,8 +246,6 @@ else
 
 <h2><span class="badge text-bg-warning"><i class="bi bi-list-check"></i></span> @Localizer["TITLE_VERIFICATION_REQUESTS"]</h2>
 
-<p><a class="btn btn-warning"><i class="bi bi-list-check"></i> @Localizer["BUTTON_VERIFICATION_REQUESTS"]</a></p>
-
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Verification).Any())
 {
     <table class="table table-bordered table-striped caption-top">
@@ -321,8 +313,6 @@ else
 }
 
 <h2><span class="badge text-bg-success"><i class="bi bi-check2-circle"></i></span> @Localizer["TITLE_COMPLETED_REQUESTS"]</h2>
-
-<p><a class="btn btn-success"><i class="bi bi-check2-circle"></i> @Localizer["BUTTON_COMPLETED_REQUESTS"]</a></p>
 
 @if (Model.CompletedButUnpaidRequests.Count > 0)
 {
