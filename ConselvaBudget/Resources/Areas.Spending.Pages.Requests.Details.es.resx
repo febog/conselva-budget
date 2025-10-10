@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BUTTON_ADD_INVOICE" xml:space="preserve">
-    <value>Añadir factura</value>
+    <value>Agregar factura</value>
     <comment>When creating ExpenseInvoice</comment>
   </data>
   <data name="BUTTON_APPROVE" xml:space="preserve">
@@ -161,5 +161,37 @@
   </data>
   <data name="PENDING" xml:space="preserve">
     <value>Pendiente</value>
+  </data>
+  <data name="QUALITATIVE_RESULTS_HEADING" xml:space="preserve">
+    <value>Resultados cualitativos</value>
+  </data>
+  <data name="QUANTITATIVE_RESULTS_HEADING" xml:space="preserve">
+    <value>Resultados cuantitativos</value>
+  </data>
+  <data name="REQUEST_STATUS_APPROVED" xml:space="preserve">
+    <value>Aprobada</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="REQUEST_STATUS_COMPLETED" xml:space="preserve">
+    <value>Completada</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="REQUEST_STATUS_CREATED" xml:space="preserve">
+    <value>Creada</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="REQUEST_STATUS_SUBMITTED" xml:space="preserve">
+    <value>En revisión</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="REQUEST_STATUS_VERIFICATION" xml:space="preserve">
+    <value>En comprobación</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
+  </data>
+  <data name="TRIP_INFORMATION_HEADING" xml:space="preserve">
+    <value>Información de salida</value>
+  </data>
+  <data name="TRIP_REPORT_HEADING" xml:space="preserve">
+    <value>Informe de salida a campo</value>
   </data>
 </root>

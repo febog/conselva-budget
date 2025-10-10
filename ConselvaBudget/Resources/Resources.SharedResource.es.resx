@@ -282,11 +282,11 @@
     <comment>Project catalog</comment>
   </data>
   <data name="ENTITY_REQUEST_CATALOG_NAME" xml:space="preserve">
-    <value>Solicitudes</value>
+    <value>Solicitudes de gasto</value>
     <comment>Request entity</comment>
   </data>
   <data name="ENTITY_REQUEST_NAME" xml:space="preserve">
-    <value>Solicitud</value>
+    <value>Solicitud de gasto</value>
     <comment>Request entity</comment>
   </data>
   <data name="ENTITY_RESULT_CATALOG_NAME" xml:space="preserve">

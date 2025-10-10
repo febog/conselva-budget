@@ -26,19 +26,19 @@
         @switch (Model.SpendingRequest.Status)
         {
             case RequestStatus.Created:
-                <span class="badge text-bg-light"><i class="bi bi-file-earmark-plus"></i> @Localizer["Creada"]</span>
+                <span class="badge text-bg-light"><i class="bi bi-file-earmark-plus"></i> @Localizer["REQUEST_STATUS_CREATED"]</span>
                 break;
             case RequestStatus.Submitted:
-                <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i> @Localizer["En revisión"]</span>
+                <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i> @Localizer["REQUEST_STATUS_SUBMITTED"]</span>
                 break;
             case RequestStatus.Approved:
-                <span class="badge text-bg-info"><i class="bi bi-file-earmark-check"></i> @Localizer["Aprobada"]</span>
+                <span class="badge text-bg-info"><i class="bi bi-file-earmark-check"></i> @Localizer["REQUEST_STATUS_APPROVED"]</span>
                 break;
             case RequestStatus.Verification:
-                <span class="badge text-bg-warning"><i class="bi bi-list-check"></i> @Localizer["En comprobación"]</span>
+                <span class="badge text-bg-warning"><i class="bi bi-list-check"></i> @Localizer["REQUEST_STATUS_VERIFICATION"]</span>
                 break;
             case RequestStatus.Completed:
-                <span class="badge text-bg-success"><i class="bi bi-check2-circle"></i> @Localizer["Completada"]</span>
+                <span class="badge text-bg-success"><i class="bi bi-check2-circle"></i> @Localizer["REQUEST_STATUS_COMPLETED"]</span>
                 break;
         }
     </dd>
@@ -127,7 +127,7 @@
 
 @if (Model.SpendingRequest.Trip != null)
 {
-    <h2>Información de salida</h2>
+    <h2 class="h5">@Localizer["TRIP_INFORMATION_HEADING"]</h2>
     <dl class="row">
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.Driver)
@@ -160,7 +160,7 @@
             @Html.DisplayFor(model => model.SpendingRequest.Trip.SelectedDatesString)
         </dd>
     </dl>
-    <h3>Informe de salida de campo</h3>
+    <h2 class="h5">@Localizer["TRIP_REPORT_HEADING"]</h2>
     <dl class="row">
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.CarriedOutActivities)
@@ -169,7 +169,7 @@
             @Html.DisplayFor(model => model.SpendingRequest.Trip.CarriedOutActivities)
         </dd>
     </dl>
-    <h4>Resultados cuantitativos</h4>
+    <h3 class="h6">@Localizer["QUANTITATIVE_RESULTS_HEADING"]</h3>
     <dl class="row">
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.SocialResults)
@@ -190,7 +190,7 @@
             @Html.DisplayFor(model => model.SpendingRequest.Trip.ContributedResources)
         </dd>
     </dl>
-    <h4>Resultados cualitativos</h4>
+    <h3 class="h6">@Localizer["QUALITATIVE_RESULTS_HEADING"]</h3>
     <dl class="row">
         <dt class="col-sm-3 col-lg-2">
             @Html.DisplayNameFor(model => model.SpendingRequest.Trip.QualitativeResults)
@@ -210,56 +210,56 @@
 <div class="d-flex gap-1 mb-2">
     @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
     {
-        <a class="btn btn-primary" asp-page="/AmountRequests/Create" asp-route-request="@Model.SpendingRequest.Id">Crear solicitud de gasto</a>
+        <a class="btn btn-primary" asp-page="/AmountRequests/Create" asp-route-request="@Model.SpendingRequest.Id"><i class="bi bi-plus-lg"></i> @Localizer["BUTTON_REQUEST_AMOUNT"]</a>
     }
     @if (Model.SpendingRequest.Status == RequestStatus.Verification)
     {
-        <a class="btn btn-primary" asp-page="/ExpenseInvoices/Create" asp-route-request="@Model.SpendingRequest.Id">Agregar factura</a>
+        <a class="btn btn-primary" asp-page="/ExpenseInvoices/Create" asp-route-request="@Model.SpendingRequest.Id"><i class="bi bi-plus-lg"></i> @Localizer["BUTTON_ADD_INVOICE"]</a>
     }
     @if (Model.SpendingRequest.Status != RequestStatus.Completed)
     {
-        <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@Model.SpendingRequest.Id">@Localizer["BUTTON_EDIT_REQUEST"]</a>
+        <a class="btn btn-secondary" asp-page="./Edit" asp-route-id="@Model.SpendingRequest.Id"><i class="bi bi-pencil-square"></i> @Localizer["BUTTON_EDIT_REQUEST"]</a>
     }
     @if (Model.SpendingRequest.Status == RequestStatus.Created)
     {
         <form method="post" asp-page-handler="submitForReview" asp-route-request="@Model.SpendingRequest.Id">
-            <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_SUBMIT_FOR_REVIEW"]">
+            <button class="btn btn-success" type="submit"><i class="bi bi-arrow-right-circle"></i> @Localizer["BUTTON_SUBMIT_FOR_REVIEW"]</button>
         </form>
     }
     @if (User.IsInRole(Roles.Management) && Model.SpendingRequest.Status == RequestStatus.Submitted)
     {
         <form method="post" asp-page-handler="approve" asp-route-request="@Model.SpendingRequest.Id">
-            <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_APPROVE"]">
+            <button class="btn btn-success" type="submit"><i class="bi bi-check-lg"></i> @Localizer["BUTTON_APPROVE"]</button>
         </form>
     }
     @if (Model.SpendingRequest.Status == RequestStatus.Approved)
     {
         <form method="post" asp-page-handler="startVerification" asp-route-request="@Model.SpendingRequest.Id">
-            <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_VERIFICATION"]">
+            <button class="btn btn-success" type="submit"><i class="bi bi-list-check"></i> @Localizer["BUTTON_VERIFICATION"]</button>
         </form>
     }
     @if (User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status == RequestStatus.Verification)
     {
         <form method="post" asp-page-handler="completeRequest" asp-route-request="@Model.SpendingRequest.Id">
-            <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_COMPLETE"]">
+            <button class="btn btn-success" type="submit"><i class="bi bi-check2-circle"></i> @Localizer["BUTTON_COMPLETE"]</button>
         </form>
     }
     @if (User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status != RequestStatus.Created)
     {
         <form method="post" asp-page-handler="setAsCreated" asp-route-request="@Model.SpendingRequest.Id">
-            <input class="btn btn-danger" type="submit" value="@Localizer["BUTTON_SET_AS_CREATED"]">
+            <button class="btn btn-danger" type="submit"><i class="bi bi-x-octagon"></i> @Localizer["BUTTON_SET_AS_CREATED"]</button>
         </form>
     }
     @if (User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status == RequestStatus.Completed && !Model.SpendingRequest.IsPaid)
     {
         <form method="post" asp-page-handler="markAsPaid" asp-route-request="@Model.SpendingRequest.Id">
-            <input class="btn btn-success" type="submit" value="@Localizer["BUTTON_MARK_AS_PAID"]">
+            <button class="btn btn-success" type="submit"><i class="bi bi-cash-coin"></i> @Localizer["BUTTON_MARK_AS_PAID"]</button>
         </form>
     }
     @if (User.IsInRole(Roles.Administrator) && Model.SpendingRequest.Status == RequestStatus.Completed && Model.SpendingRequest.IsPaid)
     {
         <form method="post" asp-page-handler="markAsNotPaid" asp-route-request="@Model.SpendingRequest.Id">
-            <input class="btn btn-danger" type="submit" value="@Localizer["BUTTON_MARK_AS_NOT_PAID"]">
+            <button class="btn btn-danger" type="submit"><i class="bi bi-x-octagon"></i> @Localizer["BUTTON_MARK_AS_NOT_PAID"]</button>
         </form>
     }
 </div>
