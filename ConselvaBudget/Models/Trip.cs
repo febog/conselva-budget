@@ -11,41 +11,42 @@ namespace ConselvaBudget.Models
         [Key]
         public int SpendingRequestId { get; set; }
 
+        [Display(Name = "TRIP_VEHICLE")]
         public int? VehicleId { get; set; }
 
-        [Display(Name = "Conductor")]
+        [Display(Name = "TRIP_DRIVER")]
         [StringLength(255)]
         public string Driver { get; set; }
 
-        [Display(Name = "Destino")]
+        [Display(Name = "TRIP_DESTINATION")]
         [StringLength(255)]
         public string Destination { get; set; }
 
-        [Display(Name = "Participantes")]
+        [Display(Name = "TRIP_PARTICIPANTS")]
         [StringLength(255)]
         public string Participants { get; set; }
 
-        [Display(Name = "Actividades realizadas")]
+        [Display(Name = "TRIP_CARRIED_OUT_ACTIVITIES")]
         [StringLength(1024)]
         public string CarriedOutActivities { get; set; }
 
-        [Display(Name = "Resultados cuantitativos sociales")]
+        [Display(Name = "TRIP_SOCIAL_RESULTS")]
         [StringLength(255)]
         public string SocialResults { get; set; }
 
-        [Display(Name = "Resultados cuantitativos técnicos")]
+        [Display(Name = "TRIP_TECHNICAL_RESULTS")]
         [StringLength(255)]
         public string TechnicalResults { get; set; }
 
-        [Display(Name = "Recursos aportados por involucrados")]
+        [Display(Name = "TRIP_CONTRIBUTED_RESOURCES")]
         [StringLength(255)]
         public string ContributedResources { get; set; }
 
-        [Display(Name = "Resultados cualitativos")]
+        [Display(Name = "TRIP_QUALITATIVE_RESULTS")]
         [StringLength(1024)]
         public string QualitativeResults { get; set; }
 
-        [Display(Name = "Imágenes de salida a campo")]
+        [Display(Name = "TRIP_PICTURES_URL")]
         [StringLength(2048)]
         [DataType(DataType.Url)]
         public string PicturesUrl { get; set; }
@@ -55,7 +56,7 @@ namespace ConselvaBudget.Models
         /// sends the dates as a comma-separated string.
         /// </summary>
         [BindNever]
-        [Display(Name = "Fechas de la salida")]
+        [Display(Name = "TRIP_DATES")]
         public List<DateTime> SelectedDates { get; set; }
 
         [ValidateNever]
@@ -65,13 +66,13 @@ namespace ConselvaBudget.Models
         /// As provided by the datepicker UI
         /// </summary>
         [NotMapped]
-        [Display(Name = "Fechas de la salida")]
+        [Display(Name = "TRIP_DATES")]
         public string SelectedDatesInput { get; set; }
 
-        [Display(Name = "Spending Request")]
+        [Display(Name = "TRIP_SPENDING_REQUEST")]
         public Request SpendingRequest { get; set; }
 
-        [Display(Name = "Vehículo")]
+        [Display(Name = "TRIP_VEHICLE")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public Vehicle Vehicle { get; set; }
     }
