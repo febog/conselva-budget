@@ -104,5 +104,12 @@
                 ccBank.disabled = true;
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if (paymentMethod.value !== creditCardValue) {
+                ccEnding.disabled = true;
+                ccBank.disabled = true;
+            }
+        });
     </script>
 }
