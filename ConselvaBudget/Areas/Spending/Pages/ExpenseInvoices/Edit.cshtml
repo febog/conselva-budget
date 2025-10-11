@@ -58,12 +58,12 @@
 </div>
 <div class="col-12 col-md-4 col-lg-2">
     <label asp-for="ExpenseInvoice.CreditCardEnding" class="control-label"></label>
-    <input asp-for="ExpenseInvoice.CreditCardEnding" class="form-control" />
+    <input asp-for="ExpenseInvoice.CreditCardEnding" class="form-control" disabled />
     <span asp-validation-for="ExpenseInvoice.CreditCardEnding" class="text-danger"></span>
 </div>
 <div class="col-12 col-md-8 col-lg-6">
     <label asp-for="ExpenseInvoice.CreditCardIssuingBank" class="control-label"></label>
-    <input asp-for="ExpenseInvoice.CreditCardIssuingBank" class="form-control" />
+    <input asp-for="ExpenseInvoice.CreditCardIssuingBank" class="form-control" disabled />
     <span asp-validation-for="ExpenseInvoice.CreditCardIssuingBank" class="text-danger"></span>
 </div>
 <div class="col-12">
@@ -80,3 +80,30 @@
     <save-button></save-button>
     <cancel-button asp-page="/Requests/Details" asp-route-id="@Model.ExpenseInvoice.RequestId"></cancel-button>
 </div>
+
+@section FormScripts {
+    <script>
+        // Enable the CC info fields if the payment method is credit card
+        // Only handle changes to the menu, simple approach
+        const paymentMethod = document.getElementById("ExpenseInvoice_PaymentMethod");
+        paymentMethod.addEventListener("change", paymentMethodChange);
+
+        const creditCardValue = "2"; // As per the model
+
+        const ccEnding = document.getElementById("ExpenseInvoice_CreditCardEnding");
+        const ccBank = document.getElementById("ExpenseInvoice_CreditCardIssuingBank");
+
+        function paymentMethodChange(e) {
+            if (e.target.value === creditCardValue) {
+                // Credit card selected
+                ccEnding.disabled = false;
+                ccBank.disabled = false;
+            } else {
+                // Other payment selected
+                ccEnding.disabled = true;
+                ccBank.disabled = true;
+            }
+            console.log(ccEnding.disabled);
+        }
+    </script>
+}
