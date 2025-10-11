@@ -325,6 +325,10 @@
     <value>Vehículo</value>
     <comment>Vehicle catalog</comment>
   </data>
+  <data name="HELP_CREDIT_CARD_ONLY" xml:space="preserve">
+    <value>Solo aplica con tarjeta de crédito.</value>
+    <comment>A generic text used in the Invoice views to indicate that the field is only applicable when credit card is selected as payment method.</comment>
+  </data>
   <data name="LIST_OF" xml:space="preserve">
     <value>Lista de</value>
     <comment>Used in Index layout</comment>

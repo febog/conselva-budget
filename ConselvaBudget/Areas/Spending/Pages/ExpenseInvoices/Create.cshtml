@@ -50,10 +50,26 @@
     <input asp-for="ExpenseInvoice.InvoiceDate" class="form-control" />
     <span asp-validation-for="ExpenseInvoice.InvoiceDate" class="text-danger"></span>
 </div>
-<div class="col-12">
+<div class="col-12 col-lg-4">
     <label asp-for="ExpenseInvoice.PaymentMethod" class="control-label"></label>
     <select asp-for="ExpenseInvoice.PaymentMethod" class="form-select" asp-items="Html.GetEnumSelectList<Models.PaymentMethod>()"></select>
     <span asp-validation-for="ExpenseInvoice.PaymentMethod" class="text-danger"></span>
+</div>
+<div class="col-12 col-md-4 col-lg-3">
+    <label asp-for="ExpenseInvoice.CreditCardEnding" class="control-label"></label>
+    <input asp-for="ExpenseInvoice.CreditCardEnding" class="form-control" aria-describedby="credit-card-ending-help" />
+    <div id="credit-card-ending-help" class="form-text">
+        @Localizer["HELP_CREDIT_CARD_ONLY"]
+    </div>
+    <span asp-validation-for="ExpenseInvoice.CreditCardEnding" class="text-danger"></span>
+</div>
+<div class="col-12 col-md-8 col-lg-5">
+    <label asp-for="ExpenseInvoice.CreditCardIssuingBank" class="control-label"></label>
+    <input asp-for="ExpenseInvoice.CreditCardIssuingBank" class="form-control" aria-describedby="credit-card-issuing-bank-help" />
+    <div id="credit-card-issuing-bank-help" class="form-text">
+        @Localizer["HELP_CREDIT_CARD_ONLY"]
+    </div>
+    <span asp-validation-for="ExpenseInvoice.CreditCardIssuingBank" class="text-danger"></span>
 </div>
 <div class="col-12">
     <label asp-for="ExpenseInvoice.PdfUrl" class="control-label"></label>
@@ -69,3 +85,46 @@
     <create-button></create-button>
     <cancel-button asp-page="/Requests/Details" asp-route-id="@Request.Query["request"]"></cancel-button>
 </div>
+
+@section FormScripts {
+    <script>
+        // Enable the CC info fields if the payment method is credit card
+        // Only handle changes to the menu, simple approach
+        const paymentMethod = document.getElementById("ExpenseInvoice_PaymentMethod");
+        paymentMethod.addEventListener("change", paymentMethodChange);
+
+        const creditCardValue = "2"; // As per the model
+
+        const ccEnding = document.getElementById("ExpenseInvoice_CreditCardEnding");
+        const ccBank = document.getElementById("ExpenseInvoice_CreditCardIssuingBank");
+
+        function enableCCFields() {
+            ccEnding.disabled = false;
+            ccBank.disabled = false;
+        }
+
+        function disableCCFields() {
+            // I want to clear the values when CC is not applicable
+            ccEnding.value = "";
+            ccBank.value = "";
+            ccEnding.disabled = true;
+            ccBank.disabled = true;
+        }
+
+        function paymentMethodChange(e) {
+            if (e.target.value === creditCardValue) {
+                // Credit card selected
+                enableCCFields();
+            } else {
+                // Other payment selected
+                disableCCFields();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            if (paymentMethod.value !== creditCardValue) {
+                disableCCFields();
+            }
+        });
+    </script>
+}

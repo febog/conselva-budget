@@ -70,6 +70,8 @@ namespace ConselvaBudget.Areas.Spending.Pages.ExpenseInvoices
                 ar => ar.Vendor,
                 ar => ar.PaymentMethod,
                 ar => ar.InvoiceDate,
+                ar => ar.CreditCardEnding,
+                ar => ar.CreditCardIssuingBank,
                 ar => ar.PdfUrl,
                 ar => ar.XmlUrl,
                 ar => ar.InvoiceNumber))

@@ -117,72 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CREDIT_CARD_ENDING_FORMAT_INVALID" xml:space="preserve">
-    <value>Only enter the last 4 digits of the credit card.</value>
-    <comment>Error message if the user doesn't enter exactly 4 digits.</comment>
+  <data name="CREDIT_CARD_AMOUNT" xml:space="preserve">
+    <value>Amount</value>
   </data>
-  <data name="EXPENSE_INVOICE_ACTIVITY_BUDGET" xml:space="preserve">
-    <value>Budget</value>
-  </data>
-  <data name="EXPENSE_INVOICE_ACTIVITY_BUDGET_ID" xml:space="preserve">
-    <value>Budget</value>
-  </data>
-  <data name="EXPENSE_INVOICE_AMOUNT" xml:space="preserve">
-    <value>Paid amount</value>
-    <comment>Known as "total" on the invoice.</comment>
-  </data>
-  <data name="EXPENSE_INVOICE_CREATED_BY_USER_ID" xml:space="preserve">
-    <value>Created by</value>
-  </data>
-  <data name="EXPENSE_INVOICE_CREATED_DATE" xml:space="preserve">
-    <value>Created date</value>
-  </data>
-  <data name="EXPENSE_INVOICE_CREDIT_CARD_ENDING" xml:space="preserve">
+  <data name="CREDIT_CARD_ENDING" xml:space="preserve">
     <value>Credit card ending</value>
-    <comment>Only applicable if the payment method is credit card.</comment>
   </data>
-  <data name="EXPENSE_INVOICE_CREDIT_CARD_ISSUING_BANK" xml:space="preserve">
+  <data name="CREDIT_CARD_ISSUING_BANK" xml:space="preserve">
     <value>Issuing bank</value>
-    <comment>Credit card issuing bank, only applicable if payment method set to CC.</comment>
-  </data>
-  <data name="EXPENSE_INVOICE_DESCRIPTION" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="EXPENSE_INVOICE_INVOICE_DATE" xml:space="preserve">
-    <value>Invoice date</value>
-  </data>
-  <data name="EXPENSE_INVOICE_INVOICE_NUMBER" xml:space="preserve">
-    <value>Invoice number</value>
-  </data>
-  <data name="EXPENSE_INVOICE_MODIFIED_BY_USER_ID" xml:space="preserve">
-    <value>Modified by</value>
-  </data>
-  <data name="EXPENSE_INVOICE_MODIFIED_DATE" xml:space="preserve">
-    <value>Modified date</value>
-  </data>
-  <data name="EXPENSE_INVOICE_PAYMENT_METHOD" xml:space="preserve">
-    <value>Payment method</value>
-  </data>
-  <data name="EXPENSE_INVOICE_PDF_URL" xml:space="preserve">
-    <value>PDF link</value>
-  </data>
-  <data name="EXPENSE_INVOICE_REQUEST" xml:space="preserve">
-    <value>Request</value>
-  </data>
-  <data name="EXPENSE_INVOICE_TAX" xml:space="preserve">
-    <value>Tax withheld</value>
-  </data>
-  <data name="EXPENSE_INVOICE_TOTAL_SPENT_AMOUNT" xml:space="preserve">
-    <value>Total spent amount</value>
-    <comment>Sum of the "total" on the invoice plus the tax withheld. Amount deducted from the budget.</comment>
-  </data>
-  <data name="EXPENSE_INVOICE_VENDOR" xml:space="preserve">
-    <value>Vendor</value>
-  </data>
-  <data name="EXPENSE_INVOICE_XML_URL" xml:space="preserve">
-    <value>XML link</value>
-  </data>
-  <data name="EXPENSE_NET_AMOUNT" xml:space="preserve">
-    <value>Net amount</value>
   </data>
 </root>

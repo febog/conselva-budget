@@ -530,111 +530,37 @@
             @Html.DisplayFor(model => model.PaymentSubtotals.CashPlusDebit)
         </dd>
     </dl>
-}
 
-
-@* <h2>Facturas</h2>
-
-<table class="table table-bordered table-striped caption-top">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].ActivityBudgetId)
-            </th>
-            <th style="width: 1px; white-space:nowrap;"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.SpendingRequest.AmountRequests)
-        {
+    <table class="table table-bordered table-striped caption-top">
+        <caption>Subtotales por tarjeta de crédito.</caption>
+        <thead>
             <tr>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td class="align-middle">
-                    @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
-                </td>
-                <td class="align-middle">
-                    <table-buttons>
-                        <details-button asp-page="/AmountRequests/Details" asp-route-id="@item.Id"></details-button>
-                        @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
-                        {
-                            <edit-button asp-page="/AmountRequests/Edit" asp-route-id="@item.Id"></edit-button>
-                            <delete-button asp-page="/AmountRequests/Delete" asp-route-id="@item.Id"></delete-button>
-                        }
-                    </table-buttons>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreditCardSubtotals.ToList()[0].CreditCardIssuingBank)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreditCardSubtotals.ToList()[0].CreditCardEnding)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreditCardSubtotals.ToList()[0].Amount)
+                </th>
             </tr>
-        }
-    </tbody>
-</table> *@
-
-
-@*
-@section TableHeaders {
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].Description)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].Vendor)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].Amount)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].ExpenseDate)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].ActivityBudget.Activity.Result.Project)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].ActivityBudget.Activity)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.SpendingRequest.Expenses.ToList()[0].ActivityBudget.AccountAssignment)
-    </th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CreditCardSubtotals)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreditCardIssuingBank)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreditCardEnding)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-
-@foreach (var item in Model.SpendingRequest.Expenses)
-{
-    <tr>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Vendor)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.ExpenseDate)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.ActivityBudget.Activity.Result.Project.Name)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.ActivityBudget.Activity.Code)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
-        </td>
-        <td class="align-middle">
-            <table-buttons>
-                <details-button asp-page="/Expenses/Details" asp-route-id="@item.Id"></details-button>
-                <edit-button asp-page="/Expenses/Edit" asp-route-id="@item.Id"></edit-button>
-                <delete-button asp-page="/Expenses/Delete" asp-route-id="@item.Id"></delete-button>
-            </table-buttons>
-        </td>
-    </tr>
-}
- *@
