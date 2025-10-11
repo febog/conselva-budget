@@ -26,6 +26,8 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public PaymentSubtotalsViewModel PaymentSubtotals { get; set; }
 
+        public ICollection<CreditCardSubtotalsViewModel> CreditCardSubtotals { get; set; }
+
         public ICollection<AccountSubtotalsViewModel> RequestedSubtotals { get; set; }
 
         public ICollection<AccountSubtotalsViewModel> InvoicedSubtotals { get; set; }
@@ -61,6 +63,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             RequestedSubtotals = GetAccountSubtotals(SpendingRequest.AmountRequests);
             InvoicedSubtotals = GetAccountSubtotals(SpendingRequest.ExpenseInvoices);
             PaymentSubtotals = GetPaymentSubtotals(SpendingRequest);
+            CreditCardSubtotals = GetCreditCardSubtotals(SpendingRequest);
 
             return Page();
         }
@@ -231,6 +234,20 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 TransferSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.Transfer).Sum(e => e.Amount),
                 PrePaidSubtotal = r.ExpenseInvoices.Where(e => e.PaymentMethod == PaymentMethod.PrePaid).Sum(e => e.Amount)
             };
+        }
+
+        private ICollection<CreditCardSubtotalsViewModel> GetCreditCardSubtotals(Request r)
+        {
+            var creditCardSubtotals = r.ExpenseInvoices
+                .Where(i => i.CreditCardEnding is not null)
+                .GroupBy(i => i.CreditCardEnding)
+                .Select(g => new CreditCardSubtotalsViewModel
+                {
+                    CreditCardIssuingBank = g.First().CreditCardIssuingBank,
+                    CreditCardEnding = (int)g.Key, // I checked for null above
+                    Amount = g.Sum(i => i.Amount)
+                });
+            return creditCardSubtotals.ToList();
         }
 
         private ICollection<AccountSubtotalsViewModel> GetAccountSubtotals(ICollection<AmountRequest> requests)
