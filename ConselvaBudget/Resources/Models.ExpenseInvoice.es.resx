@@ -138,7 +138,7 @@
     <value>Fecha de creación</value>
   </data>
   <data name="EXPENSE_INVOICE_CREDIT_CARD_ENDING" xml:space="preserve">
-    <value>Terminación de la tarjeta de crédito</value>
+    <value>Terminación de la tarjeta</value>
     <comment>Only applicable if the payment method is credit card.</comment>
   </data>
   <data name="EXPENSE_INVOICE_CREDIT_CARD_ISSUING_BANK" xml:space="preserve">
