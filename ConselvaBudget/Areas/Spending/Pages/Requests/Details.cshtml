@@ -530,4 +530,37 @@
             @Html.DisplayFor(model => model.PaymentSubtotals.CashPlusDebit)
         </dd>
     </dl>
+
+    <table class="table table-bordered table-striped caption-top">
+        <caption>Subtotales por tarjeta de crédito.</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreditCardSubtotals.ToList()[0].CreditCardIssuingBank)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreditCardSubtotals.ToList()[0].CreditCardEnding)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreditCardSubtotals.ToList()[0].Amount)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CreditCardSubtotals)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreditCardIssuingBank)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreditCardEnding)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
