@@ -51,10 +51,20 @@
     <input asp-for="ExpenseInvoice.InvoiceDate" class="form-control" />
     <span asp-validation-for="ExpenseInvoice.InvoiceDate" class="text-danger"></span>
 </div>
-<div class="col-12">
+<div class="col-12 col-lg-4">
     <label asp-for="ExpenseInvoice.PaymentMethod" class="control-label"></label>
     <select asp-for="ExpenseInvoice.PaymentMethod" class="form-select" asp-items="Html.GetEnumSelectList<Models.PaymentMethod>()"></select>
     <span asp-validation-for="ExpenseInvoice.PaymentMethod" class="text-danger"></span>
+</div>
+<div class="col-12 col-md-4 col-lg-2">
+    <label asp-for="ExpenseInvoice.CreditCardEnding" class="control-label"></label>
+    <input asp-for="ExpenseInvoice.CreditCardEnding" class="form-control" />
+    <span asp-validation-for="ExpenseInvoice.CreditCardEnding" class="text-danger"></span>
+</div>
+<div class="col-12 col-md-8 col-lg-6">
+    <label asp-for="ExpenseInvoice.CreditCardIssuingBank" class="control-label"></label>
+    <input asp-for="ExpenseInvoice.CreditCardIssuingBank" class="form-control" />
+    <span asp-validation-for="ExpenseInvoice.CreditCardIssuingBank" class="text-danger"></span>
 </div>
 <div class="col-12">
     <label asp-for="ExpenseInvoice.PdfUrl" class="control-label"></label>
