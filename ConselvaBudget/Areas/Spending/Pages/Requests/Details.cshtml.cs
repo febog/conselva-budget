@@ -239,12 +239,12 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         private ICollection<CreditCardSubtotalsViewModel> GetCreditCardSubtotals(Request r)
         {
             var creditCardSubtotals = r.ExpenseInvoices
-                .Where(i => i.CreditCardEnding is not null)
+                .Where(i => i.CreditCardEnding is not null || string.IsNullOrEmpty(i.CreditCardEnding))
                 .GroupBy(i => i.CreditCardEnding)
                 .Select(g => new CreditCardSubtotalsViewModel
                 {
                     CreditCardIssuingBank = g.First().CreditCardIssuingBank,
-                    CreditCardEnding = (int)g.Key, // I checked for null above
+                    CreditCardEnding = g.Key, // I checked for null or empty strings above
                     Amount = g.Sum(i => i.Amount)
                 });
             return creditCardSubtotals.ToList();

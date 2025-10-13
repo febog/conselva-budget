@@ -8,7 +8,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         public string CreditCardIssuingBank { get; set; }
 
         [Display(Name = "CREDIT_CARD_ENDING")]
-        public int CreditCardEnding { get; set; }
+        public string CreditCardEnding { get; set; }
 
         [Display(Name = "CREDIT_CARD_AMOUNT")]
         [DataType(DataType.Currency)]
