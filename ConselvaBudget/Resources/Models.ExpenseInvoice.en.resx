@@ -121,6 +121,14 @@
     <value>Only enter the last 4 digits of the credit card.</value>
     <comment>Error message if the user doesn't enter exactly 4 digits.</comment>
   </data>
+  <data name="ERROR_CREDIT_CARD_BANK_REQUIRED" xml:space="preserve">
+    <value>If the payment method is credit card, the credit card's issuing bank must be provided.</value>
+    <comment>Error message when credit card information is missing if the payment method was selected as credit card.</comment>
+  </data>
+  <data name="ERROR_CREDIT_CARD_ENDING_REQUIRED" xml:space="preserve">
+    <value>If the payment method is credit card, the last four digits of the credit card must be provided.</value>
+    <comment>Error message when credit card information is missing if the payment method was selected as credit card.</comment>
+  </data>
   <data name="EXPENSE_INVOICE_ACTIVITY_BUDGET" xml:space="preserve">
     <value>Budget</value>
   </data>
