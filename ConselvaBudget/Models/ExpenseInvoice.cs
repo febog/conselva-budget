@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConselvaBudget.Models
 {
-    public class ExpenseInvoice
+    public class ExpenseInvoice : IValidatableObject
     {
         public int Id { get; set; }
 
@@ -105,6 +105,20 @@ namespace ConselvaBudget.Models
         [Display(Name = "EXPENSE_INVOICE_REQUEST")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public Request Request { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            // If you select credit card, then the credit card details must be provided
+            if (PaymentMethod == PaymentMethod.CreditCard && string.IsNullOrEmpty(CreditCardEnding))
+            {
+                yield return new ValidationResult($"ERROR_CREDIT_CARD_ENDING_REQUIRED", new[] { nameof(CreditCardEnding) });
+            }
+
+            if (PaymentMethod == PaymentMethod.CreditCard && string.IsNullOrEmpty(CreditCardIssuingBank))
+            {
+                yield return new ValidationResult($"ERROR_CREDIT_CARD_BANK_REQUIRED", new[] { nameof(CreditCardIssuingBank) });
+            }
+        }
     }
 
     public enum PaymentMethod
