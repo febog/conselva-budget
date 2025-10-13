@@ -31,8 +31,23 @@ namespace ConselvaBudget.Models
         [Required]
         public string Vendor { get; set; }
 
+        private PaymentMethod _paymentMethod;
+
         [Display(Name = "EXPENSE_INVOICE_PAYMENT_METHOD")]
-        public PaymentMethod PaymentMethod { get; set; }
+        public PaymentMethod PaymentMethod
+        {
+            get { return _paymentMethod; }
+            set
+            {
+                _paymentMethod = value;
+                // Clear CC info when not necessary
+                if (PaymentMethod != PaymentMethod.CreditCard)
+                {
+                    CreditCardEnding = null;
+                    CreditCardIssuingBank = null;
+                }
+            }
+        }
 
         [Display(Name = "EXPENSE_INVOICE_INVOICE_DATE")]
         [DataType(DataType.Date)]
