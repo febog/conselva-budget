@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConselvaBudget.Models
 {
-    public class ExpenseInvoice
+    public class ExpenseInvoice : IValidatableObject
     {
         public int Id { get; set; }
 
@@ -30,8 +31,23 @@ namespace ConselvaBudget.Models
         [Required]
         public string Vendor { get; set; }
 
+        private PaymentMethod _paymentMethod;
+
         [Display(Name = "EXPENSE_INVOICE_PAYMENT_METHOD")]
-        public PaymentMethod PaymentMethod { get; set; }
+        public PaymentMethod PaymentMethod
+        {
+            get { return _paymentMethod; }
+            set
+            {
+                _paymentMethod = value;
+                // Clear CC info when not necessary
+                if (PaymentMethod != PaymentMethod.CreditCard)
+                {
+                    CreditCardEnding = null;
+                    CreditCardIssuingBank = null;
+                }
+            }
+        }
 
         [Display(Name = "EXPENSE_INVOICE_INVOICE_DATE")]
         [DataType(DataType.Date)]
@@ -105,6 +121,23 @@ namespace ConselvaBudget.Models
         [Display(Name = "EXPENSE_INVOICE_REQUEST")]
         [DeleteBehavior(DeleteBehavior.Restrict)]
         public Request Request { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            // Resolve the localizer for this model type
+            var localizer = (IStringLocalizer<ExpenseInvoice>)validationContext.GetService(typeof(IStringLocalizer<ExpenseInvoice>));
+
+            // If you select credit card, then the credit card details must be provided
+            if (PaymentMethod == PaymentMethod.CreditCard && string.IsNullOrEmpty(CreditCardEnding))
+            {
+                yield return new ValidationResult(localizer["ERROR_CREDIT_CARD_ENDING_REQUIRED"], new[] { nameof(CreditCardEnding) });
+            }
+
+            if (PaymentMethod == PaymentMethod.CreditCard && string.IsNullOrEmpty(CreditCardIssuingBank))
+            {
+                yield return new ValidationResult(localizer["ERROR_CREDIT_CARD_BANK_REQUIRED"], new[] { nameof(CreditCardIssuingBank) });
+            }
+        }
     }
 
     public enum PaymentMethod
