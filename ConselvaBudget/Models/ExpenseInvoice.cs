@@ -66,7 +66,8 @@ namespace ConselvaBudget.Models
         /// </summary>
         [Display(Name = "EXPENSE_INVOICE_CREDIT_CARD_ENDING")]
         [RegularExpression("([0-9][0-9][0-9][0-9])", ErrorMessage = "CREDIT_CARD_ENDING_FORMAT_INVALID")]
-        public int? CreditCardEnding { get; set; }
+        [StringLength(4)]
+        public string CreditCardEnding { get; set; }
 
         /// <summary>
         /// Only applicable if the payment method is credit card.
