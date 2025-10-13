@@ -239,6 +239,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
         private ICollection<CreditCardSubtotalsViewModel> GetCreditCardSubtotals(Request r)
         {
             var creditCardSubtotals = r.ExpenseInvoices
+                .Where(i => i.PaymentMethod == PaymentMethod.CreditCard)
                 .Where(i => i.CreditCardEnding is not null || string.IsNullOrEmpty(i.CreditCardEnding))
                 .GroupBy(i => i.CreditCardEnding)
                 .Select(g => new CreditCardSubtotalsViewModel
