@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -108,15 +109,18 @@ namespace ConselvaBudget.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            // Resolve the localizer for this model type
+            var localizer = (IStringLocalizer<ExpenseInvoice>)validationContext.GetService(typeof(IStringLocalizer<ExpenseInvoice>));
+
             // If you select credit card, then the credit card details must be provided
             if (PaymentMethod == PaymentMethod.CreditCard && string.IsNullOrEmpty(CreditCardEnding))
             {
-                yield return new ValidationResult($"ERROR_CREDIT_CARD_ENDING_REQUIRED", new[] { nameof(CreditCardEnding) });
+                yield return new ValidationResult(localizer["ERROR_CREDIT_CARD_ENDING_REQUIRED"], new[] { nameof(CreditCardEnding) });
             }
 
             if (PaymentMethod == PaymentMethod.CreditCard && string.IsNullOrEmpty(CreditCardIssuingBank))
             {
-                yield return new ValidationResult($"ERROR_CREDIT_CARD_BANK_REQUIRED", new[] { nameof(CreditCardIssuingBank) });
+                yield return new ValidationResult(localizer["ERROR_CREDIT_CARD_BANK_REQUIRED"], new[] { nameof(CreditCardIssuingBank) });
             }
         }
     }
