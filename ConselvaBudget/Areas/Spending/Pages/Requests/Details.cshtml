@@ -59,7 +59,13 @@
         @Html.DisplayNameFor(model => model.SpendingRequest.Activity)
     </dt>
     <dd class="col-sm-9 col-lg-10">
-        @Html.DisplayFor(model => model.SpendingRequest.Activity.Code)
+        @{
+            var activityFragment = $"activity-{Model.SpendingRequest.Activity.Id}";
+        }
+        <a asp-area="Budget"
+           asp-page="/Projects/Manage"
+           asp-route-id="@Model.SpendingRequest.Activity.Result.Project.Id"
+           asp-fragment="@activityFragment">@Html.DisplayFor(model => model.SpendingRequest.Activity.Code)</a>
         @Html.DisplayFor(model => model.SpendingRequest.Activity.Description)
     </dd>
     <dt class="col-sm-3 col-lg-2">
