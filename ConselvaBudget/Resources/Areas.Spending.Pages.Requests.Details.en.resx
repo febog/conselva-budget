@@ -153,6 +153,34 @@
     <value>Start verification</value>
     <comment>Iniciar comprobacion</comment>
   </data>
+  <data name="CAPTION_EXPENSE_INVOICES" xml:space="preserve">
+    <value>List of invoices for this request.</value>
+    <comment>Table caption that lists all the ExpenseInvoice objects for this SpendingRequest.</comment>
+  </data>
+  <data name="CAPTION_EXPENSE_INVOICES_BY_ACCOUNT" xml:space="preserve">
+    <value>Invoiced amounts by account.</value>
+    <comment>Table caption that lists invoiced (ExpenseInvoice) subtotals by account for this SpendingRequest.</comment>
+  </data>
+  <data name="CAPTION_EXPENSE_INVOICES_SUBTOTALS" xml:space="preserve">
+    <value>Invoiced subtotals by payment method, plus tax withheld.</value>
+    <comment>Table caption for the invoiced amounts by payment method plus tax withheld.</comment>
+  </data>
+  <data name="CAPTION_REQUESTED_AMOUNTS" xml:space="preserve">
+    <value>Description of the requested amounts.</value>
+    <comment>Table caption that lists all the AmountRequest objects for this SpendingRequest.</comment>
+  </data>
+  <data name="CAPTION_REQUESTED_AMOUNTS_BY_ACCOUNT" xml:space="preserve">
+    <value>Amount requested per account.</value>
+    <comment>Table caption that lists AmountRequest subtotals by account for this SpendingRequest.</comment>
+  </data>
+  <data name="HEADING_EXPENSE_INVOICES" xml:space="preserve">
+    <value>Invoices</value>
+    <comment>ExpenseInvoice portion of the Spending Request.</comment>
+  </data>
+  <data name="HEADING_REQUESTED_AMOUNTS" xml:space="preserve">
+    <value>Requested amounts</value>
+    <comment>AmountRequest portion of the Spending Request.</comment>
+  </data>
   <data name="PAGE_TITLE" xml:space="preserve">
     <value>Request details</value>
   </data>
