@@ -1,0 +1,22 @@
+﻿@using ConselvaBudget.Models;
+@model Request;
+@inject IViewLocalizer Localizer
+
+@switch (Model.Status)
+{
+    case RequestStatus.Created:
+        <span class="badge text-bg-light"><i class="bi bi-file-earmark-plus"></i> @Localizer["REQUEST_STATUS_CREATED"]</span>
+        break;
+    case RequestStatus.Submitted:
+        <span class="badge text-bg-secondary"><i class="bi bi-hourglass"></i> @Localizer["REQUEST_STATUS_SUBMITTED"]</span>
+        break;
+    case RequestStatus.Approved:
+        <span class="badge text-bg-info"><i class="bi bi-file-earmark-check"></i> @Localizer["REQUEST_STATUS_APPROVED"]</span>
+        break;
+    case RequestStatus.Verification:
+        <span class="badge text-bg-warning"><i class="bi bi-list-check"></i> @Localizer["REQUEST_STATUS_VERIFICATION"]</span>
+        break;
+    case RequestStatus.Completed:
+        <span class="badge text-bg-success"><i class="bi bi-check2-circle"></i> @Localizer["REQUEST_STATUS_COMPLETED"]</span>
+        break;
+}

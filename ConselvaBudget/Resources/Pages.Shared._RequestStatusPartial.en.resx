@@ -117,61 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BUTTON_ADD_INVOICE" xml:space="preserve">
-    <value>Add Invoice</value>
-    <comment>When creating ExpenseInvoice</comment>
+  <data name="REQUEST_STATUS_APPROVED" xml:space="preserve">
+    <value>Approved</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
   </data>
-  <data name="BUTTON_APPROVE" xml:space="preserve">
-    <value>Approve</value>
-    <comment>Seen by the approver</comment>
+  <data name="REQUEST_STATUS_COMPLETED" xml:space="preserve">
+    <value>Completed</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
   </data>
-  <data name="BUTTON_COMPLETE" xml:space="preserve">
-    <value>Complete and close request</value>
-    <comment>Finish verification and prevent changes</comment>
+  <data name="REQUEST_STATUS_CREATED" xml:space="preserve">
+    <value>Created</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
   </data>
-  <data name="BUTTON_EDIT_REQUEST" xml:space="preserve">
-    <value>Edit Request</value>
+  <data name="REQUEST_STATUS_SUBMITTED" xml:space="preserve">
+    <value>Submitted</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
   </data>
-  <data name="BUTTON_MARK_AS_NOT_PAID" xml:space="preserve">
-    <value>Mark as not paid</value>
-  </data>
-  <data name="BUTTON_MARK_AS_PAID" xml:space="preserve">
-    <value>Mark as paid</value>
-  </data>
-  <data name="BUTTON_REQUEST_AMOUNT" xml:space="preserve">
-    <value>Request Amount</value>
-    <comment>When creating AmountRequest</comment>
-  </data>
-  <data name="BUTTON_SET_AS_CREATED" xml:space="preserve">
-    <value>Set status as created</value>
-    <comment>To allow edits or corrections</comment>
-  </data>
-  <data name="BUTTON_SUBMIT_FOR_REVIEW" xml:space="preserve">
-    <value>Submit for review</value>
-  </data>
-  <data name="BUTTON_VERIFICATION" xml:space="preserve">
-    <value>Start verification</value>
-    <comment>Iniciar comprobacion</comment>
-  </data>
-  <data name="PAGE_TITLE" xml:space="preserve">
-    <value>Request details</value>
-  </data>
-  <data name="PAID" xml:space="preserve">
-    <value>Paid</value>
-  </data>
-  <data name="PENDING" xml:space="preserve">
-    <value>Pending</value>
-  </data>
-  <data name="QUALITATIVE_RESULTS_HEADING" xml:space="preserve">
-    <value>Qualitative results</value>
-  </data>
-  <data name="QUANTITATIVE_RESULTS_HEADING" xml:space="preserve">
-    <value>Quantitative results</value>
-  </data>
-  <data name="TRIP_INFORMATION_HEADING" xml:space="preserve">
-    <value>Trip information</value>
-  </data>
-  <data name="TRIP_REPORT_HEADING" xml:space="preserve">
-    <value>Trip report</value>
+  <data name="REQUEST_STATUS_VERIFICATION" xml:space="preserve">
+    <value>In verification</value>
+    <comment>Used in the request status badge in the Request Details page.</comment>
   </data>
 </root>
