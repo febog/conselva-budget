@@ -130,7 +130,7 @@
     <value>Comentarios</value>
   </data>
   <data name="ACTIVITY_BUDGET_EQUIVALENT_ACCOUNT" xml:space="preserve">
-    <value>Cuenta equivalente</value>
+    <value>Cuenta equivalente del donante</value>
   </data>
   <data name="ACTIVITY_BUDGET_EXPENSE_INVOICES" xml:space="preserve">
     <value>Facturas</value>
