@@ -314,10 +314,10 @@
         @foreach (var item in Model.RequestedSubtotals)
         {
             <tr>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(modelItem => item.AccountAssignment)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(modelItem => item.Amount)
                 </td>
             </tr>
@@ -440,10 +440,10 @@
             @foreach (var item in Model.InvoicedSubtotals)
             {
                 <tr>
-                    <td class="align-middle">
+                    <td>
                         @Html.DisplayFor(modelItem => item.AccountAssignment)
                     </td>
-                    <td class="align-middle">
+                    <td>
                         @Html.DisplayFor(modelItem => item.Amount)
                     </td>
                 </tr>
@@ -489,22 +489,22 @@
         </thead>
         <tbody>
             <tr>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.CashSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.DebitCardSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.CreditCardSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.TransferSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.PrePaidSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.SpendingRequest.TotalTaxWithheld)
                 </td>
             </tr>
