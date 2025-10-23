@@ -153,6 +153,10 @@
     <value>Iniciar comprobación</value>
     <comment>Iniciar comprobacion</comment>
   </data>
+  <data name="CAPTION_CREDIT_CARD_SUBTOTALS" xml:space="preserve">
+    <value>Subtotales por tarjeta de crédito.</value>
+    <comment>Table caption showing subtotals by credit card, if any.</comment>
+  </data>
   <data name="CAPTION_EXPENSE_INVOICES" xml:space="preserve">
     <value>Lista de facturas en esta solicitud.</value>
     <comment>Table caption that lists all the ExpenseInvoice objects for this SpendingRequest.</comment>
