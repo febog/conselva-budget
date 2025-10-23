@@ -245,6 +245,7 @@
                                                                                 </td>
                                                                                 <td class="align-middle">
                                                                                     <a asp-area="Spending" asp-page="/Requests/Details" asp-route-id="@item.RequestId">@item.RequestId</a>
+                                                                                    <partial name="_RequestStatusPartial" model="item.Request" />
                                                                                 </td>
                                                                                 <td class="align-middle">
                                                                                     @Html.DisplayFor(modelItem => item.Description)
