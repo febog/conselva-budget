@@ -268,7 +268,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].ActivityBudgetId)
             </th>
-            <th style="width: 1px; white-space:nowrap;"></th>
+            @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
+            {
+                <th style="width: 1px; white-space:nowrap;"></th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -284,15 +287,15 @@
                 <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
                 </td>
-                <td class="align-middle">
-                    <table-buttons>
-                        @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
-                        {
+                @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
+                {
+                    <td class="align-middle">
+                        <table-buttons>
                             <edit-button asp-page="/AmountRequests/Edit" asp-route-id="@item.Id"></edit-button>
                             <delete-button asp-page="/AmountRequests/Delete" asp-route-id="@item.Id"></delete-button>
-                        }
-                    </table-buttons>
-                </td>
+                        </table-buttons>
+                    </td>
+                }
             </tr>
         }
     </tbody>
