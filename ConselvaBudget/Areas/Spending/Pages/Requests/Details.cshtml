@@ -253,10 +253,10 @@
     }
 </div>
 
-<h2>Montos solicitados</h2>
+<h2>@Localizer["HEADING_REQUESTED_AMOUNTS"]</h2>
 
 <table class="table table-bordered table-striped caption-top">
-    <caption>Montos <b>solicitados</b>.</caption>
+    <caption>@Localizer["CAPTION_REQUESTED_AMOUNTS"]</caption>
     <thead>
         <tr>
             <th>
@@ -268,7 +268,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.SpendingRequest.AmountRequests.ToList()[0].ActivityBudgetId)
             </th>
-            <th style="width: 1px; white-space:nowrap;"></th>
+            @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
+            {
+                <th style="width: 1px; white-space:nowrap;"></th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -284,22 +287,22 @@
                 <td class="align-middle">
                     @Html.DisplayFor(modelItem => item.ActivityBudget.AccountAssignment.DisplayName)
                 </td>
-                <td class="align-middle">
-                    <table-buttons>
-                        @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
-                        {
+                @if (Model.SpendingRequest.Status == RequestStatus.Created || Model.SpendingRequest.Status == RequestStatus.Submitted)
+                {
+                    <td class="align-middle">
+                        <table-buttons>
                             <edit-button asp-page="/AmountRequests/Edit" asp-route-id="@item.Id"></edit-button>
                             <delete-button asp-page="/AmountRequests/Delete" asp-route-id="@item.Id"></delete-button>
-                        }
-                    </table-buttons>
-                </td>
+                        </table-buttons>
+                    </td>
+                }
             </tr>
         }
     </tbody>
 </table>
 
 <table class="table table-bordered table-striped caption-top">
-    <caption>Monto <b>solicitado</b> por cuenta.</caption>
+    <caption>@Localizer["CAPTION_REQUESTED_AMOUNTS_BY_ACCOUNT"]</caption>
     <thead>
         <tr>
             <th>
@@ -314,10 +317,10 @@
         @foreach (var item in Model.RequestedSubtotals)
         {
             <tr>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(modelItem => item.AccountAssignment)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(modelItem => item.Amount)
                 </td>
             </tr>
@@ -339,10 +342,10 @@
 
 @if (Model.SpendingRequest.ExpenseInvoices.Count > 0)
 {
-    <h2>Facturas</h2>
+    <h2>@Localizer["HEADING_EXPENSE_INVOICES"]</h2>
 
     <table class="table table-bordered table-striped caption-top">
-        <caption>Lista de <b>facturas</b> en esta solicitud.</caption>
+        <caption>@Localizer["CAPTION_EXPENSE_INVOICES"]</caption>
         <thead>
             <tr>
                 <th>
@@ -425,7 +428,7 @@
     </table>
 
     <table class="table table-bordered table-striped caption-top">
-        <caption>Monto <b>facturado</b> por cuenta.</caption>
+        <caption>@Localizer["CAPTION_EXPENSE_INVOICES_BY_ACCOUNT"]</caption>
         <thead>
             <tr>
                 <th>
@@ -440,10 +443,10 @@
             @foreach (var item in Model.InvoicedSubtotals)
             {
                 <tr>
-                    <td class="align-middle">
+                    <td>
                         @Html.DisplayFor(modelItem => item.AccountAssignment)
                     </td>
-                    <td class="align-middle">
+                    <td>
                         @Html.DisplayFor(modelItem => item.Amount)
                     </td>
                 </tr>
@@ -464,7 +467,7 @@
     </table>
 
     <table class="table table-bordered table-striped caption-top">
-        <caption>Subtotales de lo <b>facturado</b> por forma de pago/impuestos retenidos.</caption>
+        <caption>@Localizer["CAPTION_EXPENSE_INVOICES_SUBTOTALS"]</caption>
         <thead>
             <tr>
                 <th>
@@ -489,22 +492,22 @@
         </thead>
         <tbody>
             <tr>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.CashSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.DebitCardSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.CreditCardSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.TransferSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.PaymentSubtotals.PrePaidSubtotal)
                 </td>
-                <td class="align-middle">
+                <td>
                     @Html.DisplayFor(model => model.SpendingRequest.TotalTaxWithheld)
                 </td>
             </tr>
@@ -523,7 +526,7 @@
     @if (Model.CreditCardSubtotals.Count > 0)
     {
         <table class="table table-bordered table-striped caption-top">
-            <caption>Subtotales por tarjeta de crédito.</caption>
+            <caption>@Localizer["CAPTION_CREDIT_CARD_SUBTOTALS"]</caption>
             <thead>
                 <tr>
                     <th>
