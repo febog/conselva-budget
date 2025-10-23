@@ -132,9 +132,6 @@
   <data name="EXPENSE_INVOICE_ACTIVITY_BUDGET" xml:space="preserve">
     <value>Budget</value>
   </data>
-  <data name="EXPENSE_INVOICE_ACTIVITY_BUDGET_ID" xml:space="preserve">
-    <value>Budget</value>
-  </data>
   <data name="EXPENSE_INVOICE_AMOUNT" xml:space="preserve">
     <value>Paid amount</value>
     <comment>Known as "total" on the invoice.</comment>

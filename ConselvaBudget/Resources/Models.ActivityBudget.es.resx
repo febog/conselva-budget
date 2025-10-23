@@ -132,6 +132,10 @@
   <data name="ACTIVITY_BUDGET_EQUIVALENT_ACCOUNT" xml:space="preserve">
     <value>Cuenta equivalente</value>
   </data>
+  <data name="ACTIVITY_BUDGET_EXPENSE_INVOICES" xml:space="preserve">
+    <value>Facturas</value>
+    <comment>Used in the Expense invoices navigation property for this activity budget.</comment>
+  </data>
   <data name="ACTIVITY_BUDGET_REMAINDER" xml:space="preserve">
     <value>Presupuesto restante</value>
   </data>

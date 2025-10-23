@@ -36,6 +36,7 @@ namespace ConselvaBudget.Models
         [Display(Name = "RESULT_PROJECT")]
         public Project Project { get; set; }
 
+        [Display(Name = "RESULT_ACTIVITIES")]
         public virtual ICollection<Activity> Activities { get; set; }
     }
 }

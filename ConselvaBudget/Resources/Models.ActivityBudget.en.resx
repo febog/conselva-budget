@@ -132,6 +132,10 @@
   <data name="ACTIVITY_BUDGET_EQUIVALENT_ACCOUNT" xml:space="preserve">
     <value>Equivalent account</value>
   </data>
+  <data name="ACTIVITY_BUDGET_EXPENSE_INVOICES" xml:space="preserve">
+    <value>Expense invoices</value>
+    <comment>Used in the Expense invoices navigation property for this activity budget.</comment>
+  </data>
   <data name="ACTIVITY_BUDGET_REMAINDER" xml:space="preserve">
     <value>Remaining budget</value>
   </data>

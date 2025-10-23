@@ -58,6 +58,7 @@ namespace ConselvaBudget.Models
 
         public virtual ICollection<AmountRequest> AmountRequests { get; set; }
 
+        [Display(Name = "ACTIVITY_BUDGET_EXPENSE_INVOICES")]
         public virtual ICollection<ExpenseInvoice> ExpenseInvoices { get; set; }
     }
 }
