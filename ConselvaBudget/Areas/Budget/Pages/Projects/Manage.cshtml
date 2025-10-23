@@ -192,7 +192,11 @@
                                                     </tr>
                                                     <tr class="collapse" id="budget-expenses-@budget.Id">
                                                         <td colspan="6" class="p-3">
-                                                            <h5 class="h6 text-body-secondary">@Html.DisplayNameFor(model => activity.ActivityBudgets.ToList()[0].Comments)</h5>
+                                                            <h5 class="h6 text-body-secondary">@Html.DisplayNameFor(model => budget.EquivalentAccount)</h5>
+                                                            <p>
+                                                                @Html.DisplayFor(model => budget.EquivalentAccount)
+                                                            </p>
+                                                            <h5 class="h6 text-body-secondary">@Html.DisplayNameFor(model => budget.Comments)</h5>
                                                             <p>
                                                                 @Html.DisplayFor(model => budget.Comments)
                                                             </p>
