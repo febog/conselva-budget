@@ -103,7 +103,7 @@
                     <a class="btn btn-primary btn-sm" asp-page="/Activities/Create" asp-route-result="@result.Id">@Localizer["BUTTON_CREATE_ACTIVITY"]</a>
                 </div>
             }
-            <h3 class="h6 text-body-secondary">Activities</h3>
+            <h3 class="h6 text-body-secondary">@Html.DisplayNameFor(model => result.Activities)</h3>
             @if (result.Activities.Count > 0)
             {
                 <ul class="list-group">
@@ -136,7 +136,7 @@
                                         <a class="btn btn-primary btn-sm" asp-page="/Budgets/Create" asp-route-projectId="@Model.Project.Id" asp-route-activityId="@activity.Id">@Localizer["BUTTON_CREATE_BUDGET"]</a>
                                     </div>
                                 }
-                                <h4 class="h6 text-body-secondary">Budget</h4>
+                                <h4 class="h6 text-body-secondary">@Html.DisplayNameFor(model => activity.ActivityBudgets)</h4>
                                 @if (activity.ActivityBudgets.Count > 0)
                                 {
                                     <div class="table-responsive-md">
@@ -198,7 +198,7 @@
                                                             </p>
                                                             @if (budget.ExpenseInvoices.Count > 0)
                                                             {
-                                                                <h5 class="h6 text-body-secondary">Expenses</h5>
+                                                                <h5 class="h6 text-body-secondary">@Html.DisplayNameFor(model => budget.ExpenseInvoices)</h5>
                                                                 <table class="table table-sm table-bordered table-striped">
                                                                     <thead>
                                                                         <tr>

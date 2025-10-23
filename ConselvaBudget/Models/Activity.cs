@@ -36,6 +36,7 @@ namespace ConselvaBudget.Models
         [Display(Name = "ACTIVITY_RESULT")]
         public Result Result { get; set; }
 
+        [Display(Name = "ACTIVITY_ACTIVITY_BUDGETS")]
         public virtual ICollection<ActivityBudget> ActivityBudgets { get; set; }
 
         public virtual ICollection<Request> SpendingRequests { get; set; }
