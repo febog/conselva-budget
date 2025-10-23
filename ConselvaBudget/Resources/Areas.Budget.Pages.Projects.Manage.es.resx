@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALERT_NO_EXPENSES_IN_BUDGET" xml:space="preserve">
+    <value>No se han realizado gastos a este presupuesto.</value>
+    <comment>Alert text from when no expenses (invoices) have been made for an activity budget.</comment>
+  </data>
   <data name="BUTTON_CREATE_ACTIVITY" xml:space="preserve">
     <value>Crear Actividad</value>
   </data>
