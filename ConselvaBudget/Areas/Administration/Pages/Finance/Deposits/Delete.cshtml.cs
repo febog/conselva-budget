@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 
@@ -19,7 +20,10 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Deposit = await _context.Deposits.FindAsync(id);
+            Deposit = await _context.Deposits
+                .Include(d => d.Project)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(b => b.Id == id);
 
             if (Deposit == null)
             {
