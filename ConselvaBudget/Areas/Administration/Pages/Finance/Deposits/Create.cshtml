@@ -35,7 +35,17 @@
 </div>
 <div class="col-12">
     <create-button></create-button>
-    <cancel-button asp-page="./Index"></cancel-button>
+    @{
+        var projectId = Request.Query["project"].ToString();
+    }
+    @if (string.IsNullOrEmpty(projectId))
+    {
+        <cancel-button asp-page="./Index"></cancel-button>
+    }
+    else
+    {
+        <cancel-button asp-page="./Project" asp-route-id="@projectId"></cancel-button>
+    }
 </div>
 
 @section PreForm {
