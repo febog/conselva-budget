@@ -35,5 +35,5 @@
 @section DeleteFormContents {
     <input type="hidden" asp-for="Deposit.Id" />
     <delete-confirm-button></delete-confirm-button>
-    <cancel-button asp-page="./Index"></cancel-button>
+    <cancel-button asp-page="./Project" asp-route-id="@Model.Deposit.ProjectId"></cancel-button>
 }

@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using ConselvaBudget.Data;
-using ConselvaBudget.Models;
+﻿using ConselvaBudget.Data;
 
 namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
 {
-    public class IndexModel : PageModel
+    public class IndexModel : DepositPageModel
     {
         private readonly ConselvaBudgetContext _context;
 
@@ -14,14 +11,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
             _context = context;
         }
 
-        public IList<Deposit> Deposit { get; set; } = default!;
-
-        public async Task OnGetAsync()
+        public void OnGet()
         {
-            Deposit = await _context.Deposits
-                .Include(d => d.Project)
-                .OrderByDescending(d => d.Date)
-                .ToListAsync();
+            PopulateProjectDropDownList(_context);
         }
     }
 }

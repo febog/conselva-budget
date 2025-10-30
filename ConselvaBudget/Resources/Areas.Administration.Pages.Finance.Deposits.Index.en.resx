@@ -117,24 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ALERT_NO_EXPENSES_IN_BUDGET" xml:space="preserve">
-    <value>No se han realizado gastos a este presupuesto.</value>
-    <comment>Alert text from when no expenses (invoices) have been made for an activity budget.</comment>
+  <data name="DEPOSIT_INDEX_DESCRIPTION" xml:space="preserve">
+    <value>Select a project to see and manage its deposits.</value>
   </data>
-  <data name="BUTTON_CREATE_ACTIVITY" xml:space="preserve">
-    <value>Crear Actividad</value>
+  <data name="DEPOSIT_INDEX_SELECT_HEADING" xml:space="preserve">
+    <value>Select a project</value>
   </data>
-  <data name="BUTTON_CREATE_BUDGET" xml:space="preserve">
-    <value>Crear Presupuesto</value>
-  </data>
-  <data name="BUTTON_CREATE_RESULT" xml:space="preserve">
-    <value>Crear Resultado</value>
-  </data>
-  <data name="BUTTON_DEPOSITS_PAGE" xml:space="preserve">
-    <value>Ver depósitos del proyecto</value>
-  </data>
-  <data name="TITLE_START" xml:space="preserve">
-    <value>Presupuesto</value>
-    <comment>The Project name comes next.</comment>
+  <data name="DEPOSIT_INDEX_SUBMIT" xml:space="preserve">
+    <value>View deposits</value>
   </data>
 </root>

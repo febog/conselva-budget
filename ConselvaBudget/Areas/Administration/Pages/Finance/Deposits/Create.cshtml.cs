@@ -13,9 +13,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int? project)
         {
-            PopulateProjectDropDownList(_context);
+            PopulateProjectDropDownList(_context, project);
             return Page();
         }
 
@@ -36,7 +36,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
             {
                 _context.Deposits.Add(emptyDeposit);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return RedirectToPage("./Project", new { id = emptyDeposit.ProjectId });
             }
 
             PopulateProjectDropDownList(_context, emptyDeposit.ProjectId);

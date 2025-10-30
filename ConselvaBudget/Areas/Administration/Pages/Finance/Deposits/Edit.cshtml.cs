@@ -47,7 +47,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
                  d => d.Comments))
             {
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return RedirectToPage("./Project", new { id = depositToUpdate.ProjectId });
             }
 
             PopulateProjectDropDownList(_context, depositToUpdate.ProjectId);
