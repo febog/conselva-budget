@@ -5,7 +5,7 @@
 
 @{
     Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = @Localizer["ENTITY_DEPOSIT_CATALOG_NAME"];
+    ViewData["Title"] = $"{Localizer["ENTITY_DEPOSIT_CATALOG_NAME"]} {Model.Project.DisplayName}";
 }
 
 @section PreTable {
