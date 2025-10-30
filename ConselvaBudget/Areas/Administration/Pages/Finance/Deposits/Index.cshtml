@@ -1,54 +1,21 @@
 ﻿@page
-@inject IStringLocalizer<Resources.SharedResource> Localizer
-@inject IHtmlLocalizer<Resources.SharedResource> HtmlLocalizer
+@inject IStringLocalizer<Resources.SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
 @model IndexModel
 
 @{
-    Layout = "/Pages/Shared/_IndexLayout.cshtml";
-    ViewData["Title"] = @Localizer["ENTITY_DEPOSIT_CATALOG_NAME"];
+    ViewData["Title"] = @SharedLocalizer["ENTITY_DEPOSIT_CATALOG_NAME"];
 }
 
-@section Introduction {
-    @HtmlLocalizer["ENTITY_DEPOSIT_HELP"]
+<h1 class="pb-2 border-bottom">@ViewData["Title"]</h1>
 
-    <p><a class="btn btn-primary" asp-page="Create">@Localizer["CREATE"]</a></p>
-}
+<p>@Localizer["DEPOSIT_INDEX_DESCRIPTION"]</p>
 
-@section TableHeaders {
-    <th>
-        @Html.DisplayNameFor(model => model.Deposit[0].Amount)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.Deposit[0].Date)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.Deposit[0].Comments)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.Deposit[0].Project)
-    </th>
-}
+<p><a class="btn btn-primary" asp-page="Create">@SharedLocalizer["CREATE"]</a></p>
 
-@foreach (var item in Model.Deposit)
-{
-    <tr>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Project.Name)
-        </td>
-        <td class="align-middle">
-            <table-buttons>
-                <edit-button asp-page="Edit" asp-route-id="@item.Id"></edit-button>
-                <delete-button asp-page="Delete" asp-route-id="@item.Id"></delete-button>
-            </table-buttons>
-        </td>
-    </tr>
-}
+<h2>@Localizer["DEPOSIT_INDEX_SELECT_HEADING"]</h2>
+
+<form asp-page="Project" method="get">
+    <select name="id" class="form-select mb-2" asp-items="@Model.ProjectSL" aria-label="@Localizer["DEPOSIT_INDEX_SELECT_HEADING"]"></select>
+    <button type="submit" class="btn btn-primary"><i class="bi bi-list-check"></i> @Localizer["DEPOSIT_INDEX_SUBMIT"]</button>
+</form>
