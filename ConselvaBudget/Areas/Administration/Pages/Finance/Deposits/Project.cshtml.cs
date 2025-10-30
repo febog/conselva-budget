@@ -15,7 +15,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
             _context = context;
         }
 
-        public IList<Deposit> ProjectDeposits { get; set; }
+        public Project Project { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -24,10 +24,14 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
                 return NotFound();
             }
 
-            ProjectDeposits = await _context.Deposits
-                .Where(d => d.ProjectId == id)
-                .OrderBy(d => d.Date)
-                .ToListAsync();
+            Project = await _context.Projects
+                .Include(p => p.Deposits)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (Project == null)
+            {
+                return NotFound();
+            }
 
             return Page();
         }

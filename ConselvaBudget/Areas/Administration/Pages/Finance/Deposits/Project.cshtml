@@ -16,20 +16,20 @@
 
 @section TableHeaders {
     <th>
-        @Html.DisplayNameFor(model => model.ProjectDeposits[0].Amount)
+        @Html.DisplayNameFor(model => model.Project.Deposits.ToList()[0].Amount)
     </th>
     <th>
-        @Html.DisplayNameFor(model => model.ProjectDeposits[0].Date)
+        @Html.DisplayNameFor(model => model.Project.Deposits.ToList()[0].Date)
     </th>
     <th>
-        @Html.DisplayNameFor(model => model.ProjectDeposits[0].Comments)
+        @Html.DisplayNameFor(model => model.Project.Deposits.ToList()[0].Comments)
     </th>
     <th>
-        @Html.DisplayNameFor(model => model.ProjectDeposits[0].Project)
+        @Html.DisplayNameFor(model => model.Project.Deposits.ToList()[0].Project)
     </th>
 }
 
-@foreach (var item in Model.ProjectDeposits)
+@foreach (var item in Model.Project.Deposits.OrderBy(d => d.Date))
 {
     <tr>
         <td class="align-middle">
