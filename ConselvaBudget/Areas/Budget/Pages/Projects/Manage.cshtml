@@ -70,6 +70,10 @@
 {
     <div class="mb-2">
         <a class="btn btn-primary btn-sm" asp-page="/Results/Create" asp-route-project="@Model.Project.Id">@Localizer["BUTTON_CREATE_RESULT"]</a>
+        @if (User.IsInRole(Roles.Administrator))
+        {
+            <a class="btn btn-secondary btn-sm" asp-area="Administration" asp-page="/Finance/Deposits/Project" asp-route-id="@Model.Project.Id">@Localizer["BUTTON_DEPOSITS_PAGE"]</a>
+        }
     </div>
 }
 

@@ -130,6 +130,9 @@
   <data name="BUTTON_CREATE_RESULT" xml:space="preserve">
     <value>Crear Resultado</value>
   </data>
+  <data name="BUTTON_DEPOSITS_PAGE" xml:space="preserve">
+    <value>Ver depósitos del proyecto</value>
+  </data>
   <data name="TITLE_START" xml:space="preserve">
     <value>Presupuesto</value>
     <comment>The Project name comes next.</comment>
