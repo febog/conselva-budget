@@ -48,7 +48,7 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Project", new { id = deposit.ProjectId });
         }
     }
 }
