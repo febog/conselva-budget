@@ -13,9 +13,9 @@ namespace ConselvaBudget.Areas.Administration.Pages.Finance.Deposits
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int? project)
         {
-            PopulateProjectDropDownList(_context);
+            PopulateProjectDropDownList(_context, project);
             return Page();
         }
 
