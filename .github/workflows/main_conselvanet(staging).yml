@@ -21,7 +21,7 @@ jobs:
         with:
           dotnet-version: '10.x'
 
-      - name: Build all the solution projects, with an implicit restore
+      - name: Build all the solution projects
         run: dotnet build --configuration Release
 
       - name: Run tests
