@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '10.x'
 
       - name: Build all the solution projects
-        run: dotnet build --runtime linux-x64 --configuration Release
+        run: dotnet build ConselvaBudget/ConselvaBudget.csproj --runtime linux-x64 --configuration Release
 
       - name: Install Entity Framework Core tool
         run: dotnet tool install -g dotnet-ef
