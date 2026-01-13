@@ -22,13 +22,13 @@ jobs:
           dotnet-version: '10.x'
 
       - name: Build all the solution projects
-        run: dotnet build --configuration Release
+        run: dotnet build --runtime linux-x64 --configuration Release
 
       - name: Install Entity Framework Core tool
         run: dotnet tool install -g dotnet-ef
 
       - name: Create migration bundle for ConselvaBudgetContext
-        run: dotnet ef migrations bundle -r linux-x64 -p ConselvaBudget/ConselvaBudget.csproj -c ConselvaBudgetContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-conselvabudget
+        run: dotnet ef migrations bundle --runtime linux-x64 --configuration Release -p ConselvaBudget/ConselvaBudget.csproj -c ConselvaBudgetContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-conselvabudget
 
       - name: Create migration bundle for AppIdentityContext
-        run: dotnet ef migrations bundle --runtime linux-x64 -p ConselvaBudget/ConselvaBudget.csproj -c AppIdentityContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-appidentity
+        run: dotnet ef migrations bundle --runtime linux-x64 --configuration Release -p ConselvaBudget/ConselvaBudget.csproj -c AppIdentityContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-appidentity
