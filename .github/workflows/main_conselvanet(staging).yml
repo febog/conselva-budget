@@ -28,7 +28,7 @@ jobs:
         run: dotnet test --no-restore
 
       - name: Publish app and its dependencies to a folder for deployment
-        run: dotnet publish ConselvaBudget/ConselvaBudget.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp --no-restore
+        run: dotnet publish ConselvaBudget/ConselvaBudget.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Install Entity Framework Core tool
         run: dotnet tool install -g dotnet-ef
