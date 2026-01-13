@@ -28,35 +28,7 @@ jobs:
         run: dotnet tool install -g dotnet-ef
 
       - name: Create migration bundle for ConselvaBudgetContext
-        run: dotnet ef migrations bundle -p ConselvaBudget/ConselvaBudget.csproj -c ConselvaBudgetContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-conselvabudget
+        run: dotnet ef migrations bundle --runtime linux-x64 -p ConselvaBudget/ConselvaBudget.csproj -c ConselvaBudgetContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-conselvabudget
 
       - name: Create migration bundle for AppIdentityContext
-        run: dotnet ef migrations bundle --r linux-x64 -p ConselvaBudget/ConselvaBudget.csproj -c AppIdentityContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-appidentity
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v6
-        with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build-and-test
-    environment:
-      name: 'staging'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v7
-        with:
-          name: .net-app
-      
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'conselvanet'
-          slot-name: 'staging'
-          package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7DBD8B12F3944252861EA1881E27445F }}
+        run: dotnet ef migrations bundle -r linux-x64 -p ConselvaBudget/ConselvaBudget.csproj -c AppIdentityContext -o ${{env.DOTNET_ROOT}}/myapp/migrate-appidentity
