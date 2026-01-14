@@ -32,8 +32,6 @@ namespace ConselvaBudget
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization();
 
-            builder.Services.AddAuthorization();
-
             builder.Services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
             {
                 microsoftOptions.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"];
@@ -41,6 +39,8 @@ namespace ConselvaBudget
                 microsoftOptions.AuthorizationEndpoint = builder.Configuration["Authentication:Microsoft:AuthorizationEndpoint"];
                 microsoftOptions.TokenEndpoint = builder.Configuration["Authentication:Microsoft:TokenEndpoint"];
             });
+
+            builder.Services.AddAuthorization();
 
             builder.Services.RegisterConselvaBudgetServices();
 
