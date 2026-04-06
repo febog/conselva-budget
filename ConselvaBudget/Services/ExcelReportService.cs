@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace ConselvaBudget.Services
 {
@@ -31,8 +33,11 @@ namespace ConselvaBudget.Services
                 var properties = typeof(T).GetProperties();
                 for (int i = 0; i < properties.Length; i++)
                 {
-                    // Populate first row with the property names.
-                    worksheet.Cells[1, i + 1].Value = properties[i].Name;
+                    // Populate first row with the display names of the properties.
+                    var property = properties[i];
+                    var display = property.GetCustomAttribute<DisplayAttribute>();
+                    var name = display?.GetName() ?? property.Name;
+                    worksheet.Cells[1, i + 1].Value = name;
                 }
 
                 // Add data
