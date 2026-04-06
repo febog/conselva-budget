@@ -7,22 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConselvaBudget.Areas.Reports.Pages.Expenses
 {
-    public class IndexModel : PageModel
+    public class IndexModel(ConselvaBudgetContext context, IReportService<ExpensesReportViewModel> reportService) : PageModel
     {
-        private readonly ConselvaBudgetContext _context;
-        private readonly IReportService _reportService;
-
         private const string ReportBaseFileName = "ConselvaExpensesReport";
-
-        public IndexModel(ConselvaBudgetContext context, IReportService reportService)
-        {
-            _context = context;
-            _reportService = reportService;
-        }
 
         public async Task<IActionResult> OnGetAsync(int? project)
         {
-            var expenseQuery = _context.ExpenseInvoices
+            var expenseQuery = context.ExpenseInvoices
                 .Include(e => e.ActivityBudget.Activity.Result.Project.Donor)
                 .AsQueryable();
 
@@ -32,7 +23,7 @@ namespace ConselvaBudget.Areas.Reports.Pages.Expenses
             {
                 expenseQuery = expenseQuery.Where(e => e.ActivityBudget.Activity.Result.Project.Id == project);
 
-                var projectDetails = await _context.Projects.FindAsync(project);
+                var projectDetails = await context.Projects.FindAsync(project);
 
                 if (projectDetails == null)
                 {
@@ -52,10 +43,10 @@ namespace ConselvaBudget.Areas.Reports.Pages.Expenses
 
             // Generate Excel file download
             string downloadName = $"{ReportBaseFileName}-{reportQualifier}-{DateTime.Now.ToString("yyyy-MM-dd")}";
-            return _reportService.GenerateExcelFileDownload<ExpensesReportViewModel>(reportData, downloadName);
+            return reportService.GenerateExcelFileDownload(reportData, downloadName);
         }
 
-        private IList<ExpensesReportViewModel> MapExpensesReportData(IList<ExpenseInvoice> expenses)
+        private static List<ExpensesReportViewModel> MapExpensesReportData(IList<ExpenseInvoice> expenses)
         {
             var data = new List<ExpensesReportViewModel>();
             foreach (var expense in expenses)
@@ -68,7 +59,7 @@ namespace ConselvaBudget.Areas.Reports.Pages.Expenses
                     Activity = expense.ActivityBudget.Activity.Code,
                     Program = expense.ActivityBudget.AccountAssignment.Organization.Name,
                     Account = expense.ActivityBudget.AccountAssignment.DisplayName,
-                    ExpenseDate = expense.InvoiceDate.ToString("yyyy-MM-dd"),
+                    InvoiceDate = expense.InvoiceDate.ToString("yyyy-MM-dd"),
                     Vendor = expense.Vendor,
                     InvoiceNumber = expense.InvoiceNumber,
                     RequestId = expense.RequestId,

@@ -47,7 +47,7 @@ namespace ConselvaBudget.Services
         {
             services.AddTransient<IEmailSender, EmailSenderService>();
 
-            services.AddTransient<IReportService, ExcelReportService>();
+            services.AddTransient(typeof(IReportService<>), typeof(ExcelReportService<>));
 
             return services;
         }

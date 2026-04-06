@@ -2,12 +2,12 @@
 
 namespace ConselvaBudget.Services
 {
-    public interface IReportService
+    public interface IReportService<T>
     {
         /// <summary>
         /// Creates a report download for the tabular data given.
         /// </summary>
         /// <returns></returns>
-        FileContentResult GenerateExcelFileDownload<T>(IList<T> data, string name = null);
+        FileContentResult GenerateExcelFileDownload(IList<T> data, string name = null);
     }
 }

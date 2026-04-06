@@ -7,22 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConselvaBudget.Areas.Reports.Pages.Balance
 {
-    public class IndexModel : PageModel
+    public class IndexModel(ConselvaBudgetContext context, IReportService<BalanceReportViewModel> reportService) : PageModel
     {
-        private readonly ConselvaBudgetContext _context;
-        private readonly IReportService _reportService;
-
         private const string ReportBaseFileName = "ConselvaBalanceReport";
-
-        public IndexModel(ConselvaBudgetContext context, IReportService reportService)
-        {
-            _context = context;
-            _reportService = reportService;
-        }
 
         public async Task<IActionResult> OnGetAsync(int? project)
         {
-            var activityBudgetsQuery = _context.ActivityBudgets
+            var activityBudgetsQuery = context.ActivityBudgets
                 .Include(b => b.Activity.Result.Project.Donor)
                 .AsQueryable();
 
@@ -44,10 +35,10 @@ namespace ConselvaBudget.Areas.Reports.Pages.Balance
             // Generate Excel file download
             string qualifier = project == null ? "Global" : activityBudgets.FirstOrDefault()?.Activity.Result.Project.ShortName ?? "Empty project";
             string downloadName = $"{ReportBaseFileName}-{qualifier}-{DateTime.Now.ToString("yyyy-MM-dd")}";
-            return _reportService.GenerateExcelFileDownload<BalanceReportViewModel>(reportData, downloadName);
+            return reportService.GenerateExcelFileDownload(reportData, downloadName);
         }
 
-        private IList<BalanceReportViewModel> MapBalanceReportData(IList<ActivityBudget> activityBudgets)
+        private static List<BalanceReportViewModel> MapBalanceReportData(IList<ActivityBudget> activityBudgets)
         {
             var data = new List<BalanceReportViewModel>();
             foreach (var activityBudget in activityBudgets)
