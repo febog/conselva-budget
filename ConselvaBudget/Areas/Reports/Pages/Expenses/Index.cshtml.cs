@@ -26,9 +26,20 @@ namespace ConselvaBudget.Areas.Reports.Pages.Expenses
                 .Include(e => e.ActivityBudget.Activity.Result.Project.Donor)
                 .AsQueryable();
 
+            string reportQualifier = "Global";
+
             if (project != null)
             {
                 expenseQuery = expenseQuery.Where(e => e.ActivityBudget.Activity.Result.Project.Id == project);
+
+                var projectDetails = await _context.Projects.FindAsync(project);
+
+                if (projectDetails == null)
+                {
+                    return NotFound();
+                }
+
+                reportQualifier = projectDetails.ShortName;
             }
 
             var expenses = await expenseQuery
@@ -40,8 +51,7 @@ namespace ConselvaBudget.Areas.Reports.Pages.Expenses
             var reportData = MapExpensesReportData(expenses);
 
             // Generate Excel file download
-            string qualifier = project == null ? "Global" : expenses.FirstOrDefault()?.ActivityBudget.Activity.Result.Project.ShortName ?? "Empty project";
-            string downloadName = $"{ReportBaseFileName}-{qualifier}-{DateTime.Now.ToString("yyyy-MM-dd")}";
+            string downloadName = $"{ReportBaseFileName}-{reportQualifier}-{DateTime.Now.ToString("yyyy-MM-dd")}";
             return _reportService.GenerateExcelFileDownload<ExpensesReportViewModel>(reportData, downloadName);
         }
 
