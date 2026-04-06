@@ -38,7 +38,7 @@ namespace ConselvaBudget.Areas.Reports.Pages.Balance
             return reportService.GenerateExcelFileDownload(reportData, downloadName);
         }
 
-        private IList<BalanceReportViewModel> MapBalanceReportData(IList<ActivityBudget> activityBudgets)
+        private static List<BalanceReportViewModel> MapBalanceReportData(IList<ActivityBudget> activityBudgets)
         {
             var data = new List<BalanceReportViewModel>();
             foreach (var activityBudget in activityBudgets)

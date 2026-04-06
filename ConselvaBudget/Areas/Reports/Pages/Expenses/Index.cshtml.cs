@@ -46,7 +46,7 @@ namespace ConselvaBudget.Areas.Reports.Pages.Expenses
             return reportService.GenerateExcelFileDownload(reportData, downloadName);
         }
 
-        private IList<ExpensesReportViewModel> MapExpensesReportData(IList<ExpenseInvoice> expenses)
+        private static List<ExpensesReportViewModel> MapExpensesReportData(IList<ExpenseInvoice> expenses)
         {
             var data = new List<ExpensesReportViewModel>();
             foreach (var expense in expenses)
