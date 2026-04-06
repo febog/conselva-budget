@@ -68,7 +68,7 @@ namespace ConselvaBudget.Areas.Reports.Pages.Expenses
                     Activity = expense.ActivityBudget.Activity.Code,
                     Program = expense.ActivityBudget.AccountAssignment.Organization.Name,
                     Account = expense.ActivityBudget.AccountAssignment.DisplayName,
-                    ExpenseDate = expense.InvoiceDate.ToString("yyyy-MM-dd"),
+                    InvoiceDate = expense.InvoiceDate.ToString("yyyy-MM-dd"),
                     Vendor = expense.Vendor,
                     InvoiceNumber = expense.InvoiceNumber,
                     RequestId = expense.RequestId,

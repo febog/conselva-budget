@@ -23,7 +23,7 @@ namespace ConselvaBudget.Areas.Reports.Pages.Expenses
         public string Account { get; set; }
 
         [Display(Name = "EXPENSES_REPORT_INVOICE_DATE")]
-        public string ExpenseDate { get; set; }
+        public string InvoiceDate { get; set; }
 
         [Display(Name = "EXPENSES_REPORT_VENDOR")]
         public string Vendor { get; set; }
