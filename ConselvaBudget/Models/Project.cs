@@ -11,12 +11,12 @@ namespace ConselvaBudget.Models
         public int DonorId { get; set; }
 
         [Display(Name = "PROJECT_NAME")]
-        [StringLength(255)]
+        [StringLength(100)]
         [Required]
         public string Name { get; set; }
 
         [Display(Name = "PROJECT_SHORT_NAME")]
-        [StringLength(255)]
+        [StringLength(30)]
         [Required]
         public string ShortName { get; set; }
 
