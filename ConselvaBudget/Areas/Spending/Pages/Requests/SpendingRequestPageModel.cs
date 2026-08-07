@@ -3,7 +3,6 @@ using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 namespace ConselvaBudget.Areas.Spending.Pages.Requests
 {
@@ -41,7 +40,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
                 string.IsNullOrWhiteSpace(r.Trip?.ContributedResources) &&
                 string.IsNullOrWhiteSpace(r.Trip?.QualitativeResults) &&
                 string.IsNullOrWhiteSpace(r.Trip?.PicturesUrl) &&
-                r.Trip.SelectedDates.IsNullOrEmpty())
+                (r.Trip.SelectedDates == null || r.Trip.SelectedDates.Count == 0))
             {
                 r.Trip = null;
             }
