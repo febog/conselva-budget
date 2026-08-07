@@ -1,11 +1,12 @@
 ﻿@page
 @inject IViewLocalizer Localizer
+@inject IConfiguration Configuration
 @model IndexModel
 @{
     ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Conselva.net</h1>
+    <h1 class="display-4">@Configuration["SiteName"]</h1>
     <p class="lead">@Localizer["HOMEPAGE_LEAD"]</p>
 </div>
