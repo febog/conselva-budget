@@ -18,7 +18,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public async Task OnGetAsync()
         {
-            Projects = await _context.Projects.ToListAsync();
+            Projects = await _context.Projects
+                .OrderBy(p => p.Segment)
+                .ToListAsync();
         }
     }
 }
