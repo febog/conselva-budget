@@ -37,9 +37,11 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             // Only retrieve the requests created over the last DefaultDaySpan days
             var cutOffDate = DateTime.Now.AddDays(-DefaultDaySpan);
 
+            // Show in Index all requests that are not completed
+            // or newer than DefaultDaySpan days if completed
             SpendingRequests = await requests
                 .Include(r => r.Activity)
-                .Where(r => r.CreatedDate >= cutOffDate)
+                .Where(r => r.CreatedDate >= cutOffDate || !(r.Status == RequestStatus.Completed))
                 .OrderByDescending(r => r.CreatedDate)
                 .ToListAsync();
 
