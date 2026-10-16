@@ -121,10 +121,6 @@
     <value>Create request</value>
     <comment>Used in the Request Index page</comment>
   </data>
-  <data name="BUTTON_SHOW_ALL_BY_ME" xml:space="preserve">
-    <value>Show all requests created by me</value>
-    <comment>Show all requests created by me, even old ones.</comment>
-  </data>
   <data name="NO_REQUEST_ALERT" xml:space="preserve">
     <value>There are no requests with this status.</value>
     <comment>When there are none of the given requests in a section</comment>
