@@ -20,6 +20,49 @@
     <a class="btn btn-primary" asp-page="SelectProject"><i class="bi bi-plus-lg"></i> @Localizer["BUTTON_CREATE_REQUEST"]</a>
 </p>
 
+<div class="row row-cols-5">
+    <div class="col mb-3">
+        <div class="card">
+            <div class="card-body">
+                <p class="fs-2 mb-0">@createdRequests</p>
+                <p class="mb-0"><partial name="_RequestStatusPartial" model="Models.RequestStatus.Created" /></p>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="card">
+            <div class="card-body">
+                <p class="fs-2 mb-0">@submittedRequests</p>
+                <p class="mb-0"><partial name="_RequestStatusPartial" model="Models.RequestStatus.Submitted" /></p>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="card">
+            <div class="card-body">
+                <p class="fs-2 mb-0">@approvedRequests</p>
+                <p class="mb-0"><partial name="_RequestStatusPartial" model="Models.RequestStatus.Approved" /></p>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="card">
+            <div class="card-body">
+                <p class="fs-2 mb-0">@verificationRequests</p>
+                <p class="mb-0"><partial name="_RequestStatusPartial" model="Models.RequestStatus.Verification" /></p>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="card">
+            <div class="card-body">
+                <p class="fs-2 mb-0">@completedRequests</p>
+                <p class="mb-0"><partial name="_RequestStatusPartial" model="Models.RequestStatus.Completed" /></p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h2>@Localizer["REQUESTS_BY_PROJECT_TITLE"]</h2>
 
 <form method="get" class="mb-3">
