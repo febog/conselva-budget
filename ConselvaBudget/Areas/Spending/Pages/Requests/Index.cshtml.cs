@@ -1,9 +1,10 @@
-using System.Security.Claims;
 using ConselvaBudget.Authorization;
 using ConselvaBudget.Data;
 using ConselvaBudget.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace ConselvaBudget.Areas.Spending.Pages.Requests
 {
@@ -22,7 +23,9 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public IList<Request> CompletedButUnpaidRequests { get; set; } = default!;
 
-        public async Task OnGetAsync(bool allByMe = false)
+        public SelectList ProjectSL { get; set; }
+
+        public async Task OnGetAsync(int? project)
         {
             var requests = _context.Requests
                 .Include(r => r.Activity.Result.Project)
@@ -37,10 +40,14 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             // Only retrieve the requests created over the last DefaultDaySpan days
             var cutOffDate = DateTime.Now.AddDays(-DefaultDaySpan);
 
-            if (!allByMe)
+            if (project is null)
             {
                 // By default limit Completed requests to newer than DefaultDaySpan days
                 requests = requests.Where(r => r.CreatedDate >= cutOffDate || !(r.Status == RequestStatus.Completed));
+            }
+            else
+            {
+                requests = requests.Where(r => r.Activity.Result.ProjectId == project);
             }
 
             SpendingRequests = await requests
@@ -50,6 +57,25 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             CompletedButUnpaidRequests = SpendingRequests
                 .Where(r => r.IsPaid == false && r.Status == RequestStatus.Completed)
                 .ToList();
+
+            PopulateProjectDropDownList(_context, project);
+        }
+
+        public void PopulateProjectDropDownList(ConselvaBudgetContext context,
+            object selectedProject = null)
+        {
+            var projectsQuery = context.Projects
+                .OrderBy(p => p.Segment)
+                .Select(p => new
+                {
+                    p.Id,
+                    Name = p.DisplayName
+                });
+
+            ProjectSL = new SelectList(projectsQuery.AsNoTracking(),
+                "Id",
+                "Name",
+                selectedProject);
         }
     }
 }
