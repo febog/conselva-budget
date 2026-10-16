@@ -22,7 +22,7 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
 
         public IList<Request> CompletedButUnpaidRequests { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(bool allByMe = false)
         {
             var requests = _context.Requests
                 .Include(r => r.Activity.Result.Project)
@@ -37,11 +37,13 @@ namespace ConselvaBudget.Areas.Spending.Pages.Requests
             // Only retrieve the requests created over the last DefaultDaySpan days
             var cutOffDate = DateTime.Now.AddDays(-DefaultDaySpan);
 
-            // Show in Index all requests that are not completed
-            // or newer than DefaultDaySpan days if completed
+            if (!allByMe)
+            {
+                // By default limit Completed requests to newer than DefaultDaySpan days
+                requests = requests.Where(r => r.CreatedDate >= cutOffDate || !(r.Status == RequestStatus.Completed));
+            }
+
             SpendingRequests = await requests
-                .Include(r => r.Activity)
-                .Where(r => r.CreatedDate >= cutOffDate || !(r.Status == RequestStatus.Completed))
                 .OrderByDescending(r => r.CreatedDate)
                 .ToListAsync();
 

@@ -121,12 +121,16 @@
     <value>Crear solicitud</value>
     <comment>Used in the Request Index page</comment>
   </data>
+  <data name="BUTTON_SHOW_ALL_BY_ME" xml:space="preserve">
+    <value>Mostrar todas las solicitudes creadas por mí</value>
+    <comment>Show all requests created by me, even old ones.</comment>
+  </data>
   <data name="NO_REQUEST_ALERT" xml:space="preserve">
     <value>No hay solicitudes con este status.</value>
     <comment>When there are none of the given requests in a section</comment>
   </data>
   <data name="PAGE_DESCRIPTION" xml:space="preserve">
-    <value>Para usar el presupuesto, inicia creando una nueva Solicitud. Solo se muestran las solicitudes de los últimos 90 días.</value>
+    <value>Para usar el presupuesto, inicia creando una nueva Solicitud.</value>
     <comment>Initial instructions</comment>
   </data>
   <data name="PAGE_TITLE" xml:space="preserve">

@@ -121,12 +121,16 @@
     <value>Create request</value>
     <comment>Used in the Request Index page</comment>
   </data>
+  <data name="BUTTON_SHOW_ALL_BY_ME" xml:space="preserve">
+    <value>Show all requests created by me</value>
+    <comment>Show all requests created by me, even old ones.</comment>
+  </data>
   <data name="NO_REQUEST_ALERT" xml:space="preserve">
     <value>There are no requests with this status.</value>
     <comment>When there are none of the given requests in a section</comment>
   </data>
   <data name="PAGE_DESCRIPTION" xml:space="preserve">
-    <value>To use the budget, start by creating a Spending Request. Only the requests from the last 90 days are shown.</value>
+    <value>To use the budget, start by creating a Spending Request.</value>
     <comment>Initial instructions</comment>
   </data>
   <data name="PAGE_TITLE" xml:space="preserve">
