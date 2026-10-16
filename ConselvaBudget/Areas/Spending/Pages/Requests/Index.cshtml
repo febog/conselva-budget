@@ -20,7 +20,9 @@
 <form method="get" class="mb-3">
     <div class="row g-3 align-items-center">
         <div class="col-auto">
-            <select name="project" class="form-select" asp-items="@Model.ProjectSL"></select>
+            <select name="project" class="form-select" asp-items="@Model.ProjectSL">
+                <option value="">@Localizer["ALL_PROJECTS_OPTION"]</option>
+            </select>
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-secondary">@Localizer["BUTTON_SHOW_REQUESTS_BY_PROJECT"]</button>

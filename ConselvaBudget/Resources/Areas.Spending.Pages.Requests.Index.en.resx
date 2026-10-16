@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALL_PROJECTS_OPTION" xml:space="preserve">
+    <value>All projects</value>
+    <comment>The default option showing requests from all projects.</comment>
+  </data>
   <data name="BUTTON_CREATE_REQUEST" xml:space="preserve">
     <value>Create request</value>
     <comment>Used in the Request Index page</comment>
