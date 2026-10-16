@@ -246,7 +246,7 @@ else
 @if (Model.SpendingRequests.Where(r => r.Status == Models.RequestStatus.Approved).Any())
 {
     <table class="table table-bordered table-striped caption-top">
-        <caption>@Localizer["TITLE_APPROVED_REQUESTS"] (@approvedRequests))</caption>
+        <caption>@Localizer["TITLE_APPROVED_REQUESTS"] (@approvedRequests)</caption>
         <thead>
             <tr>
                 <th>
