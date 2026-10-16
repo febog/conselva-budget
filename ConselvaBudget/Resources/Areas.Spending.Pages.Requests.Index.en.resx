@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALL_PROJECTS_OPTION" xml:space="preserve">
+    <value>All projects</value>
+    <comment>The default option showing requests from all projects.</comment>
+  </data>
   <data name="BUTTON_CREATE_REQUEST" xml:space="preserve">
     <value>Create request</value>
     <comment>Used in the Request Index page</comment>
   </data>
-  <data name="BUTTON_SHOW_ALL_BY_ME" xml:space="preserve">
-    <value>Show all requests created by me</value>
-    <comment>Show all requests created by me, even old ones.</comment>
+  <data name="BUTTON_SHOW_REQUESTS_BY_PROJECT" xml:space="preserve">
+    <value>Show all requests from this project</value>
   </data>
   <data name="NO_REQUEST_ALERT" xml:space="preserve">
     <value>There are no requests with this status.</value>
@@ -135,6 +138,10 @@
   </data>
   <data name="PAGE_TITLE" xml:space="preserve">
     <value>Requests</value>
+  </data>
+  <data name="REQUESTS_BY_PROJECT_TITLE" xml:space="preserve">
+    <value>Requests by project</value>
+    <comment>Show all the requests of a given project.</comment>
   </data>
   <data name="REQUEST_NAVIGATION_DESCRIPTION" xml:space="preserve">
     <value>You can navigate to any Request by providing its ID here.</value>
