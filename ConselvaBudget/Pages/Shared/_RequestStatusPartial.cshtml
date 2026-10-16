@@ -1,8 +1,8 @@
 ﻿@using ConselvaBudget.Models;
-@model Request;
+@model RequestStatus;
 @inject IViewLocalizer Localizer
 
-@switch (Model.Status)
+@switch (Model)
 {
     case RequestStatus.Created:
         <span class="badge text-bg-light"><i class="bi bi-file-earmark-plus"></i> @Localizer["REQUEST_STATUS_CREATED"]</span>

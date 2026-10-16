@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="REQUEST_STATUS_APPROVED" xml:space="preserve">
-    <value>Aprobada</value>
+    <value>Aprobado</value>
     <comment>Used in the request status badge in the Request Details page.</comment>
   </data>
   <data name="REQUEST_STATUS_COMPLETED" xml:space="preserve">
-    <value>Completada</value>
+    <value>Completado</value>
     <comment>Used in the request status badge in the Request Details page.</comment>
   </data>
   <data name="REQUEST_STATUS_CREATED" xml:space="preserve">
-    <value>Creada</value>
+    <value>Creado</value>
     <comment>Used in the request status badge in the Request Details page.</comment>
   </data>
   <data name="REQUEST_STATUS_SUBMITTED" xml:space="preserve">
