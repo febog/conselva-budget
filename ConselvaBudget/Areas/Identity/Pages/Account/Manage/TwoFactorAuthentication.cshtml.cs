@@ -16,6 +16,10 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<TwoFactorAuthenticationModel> _logger;
+        /// <summary>
+        /// Restrict users from setting 2FA. Only use the external (work) auth provider for login.
+        /// </summary>
+        private readonly bool _preventUsersFromSettingTwoFactorAuth;
 
         public TwoFactorAuthenticationModel(
             UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ILogger<TwoFactorAuthenticationModel> logger)
@@ -23,6 +27,8 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+
+            _preventUsersFromSettingTwoFactorAuth = true;
         }
 
         /// <summary>
@@ -59,6 +65,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            if (_preventUsersFromSettingTwoFactorAuth)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -75,6 +86,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (_preventUsersFromSettingTwoFactorAuth)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {

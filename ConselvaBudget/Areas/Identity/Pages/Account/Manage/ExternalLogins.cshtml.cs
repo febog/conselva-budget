@@ -19,6 +19,10 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IUserStore<IdentityUser> _userStore;
+        /// <summary>
+        /// Restrict users from changing the external logins. Work account provider must remain unchanged.
+        /// </summary>
+        private readonly bool _preventUsersFromChangingWorkLogin;
 
         public ExternalLoginsModel(
             UserManager<IdentityUser> userManager,
@@ -28,6 +32,8 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
             _userManager = userManager;
             _signInManager = signInManager;
             _userStore = userStore;
+
+            _preventUsersFromChangingWorkLogin = true;
         }
 
         /// <summary>
@@ -57,6 +63,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            if (_preventUsersFromChangingWorkLogin)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -80,6 +91,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostRemoveLoginAsync(string loginProvider, string providerKey)
         {
+            if (_preventUsersFromChangingWorkLogin)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -100,6 +116,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostLinkLoginAsync(string provider)
         {
+            if (_preventUsersFromChangingWorkLogin)
+            {
+                return RedirectToPage("/Index");
+            }
+
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
@@ -111,6 +132,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetLinkLoginCallbackAsync()
         {
+            if (_preventUsersFromChangingWorkLogin)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {

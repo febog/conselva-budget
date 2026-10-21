@@ -20,6 +20,10 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
+        /// <summary>
+        /// Restrict users from changing their email. Work email address must remain unchanged.
+        /// </summary>
+        private readonly bool _preventUsersFromChangingEmail;
 
         public EmailModel(
             UserManager<IdentityUser> userManager,
@@ -29,6 +33,8 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+
+            _preventUsersFromChangingEmail = true;
         }
 
         /// <summary>
@@ -88,6 +94,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            if (_preventUsersFromChangingEmail)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -100,6 +111,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostChangeEmailAsync()
         {
+            if (_preventUsersFromChangingEmail)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -138,6 +154,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostSendVerificationEmailAsync()
         {
+            if (_preventUsersFromChangingEmail)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {

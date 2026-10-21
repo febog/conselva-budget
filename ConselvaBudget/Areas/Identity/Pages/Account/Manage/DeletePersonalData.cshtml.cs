@@ -17,6 +17,10 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
+        /// <summary>
+        /// Restrict users from deleting work information.
+        /// </summary>
+        private readonly bool _preventUsersFromDeletingAccountData;
 
         public DeletePersonalDataModel(
             UserManager<IdentityUser> userManager,
@@ -26,6 +30,8 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+
+            _preventUsersFromDeletingAccountData = true;
         }
 
         /// <summary>
@@ -58,6 +64,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGet()
         {
+            if (_preventUsersFromDeletingAccountData)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -70,6 +81,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (_preventUsersFromDeletingAccountData)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
