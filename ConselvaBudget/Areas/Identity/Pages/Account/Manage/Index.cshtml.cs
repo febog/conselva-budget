@@ -16,6 +16,10 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        /// <summary>
+        /// Restrict users from changing local account options. This is managed by the work identity.
+        /// </summary>
+        private readonly bool _preventUsersFromChangingLocalAccount;
 
         public IndexModel(
             UserManager<IdentityUser> userManager,
@@ -23,6 +27,8 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
         {
             _userManager = userManager;
             _signInManager = signInManager;
+
+            _preventUsersFromChangingLocalAccount = true;
         }
 
         /// <summary>
@@ -75,6 +81,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            if (_preventUsersFromChangingLocalAccount)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -87,6 +98,11 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (_preventUsersFromChangingLocalAccount)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
