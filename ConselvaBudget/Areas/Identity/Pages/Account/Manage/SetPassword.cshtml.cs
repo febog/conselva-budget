@@ -15,6 +15,10 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        /// <summary>
+        /// Restrict users from setting passwords. Only use the external auth provider for login.
+        /// </summary>
+        private readonly bool _preventUsersFromSettingPassword;
 
         public SetPasswordModel(
             UserManager<IdentityUser> userManager,
@@ -22,6 +26,8 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
         {
             _userManager = userManager;
             _signInManager = signInManager;
+
+            _preventUsersFromSettingPassword = true;
         }
 
         /// <summary>
@@ -64,16 +70,9 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
             public string ConfirmPassword { get; set; }
         }
 
-        /// <summary>
-        /// Restrict users from setting passwords. Only use the external auth provider for login.
-        /// </summary>
-        public bool PreventUsersFromSettingPassword { get; set; }
-
         public async Task<IActionResult> OnGetAsync()
         {
-            PreventUsersFromSettingPassword = true;
-
-            if (PreventUsersFromSettingPassword)
+            if (_preventUsersFromSettingPassword)
             {
                 return RedirectToPage("/Index");
             }
@@ -96,9 +95,7 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
-            PreventUsersFromSettingPassword = true;
-
-            if (PreventUsersFromSettingPassword)
+            if (_preventUsersFromSettingPassword)
             {
                 return RedirectToPage("/Index");
             }
