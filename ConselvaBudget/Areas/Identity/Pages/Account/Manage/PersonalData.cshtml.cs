@@ -13,6 +13,10 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<PersonalDataModel> _logger;
+        /// <summary>
+        /// Restrict users from deleting work information.
+        /// </summary>
+        private readonly bool _preventUsersFromDeletingAccountData;
 
         public PersonalDataModel(
             UserManager<IdentityUser> userManager,
@@ -20,10 +24,17 @@ namespace ConselvaBudget.Areas.Identity.Pages.Account.Manage
         {
             _userManager = userManager;
             _logger = logger;
+
+            _preventUsersFromDeletingAccountData = true;
         }
 
         public async Task<IActionResult> OnGet()
         {
+            if (_preventUsersFromDeletingAccountData)
+            {
+                return RedirectToPage("/Index");
+            }
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
